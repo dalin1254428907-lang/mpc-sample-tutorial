@@ -2,10 +2,10 @@
 title: "MPC Sample 图文教程"
 description: "Akai Professional MPC Sample（AC50，2026 年 3 月上市）硬件全图解 · 图文教程"
 lang: zh-CN
-# 项目站点：https://<user>.github.io/mpc-sample-tutorial/
-# 若仓库改名，或改用 <user>.github.io 用户站点，请同步修改 baseurl（用户站点设为 ""）
+# 项目站点：https://dalin1254428907-lang.github.io/mpc-sample-tutorial/
+# 若仓库改名，或改用 dalin1254428907-lang.github.io 用户站点，请同步修改 baseurl（用户站点设为 ""）
 baseurl: "/mpc-sample-tutorial"
-url: ""   # 可选，例如 "https://<user>.github.io"
+url: https://dalin1254428907-lang.github.io
 
 markdown: kramdown
 kramdown:

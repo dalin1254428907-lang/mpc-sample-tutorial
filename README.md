@@ -2,7 +2,7 @@
 
 Akai Professional **MPC Sample（型号 AC50，2026 年 3 月上市）** 的中文图文教程，以 GitHub Pages 网站形式发布。暗色 hip-hop 风格，内容依据官方 User Guide v1.3.0 核对。
 
-**在线阅读：** `https://<user>.github.io/mpc-sample-tutorial/`（把 `<user>` 换成你的 GitHub 用户名）
+**在线阅读：** `https://dalin1254428907-lang.github.io/mpc-sample-tutorial/`（把 `dalin1254428907-lang` 换成你的 GitHub 用户名）
 
 也可以直接在 github.com 上阅读 Markdown：从 [`index.md`](index.md) 开始，或进入 [`chapters/`](chapters/)。
 
@@ -24,9 +24,9 @@ Akai Professional **MPC Sample（型号 AC50，2026 年 3 月上市）** 的中�
 
 1. 推送到 GitHub 仓库 `mpc-sample-tutorial`。
 2. 仓库 **Settings → Pages → Build and deployment**：Source 选 **Deploy from a branch**，Branch 选 **`main`**，目录 **`/ (root)`**。
-3. 几分钟后即可访问 `https://<user>.github.io/mpc-sample-tutorial/`。
+3. 几分钟后即可访问 `https://dalin1254428907-lang.github.io/mpc-sample-tutorial/`。
 
-> 如果仓库名不是 `mpc-sample-tutorial`，请修改 `_config.yml` 里的 `baseurl`（用户站点 `<user>.github.io` 则设为 `""`）。
+> 如果仓库名不是 `mpc-sample-tutorial`，请修改 `_config.yml` 里的 `baseurl`（用户站点 `dalin1254428907-lang.github.io` 则设为 `""`）。
 
 ## 目录结构
 
