@@ -1,0 +1,42 @@
+# 面板编号 1–40（沿用官方手册 Features 章）
+# 数据来源：原教程 Page（canvas）源代码，逐字保留。
+- {n: 1, en: POWER, zh: 电源}
+- {n: 2, en: USB-C, zh: 供电·音频·MIDI}
+- {n: 3, en: REC GAIN, zh: 录音增益}
+- {n: 4, en: AUDIO IN, zh: 输入 L/R}
+- {n: 5, en: AUDIO OUT, zh: 输出 L/R}
+- {n: 6, en: MIDI IN/OUT, zh: 3.5mm MIDI}
+- {n: 7, en: SYNC OUT, zh: 时钟同步}
+- {n: 8, en: PHONES, zh: 耳机}
+- {n: 9, en: microSD, zh: 左侧卡槽}
+- {n: 10, en: DISPLAY, zh: 屏幕}
+- {n: 11, en: BATTERY, zh: 电池图标}
+- {n: 12, en: CHARGING, zh: 充电图标}
+- {n: 13, en: MAIN VOLUME, zh: 总音量}
+- {n: 14, en: METERS, zh: 电平表}
+- {n: 15, en: SPEAKER, zh: 扬声器}
+- {n: 16, en: MIC, zh: 内置麦克风}
+- {n: 17, en: SHIFT, zh: 第二功能}
+- {n: 18, en: ENCODER, zh: 编码器}
+- {n: 19, en: − / +, zh: 增减·撤销/重做}
+- {n: 20, en: B1–B3, zh: 屏幕功能键}
+- {n: 21, en: K1–K3, zh: 参数旋钮}
+- {n: 22, en: FADER, zh: 推子}
+- {n: 23, en: ERASE, zh: 删除·复制}
+- {n: 24, en: NOTE REPEAT, zh: 连打·三连音}
+- {n: 25, en: PAD BANK, zh: 分组 A–H}
+- {n: 26, en: SAMPLE SELECT, zh: 选采样·保存}
+- {n: 27, en: TAP TEMPO, zh: 定速·节拍器}
+- {n: 28, en: PADS, zh: 16 打击垫}
+- {n: 29, en: SAMPLE, zh: 采样模式}
+- {n: 30, en: SEQ, zh: 序列模式}
+- {n: 31, en: PAD FX, zh: 垫效果·Flex Beat}
+- {n: 32, en: KNOB FX, zh: 旋钮效果}
+- {n: 33, en: CHOP, zh: 切片·Note On}
+- {n: 34, en: LOOP, zh: 循环·反向}
+- {n: 35, en: MUTE, zh: 静音}
+- {n: 36, en: 16 LEVELS, zh: 16 级}
+- {n: 37, en: SAMPLE RECORD, zh: 录采样·回溯}
+- {n: 38, en: SEQ RECORD, zh: 录序列·回溯}
+- {n: 39, en: PLAY, zh: 播放·继续}
+- {n: 40, en: STOP, zh: 停止}

@@ -1,0 +1,12 @@
+{%- assign prev = nil -%}{%- assign next = nil -%}
+{%- for c in include.chapters -%}
+  {%- if c.url == page.url -%}
+    {%- assign i = forloop.index0 -%}
+    {%- if i > 0 -%}{%- assign pi = i | minus: 1 -%}{%- assign prev = include.chapters[pi] -%}{%- endif -%}
+    {%- assign ni = i | plus: 1 -%}{%- assign next = include.chapters[ni] -%}
+  {%- endif -%}
+{%- endfor -%}
+<nav class="pager" aria-label="翻页">
+  {% if prev %}<a class="card" href="{{ prev.url | relative_url }}"><small>← 上一章</small>{{ prev.title }}</a>{% else %}<a class="card" href="{{ '/' | relative_url }}"><small>← 封面</small>全书大纲</a>{% endif %}
+  {% if next %}<a class="card next" href="{{ next.url | relative_url }}"><small>下一章 →</small>{{ next.title }}</a>{% endif %}
+</nav>

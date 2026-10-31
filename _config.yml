@@ -1,0 +1,34 @@
+# MPC Sample 图文教程 —— GitHub Pages（Deploy from branch: main / root）原生 Jekyll 构建，无需 Actions
+title: "MPC Sample 图文教程"
+description: "Akai Professional MPC Sample（AC50，2026 年 3 月上市）硬件全图解 · 图文教程"
+lang: zh-CN
+# 项目站点：https://<user>.github.io/mpc-sample-tutorial/
+# 若仓库改名，或改用 <user>.github.io 用户站点，请同步修改 baseurl（用户站点设为 ""）
+baseurl: "/mpc-sample-tutorial"
+url: ""   # 可选，例如 "https://<user>.github.io"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# GitHub Pages 默认启用、此处显式列出以便本地构建一致：把 Markdown 里的相对 .md 链接转成 .html
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - tools/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
