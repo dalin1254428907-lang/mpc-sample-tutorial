@@ -1,12 +1,16 @@
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
+<!-- 由 tools/build_figures.py 生成，已增强动态信号流程 -->
 <figure class="fig-wrap" id="fig-overview">
-<svg class="fig" viewBox="0 200 1536 1240" role="img" aria-label="MPC Sample 面板总览：编号 1–40 与分区 A–E" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>MPC Sample 面板总览：编号 1–40 与分区 A–E</title>
+<svg class="fig" viewBox="0 200 1536 1240" role="img" aria-label="MPC Sample 面板总览：编号 1–40 与分区 A–E（动态信号流程）" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>MPC Sample 面板总览：编号 1–40 与分区 A–E（动态信号流程）</title>
 <image href="{{ '/assets/img/mpc-sample-top.jpg' | relative_url }}" x="0" y="200" width="1536" height="1240" preserveAspectRatio="none"/>
-<g class="region"><rect x="160" y="205" width="1200" height="350" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="168" y="213" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="194" y="252" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">A</text></g>
-<g class="region"><rect x="75" y="580" width="390" height="830" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="83" y="588" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="109" y="627" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">B</text></g>
-<g class="region"><rect x="440" y="545" width="660" height="175" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="448" y="553" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="474" y="592" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">C</text></g>
-<g class="region"><rect x="1080" y="560" width="450" height="770" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="1088" y="568" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="1114" y="607" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">D</text></g>
-<g class="region"><rect x="420" y="725" width="790" height="685" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="428" y="733" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="454" y="772" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">E</text></g>
+<!-- 动态信号流程轨迹 -->
+<g class="signal-flow-group" aria-hidden="true">
+  <path class="signal-flow-path" d="M 815 1065 L 770 635 L 270 995 L 1305 945 L 760 380" fill="none" stroke="#FFE500" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="18 12"/>
+</g>
+<g class="region flow-region-a flow-step-5" data-flow="5"><rect x="160" y="205" width="1200" height="350" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="168" y="213" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="194" y="252" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">A</text></g>
+<g class="region flow-region-b flow-step-3" data-flow="3"><rect x="75" y="580" width="390" height="830" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="83" y="588" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="109" y="627" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">B</text></g>
+<g class="region flow-region-c flow-step-2" data-flow="2"><rect x="440" y="545" width="660" height="175" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="448" y="553" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="474" y="592" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">C</text></g>
+<g class="region flow-region-d flow-step-4" data-flow="4"><rect x="1080" y="560" width="450" height="770" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="1088" y="568" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="1114" y="607" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">D</text></g>
+<g class="region flow-region-e flow-step-1" data-flow="1"><rect x="420" y="725" width="790" height="685" rx="18" fill="none" stroke="#00E5FF" stroke-width="6" stroke-dasharray="22 12"/><rect x="428" y="733" width="52" height="52" rx="6" fill="#00E5FF" stroke="#0B0B0D" stroke-width="3"/><text x="454" y="772" font-size="40" font-weight="900" fill="#0B0B0D" text-anchor="middle">E</text></g>
 <g class="marker"><title>13 MAIN VOLUME · 总音量</title><circle cx="250" cy="370" r="27" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="5"/><text x="250" y="380" font-size="28" font-weight="900" fill="#F5F5F5" text-anchor="middle">13</text></g>
 <g class="marker"><title>20 B1–B3 · 屏幕功能键</title><circle cx="746" cy="222" r="27" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="5"/><text x="746" y="232" font-size="28" font-weight="900" fill="#F5F5F5" text-anchor="middle">20</text></g>
 <g class="marker"><title>10 DISPLAY · 屏幕</title><circle cx="700" cy="431" r="27" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="5"/><text x="700" y="441" font-size="28" font-weight="900" fill="#F5F5F5" text-anchor="middle">10</text></g>
@@ -37,4 +41,18 @@
 <g class="marker"><title>40 STOP · 停止</title><circle cx="1250" cy="1230" r="27" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="5"/><text x="1250" y="1240" font-size="28" font-weight="900" fill="#F5F5F5" text-anchor="middle">40</text></g>
 <g class="marker"><title>39 PLAY · 播放·继续</title><circle cx="1395" cy="1225" r="27" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="5"/><text x="1395" y="1235" font-size="28" font-weight="900" fill="#F5F5F5" text-anchor="middle">39</text></g>
 </svg>
+<figcaption class="fig-caption">
+  <div class="signal-flow-nav" aria-label="信号流程示意">
+    <span class="flow-pill flow-pill-1">① 打击垫采样 (E)</span>
+    <span class="flow-arrow">➔</span>
+    <span class="flow-pill flow-pill-2">② 旋钮调参 (C)</span>
+    <span class="flow-arrow">➔</span>
+    <span class="flow-pill flow-pill-3">③ 模式与推子 (B)</span>
+    <span class="flow-arrow">➔</span>
+    <span class="flow-pill flow-pill-4">④ 走带录制 (D)</span>
+    <span class="flow-arrow">➔</span>
+    <span class="flow-pill flow-pill-5">⑤ 主输出监听 (A)</span>
+  </div>
+  <p class="caption-text">MPC Sample 信号流程动态示意：打击垫触发 → 参数调节 → 音序编排 → 走带录制 → 主输出与监听（悬停或点击放大查看）</p>
+</figcaption>
 </figure>
