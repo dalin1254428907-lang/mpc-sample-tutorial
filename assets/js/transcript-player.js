@@ -13,7 +13,7 @@
       return { li: li, s: parseFloat(li.getAttribute('data-s')), e: parseFloat(li.getAttribute('data-e')) };
     });
     st.list = box.querySelector('.tx-list');
-    if (!box.querySelector('.tx-dub')) { var _d = document.createElement('div'); _d.className = 'tx-dub'; _d.hidden = true; _d.innerHTML = '<audio class="dub-audio" preload="none"><\/audio><input type="checkbox" class="dub-on"><input type="range" class="dub-mix" value="85"><span class="dub-state"><\/span>'; box.appendChild(_d); } /* 配音已暂停：放一组隐藏占位，脚本照常跑字幕 */
+    if (!box.querySelector('.tx-dub')) { var _d = document.createElement('div'); _d.className = 'tx-dub'; _d.hidden = true; _d.innerHTML = '<audio class="dub-audio" preload="none"><\/audio><input type="checkbox" class="dub-on"><input type="range" class="dub-mix" value="85"><span class="dub-state"><\/span>'; box.appendChild(_d); } /* 配音已暂停：隐藏占位，字幕照常 */
     st.audio = box.querySelector('.dub-audio');
     st.dubOn = box.querySelector('.dub-on');
     st.mix = box.querySelector('.dub-mix');

@@ -143,7 +143,7 @@
   /* ---------------- 每节：播放器 + 跟练清单 ---------------- */
   $$('.lab-acc[data-lab]').forEach(function (sec) {
     var id = sec.getAttribute('data-lab');
-    fetch('../legacy/assets/data/lab-' + id + '.json').then(function (r) { return r.json(); })
+    fetch('../assets/data/lab-' + id + '.json').then(function (r) { return r.json(); })
       .then(function (d) { if (d) { buildPlayer(sec, d); buildDoSteps(sec, d); } })
       .catch(function () {
         var body = $('.lab-acc-body', sec);

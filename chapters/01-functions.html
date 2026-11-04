@@ -1,12 +1,49 @@
----
-title: "第一章 新手入门：从开机到第一段 beat"
-chapter: "1"
-nav_order: 0.5
-short_title: "新手入门"
-legacy: true
-legacy_js: ["updates-v5.js", "updates-ch1.js"]
----
-{% raw %}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第一章 新手入门：从开机到第一段 beat · MPC Sample 图文教程</title>
+  <meta name="description" content="Akai Professional MPC Sample（AC50，2026 年 3 月上市）硬件全图解 · 图文教程">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/updates-v5.css">
+<script>
+(function(){try{var p=new URLSearchParams(location.search).get('annotate'),k='mpcAnnotate';
+if(p==='1')sessionStorage.setItem(k,'1');else if(p==='0'){sessionStorage.removeItem(k);sessionStorage.removeItem('mpcReview:v1:mode');}
+if(sessionStorage.getItem(k)!=='1')return;
+var c=document.createElement('link');c.rel='stylesheet';c.href='../assets/css/review-mode.css';document.head.appendChild(c);
+var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.defer=true;document.head.appendChild(s);}catch(e){}})();
+</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html">MPC Sample <span>图文教程</span></a>
+    <nav class="chapter-nav" aria-label="章节">
+      
+      <a href="../chapters/01-functions.html" class="on" aria-current="page"><b>1</b>新手入门</a>
+      
+      <a href="../chapters/01b-reference.html"><b>1+</b>功能速查</a>
+      
+      <a href="../chapters/02-drums-and-beats.html"><b>2</b>打击乐与写 beat</a>
+      
+      <a href="../chapters/03-sampling-tempo-styles.html"><b>3</b>采样与节奏风格</a>
+      
+      <a href="../chapters/03b-styles.html"><b>3+</b>风格页</a>
+      
+      <a href="../chapters/03c-beat-grid-lab.html"><b>3+</b>网格实验室</a>
+      
+      <a href="../chapters/04-controls-reference.html"><b>4</b>旋钮按键全解</a>
+      
+      <a href="../chapters/05-glossary.html"><b>5</b>术语表</a>
+      
+    </nav>
+  </header>
+
+  <main class="wrap">
 
 
 <h1 id="第一章-新手入门">第一章 新手入门</h1>
@@ -68,7 +105,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="推荐视频附中文字幕--ai-中文配音">推荐视频（附中文字幕 + AI 中文配音）</h3>
 
-<link rel="stylesheet" href="../legacy/assets/css/transcript.css" />
+<link rel="stylesheet" href="../assets/css/transcript.css" />
 
 <p>下面三段英文视频都配了<strong>逐句中文字幕</strong>（点时间跳到视频对应位置，可切换显示英文原文）和<strong>中文配音开关</strong>（AI 合成人声，原声自动调小）。本章 <a href="#s1-7">1.7 节</a> 的 Akai 官方入门视频也有同样的中文版。</p>
 
@@ -464,7 +501,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 </div>
 
-<script src="../legacy/assets/js/transcript-player.js" defer=""></script>
+<script src="../assets/js/transcript-player.js" defer=""></script>
 
 <p><a id="s1-1"></a></p>
 
@@ -476,13 +513,13 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>动词：把一段声音录下来。名词：录下来的那段声音。一声鼓、一句人声、唱片里的两小节，都可以是一个采样。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c01-sample.png" alt="采样示意：从一段长声音里剪下一小段，就是一个采样" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c01-sample.png" alt="采样示意：从一段长声音里剪下一小段，就是一个采样" class="cfig" loading="lazy" /></p>
 
   <p><strong>新概念 ② 采样器（Sampler）</strong></p>
 
   <p>能<strong>录声音、把声音放到键上、一敲就响</strong>的乐器。MPC Sample 有 16 个<strong>打击垫</strong>（Pad，方形橡胶键），每个垫放一个声音。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c02-sampler.png" alt="采样器示意：一个声音 → 放到某个垫上 → 敲垫出声" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c02-sampler.png" alt="采样器示意：一个声音 → 放到某个垫上 → 敲垫出声" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -492,7 +529,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <p>用 MPC 做 beat，永远是这四步：</p>
 
-<p><img src="../legacy/assets/img/beginner/b01-workflow.png" alt="MPC 的工作流程：采样 → 放到垫上 → 录成序列 → 串成歌曲" /></p>
+<p><img src="../assets/img/beginner/b01-workflow.png" alt="MPC 的工作流程：采样 → 放到垫上 → 录成序列 → 串成歌曲" /></p>
 
 <div class="concept">
 
@@ -500,7 +537,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>你做的一切（声音 + 节奏 + 设置）打包在一起，叫一个<strong>工程</strong>，就像游戏存档。开机会自动载入一个<strong>示范工程（demo）</strong>，里面已有鼓声和节奏，开机就能玩。</p>
 
-  <p><img src="../legacy/assets/img/beginner/b02-project.png" alt="一个工程里有什么：8 组 × 16 垫的声音 + 最多 128 个序列" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/b02-project.png" alt="一个工程里有什么：8 组 × 16 垫的声音 + 最多 128 个序列" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -532,7 +569,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 <figure class="fig-wrap" id="fig-f">
 <svg class="fig" viewBox="-30 -170 980 560" role="img" aria-label="F 区 后面板" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>F 区 后面板</title>
 <defs><clipPath id="cF"><rect x="0" y="0" width="912" height="231" rx="14.4"/></clipPath></defs>
-<image href="../legacy/assets/img/akai-mpc-sample-rear.webp" x="0" y="0" width="912" height="231" preserveAspectRatio="none" clip-path="url(#cF)"/>
+<image href="../assets/img/akai-mpc-sample-rear.webp" x="0" y="0" width="912" height="231" preserveAspectRatio="none" clip-path="url(#cF)"/>
 <rect x="0" y="0" width="912" height="231" rx="14.4" fill="none" stroke="#FFE500" stroke-width="1.92" stroke-dasharray="9.6 6"/>
 <g><line x1="82" y1="131" x2="40" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="82" y1="131" x2="40" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="82" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
 <g><line x1="251" y1="131" x2="228" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="251" y1="131" x2="228" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="251" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/><line x1="196" y1="131" x2="228" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="196" y1="131" x2="228" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="196" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
@@ -553,7 +590,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 </svg>
 </figure>
 
-<p class="gh-only"><img loading="lazy" src="../legacy/assets/img/annotated/fig-f.jpg" alt="后面板接口：PHONES、MIDI、SYNC OUT、AUDIO OUT、AUDIO IN、REC GAIN、USB-C、POWER" /></p>
+<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-f.jpg" alt="后面板接口：PHONES、MIDI、SYNC OUT、AUDIO OUT、AUDIO IN、REC GAIN、USB-C、POWER" /></p>
 
 <p>现在只认 3 个：<strong>POWER</strong>（电源）、<strong>USB-C</strong>（充电）、<strong>PHONES</strong>（3.5 mm 耳机孔）。其他接口后面再讲。</p>
 
@@ -614,16 +651,16 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <p>40 多个键<strong>不用一次记住</strong>，先记 5 个区“各管什么”：</p>
 
-<p><img src="../legacy/assets/img/beginner/b03-zones.jpg" alt="顶面 5 个区：A 看与听，B 切模式，C 三个旋钮，D 工具与播放录音，E 16 个打击垫" /></p>
+<p><img src="../assets/img/beginner/b03-zones.jpg" alt="顶面 5 个区：A 看与听，B 切模式，C 三个旋钮，D 工具与播放录音，E 16 个打击垫" /></p>
 
 <p>先看 4 分钟导览短片（原创，中文字幕）：面板 5 个区，以及每按一个键屏幕会变成什么。面板是依据官方手册绘制的示意图，屏幕画面取自官方手册。</p>
 
-<video class="local-video" controls="" preload="metadata" playsinline="" poster="../legacy/assets/video/ch1-panel-tour-poster.jpg">
-  <source src="../legacy/assets/video/ch1-panel-tour.mp4" type="video/mp4" />
-  你的浏览器不能播放此视频，请 <a href="../legacy/assets/video/ch1-panel-tour.mp4">下载 mp4</a>。
+<video class="local-video" controls="" preload="metadata" playsinline="" poster="../assets/video/ch1-panel-tour-poster.jpg">
+  <source src="../assets/video/ch1-panel-tour.mp4" type="video/mp4" />
+  你的浏览器不能播放此视频，请 <a href="../assets/video/ch1-panel-tour.mp4">下载 mp4</a>。
 </video>
 
-<p class="video-note">🎬 <strong>原创短片：</strong>面板 5 区 + 按键后的屏幕（4 分钟，1080p，<a href="../legacy/assets/video/ch1-panel-tour.mp4">下载 mp4</a>）</p>
+<p class="video-note">🎬 <strong>原创短片：</strong>面板 5 区 + 按键后的屏幕（4 分钟，1080p，<a href="../assets/video/ch1-panel-tour.mp4">下载 mp4</a>）</p>
 
 <h3 id="a看与听音量--屏幕--喇叭"><span class="region-key">A</span>看与听：音量 · 屏幕 · 喇叭</h3>
 
@@ -631,7 +668,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 <figure class="fig-wrap" id="fig-a">
 <svg class="fig" viewBox="140 25 1520 760" role="img" aria-label="A 区 顶部" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>A 区 顶部</title>
 <defs><clipPath id="cA"><rect x="196" y="152" width="1404" height="418" rx="18"/></clipPath></defs>
-<image href="../legacy/assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cA)"/>
+<image href="../assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cA)"/>
 <rect x="196" y="152" width="1404" height="418" rx="18" fill="none" stroke="#FFE500" stroke-width="2.4" stroke-dasharray="12 7.5"/>
 <g><line x1="768" y1="198" x2="896" y2="85" stroke="#0B0B0D" stroke-width="6.6"/><line x1="768" y1="198" x2="896" y2="85" stroke="#FFE500" stroke-width="3"/><circle cx="768" cy="198" r="9.6" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.4"/><line x1="1025" y1="198" x2="896" y2="85" stroke="#0B0B0D" stroke-width="6.6"/><line x1="1025" y1="198" x2="896" y2="85" stroke="#FFE500" stroke-width="3"/><circle cx="1025" cy="198" r="9.6" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.4"/><line x1="896" y1="198" x2="896" y2="85" stroke="#0B0B0D" stroke-width="6.6"/><line x1="896" y1="198" x2="896" y2="85" stroke="#FFE500" stroke-width="3"/><circle cx="896" cy="198" r="9.6" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.4"/></g>
 <g><line x1="1187" y1="403" x2="1200" y2="85" stroke="#0B0B0D" stroke-width="6.6"/><line x1="1187" y1="403" x2="1200" y2="85" stroke="#FFE500" stroke-width="3"/><circle cx="1187" cy="403" r="9.6" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.4"/></g>
@@ -646,7 +683,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 </svg>
 </figure>
 
-<p class="gh-only"><img loading="lazy" src="../legacy/assets/img/annotated/fig-a.jpg" alt="A 区：MAIN VOLUME、B1–B3、屏幕、电平表、喇叭" /></p>
+<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-a.jpg" alt="A 区：MAIN VOLUME、B1–B3、屏幕、电平表、喇叭" /></p>
 
 <ul>
   <li><kbd>MAIN VOLUME</kbd>：总音量（喇叭、耳机、AUDIO OUT 都归它管）。</li>
@@ -660,7 +697,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>屏幕上方的 3 个小键，<strong>没有固定功能</strong>。屏幕最上面一排写着什么，它们就做什么。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c04-function-keys.png" alt="B1–B3 示意：屏幕顶部的三个标签分别对应上方的 B1、B2、B3" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c04-function-keys.png" alt="B1–B3 示意：屏幕顶部的三个标签分别对应上方的 B1、B2、B3" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -670,7 +707,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 <figure class="fig-wrap" id="fig-b">
 <svg class="fig" viewBox="-280 575 1300 1060" role="img" aria-label="B 区 左列" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>B 区 左列</title>
 <defs><clipPath id="cB"><rect x="200" y="618" width="312" height="962" rx="19.2"/></clipPath></defs>
-<image href="../legacy/assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cB)"/>
+<image href="../assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cB)"/>
 <rect x="200" y="618" width="312" height="962" rx="19.2" fill="none" stroke="#FFE500" stroke-width="2.56" stroke-dasharray="12.8 8"/>
 <g><line x1="280" y1="675" x2="160" y2="650" stroke="#0B0B0D" stroke-width="7.04"/><line x1="280" y1="675" x2="160" y2="650" stroke="#FFE500" stroke-width="3.2"/><circle cx="280" cy="675" r="10.24" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.56"/></g>
 <g><line x1="280" y1="769" x2="160" y2="800" stroke="#0B0B0D" stroke-width="7.04"/><line x1="280" y1="769" x2="160" y2="800" stroke="#FFE500" stroke-width="3.2"/><circle cx="280" cy="769" r="10.24" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.56"/></g>
@@ -695,7 +732,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 </svg>
 </figure>
 
-<p class="gh-only"><img loading="lazy" src="../legacy/assets/img/annotated/fig-b.jpg" alt="B 区：SAMPLE、SEQ、PAD FX、KNOB FX、SHIFT、PAD BANK、推子、ERASE、NOTE REPEAT" /></p>
+<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-b.jpg" alt="B 区：SAMPLE、SEQ、PAD FX、KNOB FX、SHIFT、PAD BANK、推子、ERASE、NOTE REPEAT" /></p>
 
 <div class="concept">
 
@@ -710,7 +747,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p><strong>亮着的键 = 当前模式。</strong> 迷路就按 <kbd>SAMPLE</kbd>。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c05-mode.png" alt="模式示意：SAMPLE 模式下垫是声音，SEQ 模式下垫是序列" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c05-mode.png" alt="模式示意：SAMPLE 模式下垫是声音，SEQ 模式下垫是序列" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -722,7 +759,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 <figure class="fig-wrap" id="fig-c">
 <svg class="fig" viewBox="480 590 840 420" role="img" aria-label="C 区 K1–K3" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>C 区 K1–K3</title>
 <defs><clipPath id="cC"><rect x="535" y="628" width="724" height="200" rx="18"/></clipPath></defs>
-<image href="../legacy/assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cC)"/>
+<image href="../assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cC)"/>
 <rect x="535" y="628" width="724" height="200" rx="18" fill="none" stroke="#FFE500" stroke-width="2.4" stroke-dasharray="12 7.5"/>
 <g><line x1="620" y1="722" x2="620" y2="890" stroke="#0B0B0D" stroke-width="6.6"/><line x1="620" y1="722" x2="620" y2="890" stroke="#FFE500" stroke-width="3"/><circle cx="620" cy="722" r="9.6" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.4"/></g>
 <g><line x1="898" y1="722" x2="898" y2="890" stroke="#0B0B0D" stroke-width="6.6"/><line x1="898" y1="722" x2="898" y2="890" stroke="#FFE500" stroke-width="3"/><circle cx="898" cy="722" r="9.6" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.4"/></g>
@@ -733,7 +770,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 </svg>
 </figure>
 
-<p class="gh-only"><img loading="lazy" src="../legacy/assets/img/annotated/fig-c.jpg" alt="C 区：K1、K2、K3 旋钮" /></p>
+<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-c.jpg" alt="C 区：K1、K2、K3 旋钮" /></p>
 
 <p>K1、K2、K3 调屏幕<strong>最下面一排</strong>的 3 个参数。屏幕写什么，它们就调什么。</p>
 
@@ -743,7 +780,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>旋钮（和推子）转到哪，数值就到哪。换页后，旋钮位置可能和数值对不上，参数名旁会出现<strong>箭头</strong>：朝箭头方向转，转到箭头消失，就接管了。<strong>“转了没反应”几乎都是这个原因。</strong></p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c06-absolute-knob.png" alt="绝对位置旋钮示意：参数名旁出现箭头时，朝箭头方向转到箭头消失" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c06-absolute-knob.png" alt="绝对位置旋钮示意：参数名旁出现箭头时，朝箭头方向转到箭头消失" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -753,7 +790,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 <figure class="fig-wrap" id="fig-d">
 <svg class="fig" viewBox="850 590 1230 1030" role="img" aria-label="D 区 右列" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>D 区 右列</title>
 <defs><clipPath id="cD"><rect x="1290" y="618" width="302" height="962" rx="16.8"/></clipPath></defs>
-<image href="../legacy/assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cD)"/>
+<image href="../assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#cD)"/>
 <rect x="1290" y="618" width="302" height="962" rx="16.8" fill="none" stroke="#FFE500" stroke-width="2.24" stroke-dasharray="11.2 7"/>
 <g><line x1="1367" y1="675" x2="1240" y2="640" stroke="#0B0B0D" stroke-width="6.16"/><line x1="1367" y1="675" x2="1240" y2="640" stroke="#FFE500" stroke-width="2.8"/><circle cx="1367" cy="675" r="8.96" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.24"/></g>
 <g><line x1="1367" y1="769" x2="1240" y2="790" stroke="#0B0B0D" stroke-width="6.16"/><line x1="1367" y1="769" x2="1240" y2="790" stroke="#FFE500" stroke-width="2.8"/><circle cx="1367" cy="769" r="8.96" fill="#FFE500" stroke="#0B0B0D" stroke-width="2.24"/></g>
@@ -784,7 +821,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 </svg>
 </figure>
 
-<p class="gh-only"><img loading="lazy" src="../legacy/assets/img/annotated/fig-d.jpg" alt="D 区：CHOP、LOOP、MUTE、16 LEVELS、SAMPLE SELECT、TAP TEMPO、MIC、ENCODER、−/+、SAMPLE RECORD、SEQ RECORD、PLAY、STOP" /></p>
+<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-d.jpg" alt="D 区：CHOP、LOOP、MUTE、16 LEVELS、SAMPLE SELECT、TAP TEMPO、MIC、ENCODER、−/+、SAMPLE RECORD、SEQ RECORD、PLAY、STOP" /></p>
 
 <p>从下往上记：</p>
 
@@ -840,7 +877,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="sample-模式主屏幕按-sample">Sample 模式主屏幕（按 <kbd>SAMPLE</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s01-sample-main.png" alt="Sample 模式主屏幕（Trim 页）标注图，编号 1–11" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s01-sample-main.png" alt="Sample 模式主屏幕（Trim 页）标注图，编号 1–11" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>Trim / Tune / Filter</strong>：分别对应 B1 / B2 / B3，白底的是当前页。同一个键多按几次会轮换：B1 = Trim → Mix → Amp Env，B2 = Tune → Play，B3 = Filter → Filt Env。</li>
@@ -862,7 +899,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="chop-切片时sample-模式下按-chop">Chop 切片时（Sample 模式下按 <kbd>CHOP</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s02-chop.png" alt="Chop 模式屏幕标注图，编号 1–4" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s02-chop.png" alt="Chop 模式屏幕标注图，编号 1–4" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>Trim 变成 Chop</strong>：说明正在切片，再按 <kbd>CHOP</kbd> 回到 Trim。</li>
@@ -877,7 +914,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="采样浏览器按-sample-select">采样浏览器（按 <kbd>SAMPLE SELECT</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s03-browser.png" alt="采样浏览器屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s03-browser.png" alt="采样浏览器屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>Back</strong>（B1）：回上一级文件夹。</li>
@@ -892,7 +929,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="采样录音按-sample-record">采样录音（按 <kbd>SAMPLE RECORD</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s04-sample-record.png" alt="采样录音屏幕标注图，编号 1–8" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s04-sample-record.png" alt="采样录音屏幕标注图，编号 1–8" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>喇叭图标</strong>：内置喇叭状态，<strong>打叉 = 喇叭关了</strong>（比如用内置麦克风录音，或插着耳机 / 音箱线）。</li>
@@ -909,7 +946,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="seq-序列模式按-seq">Seq 序列模式（按 <kbd>SEQ</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s05-seq.png" alt="Seq 模式屏幕标注图，编号 1–14" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s05-seq.png" alt="Seq 模式屏幕标注图，编号 1–14" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>90.00</strong>：速度 BPM。按住 B1 + 转 ENCODER 修改。</li>
@@ -932,7 +969,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="pad-fx按-pad-fx">Pad FX（按 <kbd>PAD FX</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s06-pad-fx.png" alt="Pad FX 屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s06-pad-fx.png" alt="Pad FX 屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>Latch</strong>（B1）：把效果“锁住”，不用一直按。</li>
@@ -944,7 +981,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="knob-fx按-knob-fx选效果按-shift--knob-fx">Knob FX（按 <kbd>KNOB FX</kbd>；选效果按 <kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s07-knob-fx.png" alt="Knob FX 屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s07-knob-fx.png" alt="Knob FX 屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>KNOB FX 开着时</strong>：下排变成效果参数（截图里是橙色），K1–K3 专门调效果。按下 KNOB FX 时屏幕还会短暂显示效果名。</li>
@@ -963,7 +1000,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <p>把几段序列排成一首歌（本章不用，先认个脸）。</p>
 
-<p><img src="../legacy/assets/img/screens/s08-song.png" alt="Song 页屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s08-song.png" alt="Song 页屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>Export</strong>（B1）：导出成音频，或导出成一个新序列。</li>
@@ -977,7 +1014,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="project-菜单与起名页shift--pad-16">Project 菜单与起名页（<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd>）</h3>
 
-<p><img src="../legacy/assets/img/screens/s09-project.png" alt="Project 菜单与起名页标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s09-project.png" alt="Project 菜单与起名页标注图，编号 1–6" class="sfig" loading="lazy" /></p>
 
 <ol>
   <li><strong>四个选项</strong>：Load Project 载入 · Save Project 保存 · New Project 新建 · SD Card Access 读卡。转 ENCODER 选，按下确认。</li>
@@ -992,7 +1029,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h3 id="其他页面">其他页面</h3>
 
-<p><img src="../legacy/assets/img/screens/s10-others.png" alt="其他页面速览：Step Edit、Flex Beat、Compressor、Input Config、Fader、Time Correct、MIDI Config、BPM 弹窗" class="sfig" loading="lazy" /></p>
+<p><img src="../assets/img/screens/s10-others.png" alt="其他页面速览：Step Edit、Flex Beat、Compressor、Input Config、Fader、Time Correct、MIDI Config、BPM 弹窗" class="sfig" loading="lazy" /></p>
 
 <p>MPC Sample <strong>没有叫 Settings 的总设置页</strong>，设置分在几个 SHIFT 菜单里：Input Config、Fader、Time Correct、MIDI Config（恢复出厂也在这里）。全部参数见 <a href="../chapters/01b-reference.html#s1-8">附录 R.8</a>。</p>
 
@@ -1029,11 +1066,11 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>键和垫<strong>下方</strong>印的小字（如 PAD 16 下的 <strong>PROJECT</strong>）是<strong>第二功能</strong>：<strong>按住 <kbd>SHIFT</kbd> 再按</strong>才触发，像电脑上 Shift + 数字打符号。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c07-shift.png" alt="第二功能示意：直接按 PAD 16 = 敲垫；按住 SHIFT 再按 = PROJECT 菜单" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c07-shift.png" alt="第二功能示意：直接按 PAD 16 = 敲垫；按住 SHIFT 再按 = PROJECT 菜单" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p><img src="../legacy/assets/img/beginner/b05-shift.jpg" alt="SHIFT 组合键：先按住 SHIFT，再按 PAD 16 打开工程菜单" /></p>
+<p><img src="../assets/img/beginner/b05-shift.jpg" alt="SHIFT 组合键：先按住 SHIFT，再按 PAD 16 打开工程菜单" /></p>
 
 <div class="step">
 
@@ -1046,7 +1083,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>常见错误：</strong> 顺序反了只是敲了一下垫。<strong>先按住 SHIFT。</strong></li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r06-project-menu.png" alt="按住 SHIFT 再按 PAD 16 → 屏幕变成 Project 菜单" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r06-project-menu.png" alt="按住 SHIFT 再按 PAD 16 → 屏幕变成 Project 菜单" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1056,7 +1093,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 <figure class="fig-wrap" id="fig-e">
 <svg class="fig" viewBox="504 808 785 800" role="img" aria-label="16 打击垫 SHIFT 功能" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>16 打击垫 SHIFT 功能</title>
 <defs><clipPath id="clipE"><rect x="514" y="818" width="765" height="780" rx="16"/></clipPath></defs>
-<image href="../legacy/assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#clipE)"/>
+<image href="../assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#clipE)"/>
 <g><rect x="540" y="884" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="548" cy="886" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="548" y="893" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">13</text><text x="626" y="918" font-size="17" font-weight="900" fill="#FFE500" text-anchor="middle">TRIM SAMPLE</text><text x="626" y="949" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">修剪采样</text></g>
 <g><rect x="724" y="884" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="732" cy="886" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="732" y="893" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">14</text><text x="810" y="918" font-size="17" font-weight="900" fill="#FFE500" text-anchor="middle">TIME CORRECT</text><text x="810" y="949" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">时值校正</text></g>
 <g><rect x="910" y="884" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="918" cy="886" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="918" y="893" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">15</text><text x="996" y="918" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">WARP</text><text x="996" y="949" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">伸缩模式</text></g>
@@ -1076,7 +1113,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 </svg>
 </figure>
 
-<p class="gh-only"><img loading="lazy" src="../legacy/assets/img/annotated/fig-e.jpg" alt="16 个打击垫下方印的 SHIFT 第二功能" /></p>
+<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-e.jpg" alt="16 个打击垫下方印的 SHIFT 第二功能" /></p>
 
 <table>
   <thead>
@@ -1134,7 +1171,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h2 id="16-打击垫与-bank">1.6 打击垫与 Bank</h2>
 
-<p><img src="../legacy/assets/img/beginner/b06-pads-bank.jpg" alt="打击垫编号：1 在左下，16 在右上；PAD BANK 切换 A–H" /></p>
+<p><img src="../assets/img/beginner/b06-pads-bank.jpg" alt="打击垫编号：1 在左下，16 在右上；PAD BANK 切换 A–H" /></p>
 
 <p><strong>编号：</strong> PAD 1 在<strong>左下</strong>，往右 2、3、4，往上一行行到 13–16（PAD 16 在右上）。和电话键盘相反。</p>
 
@@ -1144,7 +1181,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>一共 <strong>8 组（A–H）</strong>，每组 16 个垫，最多 <strong>128 个声音</strong>。按 <kbd>PAD BANK</kbd> 换组：<strong>同样的垫，换一批声音</strong>。当前组显示在 MAIN VOLUME 旁边。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c08-bank.png" alt="Bank 示意：A–H 八层，每层 16 个垫；PAD BANK 换一层" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c08-bank.png" alt="Bank 示意：A–H 八层，每层 16 个垫；PAD BANK 换一层" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -1166,7 +1203,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>常见错误：</strong> 垫闪却没声 → 在 <kbd>SEQ</kbd> 模式，按 <kbd>SAMPLE</kbd>。轻重一样响 → 开了 <kbd>SHIFT</kbd> + <kbd>PAD 1</kbd>（FULL LEVEL 满力度）。</li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r07-sample.png" alt="按 SAMPLE 再敲垫 → 屏幕显示这个垫的采样" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r07-sample.png" alt="按 SAMPLE 再敲垫 → 屏幕显示这个垫的采样" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1184,7 +1221,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <h2 id="17-第一次播放-demo">1.7 第一次播放 demo</h2>
 
-<p><img src="../legacy/assets/img/beginner/b04-first-play.jpg" alt="第一次出声：转大 MAIN VOLUME → 按 PLAY → 按 STOP" /></p>
+<p><img src="../assets/img/beginner/b04-first-play.jpg" alt="第一次出声：转大 MAIN VOLUME → 按 PLAY → 按 STOP" /></p>
 
 <div class="step">
 
@@ -1406,11 +1443,11 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p><strong>最后敲的垫</strong> = 选中的垫，很多操作都针对它。<strong>采样浏览器</strong>（<kbd>SAMPLE SELECT</kbd>）是内置声音仓库，几百个声音按文件夹分好。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c09-browser.png" alt="选中的垫与采样浏览器示意：最后敲的 PAD 2 被选中，在浏览器里选一个军鼓载入" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c09-browser.png" alt="选中的垫与采样浏览器示意：最后敲的 PAD 2 被选中，在浏览器里选一个军鼓载入" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p><img src="../legacy/assets/img/beginner/b07-swap-sound.jpg" alt="换一个鼓声：敲 PAD 2 → 按 SAMPLE SELECT → 转/按 ENCODER" /></p>
+<p><img src="../assets/img/beginner/b07-swap-sound.jpg" alt="换一个鼓声：敲 PAD 2 → 按 SAMPLE SELECT → 转/按 ENCODER" /></p>
 
 <div class="step">
 
@@ -1432,7 +1469,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>常见错误：</strong> 听不到试听 → 按 <kbd>B3</kbd>（Preview）打开。进错文件夹 → <kbd>B1</kbd> 返回。换错了 → <kbd>SHIFT</kbd> + <kbd>−</kbd> 撤销。</li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r10-browser.png" alt="敲 PAD 2 再按 SAMPLE SELECT → 屏幕变成采样浏览器" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r10-browser.png" alt="敲 PAD 2 再按 SAMPLE SELECT → 屏幕变成采样浏览器" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1455,13 +1492,13 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p><strong>序列 = 一段录好的节奏</strong>：哪个垫、什么时候、多大力度。通常 1–8 小节，循环播放。一首歌可以有好几段，一个工程最多 128 个。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c10-sequence.png" alt="序列示意：两小节里踩镲、军鼓、底鼓的位置，放到结尾自动回到开头" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c10-sequence.png" alt="序列示意：两小节里踩镲、军鼓、底鼓的位置，放到结尾自动回到开头" class="cfig" loading="lazy" /></p>
 
   <p><strong>新概念 ⑪ 小节（Bar）与拍（Beat）</strong></p>
 
   <p>最常见是<strong>每小节 4 拍</strong>：数“1、2、3、4”就是一小节。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c11-bar-beat.png" alt="小节与拍示意：每小节 4 拍，第 1 拍是重拍" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c11-bar-beat.png" alt="小节与拍示意：每小节 4 拍，第 1 拍是重拍" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -1472,7 +1509,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
   <li><strong>亮绿常亮</strong> = 正在播放；<strong>闪烁</strong> = 排队等着播。</li>
 </ul>
 
-<p><img src="../legacy/assets/img/beginner/b08-seq-play.jpg" alt="播放和切换序列：SEQ → PLAY → 播放中敲另一个垫排队" /></p>
+<p><img src="../assets/img/beginner/b08-seq-play.jpg" alt="播放和切换序列：SEQ → PLAY → 播放中敲另一个垫排队" /></p>
 
 <div class="step">
 
@@ -1485,7 +1522,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>常见错误：</strong> 以为没反应——它在<strong>等这段放完</strong>。</li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r11-seq.png" alt="按 SEQ → 屏幕变成 Seq 页" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r11-seq.png" alt="按 SEQ → 屏幕变成 Seq 页" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1511,7 +1548,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>BPM = 每分钟多少拍，越大越快。hip-hop 常在 80–95，house 约 120–128。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c12-bpm.png" alt="BPM 示意：60、90、120 BPM 在 4 秒内的拍点，数字越大拍点越密" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c12-bpm.png" alt="BPM 示意：60、90、120 BPM 在 4 秒内的拍点，数字越大拍点越密" class="cfig" loading="lazy" /></p>
 
 </div>
 
@@ -1529,13 +1566,13 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>手敲不会每下都准。打开<strong>录音量化</strong>，音会自动“吸”到最近的格子上。<strong>Q 值</strong>定格子粗细：1/16 = 每拍 4 格（最常用）。</p>
 
-  <p><img src="../legacy/assets/img/beginner/b10-quantize.png" alt="量化示意：你实际敲的位置（红）被吸到最近的 1/16 格子（绿）" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/b10-quantize.png" alt="量化示意：你实际敲的位置（红）被吸到最近的 1/16 格子（绿）" class="cfig" loading="lazy" /></p>
 
   <p><strong>新概念 ⑭ 摇摆（Swing）</strong></p>
 
   <p>全对齐有时太“机械”。<strong>Swing</strong> 把每两个音的第二个往后推一点，节奏就“晃”起来。SEQ 页 <kbd>K3</kbd> = <strong>RT Swing</strong>：只改播放手感，不移动录好的音。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c13b-swing.png" alt="Swing 示意：直的节奏均匀分布；加 Swing 后每两个音的第二个往后推" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c13b-swing.png" alt="Swing 示意：直的节奏均匀分布；加 Swing 后每两个音的第二个往后推" class="cfig" loading="lazy" /></p>
 
   <p><strong>新概念 ⑮ 节拍器（METRO）与预备拍（Count-in）</strong></p>
 
@@ -1543,15 +1580,15 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p><strong>预备拍</strong> = 开录前先数 1 小节。<kbd>SHIFT</kbd> + <kbd>PAD 4</kbd> 开关，开着时 <strong>1234 图标变红</strong>。节拍器 Off 时预备拍只在屏幕上倒数、听不见。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c14-metro-countin.png" alt="节拍器与预备拍示意：先数一小节预备拍，再正式录音" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c14-metro-countin.png" alt="节拍器与预备拍示意：先数一小节预备拍，再正式录音" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p><img src="../legacy/assets/img/beginner/b11-metro-countin.jpg" alt="节拍器与预备拍：SHIFT + TAP TEMPO，SHIFT + PAD 4" /></p>
+<p><img src="../assets/img/beginner/b11-metro-countin.jpg" alt="节拍器与预备拍：SHIFT + TAP TEMPO，SHIFT + PAD 4" /></p>
 
 <p>照着编号走一遍：</p>
 
-<p><img src="../legacy/assets/img/beginner/b09-record-beat.jpg" alt="录第一段 beat：SEQ → 空序列 PAD 9 → B1+ENCODER 设 BPM → B3 量化 → K1 小节 → K2 Q 值 → SEQ RECORD → PLAY" /></p>
+<p><img src="../assets/img/beginner/b09-record-beat.jpg" alt="录第一段 beat：SEQ → 空序列 PAD 9 → B1+ENCODER 设 BPM → B3 量化 → K1 小节 → K2 Q 值 → SEQ RECORD → PLAY" /></p>
 
 <div class="step">
 
@@ -1583,7 +1620,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     </li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r12-seq-record.png" alt="按 SEQ RECORD 再按 PLAY → 屏幕进入录音状态" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r12-seq-record.png" alt="按 SEQ RECORD 再按 PLAY → 屏幕进入录音状态" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1612,17 +1649,17 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>“从哪录”：<strong>Mic</strong> 内置麦克风 · <strong>Rear</strong> 后面板 AUDIO IN · <strong>USB</strong> USB-C 设备 · <strong>Resample</strong> 机器自己的声音。新手先用 <strong>Mic</strong>。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c15-source.png" alt="录音来源示意：Mic、Rear、USB、Resample 四种来源，K1 选择" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c15-source.png" alt="录音来源示意：Mic、Rear、USB、Resample 四种来源，K1 选择" class="cfig" loading="lazy" /></p>
 
   <p><strong>新概念 ⑰ 重采样（Resample）</strong></p>
 
   <p>把机器<strong>正在放的整段声音</strong>录成一个新采样，放到一个垫上，腾出其他垫。来源选 Resample，或 <kbd>SHIFT</kbd> + <kbd>PAD 11</kbd>（把当前序列录到你选的垫）。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c15b-resample.png" alt="重采样示意：很多垫一起响的序列 → 录成一整段音频 → 放到 1 个垫" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c15b-resample.png" alt="重采样示意：很多垫一起响的序列 → 录成一整段音频 → 放到 1 个垫" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p><img src="../legacy/assets/img/beginner/b12-sample-record.jpg" alt="采第一个声音：SAMPLE RECORD → K1 选 Mic → 敲垫开录，再敲停止" /></p>
+<p><img src="../assets/img/beginner/b12-sample-record.jpg" alt="采第一个声音：SAMPLE RECORD → K1 选 Mic → 敲垫开录，再敲停止" /></p>
 
 <div class="step">
 
@@ -1651,7 +1688,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     </li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r13-sample-record.png" alt="按 SAMPLE RECORD → 采样录音页；敲空垫 → Recording" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r13-sample-record.png" alt="按 SAMPLE RECORD → 采样录音页；敲空垫 → Recording" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1661,11 +1698,11 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>录音前后常有多余的安静或杂音。<strong>起点 / 终点</strong>决定敲垫时播哪一段。先用旋钮试，满意再用 TRIM 永久剪掉。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c16-trim.png" alt="修剪示意：Start 和 End 之间是保留的部分，SHIFT + PAD 13 永久剪掉两头" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c16-trim.png" alt="修剪示意：Start 和 End 之间是保留的部分，SHIFT + PAD 13 永久剪掉两头" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p><img src="../legacy/assets/img/beginner/b12b-trim.jpg" alt="修剪采样：SAMPLE → K1 起点 → K2 终点 → SHIFT + PAD 13 永久剪掉" /></p>
+<p><img src="../assets/img/beginner/b12b-trim.jpg" alt="修剪采样：SAMPLE → K1 起点 → K2 终点 → SHIFT + PAD 13 永久剪掉" /></p>
 
 <div class="step">
 
@@ -1711,11 +1748,11 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>KNOB FX</strong>：用 <strong>K1–K3</strong> 控制一个效果，垫空出来继续打鼓。</li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c17-fx.png" alt="效果示意：原来的声音经过效果（如 Delay）后多出回声；PAD FX 按垫，KNOB FX 转旋钮" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c17-fx.png" alt="效果示意：原来的声音经过效果（如 Delay）后多出回声；PAD FX 按垫，KNOB FX 转旋钮" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p><img src="../legacy/assets/img/beginner/b13-fx.jpg" alt="加第一个效果：PAD FX → PLAY → 按住垫；KNOB FX → 转 K1–K3" /></p>
+<p><img src="../assets/img/beginner/b13-fx.jpg" alt="加第一个效果：PAD FX → PLAY → 按住垫；KNOB FX → 转 K1–K3" /></p>
 
 <div class="step">
 
@@ -1728,7 +1765,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>常见错误：</strong> 这时垫是效果键，敲不出鼓声。按 <kbd>SAMPLE</kbd> 回去。</li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r15-pad-fx.png" alt="按 PAD FX → 屏幕变成 Pad FX 效果格子" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r15-pad-fx.png" alt="按 PAD FX → 屏幕变成 Pad FX 效果格子" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1743,7 +1780,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>常见错误：</strong> 忘了关——<strong>KNOB FX 开着时 K1–K3 只管效果</strong>。再按一次关掉。</li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r16-knob-fx.png" alt="按 KNOB FX → 下排变成效果参数；SHIFT + KNOB FX → 效果列表" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r16-knob-fx.png" alt="按 KNOB FX → 下排变成效果参数；SHIFT + KNOB FX → 效果列表" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1769,11 +1806,11 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
   <p>注意：<kbd>SHIFT</kbd> + <kbd>PAD 11</kbd>（RESAMPLE）<strong>不是保存</strong>（见新概念 ⑰）。</p>
 
-  <p><img src="../legacy/assets/img/beginner/concepts/c18-save.png" alt="自动保存与保存工程对比示意" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c18-save.png" alt="自动保存与保存工程对比示意" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p><img src="../legacy/assets/img/beginner/b14-save.jpg" alt="保存工程：SHIFT + PAD 16 → Save Project → 输入名字 → B3 Do It!" /></p>
+<p><img src="../assets/img/beginner/b14-save.jpg" alt="保存工程：SHIFT + PAD 16 → Save Project → 输入名字 → B3 Do It!" /></p>
 
 <div class="step">
 
@@ -1793,7 +1830,7 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
     <li><strong>常见错误：</strong> 选成 <strong>New Project</strong> 会清空当前工程（<kbd>B3</kbd> 确认、<kbd>B1</kbd> 取消）。<strong>新建前先保存！</strong> 回到出厂 demo：Load Project → Demos。</li>
   </ul>
 
-  <p><img src="../legacy/assets/img/beginner/results/r17-save.png" alt="SHIFT + PAD 16 → Project 菜单 → Save Project → 起名页" class="rfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/results/r17-save.png" alt="SHIFT + PAD 16 → Project 菜单 → Save Project → 起名页" class="rfig" loading="lazy" /></p>
 
 </div>
 
@@ -1926,6 +1963,18 @@ legacy_js: ["updates-v5.js", "updates-ch1.js"]
 
 <p class="note">图片说明：本章面板图是依据官方手册顶面示意图、用代码绘制的示意插画（不是实物照片）；“小屏幕”一节的屏幕截图来自 Akai Professional《MPC Sample User Guide v1.3.0》，编号为本教程添加。</p>
 
+<nav class="pager" aria-label="翻页">
+  <a class="card" href="../index.html"><small>← 封面</small>全书大纲</a>
+  <a class="card next" href="../chapters/01b-reference.html"><small>下一章 →</small>第一章附录 功能速查</a>
+</nav>
 
+  </main>
 
-  {% endraw %}
+  <footer class="site-footer">
+    <p>MPC Sample 图文教程 · Akai Professional MPC Sample（AC50）· 内容依据官方 User Guide v1.3.0 核对 · 后面板/侧面照片为 Akai 官方产品图（akaipro.com）</p>
+  </footer>
+  <script src="../assets/js/site.js" defer></script>
+  <script src="../assets/js/updates-v5.js" defer></script>
+  <script src="../assets/js/updates-ch1.js" defer></script>
+</body>
+</html>
