@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-{% include review-mode.html %}
+{% include annotate-loader.html %}
 </head>
 <body>
 {% assign chapters = site.pages | where_exp: "p", "p.chapter" | sort: "nav_order" %}

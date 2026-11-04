@@ -1,7 +1,0 @@
-<script>
-(function(){try{var p=new URLSearchParams(location.search).get('review'),k='mpcReview';
-if(p==='1')sessionStorage.setItem(k,'1');else if(p==='0')sessionStorage.removeItem(k);
-if(sessionStorage.getItem(k)!=='1')return;
-window.hypothesisConfig=function(){return{openSidebar:true};};
-var s=document.createElement('script');s.src='https://hypothes.is/embed.js';s.async=true;document.head.appendChild(s);}catch(e){}})();
-</script>

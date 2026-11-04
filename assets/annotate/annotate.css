@@ -1,0 +1,17 @@
+.mpca-hl{position:absolute;z-index:99990;pointer-events:none;outline:3px solid #FFE500;background:rgba(255,229,0,.12);display:none}
+.mpca-tag{position:absolute;z-index:99991;pointer-events:none;background:#FFE500;color:#0B0B0D;font:700 12px/20px sans-serif;padding:0 6px;display:none}
+html.mpca-picking iframe,html.mpca-picking video{pointer-events:none}
+html.mpca-picking{cursor:crosshair}
+.mpca-panel{position:fixed;right:16px;bottom:16px;z-index:99995;width:300px;max-height:60vh;display:flex;flex-direction:column;background:#16161B;color:#F5F5F5;border:2px solid #FFE500;font:13px/1.5 sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.5);cursor:default}
+.mpca-head{padding:8px 10px;border-bottom:1px solid #333}
+.mpca-btns{display:flex;flex-wrap:wrap;gap:4px;padding:6px 10px}
+.mpca-panel button,.mpca-pop button{background:#2a2a33;color:#F5F5F5;border:1px solid #555;padding:2px 8px;cursor:pointer;font:12px sans-serif}
+.mpca-panel button.on{background:#FFE500;color:#0B0B0D}
+.mpca-list{overflow:auto;padding:0 10px 10px}
+.mpca-pg{color:#00E5FF;font-weight:700;margin-top:8px}
+.mpca-it{border-top:1px solid #333;padding:4px 0}
+.mpca-it-b{display:flex;gap:4px;margin-top:2px}.mpca-it-b a{color:#00E5FF;font-size:12px}
+.mpca-empty{color:#999;padding:8px 0}
+.mpca-pop{position:absolute;z-index:99996;width:320px;background:#16161B;color:#F5F5F5;border:2px solid #FFE500;padding:8px;font:13px sans-serif;cursor:default}
+.mpca-pop-h{color:#00E5FF;margin-bottom:4px}
+.mpca-pop textarea{width:100%;box-sizing:border-box;height:110px;background:#0B0B0D;color:#F5F5F5;border:1px solid #555;font:13px sans-serif;margin-bottom:6px}
