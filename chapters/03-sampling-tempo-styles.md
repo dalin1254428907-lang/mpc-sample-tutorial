@@ -28,8 +28,6 @@ outline:
 
 ## 3.3 采样切片互动演示 (CHOP & TRIM)
 
-在实机上，按下 **SAMPLE** 进入波形编辑，旋转 **K1 (Start)** 与 **K2 (End)** 修剪起止点；按 **CHOP** 即可将选定区间均匀切分为 8 个打击垫切片。
-
 下方为 Web Audio 合成的采样演示，可拖动起点与终点滑块实时修剪，点击下方 8 个打击垫或按键盘数字键 **1–8** 触发切片播放：
 
 <div id="sampling-demo" class="sampling-demo-container">
