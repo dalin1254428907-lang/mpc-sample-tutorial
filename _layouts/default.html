@@ -9,7 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-{% include annotate-loader.html %}
+{% if page.legacy %}<link rel="stylesheet" href="{{ "/legacy/assets/css/style.css" | relative_url }}">
+<link rel="stylesheet" href="{{ "/legacy/assets/css/updates-v5.css" | relative_url }}">
+{% endif %}{% include annotate-loader.html %}
 </head>
 <body>
 {% assign chapters = site.pages | where_exp: "p", "p.chapter" | sort: "nav_order" %}
@@ -42,5 +44,7 @@
     <p>{{ site.title }} · Akai Professional MPC Sample（AC50）· 内容依据官方 User Guide v1.3.0 核对 · 后面板/侧面照片为 Akai 官方产品图（akaipro.com）</p>
   </footer>
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+{% for j in page.legacy_js %}  <script src="{{ "/legacy/assets/js/" | append: j | relative_url }}" defer></script>
+{% endfor %}
 </body>
 </html>

@@ -1,0 +1,384 @@
+{
+ "id": "chop-01",
+ "title": "切片按键 → 屏幕反馈",
+ "mode": "free",
+ "lab": "01",
+ "steps": [
+  {
+   "id": "enter",
+   "title": "CHOP：进入切片模式",
+   "controls": [
+    "CHOP"
+   ],
+   "press": "Sample 模式下选中采样垫 → 按 <kbd>CHOP</kbd>（33）。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/sample-chop.png",
+    "marks": [
+     {
+      "x": 15,
+      "y": 8,
+      "n": 1
+     },
+     {
+      "x": 50,
+      "y": 55,
+      "n": 2
+     },
+     {
+      "x": 97,
+      "y": 25,
+      "n": 3
+     },
+     {
+      "x": 85,
+      "y": 86,
+      "n": 4
+     }
+    ]
+   },
+   "see": [
+    "① 页签变成 Chop。",
+    "② 波形上的竖线 = 切点；默认 Threshold（按音量自动切）。",
+    "③ 当前选中的是第几块。",
+    "④ K1 Start / K2 End / K3 Chop Type。"
+   ],
+   "next": "转 K3 换切法。",
+   "ref": "手册 p.22、p.31"
+  },
+  {
+   "id": "threshold",
+   "title": "K3 → Threshold",
+   "controls": [
+    "K3"
+   ],
+   "press": "转 <kbd>K3</kbd> 到 <b>Threshold</b>；按住 <kbd>SHIFT</kbd> 转 K3 调灵敏度。",
+   "screen": {
+    "type": "param",
+    "sim": true,
+    "tabs": [
+     "Chop",
+     "Tune",
+     "Filter"
+    ],
+    "on": 0,
+    "name": "A10  你的和弦采样",
+    "knobs": [
+     [
+      "Start",
+      ""
+     ],
+     [
+      "End",
+      ""
+     ],
+     [
+      "Chop Type",
+      "Threshold"
+     ]
+    ],
+    "wave": "auto",
+    "marks": [
+     {
+      "el": "k3",
+      "n": 1
+     },
+     {
+      "el": "wave",
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① Chop Type = Threshold。",
+    "② 切点按音量起伏自动放；SHIFT+K3 Threshold（0–100%）越高切得越少。"
+   ],
+   "next": "素材已对齐小节就用 Regions。",
+   "ref": "手册 p.31",
+   "infer": "画面为重绘。"
+  },
+  {
+   "id": "regions",
+   "title": "K3 → Regions 4 / 8 / 16",
+   "controls": [
+    "K3"
+   ],
+   "press": "转 <kbd>K3</kbd> 到 <b>Regions 4</b>（或 8、16）。",
+   "screen": {
+    "type": "param",
+    "sim": true,
+    "tabs": [
+     "Chop",
+     "Tune",
+     "Filter"
+    ],
+    "on": 0,
+    "name": "A10  你的和弦采样",
+    "knobs": [
+     [
+      "Start",
+      ""
+     ],
+     [
+      "End",
+      ""
+     ],
+     [
+      "Chop Type",
+      "Regions 4"
+     ]
+    ],
+    "wave": "even4",
+    "marks": [
+     {
+      "el": "k3",
+      "n": 1
+     },
+     {
+      "el": "wave",
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① Chop Type = Regions 4。",
+    "② 整段平均切成 4 块：两个和弦（Cm9、Abmaj7）可先 Regions 4 再 Merge 掉多的。"
+   ],
+   "next": "想自己拍切点就用 Manual。",
+   "ref": "手册 p.31",
+   "infer": "画面为重绘。"
+  },
+  {
+   "id": "manual",
+   "title": "K3 → Manual",
+   "controls": [
+    "K3",
+    "PAD 1"
+   ],
+   "press": "转 <kbd>K3</kbd> 到 <b>Manual</b> → 按 <kbd>PAD 1</kbd> 开始播放并放第一个切点 → 听到想切的地方依次拍其他垫。",
+   "screen": {
+    "type": "param",
+    "sim": true,
+    "tabs": [
+     "Chop",
+     "Tune",
+     "Filter"
+    ],
+    "on": 0,
+    "name": "A10  你的和弦采样",
+    "knobs": [
+     [
+      "Start",
+      ""
+     ],
+     [
+      "End",
+      ""
+     ],
+     [
+      "Chop Type",
+      "Manual"
+     ]
+    ],
+    "wave": "manual",
+    "marks": [
+     {
+      "el": "k3",
+      "n": 1
+     },
+     {
+      "el": "wave",
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① Chop Type = Manual。",
+    "② 切点就是你拍下去的位置，最多 16 块。"
+   ],
+   "next": "修切片：Extract / Split / Merge。",
+   "ref": "手册 p.31",
+   "infer": "画面为重绘。"
+  },
+  {
+   "id": "extract",
+   "title": "SHIFT + B1：Extract 导出",
+   "controls": [
+    "SHIFT",
+    "B1"
+   ],
+   "press": "点垫选中一块 → <kbd>SHIFT</kbd> + <kbd>B1</kbd>。",
+   "screen": {
+    "type": "msg",
+    "sim": true,
+    "title": "Extract",
+    "body": "选中的切片 → 新采样，放到下一个空垫",
+    "marks": [
+     {
+      "el": "title",
+      "n": 1
+     },
+     {
+      "el": "body",
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① Extract：把这一块导出成独立的新采样。",
+    "② 自动放到下一个空垫；原采样不受影响（非破坏）。改切片不能 UNDO，大改前先 Extract 备份。"
+   ],
+   "next": "",
+   "ref": "手册 p.32",
+   "infer": "提示框文字为重绘（推断），手册只写了结果。"
+  },
+  {
+   "id": "split",
+   "title": "SHIFT + B2：Split 一分为二",
+   "controls": [
+    "SHIFT",
+    "B2"
+   ],
+   "press": "点垫选中一块 → <kbd>SHIFT</kbd> + <kbd>B2</kbd>。",
+   "screen": {
+    "type": "param",
+    "sim": true,
+    "tabs": [
+     "Chop",
+     "Tune",
+     "Filter"
+    ],
+    "on": 0,
+    "name": "A10  切片 2 → 2 + 3",
+    "knobs": [
+     [
+      "Start",
+      ""
+     ],
+     [
+      "End",
+      ""
+     ],
+     [
+      "Chop Type",
+      "Manual"
+     ]
+    ],
+    "wave": "split",
+    "marks": [
+     {
+      "el": "wave",
+      "n": 1
+     },
+     {
+      "el": "k3",
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① 这一块从中间切开，变成两块；后面的编号都 +1。",
+    "② 动过切片，Chop Type 自动变成 Manual。"
+   ],
+   "next": "",
+   "ref": "手册 p.32",
+   "infer": "画面为重绘。"
+  },
+  {
+   "id": "merge",
+   "title": "SHIFT + B3：Merge 合并",
+   "controls": [
+    "SHIFT",
+    "B3"
+   ],
+   "press": "点垫选中一块 → <kbd>SHIFT</kbd> + <kbd>B3</kbd>。",
+   "screen": {
+    "type": "param",
+    "sim": true,
+    "tabs": [
+     "Chop",
+     "Tune",
+     "Filter"
+    ],
+    "on": 0,
+    "name": "A10  切片 2 并进 1",
+    "knobs": [
+     [
+      "Start",
+      ""
+     ],
+     [
+      "End",
+      ""
+     ],
+     [
+      "Chop Type",
+      "Manual"
+     ]
+    ],
+    "wave": "merge",
+    "marks": [
+     {
+      "el": "wave",
+      "n": 1
+     }
+    ]
+   },
+   "see": [
+    "① 这一块并进前一块，后面编号都 −1（8 块合并第 2 块 → 剩 7 块）。按住 ERASE + 点垫也是删切点并入前一块。"
+   ],
+   "next": "",
+   "ref": "手册 p.32",
+   "infer": "画面为重绘。"
+  },
+  {
+   "id": "noteon",
+   "title": "SHIFT + CHOP：Note On",
+   "controls": [
+    "SHIFT",
+    "CHOP"
+   ],
+   "press": "<kbd>SHIFT</kbd> + <kbd>CHOP</kbd>。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/sample-mix.png",
+    "marks": [
+     {
+      "x": 77,
+      "y": 25,
+      "n": 1
+     }
+    ]
+   },
+   "see": [
+    "① 音符图标 = Note On：按住才响、松手就停；Amp/Filter 包络里的 Decay 变成 Release。Premier 式短切片常用 One Shot + Amp Env Decay 收短。"
+   ],
+   "next": "",
+   "ref": "手册 p.22、p.32"
+  },
+  {
+   "id": "exit",
+   "title": "再按 CHOP：退出",
+   "controls": [
+    "CHOP"
+   ],
+   "press": "再按一次 <kbd>CHOP</kbd>。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/sample-trim.png",
+    "marks": [
+     {
+      "x": 15,
+      "y": 8,
+      "n": 1
+     }
+    ]
+   },
+   "see": [
+    "① 回到 Trim 页；切片还在，垫子照样能弹。"
+   ],
+   "next": "",
+   "ref": "手册 p.22、p.32"
+  }
+ ]
+}

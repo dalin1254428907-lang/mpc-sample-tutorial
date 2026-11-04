@@ -1,0 +1,66 @@
+/* MPC 手册 · 批注模式（只在 html.rm-on 时影响页面；平时只显示右下角小按钮） */
+.rm-fab { position: fixed; right: 14px; bottom: 14px; z-index: 2147483000; font: 700 13px/1 "Noto Sans SC", system-ui, sans-serif; color: #F5F5F5; background: rgba(32,32,39,.82); border: 1.5px solid #34343D; border-radius: 999px; padding: 7px 11px; cursor: pointer; opacity: .6; box-shadow: 0 2px 8px rgba(0,0,0,.35); transition: opacity .15s, background .15s; }
+.rm-fab:hover, .rm-fab:focus-visible { opacity: 1; background: #202027; border-color: #FFE500; }
+html.rm-on .rm-fab { opacity: 1; background: #FFE500; color: #0B0B0D; border-color: #0B0B0D; }
+@media print { .rm-fab, .rm-bar, .rm-badges, .rm-panel, .rm-pop, .rm-hl, .rm-toast { display: none !important; } }
+
+html.rm-on body { padding-top: var(--rm-bar-h, 44px); }
+html.rm-on .site-header { top: var(--rm-bar-h, 44px); }
+html.rm-on main, html.rm-on main * { cursor: crosshair; }
+html.rm-on iframe, html.rm-on video { pointer-events: none; }
+html.rm-on .rm-target { outline: 2px solid #FFE500 !important; outline-offset: 2px; }
+html.rm-on .rm-flash { outline: 3px solid #00E5FF !important; outline-offset: 3px; transition: outline-color .3s; }
+
+.rm-bar { position: fixed; left: 0; right: 0; top: 0; z-index: 2147483001; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 7px 12px; background: #FFE500; color: #0B0B0D; border-bottom: 2px solid #0B0B0D; font: 700 14px/1.3 "Noto Sans SC", system-ui, sans-serif; box-shadow: 0 2px 0 #FF3B3B; cursor: default; }
+.rm-bar[hidden] { display: none; }
+.rm-bar-t { font-weight: 900; }
+.rm-bar-n { font-weight: 700; font-size: 12px; opacity: .75; }
+.rm-bar-btns { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px; }
+.rm-bar button, .rm-pop button, .rm-panel button.rm-panel-x { font: 700 13px/1 "Noto Sans SC", system-ui, sans-serif; cursor: pointer; border-radius: 8px; padding: 6px 10px; border: 2px solid #0B0B0D; background: #F5F5F5; color: #0B0B0D; }
+.rm-bar button:hover { background: #fff; box-shadow: 2px 2px 0 #0B0B0D; }
+.rm-bar .rm-exit { background: #0B0B0D; color: #FFE500; }
+
+.rm-hl { position: fixed; z-index: 2147482990; pointer-events: none; display: none; border: 2px dashed #FFE500; border-radius: 6px; background: rgba(255,229,0,.08); box-shadow: 0 0 0 1px rgba(11,11,13,.6); }
+
+.rm-badges { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 2147482995; }
+.rm-badges[hidden] { display: none; }
+.rm-badge { position: absolute; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 999px; border: 2px solid #0B0B0D; background: #FF3B3B; color: #fff; font: 900 12px/20px "Noto Sans SC", system-ui, sans-serif; text-align: center; cursor: pointer; box-shadow: 2px 2px 0 #0B0B0D; }
+.rm-badge.sel { background: #00A8C0; }
+.rm-badge:hover { transform: scale(1.12); background: #FFE500; color: #0B0B0D; }
+
+.rm-pop { position: fixed; z-index: 2147483003; background: #202027; color: #F5F5F5; border: 2px solid #FFE500; border-radius: 12px; padding: 10px 12px; box-shadow: 4px 4px 0 #0B0B0D, 0 8px 28px rgba(0,0,0,.5); font: 400 14px/1.5 "Noto Sans SC", system-ui, sans-serif; cursor: default; }
+.rm-pop-h { display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px; }
+.rm-pop-h b { color: #FFE500; white-space: nowrap; }
+.rm-pop-h span { color: #B4B4BE; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rm-pop-q { font-size: 12px; color: #B4B4BE; border-left: 3px solid #00E5FF; padding: 2px 8px; margin: 4px 0 8px; max-height: 4.5em; overflow: hidden; word-break: break-all; }
+.rm-pop textarea { width: 100%; box-sizing: border-box; min-height: 84px; resize: vertical; background: #0B0B0D; color: #F5F5F5; border: 2px solid #34343D; border-radius: 8px; padding: 8px; font: 400 14px/1.5 "Noto Sans SC", system-ui, sans-serif; cursor: text; }
+.rm-pop textarea:focus { outline: none; border-color: #00E5FF; }
+.rm-pop-b { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: flex-end; margin-top: 8px; }
+.rm-pop-b button { white-space: nowrap; }
+.rm-pop-tip { order: 9; flex: 1 1 100%; font-size: 11px; color: #8a8a94; text-align: right; }
+.rm-pop .rm-save { background: #FFE500; }
+.rm-pop .rm-del { background: #FF3B3B; color: #fff; }
+
+.rm-panel { position: fixed; right: 0; top: var(--rm-bar-h, 44px); bottom: 0; width: min(360px, 92vw); z-index: 2147483002; overflow-y: auto; background: #16161B; color: #F5F5F5; border-left: 2px solid #FFE500; box-shadow: -6px 0 24px rgba(0,0,0,.5); padding: 10px 12px 60px; box-sizing: border-box; font: 400 13px/1.5 "Noto Sans SC", system-ui, sans-serif; cursor: default; }
+.rm-panel[hidden] { display: none; }
+.rm-panel-h { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.rm-panel-h b { color: #FFE500; font-size: 15px; }
+.rm-panel-h span { color: #B4B4BE; font-size: 12px; margin-right: auto; }
+.rm-panel button.rm-panel-x { padding: 2px 9px; font-size: 16px; }
+.rm-list { list-style: none; margin: 0; padding: 0; }
+.rm-list li { margin: 0 0 6px; }
+.rm-item { display: flex; gap: 8px; width: 100%; text-align: left; background: #202027; color: inherit; border: 1.5px solid #34343D; border-radius: 10px; padding: 8px; cursor: pointer; font: inherit; }
+.rm-item:hover { border-color: #00E5FF; }
+.rm-num { flex: none; width: 22px; height: 22px; border-radius: 999px; background: #FF3B3B; color: #fff; font-weight: 900; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; }
+.rm-body { display: flex; flex-direction: column; min-width: 0; }
+.rm-sec { color: #FFE500; font-size: 11px; font-weight: 700; }
+.rm-snip { color: #B4B4BE; font-size: 12px; word-break: break-all; }
+.rm-cmt { color: #F5F5F5; white-space: pre-wrap; word-break: break-word; }
+.rm-empty, .rm-hint { color: #B4B4BE; font-size: 12px; }
+.rm-hint { border-top: 1px solid #34343D; padding-top: 8px; margin-top: 10px; }
+.rm-others { margin-top: 10px; font-size: 12px; color: #B4B4BE; }
+.rm-others b { color: #F5F5F5; }
+.rm-others ul { margin: 4px 0 0; padding-left: 18px; }
+
+.rm-toast { position: fixed; left: 50%; bottom: 60px; transform: translateX(-50%); z-index: 2147483004; background: #0B0B0D; color: #FFE500; border: 2px solid #FFE500; border-radius: 10px; padding: 8px 14px; font: 700 13px/1.4 "Noto Sans SC", system-ui, sans-serif; max-width: 90vw; }
+.rm-toast[hidden] { display: none; }

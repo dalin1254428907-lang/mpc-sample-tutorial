@@ -1,0 +1,1254 @@
+{
+ "id": "06",
+ "vid": "06_chords_keyboard_6251",
+ "title": "和弦怎么看？键盘灯光法",
+ "short": "和弦怎么看 · 爵士 6-2-5-1",
+ "bpm": 80,
+ "swing": 55,
+ "key": "C 大调",
+ "bars": 4,
+ "bar_sec": 3.0,
+ "video": {
+  "src": "assets/video/beat-grid/06_chords_keyboard_6251.mp4",
+  "poster": "assets/video/beat-grid/06_chords_keyboard_6251-poster.jpg",
+  "duration": 25.35,
+  "stages": [
+   {
+    "n": 1,
+    "label": "电钢琴+贝斯",
+    "caption": "只听和弦：键盘上亮的就是和弦音",
+    "detail": "颜色 = 角色：红根音、橙三音、绿五音、紫七音、蓝九音",
+    "t0": 0.0,
+    "t1": 12.0,
+    "bars": 4,
+    "lanes": [
+     "电钢琴",
+     "贝斯"
+    ]
+   },
+   {
+    "n": 2,
+    "label": "+底鼓+军鼓+踩镲+人声",
+    "caption": "加入鼓 + 人声旋律：看蓝点",
+    "detail": "旋律多数落在和弦音上，所以怎么唱都“对”",
+    "t0": 12.0,
+    "t1": 24.0,
+    "bars": 4,
+    "lanes": [
+     "底鼓",
+     "军鼓",
+     "踩镲",
+     "贝斯",
+     "电钢琴",
+     "人声"
+    ]
+   }
+  ],
+  "source": "beat-grid-videos/tools/patterns/06_chords_keyboard_6251.json 的 stages[].bars × 每小节 3.000 秒（engine.Song.stage_start，视频从第 0 秒直接开始，无片头）"
+ },
+ "grid_png": "assets/img/beat-grid/06_chords_keyboard_6251-grid.png",
+ "drums": [
+  {
+   "name": "Kick",
+   "cn": "底鼓",
+   "inst": "kick",
+   "bars": [
+    [
+     [
+      0.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      7.0,
+      1.0,
+      0.7,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.9,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      7.0,
+      1.0,
+      0.7,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.9,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      7.0,
+      1.0,
+      0.7,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.9,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      7.0,
+      1.0,
+      0.7,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.9,
+      0,
+      0
+     ]
+    ]
+   ],
+   "offsets": false
+  },
+  {
+   "name": "Snare",
+   "cn": "军鼓",
+   "inst": "snare",
+   "bars": [
+    [
+     [
+      4.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      4.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      4.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      4.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ]
+    ]
+   ],
+   "offsets": false
+  },
+  {
+   "name": "Hats",
+   "cn": "踩镲",
+   "inst": "hat",
+   "bars": [
+    [
+     [
+      0.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      2.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      4.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      6.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      8.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      14.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      2.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      4.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      6.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      8.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      14.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      2.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      4.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      6.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      8.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      14.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      2.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      4.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      6.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      8.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      0.75,
+      0,
+      0
+     ],
+     [
+      14.0,
+      1.0,
+      0.5,
+      0,
+      0
+     ]
+    ]
+   ],
+   "offsets": false
+  }
+ ],
+ "pitched": [
+  {
+   "name": "Bass",
+   "cn": "贝斯",
+   "inst": "bass",
+   "kind": "mono",
+   "base": 45,
+   "base_name": "A2",
+   "pads": [
+    {
+     "pad": 1,
+     "name": "Gb2",
+     "midi": 42
+    },
+    {
+     "pad": 2,
+     "name": "G2",
+     "midi": 43
+    },
+    {
+     "pad": 3,
+     "name": "Ab2",
+     "midi": 44
+    },
+    {
+     "pad": 4,
+     "name": "A2",
+     "midi": 45
+    },
+    {
+     "pad": 5,
+     "name": "Bb2",
+     "midi": 46
+    },
+    {
+     "pad": 6,
+     "name": "B2",
+     "midi": 47
+    },
+    {
+     "pad": 7,
+     "name": "C3",
+     "midi": 48
+    },
+    {
+     "pad": 8,
+     "name": "Db3",
+     "midi": 49
+    },
+    {
+     "pad": 9,
+     "name": "D3",
+     "midi": 50
+    },
+    {
+     "pad": 10,
+     "name": "Eb3",
+     "midi": 51
+    },
+    {
+     "pad": 11,
+     "name": "E3",
+     "midi": 52
+    },
+    {
+     "pad": 12,
+     "name": "F3",
+     "midi": 53
+    },
+    {
+     "pad": 13,
+     "name": "Gb3",
+     "midi": 54
+    },
+    {
+     "pad": 14,
+     "name": "G3",
+     "midi": 55
+    },
+    {
+     "pad": 15,
+     "name": "Ab3",
+     "midi": 56
+    },
+    {
+     "pad": 16,
+     "name": "A3",
+     "midi": 57
+    }
+   ],
+   "bars": [
+    [
+     {
+      "s": 0.0,
+      "l": 6.0,
+      "v": 1.0,
+      "m": 45,
+      "mm": 45,
+      "pad": 4,
+      "fold": false,
+      "name": "A2",
+      "orig": "A2",
+      "glide": null
+     },
+     {
+      "s": 10.0,
+      "l": 4.0,
+      "v": 0.8,
+      "m": 52,
+      "mm": 52,
+      "pad": 11,
+      "fold": false,
+      "name": "E3",
+      "orig": "E3",
+      "glide": null
+     },
+     {
+      "s": 14.0,
+      "l": 2.0,
+      "v": 0.7,
+      "m": 57,
+      "mm": 57,
+      "pad": 16,
+      "fold": false,
+      "name": "A3",
+      "orig": "A3",
+      "glide": null
+     }
+    ],
+    [
+     {
+      "s": 0.0,
+      "l": 6.0,
+      "v": 1.0,
+      "m": 38,
+      "mm": 50,
+      "pad": 9,
+      "fold": true,
+      "name": "D3",
+      "orig": "D2",
+      "glide": null
+     },
+     {
+      "s": 10.0,
+      "l": 4.0,
+      "v": 0.8,
+      "m": 45,
+      "mm": 45,
+      "pad": 4,
+      "fold": false,
+      "name": "A2",
+      "orig": "A2",
+      "glide": null
+     },
+     {
+      "s": 14.0,
+      "l": 2.0,
+      "v": 0.7,
+      "m": 50,
+      "mm": 50,
+      "pad": 9,
+      "fold": false,
+      "name": "D3",
+      "orig": "D3",
+      "glide": null
+     }
+    ],
+    [
+     {
+      "s": 0.0,
+      "l": 6.0,
+      "v": 1.0,
+      "m": 43,
+      "mm": 43,
+      "pad": 2,
+      "fold": false,
+      "name": "G2",
+      "orig": "G2",
+      "glide": null
+     },
+     {
+      "s": 10.0,
+      "l": 4.0,
+      "v": 0.8,
+      "m": 50,
+      "mm": 50,
+      "pad": 9,
+      "fold": false,
+      "name": "D3",
+      "orig": "D3",
+      "glide": null
+     },
+     {
+      "s": 14.0,
+      "l": 2.0,
+      "v": 0.7,
+      "m": 55,
+      "mm": 55,
+      "pad": 14,
+      "fold": false,
+      "name": "G3",
+      "orig": "G3",
+      "glide": null
+     }
+    ],
+    [
+     {
+      "s": 0.0,
+      "l": 6.0,
+      "v": 1.0,
+      "m": 36,
+      "mm": 48,
+      "pad": 7,
+      "fold": true,
+      "name": "C3",
+      "orig": "C2",
+      "glide": null
+     },
+     {
+      "s": 10.0,
+      "l": 4.0,
+      "v": 0.8,
+      "m": 43,
+      "mm": 43,
+      "pad": 2,
+      "fold": false,
+      "name": "G2",
+      "orig": "G2",
+      "glide": null
+     },
+     {
+      "s": 14.0,
+      "l": 2.0,
+      "v": 0.7,
+      "m": 48,
+      "mm": 48,
+      "pad": 7,
+      "fold": false,
+      "name": "C3",
+      "orig": "C3",
+      "glide": null
+     }
+    ]
+   ]
+  },
+  {
+   "name": "Keys",
+   "cn": "电钢琴",
+   "inst": "rhodes",
+   "kind": "chord",
+   "base": 53,
+   "base_name": "F3",
+   "pads": [
+    {
+     "pad": 1,
+     "name": "D3",
+     "midi": 50
+    },
+    {
+     "pad": 2,
+     "name": "Eb3",
+     "midi": 51
+    },
+    {
+     "pad": 3,
+     "name": "E3",
+     "midi": 52
+    },
+    {
+     "pad": 4,
+     "name": "F3",
+     "midi": 53
+    },
+    {
+     "pad": 5,
+     "name": "Gb3",
+     "midi": 54
+    },
+    {
+     "pad": 6,
+     "name": "G3",
+     "midi": 55
+    },
+    {
+     "pad": 7,
+     "name": "Ab3",
+     "midi": 56
+    },
+    {
+     "pad": 8,
+     "name": "A3",
+     "midi": 57
+    },
+    {
+     "pad": 9,
+     "name": "Bb3",
+     "midi": 58
+    },
+    {
+     "pad": 10,
+     "name": "B3",
+     "midi": 59
+    },
+    {
+     "pad": 11,
+     "name": "C4",
+     "midi": 60
+    },
+    {
+     "pad": 12,
+     "name": "Db4",
+     "midi": 61
+    },
+    {
+     "pad": 13,
+     "name": "D4",
+     "midi": 62
+    },
+    {
+     "pad": 14,
+     "name": "Eb4",
+     "midi": 63
+    },
+    {
+     "pad": 15,
+     "name": "E4",
+     "midi": 64
+    },
+    {
+     "pad": 16,
+     "name": "F4",
+     "midi": 65
+    }
+   ],
+   "rhythm": [
+    [
+     0.0,
+     7.0,
+     0.85
+    ],
+    [
+     10.0,
+     5.0,
+     0.7
+    ]
+   ],
+   "chords": [
+    {
+     "bar": 1,
+     "name": "Am9",
+     "tones": "A C E G B",
+     "notes": [
+      {
+       "name": "G3",
+       "pad": 6,
+       "midi": 55,
+       "fold": true
+      },
+      {
+       "name": "A3",
+       "pad": 8,
+       "midi": 57,
+       "fold": false
+      },
+      {
+       "name": "B3",
+       "pad": 10,
+       "midi": 59,
+       "fold": true
+      },
+      {
+       "name": "C4",
+       "pad": 11,
+       "midi": 60,
+       "fold": false
+      },
+      {
+       "name": "E4",
+       "pad": 15,
+       "midi": 64,
+       "fold": false
+      }
+     ]
+    },
+    {
+     "bar": 2,
+     "name": "Dm9",
+     "tones": "D F A C E",
+     "notes": [
+      {
+       "name": "D3",
+       "pad": 1,
+       "midi": 50,
+       "fold": false
+      },
+      {
+       "name": "F3",
+       "pad": 4,
+       "midi": 53,
+       "fold": false
+      },
+      {
+       "name": "A3",
+       "pad": 8,
+       "midi": 57,
+       "fold": false
+      },
+      {
+       "name": "C4",
+       "pad": 11,
+       "midi": 60,
+       "fold": false
+      },
+      {
+       "name": "E4",
+       "pad": 15,
+       "midi": 64,
+       "fold": false
+      }
+     ]
+    },
+    {
+     "bar": 3,
+     "name": "G13",
+     "tones": "G B D F E",
+     "notes": [
+      {
+       "name": "G3",
+       "pad": 6,
+       "midi": 55,
+       "fold": false
+      },
+      {
+       "name": "B3",
+       "pad": 10,
+       "midi": 59,
+       "fold": false
+      },
+      {
+       "name": "D4",
+       "pad": 13,
+       "midi": 62,
+       "fold": false
+      },
+      {
+       "name": "E4",
+       "pad": 15,
+       "midi": 64,
+       "fold": true
+      },
+      {
+       "name": "F4",
+       "pad": 16,
+       "midi": 65,
+       "fold": false
+      }
+     ]
+    },
+    {
+     "bar": 4,
+     "name": "Cmaj9",
+     "tones": "C E G B D",
+     "notes": [
+      {
+       "name": "E3",
+       "pad": 3,
+       "midi": 52,
+       "fold": false
+      },
+      {
+       "name": "G3",
+       "pad": 6,
+       "midi": 55,
+       "fold": false
+      },
+      {
+       "name": "B3",
+       "pad": 10,
+       "midi": 59,
+       "fold": false
+      },
+      {
+       "name": "C4",
+       "pad": 11,
+       "midi": 60,
+       "fold": true
+      },
+      {
+       "name": "D4",
+       "pad": 13,
+       "midi": 62,
+       "fold": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Vocal",
+   "cn": "人声",
+   "inst": "vocal",
+   "kind": "mono",
+   "base": 67,
+   "base_name": "G4",
+   "pads": [
+    {
+     "pad": 1,
+     "name": "E4",
+     "midi": 64
+    },
+    {
+     "pad": 2,
+     "name": "F4",
+     "midi": 65
+    },
+    {
+     "pad": 3,
+     "name": "Gb4",
+     "midi": 66
+    },
+    {
+     "pad": 4,
+     "name": "G4",
+     "midi": 67
+    },
+    {
+     "pad": 5,
+     "name": "Ab4",
+     "midi": 68
+    },
+    {
+     "pad": 6,
+     "name": "A4",
+     "midi": 69
+    },
+    {
+     "pad": 7,
+     "name": "Bb4",
+     "midi": 70
+    },
+    {
+     "pad": 8,
+     "name": "B4",
+     "midi": 71
+    },
+    {
+     "pad": 9,
+     "name": "C5",
+     "midi": 72
+    },
+    {
+     "pad": 10,
+     "name": "Db5",
+     "midi": 73
+    },
+    {
+     "pad": 11,
+     "name": "D5",
+     "midi": 74
+    },
+    {
+     "pad": 12,
+     "name": "Eb5",
+     "midi": 75
+    },
+    {
+     "pad": 13,
+     "name": "E5",
+     "midi": 76
+    },
+    {
+     "pad": 14,
+     "name": "F5",
+     "midi": 77
+    },
+    {
+     "pad": 15,
+     "name": "Gb5",
+     "midi": 78
+    },
+    {
+     "pad": 16,
+     "name": "G5",
+     "midi": 79
+    }
+   ],
+   "bars": [
+    [
+     {
+      "s": 0.0,
+      "l": 3.0,
+      "v": 0.9,
+      "m": 76,
+      "mm": 76,
+      "pad": 13,
+      "fold": false,
+      "name": "E5",
+      "orig": "E5",
+      "glide": null
+     },
+     {
+      "s": 4.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 72,
+      "mm": 72,
+      "pad": 9,
+      "fold": false,
+      "name": "C5",
+      "orig": "C5",
+      "glide": null
+     },
+     {
+      "s": 6.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 71,
+      "mm": 71,
+      "pad": 8,
+      "fold": false,
+      "name": "B4",
+      "orig": "B4",
+      "glide": null
+     },
+     {
+      "s": 8.0,
+      "l": 6.0,
+      "v": 1.0,
+      "m": 67,
+      "mm": 67,
+      "pad": 4,
+      "fold": false,
+      "name": "G4",
+      "orig": "G4",
+      "glide": null
+     }
+    ],
+    [
+     {
+      "s": 0.0,
+      "l": 3.0,
+      "v": 0.9,
+      "m": 77,
+      "mm": 77,
+      "pad": 14,
+      "fold": false,
+      "name": "F5",
+      "orig": "F5",
+      "glide": null
+     },
+     {
+      "s": 4.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 76,
+      "mm": 76,
+      "pad": 13,
+      "fold": false,
+      "name": "E5",
+      "orig": "E5",
+      "glide": null
+     },
+     {
+      "s": 6.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 72,
+      "mm": 72,
+      "pad": 9,
+      "fold": false,
+      "name": "C5",
+      "orig": "C5",
+      "glide": null
+     },
+     {
+      "s": 8.0,
+      "l": 6.0,
+      "v": 1.0,
+      "m": 69,
+      "mm": 69,
+      "pad": 6,
+      "fold": false,
+      "name": "A4",
+      "orig": "A4",
+      "glide": null
+     }
+    ],
+    [
+     {
+      "s": 0.0,
+      "l": 3.0,
+      "v": 0.9,
+      "m": 77,
+      "mm": 77,
+      "pad": 14,
+      "fold": false,
+      "name": "F5",
+      "orig": "F5",
+      "glide": null
+     },
+     {
+      "s": 4.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 76,
+      "mm": 76,
+      "pad": 13,
+      "fold": false,
+      "name": "E5",
+      "orig": "E5",
+      "glide": null
+     },
+     {
+      "s": 6.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 74,
+      "mm": 74,
+      "pad": 11,
+      "fold": false,
+      "name": "D5",
+      "orig": "D5",
+      "glide": null
+     },
+     {
+      "s": 8.0,
+      "l": 6.0,
+      "v": 1.0,
+      "m": 71,
+      "mm": 71,
+      "pad": 8,
+      "fold": false,
+      "name": "B4",
+      "orig": "B4",
+      "glide": null
+     }
+    ],
+    [
+     {
+      "s": 0.0,
+      "l": 3.0,
+      "v": 0.9,
+      "m": 76,
+      "mm": 76,
+      "pad": 13,
+      "fold": false,
+      "name": "E5",
+      "orig": "E5",
+      "glide": null
+     },
+     {
+      "s": 4.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 74,
+      "mm": 74,
+      "pad": 11,
+      "fold": false,
+      "name": "D5",
+      "orig": "D5",
+      "glide": null
+     },
+     {
+      "s": 6.0,
+      "l": 2.0,
+      "v": 0.95,
+      "m": 71,
+      "mm": 71,
+      "pad": 8,
+      "fold": false,
+      "name": "B4",
+      "orig": "B4",
+      "glide": null
+     },
+     {
+      "s": 8.0,
+      "l": 7.0,
+      "v": 1.0,
+      "m": 74,
+      "mm": 74,
+      "pad": 11,
+      "fold": false,
+      "name": "D5",
+      "orig": "D5",
+      "glide": null
+     }
+    ]
+   ]
+  }
+ ]
+}

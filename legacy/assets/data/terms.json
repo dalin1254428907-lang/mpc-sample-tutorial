@@ -1,0 +1,831 @@
+{
+ "id": "terms",
+ "levels": [
+  "入门",
+  "进阶",
+  "高级"
+ ],
+ "terms": [
+  {
+   "id": "kick",
+   "label": "底鼓 Kick",
+   "level": "入门",
+   "match": [
+    "底鼓",
+    "(?<![A-Za-z0-9])Kick(?![A-Za-z])",
+    "(?<![A-Za-z0-9])kick(?![A-Za-z])"
+   ],
+   "basic": "底鼓是鼓组里最低沉的“咚”，用脚踩的那面大鼓。它给节奏打下地基，告诉身体“这里该点头”。",
+   "deeper": "Boom bap 里底鼓常在第 1 拍，再加一两下切分（本课在第 8、11 步）。挑短、低频圆、带一点 click 的；在 MPC Sample 上用 Trim 收尾巴、Tune 往下 1–2 个半音更沉（经验值）。"
+  },
+  {
+   "id": "snare",
+   "label": "军鼓 Snare",
+   "level": "入门",
+   "match": [
+    "军鼓",
+    "(?<![A-Za-z0-9])Snare(?![A-Za-z])",
+    "(?<![A-Za-z0-9])snare(?![A-Za-z])"
+   ],
+   "basic": "军鼓是“啪”的那一下，鼓底下有一排响弦，所以声音又亮又脆。它负责节奏里的“拍手点”。",
+   "deeper": "Boom bap 的军鼓几乎都在第 2、4 拍（16 格里的第 5、13 步）。90s 纽约味要厚、带房间感或粗颗粒；Mix 页调音量，嫌刺就用 Filter 收一点高频。"
+  },
+  {
+   "id": "hat",
+   "label": "踩镲 Hi-hat",
+   "level": "入门",
+   "match": [
+    "踩镲",
+    "(?<![A-Za-z0-9])Hi-hat(?![A-Za-z])",
+    "(?<![A-Za-z0-9])hi-hat(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Hats?(?![A-Za-z])",
+    "(?<![A-Za-z0-9])hats?(?![A-Za-z])"
+   ],
+   "basic": "踩镲是两片叠在一起的小镲片，“嚓嚓”声。它像节拍器一样把时间切成小格，让律动“走”起来。",
+   "deeper": "闭镲（closed hat）短而紧，开镲（open hat）会“嘶——”地拖长。本课 hat 每格都有，重拍重、反拍轻；用 LPF 收高频让它暗一点，音量约 −4 dB。"
+  },
+  {
+   "id": "open-hat",
+   "label": "开镲 Open hat",
+   "level": "进阶",
+   "match": [
+    "开镲",
+    "(?<![A-Za-z0-9])[Oo]pen hat(?![A-Za-z])"
+   ],
+   "basic": "踩镲松开时敲出的长音“嘶——”，比闭镲长很多。",
+   "deeper": "和闭镲放在同一个 Mute Group 里，后敲的闭镲会把开镲“掐断”，像真鼓手踩下踏板（手册 p.28）。"
+  },
+  {
+   "id": "closed-hat",
+   "label": "闭镲 Closed hat",
+   "level": "进阶",
+   "match": [
+    "闭镲",
+    "(?<![A-Za-z0-9])[Cc]losed hat(?![A-Za-z])"
+   ],
+   "basic": "踩镲踩紧时敲出的短促“嚓”。Boom bap 里大部分踩镲都是闭镲。",
+   "deeper": "要“紧”：尾巴短；要“暗”：Filter 选 LPF2，把 Cutoff 往下转一点（经验值）。"
+  },
+  {
+   "id": "ghost",
+   "label": "鬼音 Ghost note",
+   "level": "进阶",
+   "match": [
+    "鬼音",
+    "(?<![A-Za-z0-9])[Gg]host( note| snare)?(?![A-Za-z])"
+   ],
+   "basic": "鬼音是故意敲得很轻、几乎听不见的音，像在主拍子之间“偷偷”加一下。",
+   "deeper": "它让鼓听起来像真人在打。本课第 2 小节第 15 步的 snare 力度约 38（满分 127）；MPC 上用 STEP EDIT 的 K3 改力度。"
+  },
+  {
+   "id": "clap",
+   "label": "拍手 Clap",
+   "level": "进阶",
+   "match": [
+    "拍手",
+    "(?<![A-Za-z0-9])Clap(?![A-Za-z])",
+    "(?<![A-Za-z0-9])clap(?![A-Za-z])"
+   ],
+   "basic": "拍手声（多个人一起拍手的“啪”），常代替或叠在军鼓上。",
+   "deeper": "Trap、Memphis 里多用 clap；Boom bap 里偶尔叠在 snare 上让它更宽。"
+  },
+  {
+   "id": "rimshot",
+   "label": "边击 Rimshot",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])[Rr]im(shot)?(?![A-Za-z])",
+    "边击"
+   ],
+   "basic": "敲在军鼓鼓边上的“咔”，比正常军鼓更尖更短。",
+   "deeper": "安静的段落或 90s 抒情 boom bap 里常用它代替 snare。"
+  },
+  {
+   "id": "shaker",
+   "label": "沙锤 Shaker",
+   "level": "进阶",
+   "match": [
+    "沙锤",
+    "(?<![A-Za-z0-9])[Ss]haker(?![A-Za-z])"
+   ],
+   "basic": "摇出“沙沙”声的小乐器，和踩镲一样用来填满小格子。",
+   "deeper": "本课 03 节的沙锤每格都有，反拍重。"
+  },
+  {
+   "id": "kit",
+   "label": "鼓组 Kit",
+   "level": "入门",
+   "match": [
+    "鼓组",
+    "(?<![A-Za-z0-9])Kits?(?![A-Za-z])"
+   ],
+   "basic": "一整套鼓声音的集合：kick、snare、hat 等各放在一个垫子上。",
+   "deeper": "MPC Sample 的出厂鼓组在 SHIFT + PAD 16 → Load Project → Internal → Kits；B3 Load Kit 只装声音（手册 p.62）。"
+  },
+  {
+   "id": "bpm",
+   "label": "BPM",
+   "level": "入门",
+   "match": [
+    "(?<![A-Za-z0-9])BPM(?![A-Za-z])"
+   ],
+   "basic": "BPM = 每分钟多少拍，就是速度。92 BPM 就是一分钟 92 下“点头”。",
+   "deeper": "在 MPC Sample 上：SEQ 页按住 B1 转 ENCODER 设置（手册 p.39）。92 BPM 时一拍约 0.65 秒、一个 16 分音符约 0.16 秒。"
+  },
+  {
+   "id": "beat",
+   "label": "拍 Beat",
+   "level": "入门",
+   "match": [
+    "(?<![节点])拍(?![手子])",
+    "(?<![A-Za-z0-9])[Bb]eats?(?![A-Za-z])"
+   ],
+   "basic": "拍是音乐里均匀的脉搏，跟着点头的那一下就是一拍。4/4 拍里一小节有 4 拍。",
+   "deeper": "beat 在英语里也指“一段伴奏”，例如“做一段 beat”。"
+  },
+  {
+   "id": "bar",
+   "label": "小节 Bar",
+   "level": "入门",
+   "match": [
+    "小节",
+    "(?<![A-Za-z0-9])Bars?(?![A-Za-z])"
+   ],
+   "basic": "小节是把拍子按 4 个一组分好的“格子段”，本课一小节 = 4 拍 = 16 个小格。",
+   "deeper": "MPC 上序列长度按小节算（K1：1、2、4、8…，手册 p.39）。"
+  },
+  {
+   "id": "step",
+   "label": "步 Step",
+   "level": "入门",
+   "match": [
+    "第 ?\\d+ ?步",
+    "16 格",
+    "格子"
+   ],
+   "basic": "把一小节平均分成 16 格，每格叫一步。“第 5 步”就是第 5 格。",
+   "deeper": "一格 = 一个 16 分音符。第 1、5、9、13 步正好是 4 个拍子的开头。"
+  },
+  {
+   "id": "sixteenth",
+   "label": "十六分音符",
+   "level": "入门",
+   "match": [
+    "16 ?分音符",
+    "十六分音符",
+    "1/16"
+   ],
+   "basic": "把一拍再平均切成 4 份，每份就是一个 16 分音符；一小节有 16 个。",
+   "deeper": "Q = 1/16 意思是录音时把音吸到最近的 16 分格上。1/32 = 再切一半，用来做踩镲连击。"
+  },
+  {
+   "id": "eighth",
+   "label": "八分音符",
+   "level": "进阶",
+   "match": [
+    "8 ?分音符",
+    "八分音符",
+    "1/8"
+   ],
+   "basic": "一拍切成 2 份，每份是一个 8 分音符。",
+   "deeper": "“反拍 8 分”就是每拍的后一半（“&”）。"
+  },
+  {
+   "id": "triplet",
+   "label": "三连音",
+   "level": "高级",
+   "match": [
+    "三连音",
+    "(?<![A-Za-z0-9])1/16T(?![A-Za-z])",
+    "(?<![A-Za-z0-9])1/32T(?![A-Za-z])"
+   ],
+   "basic": "把一段时间平均分成 3 份，而不是 2 或 4 份，听起来“滚”一下。",
+   "deeper": "MPC Sample 按住 SHIFT 时 NOTE REPEAT 的分度变成三连音（手册 p.19）。"
+  },
+  {
+   "id": "swing",
+   "label": "Swing 摇摆",
+   "level": "入门",
+   "match": [
+    "(?<![A-Za-z0-9])(RT )?Swing(?![A-Za-z])",
+    "摇摆",
+    "“摇”"
+   ],
+   "basic": "Swing 让每拍里第 2、4 个小格稍微晚一点出现，节奏就从“机械”变成“摇”。50% = 不摇。",
+   "deeper": "58% 的意思：每两个 16 分音符组成一对，第二个落在这对时长的 58% 处（不摇时是 50%）。92 BPM 下大约晚 26 毫秒。MPC Sample：SEQ 页 K3 RT Swing（手册 p.39），或 SHIFT + PAD 14 Time Correct 的 K3 Swing（p.59）。"
+  },
+  {
+   "id": "syncopation",
+   "label": "切分 Syncopation",
+   "level": "进阶",
+   "match": [
+    "切分"
+   ],
+   "basic": "切分是故意把重音放在“不该重”的位置，比如拍子的后半，制造惊喜感。",
+   "deeper": "本课底鼓第 8 步（第 2 拍的最后一格）就是切分，让节奏往前“推”。"
+  },
+  {
+   "id": "backbeat",
+   "label": "反拍 / 2、4 拍",
+   "level": "入门",
+   "match": [
+    "反拍",
+    "2、4 ?拍",
+    "第 2、4 拍"
+   ],
+   "basic": "一小节 4 拍里第 2、4 拍叫“反拍”，流行音乐里拍手、军鼓通常在这里。",
+   "deeper": "反拍有时也指每拍的后一半（“&”），看上下文。"
+  },
+  {
+   "id": "downbeat",
+   "label": "重拍",
+   "level": "入门",
+   "match": [
+    "重拍"
+   ],
+   "basic": "重拍是一小节里最“重”的位置，通常是第 1 拍。",
+   "deeper": "踩镲重拍敲重、其他格敲轻，律动才有起伏。"
+  },
+  {
+   "id": "grid",
+   "label": "网格",
+   "level": "入门",
+   "match": [
+    "网格"
+   ],
+   "basic": "网格就是把一小节画成 16 个格子，亮着的格子 = 这一格要敲。",
+   "deeper": "网格谱是给新手看的简化谱，和五线谱是同一件事的两种画法。"
+  },
+  {
+   "id": "lane",
+   "label": "声部",
+   "level": "入门",
+   "match": [
+    "声部"
+   ],
+   "basic": "声部 = 一种乐器那一条线，例如“底鼓声部”。",
+   "deeper": "录音时一个声部一圈，叠起来就是完整的 beat。"
+  },
+  {
+   "id": "ms",
+   "label": "毫秒 ms",
+   "level": "进阶",
+   "match": [
+    "毫秒",
+    "(?<![A-Za-z0-9])ms(?![A-Za-z])"
+   ],
+   "basic": "1 毫秒 = 千分之一秒。几十毫秒的差别耳朵听得出“手感”，但分不出“早晚”。",
+   "deeper": "MPC 序列精度 960 tick / 拍（手册 p.65），92 BPM 下 1 tick ≈ 0.68 毫秒。"
+  },
+  {
+   "id": "tick",
+   "label": "tick",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])tick(?![A-Za-z])"
+   ],
+   "basic": "tick 是序列里最小的时间单位，一拍 = 960 tick。",
+   "deeper": "屏幕上 001 . 02 . 480 = 第 1 小节第 2 拍过了 480 tick（半拍）。"
+  },
+  {
+   "id": "note-name",
+   "label": "音名（C、D、E…）",
+   "level": "入门",
+   "match": [
+    "(?<![A-Za-z0-9])[A-G](?:b|#)?[0-8](?![0-9A-Za-z])(?<!B[1-3])",
+    "(?<=[=＝] ?)B[1-3](?![0-9])",
+    "音名"
+   ],
+   "basic": "音名就是音的名字：C D E F G A B 七个字母循环。后面的数字是第几个八度，C4 = 钢琴中间的“中央 C”。",
+   "deeper": "字母后带 b 是“降”（低半音），如 Bb、Eb；带 # 是“升”。C2 比 C4 低两个八度。本课贝斯用 C2、Bb1、G1…"
+  },
+  {
+   "id": "chord-name",
+   "label": "和弦名（Cm9、Abmaj7）",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])[A-G](?:b|#)?(?:maj7|maj9|m7|m9|m11|13|m|7|9)(?![A-Za-z0-9])"
+   ],
+   "basic": "和弦名的第一个字母是根音；m = 小和弦（偏暗），maj7 = 大七（温暖），数字 7、9 是往上叠的音。",
+   "deeper": "Cm9 = C Eb G Bb D 五个音；Abmaj7 = Ab C Eb G。本课把它们重采样成一个和弦垫再切。"
+  },
+  {
+   "id": "chord",
+   "label": "和弦",
+   "level": "入门",
+   "match": [
+    "和弦"
+   ],
+   "basic": "和弦 = 同时响的 3 个以上的音，给旋律一个“情绪背景”。",
+   "deeper": "MPC Sample 没有和弦模式：16 LEVELS 叠录，或 RESAMPLE 成一个和弦采样（G6）。"
+  },
+  {
+   "id": "minor",
+   "label": "小调",
+   "level": "入门",
+   "match": [
+    "小调"
+   ],
+   "basic": "小调听起来偏暗、偏忧郁；大调偏明亮。“C 小调”就是以 C 为家的暗色音阶。",
+   "deeper": "C 小调的音：C D Eb F G Ab Bb。本课的贝斯和和弦都只用这些音。"
+  },
+  {
+   "id": "major",
+   "label": "大调",
+   "level": "进阶",
+   "match": [
+    "大调"
+   ],
+   "basic": "大调听起来明亮、开心；“C 大调”就是钢琴白键 C D E F G A B。",
+   "deeper": "级数（1–7）就是在大调里数第几个音。"
+  },
+  {
+   "id": "root",
+   "label": "根音",
+   "level": "进阶",
+   "match": [
+    "根音"
+   ],
+   "basic": "根音是和弦的“名字音”和最低的支撑音，Cm9 的根音是 C。",
+   "deeper": "贝斯通常弹根音，和弦才站得稳。"
+  },
+  {
+   "id": "octave",
+   "label": "八度",
+   "level": "进阶",
+   "match": [
+    "八度"
+   ],
+   "basic": "一个八度 = 12 个半音，音名相同、高低差一倍，比如 C3 和 C4。",
+   "deeper": "16 个垫装不下时，本课把个别音移八度（标 *），和弦名不变。"
+  },
+  {
+   "id": "semitone",
+   "label": "半音",
+   "level": "入门",
+   "match": [
+    "半音",
+    "(?<![A-Za-z0-9])Semi( Tune)?(?![A-Za-z])"
+   ],
+   "basic": "半音是两个相邻音的最小距离，钢琴上相邻的两个键（含黑键）就差一个半音。",
+   "deeper": "MPC Sample Tune 页 K1 Semi Tune 以半音为单位（−24…+24），K2 Fine Tune 以音分为单位（手册 p.27）。"
+  },
+  {
+   "id": "tune",
+   "label": "Tune 调音",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])Tune(?![A-Za-z])",
+    "调音器",
+    "调音"
+   ],
+   "basic": "Tune = 改变一个采样的音高。往下调更沉，往上调更亮。",
+   "deeper": "Sample 页 B2 → Tune：K1 Semi Tune、K2 Fine Tune（手册 p.27）。先用手机调音器确认原音高。"
+  },
+  {
+   "id": "bass",
+   "label": "贝斯 Bass",
+   "level": "入门",
+   "match": [
+    "贝斯",
+    "(?<![A-Za-z0-9])Bass(?![A-Za-z])",
+    "(?<![A-Za-z0-9])bass(?![A-Za-z])",
+    "808"
+   ],
+   "basic": "贝斯是最低的旋律线，给 beat “底下的厚度”，常跟着底鼓走。",
+   "deeper": "本课贝斯用 16 LEVELS Tune 铺成 16 个音：PAD 4 = G1，照“音名与垫位”表按。"
+  },
+  {
+   "id": "pad",
+   "label": "垫 Pad",
+   "level": "入门",
+   "match": [
+    "垫(?!位)",
+    "(?<![A-Za-z0-9])PAD ?\\d+(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Pads?(?![A-Za-z])"
+   ],
+   "basic": "垫 = MPC 上那 16 个可以敲的方块，每个垫放一个声音。",
+   "deeper": "垫号 1–16 从左下往右上数；PAD BANK 切换 A–H 组，所以一共 128 个位置。"
+  },
+  {
+   "id": "pad-bank",
+   "label": "PAD BANK 垫组",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])PAD BANK(?![A-Za-z])",
+    "[A-H] 组"
+   ],
+   "basic": "PAD BANK 切换垫组：同样 16 个垫，换一组就是另外 16 个声音。",
+   "deeper": "本课约定：E 组贝斯、F 组和弦、G 组人声。"
+  },
+  {
+   "id": "sample",
+   "label": "采样 Sample",
+   "level": "入门",
+   "match": [
+    "采样(?!器)",
+    "(?<![A-Za-z0-9])[Ss]amples?(?![A-Za-z])"
+   ],
+   "basic": "采样 = 一小段录下来的声音（一下鼓、一个音、一句话），放到垫上就能敲。",
+   "deeper": "90 年代 boom bap 的灵魂就是从唱片上采样再切碎重排。"
+  },
+  {
+   "id": "sampler",
+   "label": "采样器 / 鼓机",
+   "level": "进阶",
+   "match": [
+    "采样器",
+    "鼓机"
+   ],
+   "basic": "采样器能录声音并让你按键播放；鼓机能按顺序自动敲出鼓点。MPC 两样都是。",
+   "deeper": "SP-1200、S950、MPC60 都是 90 年代纽约制作人最常用的机器。"
+  },
+  {
+   "id": "chop",
+   "label": "切片 Chop",
+   "level": "入门",
+   "match": [
+    "切片",
+    "切碎",
+    "(?<![A-Za-z0-9])CHOP(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Chop(?![A-Za-z])",
+    "切点"
+   ],
+   "basic": "切片 = 把一段采样剪成几小块，每块放到一个垫上，可以打乱顺序重新弹。",
+   "deeper": "MPC Sample：CHOP（33）进入，K3 选 Threshold / Regions / Manual；SHIFT+B1 Extract、B2 Split、B3 Merge（手册 p.31–32）。"
+  },
+  {
+   "id": "slice-types",
+   "label": "Threshold / Regions / Manual",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])Threshold(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Regions( \\d+)?(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Manual(?![A-Za-z])"
+   ],
+   "basic": "三种切法：Threshold 按音量自动切，Regions 平均切 4/8/16 块，Manual 你自己拍切点。",
+   "deeper": "一改切片 Chop Type 就自动变成 Manual，而且不能 UNDO（手册 p.32）。"
+  },
+  {
+   "id": "extract",
+   "label": "Extract / Split / Merge",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])Extract(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Split(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Merge(?![A-Za-z])"
+   ],
+   "basic": "Extract 把一块导出成新采样；Split 把一块一分为二；Merge 把一块并进前一块。",
+   "deeper": "分别是 SHIFT + B1 / B2 / B3（手册 p.32）。"
+  },
+  {
+   "id": "loop",
+   "label": "Loop 循环",
+   "level": "入门",
+   "match": [
+    "(?<![A-Za-z0-9])[Ll]oops?(?![A-Za-z])",
+    "循环"
+   ],
+   "basic": "Loop = 一段反复播放的音乐片段，常是 1、2 或 4 小节。",
+   "deeper": "MPC 的 LOOP（34）键是让垫上的采样循环播放；“循环此段”是本页播放器的开关。"
+  },
+  {
+   "id": "break",
+   "label": "Break 鼓段",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])break(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Break(?![A-Za-z])"
+   ],
+   "basic": "break 是老唱片里只有鼓的那几小节，早期 hip-hop 把它采下来循环。",
+   "deeper": "例：Marley Marl 用 “Impeach the President” 的鼓做 “The Bridge”。"
+  },
+  {
+   "id": "one-shot",
+   "label": "One Shot / Note On",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])One Shot(?![A-Za-z])",
+    "(?<![A-Za-z0-9])NOTE ON(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Note On(?![A-Za-z])"
+   ],
+   "basic": "One Shot：敲一下整段播完；Note On：按住才响、松手就停。",
+   "deeper": "SHIFT + CHOP 切换 Note On；开了以后包络里的 Decay 变 Release（手册 p.32）。"
+  },
+  {
+   "id": "sequence",
+   "label": "序列 Sequence",
+   "level": "入门",
+   "match": [
+    "序列",
+    "(?<![A-Za-z0-9])Seq(uence)?(?![A-Za-z])",
+    "(?<![A-Za-z0-9])SEQ(?![A-Za-z])"
+   ],
+   "basic": "序列 = MPC 记下来的“你在什么时候敲了哪个垫”，按 PLAY 就自动回放。",
+   "deeper": "每个序列有自己的 BPM、长度；SEQ（30）进入 Sequence 页（手册 p.39）。"
+  },
+  {
+   "id": "overdub",
+   "label": "叠录 Overdub",
+   "level": "入门",
+   "match": [
+    "叠录",
+    "(?<![A-Za-z0-9])overdub(?![A-Za-z])"
+   ],
+   "basic": "叠录 = 序列循环时一圈一圈往上加，不抹掉之前录的。",
+   "deeper": "录到序列结尾会自动进入叠录（手册 p.41），所以可以一圈 kick、一圈 snare、一圈 hat。"
+  },
+  {
+   "id": "quantize",
+   "label": "量化 Quantize（Q）",
+   "level": "入门",
+   "match": [
+    "量化",
+    "(?<![A-Za-z0-9])Rec Quant(ize)?(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Q(?= ?[=＝]? ?1/)",
+    "(?<![A-Za-z0-9])TIME CORRECT(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Time Correct(?![A-Za-z])"
+   ],
+   "basic": "量化 = 把敲歪的音自动对齐到最近的格子上。",
+   "deeper": "SEQ 页 K2 设 Q、B3 开关 Rec Quant；Time Correct（SHIFT + PAD 14）事后对齐并可加 Swing（手册 p.39、p.59）。"
+  },
+  {
+   "id": "velocity",
+   "label": "力度 Velocity",
+   "level": "入门",
+   "match": [
+    "力度",
+    "(?<![A-Za-z0-9])[Vv]elocity(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Vel Sens(?![A-Za-z])"
+   ],
+   "basic": "力度 = 敲得多重，0–127。力度越大声音越响、越“冲”。",
+   "deeper": "STEP EDIT 里 K3 改单个音的力度（手册 p.43）；Amp Env 页 K3 Vel Sens 决定垫子对轻重有多敏感（p.26）。"
+  },
+  {
+   "id": "16levels",
+   "label": "16 LEVELS",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])16 LEVELS(?![A-Za-z])",
+    "(?<![A-Za-z0-9])16 Levels?(?![A-Za-z])"
+   ],
+   "basic": "16 LEVELS 把一个声音复制到 16 个垫上，每个垫略有不同（力度、滤波或音高）。",
+   "deeper": "选 Tune 类型时原音高在 PAD 4，往上每垫升高，可以当小键盘弹贝斯（手册 p.22/35）。"
+  },
+  {
+   "id": "note-repeat",
+   "label": "NOTE REPEAT 连打",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])NOTE REPEAT(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Note Repeat(?![A-Za-z])",
+    "连击",
+    "连打"
+   ],
+   "basic": "按住 NOTE REPEAT 再按住垫，机器会按设定的分度自动连敲，适合踩镲。",
+   "deeper": "B1–B3 选分度，按住 SHIFT 换三连音；Swing 设置也作用到它（手册 p.19、p.59）。"
+  },
+  {
+   "id": "mute-group",
+   "label": "Mute Group 互斥组",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])Mute Group(?![A-Za-z])"
+   ],
+   "basic": "同一个 Mute Group 里的垫互相“掐断”：后敲的会让先响的停下。",
+   "deeper": "最常见：开镲和闭镲放同一组（手册 p.28）。"
+  },
+  {
+   "id": "metronome",
+   "label": "节拍器 / 预备拍",
+   "level": "入门",
+   "match": [
+    "节拍器",
+    "预备拍",
+    "(?<![A-Za-z0-9])COUNT-IN(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Count-in(?![A-Za-z])"
+   ],
+   "basic": "节拍器是录音时“哒哒哒”的提示声；预备拍是开录前先数一小节。",
+   "deeper": "SHIFT + TAP TEMPO 切 Off / On / Record；SHIFT + PAD 4 开关 COUNT-IN（手册 p.40）。"
+  },
+  {
+   "id": "double-seq",
+   "label": "DOUBLE SEQ",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])DOUBLE SEQ(?![A-Za-z])"
+   ],
+   "basic": "DOUBLE SEQ 把序列长度翻倍，并把已录的音符复制一份。",
+   "deeper": "SHIFT + PAD 3（手册 p.42）。先录 1 小节再翻倍，最省事。"
+  },
+  {
+   "id": "step-edit",
+   "label": "STEP EDIT",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])STEP EDIT(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Step Edit(?![A-Za-z])"
+   ],
+   "basic": "STEP EDIT 一步一步查看、修改序列里的每一个音。",
+   "deeper": "SHIFT + SEQ 进入；ENCODER 走步、K3 改力度、推 FADER 前后挪（手册 p.43）。"
+  },
+  {
+   "id": "resample",
+   "label": "RESAMPLE 重采样",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])RESAMPLE(?![A-Za-z])",
+    "重采样",
+    "固化"
+   ],
+   "basic": "RESAMPLE 把正在播放的整条序列录成一个新采样。",
+   "deeper": "SHIFT + PAD 11（手册 p.42）。用它把和弦或效果“固化”，再切片。"
+  },
+  {
+   "id": "mix",
+   "label": "混音 Mix",
+   "level": "入门",
+   "match": [
+    "混音",
+    "(?<![A-Za-z0-9])Mix(?![A-Za-z])"
+   ],
+   "basic": "混音 = 调好每个声音的大小、左右位置和效果，让它们一起听着舒服。",
+   "deeper": "Sample 页 B1 → Mix：K1 Volume、K3 Pan（手册 p.25）。"
+  },
+  {
+   "id": "volume",
+   "label": "音量 / dB",
+   "level": "入门",
+   "match": [
+    "音量",
+    "(?<![A-Za-z0-9])dB(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Volume(?![A-Za-z])"
+   ],
+   "basic": "dB（分贝）表示音量大小；0 dB 是原样，−4 dB 小一点，+2 dB 大一点。",
+   "deeper": "MPC Sample 每个垫 −74…+6 dB（手册 p.25）。本课：Kick 0、Snare −1、Hat −4 dB。"
+  },
+  {
+   "id": "pan",
+   "label": "声像 Pan",
+   "level": "入门",
+   "match": [
+    "声像",
+    "(?<![A-Za-z0-9])Pan(?![A-Za-z])"
+   ],
+   "basic": "声像 = 声音在左右耳之间的位置；C 是正中间，10R 是偏右一点。",
+   "deeper": "MPC Sample：50L – C – 50R（手册 p.25）。鼓的 kick、snare 放中间，hat 稍偏一侧。"
+  },
+  {
+   "id": "filter",
+   "label": "滤波 Filter（LPF / HPF）",
+   "level": "进阶",
+   "match": [
+    "滤波",
+    "(?<![A-Za-z0-9])Filter(?![A-Za-z])",
+    "(?<![A-Za-z0-9])[LH]PF\\d?(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Cutoff(?![A-Za-z])",
+    "低通",
+    "高通"
+   ],
+   "basic": "Filter 切掉一部分频率：LPF（低通）切高频让声音变暗，HPF（高通）切低频让声音变薄。",
+   "deeper": "Sample 页 B3 → Filter：K1 Cutoff 0–127、K2 Reso、K3 Type（手册 p.29）。"
+  },
+  {
+   "id": "hz",
+   "label": "频率 Hz",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])Hz(?![A-Za-z])",
+    "低频",
+    "高频"
+   ],
+   "basic": "Hz 是频率单位：数字越小越低沉，越大越尖。kick 的“咚”在几十 Hz。",
+   "deeper": "Cutoff 0–127 和 Hz 的对应手册没写，靠耳朵。"
+  },
+  {
+   "id": "envelope",
+   "label": "包络 Amp Env / Decay",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])Amp Env(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Decay(?![A-Za-z])",
+    "包络",
+    "尾巴"
+   ],
+   "basic": "包络决定一个声音怎么开始、怎么消失；Decay 越小，声音结束得越快（尾巴越短）。",
+   "deeper": "Sample 页 B1 → Amp Env：K1 Attack、K2 Decay、K3 Vel Sens（手册 p.26）。"
+  },
+  {
+   "id": "trim",
+   "label": "Trim 修剪",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])Trim(?![A-Za-z])",
+    "修剪"
+   ],
+   "basic": "Trim = 改采样的起点和终点，把多余的头尾剪掉。",
+   "deeper": "Sample 页 B1 → Trim：K1 Start、K2 End（手册 p.25）。收短 kick 的尾巴最直接。"
+  },
+  {
+   "id": "knob-fx",
+   "label": "Knob FX 效果",
+   "level": "进阶",
+   "match": [
+    "(?<![A-Za-z0-9])KNOB FX(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Knob FX(?![A-Za-z])",
+    "效果"
+   ],
+   "basic": "Knob FX 是可以用旋钮实时控制的效果，比如混响、延迟、复古机器模拟。",
+   "deeper": "SHIFT + KNOB FX 选效果并选要受影响的垫，一次只能开一个（手册 p.51–55）。"
+  },
+  {
+   "id": "vintage",
+   "label": "Vintage Emulator",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])Vintage Emulator(?![A-Za-z])",
+    "(?<![A-Za-z0-9])Vinyl Emulator(?![A-Za-z])"
+   ],
+   "basic": "Vintage Emulator 模仿老机器（MPC60、SP1200、MPC3000）的颗粒声。",
+   "deeper": "K1 Type 选 MPC3000 / MPC60 / SP1200 / SP1200Ring（手册 p.55）。Vinyl Emulator 模仿黑胶噪声。"
+  },
+  {
+   "id": "lofi",
+   "label": "低保真 Lo-fi",
+   "level": "进阶",
+   "match": [
+    "低保真",
+    "(?<![A-Za-z0-9])[Ll]o-?fi(?![A-Za-z])",
+    "黑胶"
+   ],
+   "basic": "Lo-fi = 故意让声音“旧”一点：有颗粒、有噪声、高频少。",
+   "deeper": "老采样器位数低（SP-1200 是 12-bit），声音粗，这正是 90s 的味道。"
+  },
+  {
+   "id": "compressor",
+   "label": "压缩 Compressor",
+   "level": "高级",
+   "match": [
+    "压缩",
+    "(?<![A-Za-z0-9])COMPRESSOR(?![A-Za-z])",
+    "侧链"
+   ],
+   "basic": "压缩器把大声的地方压小，让整体更紧、更“抱团”。",
+   "deeper": "SHIFT + PAD 5 打开 MPC Sample 的整体压缩（手册 p.56）。"
+  },
+  {
+   "id": "boombap",
+   "label": "Boom bap",
+   "level": "入门",
+   "match": [
+    "(?<![A-Za-z0-9])Boom [Bb]ap(?![A-Za-z])",
+    "(?<![A-Za-z0-9])boom bap(?![A-Za-z])"
+   ],
+   "basic": "Boom bap 是 90 年代纽约 hip-hop 的鼓风格：Boom = 底鼓，Bap = 军鼓，鼓声硬、律动摇。",
+   "deeper": "典型做法：从唱片采样 → 切碎重排 → 加重的 kick/snare + 轻微 swing。"
+  },
+  {
+   "id": "machines",
+   "label": "SP-1200 / S950 / MPC60",
+   "level": "高级",
+   "match": [
+    "(?<![A-Za-z0-9])SP-?1200(?![A-Za-z])",
+    "(?<![A-Za-z0-9])S950(?![A-Za-z])",
+    "(?<![A-Za-z0-9])MPC60(?![A-Za-z])",
+    "(?<![A-Za-z0-9])SP12(?![A-Za-z])",
+    "(?<![A-Za-z0-9])EPS-16\\+?(?![A-Za-z])",
+    "(?<![A-Za-z0-9])ASR-10(?![A-Za-z])",
+    "(?<![A-Za-z0-9])SDD-2000(?![A-Za-z])",
+    "(?<![A-Za-z0-9])TR-808(?![A-Za-z])"
+   ],
+   "basic": "这些都是 80–90 年代的采样器 / 鼓机型号，传奇制作人用它们做出了 boom bap。",
+   "deeper": "SP-1200：E-mu，12-bit，采样时间约 10 秒；S950：Akai 采样器；MPC60：Akai 第一台 MPC。"
+  },
+  {
+   "id": "digging",
+   "label": "挖唱片 Digging",
+   "level": "进阶",
+   "match": [
+    "挖唱片",
+    "(?<![A-Za-z0-9])digging(?![A-Za-z])",
+    "扒带",
+    "扒谱"
+   ],
+   "basic": "Digging = 去唱片店翻老唱片找可采样的片段；扒带 / 扒谱 = 照原曲一模一样抄下来。",
+   "deeper": "本页声音全是代码原创合成，不是原曲扒带。"
+  },
+  {
+   "id": "staff",
+   "label": "五线谱 / 鼓谱",
+   "level": "进阶",
+   "match": [
+    "五线谱",
+    "鼓谱",
+    "符头",
+    "谱子"
+   ],
+   "basic": "鼓谱用五线谱的位置表示不同的鼓：下面是 kick、中间是 snare、上面的 x 是 hat。",
+   "deeper": "符头 = 音符的“头”，x 形符头专门用于镲片。"
+  }
+ ]
+}

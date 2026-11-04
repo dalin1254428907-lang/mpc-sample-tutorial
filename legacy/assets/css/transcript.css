@@ -1,0 +1,26 @@
+/* 视频中文字幕 / 逐字稿 + AI 中文配音面板（第一章）。仅新增类，沿用 style.css 的配色变量 */
+.tx { margin: 6px 0 22px; }
+.tx-panel { padding: 4px 14px 10px; }
+.tx-panel > summary { font-size: 16px; }
+.tx-meta { color: var(--gray); font-weight: 400; font-size: 13px; margin-left: 6px; }
+.tx-tools { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 14px; color: var(--gray); margin: 2px 0 8px; }
+.tx-tools input { accent-color: var(--yellow); }
+.tx-status { font-size: 12px; color: var(--gray); }
+.tx-list { list-style: none; margin: 0; padding: 4px 6px; max-height: 340px; overflow-y: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; scroll-behavior: smooth; }
+.tx-list li { display: grid; grid-template-columns: 54px 1fr; gap: 0 10px; padding: 5px 8px; border-radius: 8px; font-size: 15px; line-height: 1.5; }
+.tx-list li:hover { background: var(--panel2); }
+.tx-list li.on { background: #2A2700; box-shadow: inset 3px 0 0 var(--yellow); }
+.tx-list li.on .tx-zh { color: var(--yellow); }
+.tx-time { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; color: var(--cyan); padding-top: 2px; }
+.tx-en { grid-column: 2; display: none; color: var(--gray); font-size: 13px; }
+.tx.show-en .tx-en { display: block; }
+.tx-credit { font-size: 12px; color: var(--gray); margin: 8px 0 0; }
+.tx-dub { background: var(--panel); border: 2px solid var(--line); border-radius: 14px; padding: 8px 14px; margin: 8px 0 0; }
+.tx-dub.on { border-color: var(--yellow); }
+.tx-dub-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; font-size: 14px; }
+.tx-dub-switch b { color: var(--yellow); }
+.tx-dub-switch input, .tx-mix input { accent-color: var(--yellow); }
+.tx-mix { color: var(--gray); display: inline-flex; align-items: center; gap: 6px; }
+.dub-state { color: var(--gray); font-size: 12px; }
+.dub-audio { width: 100%; height: 36px; margin: 6px 0 2px; }
+.tx-dub-note { font-size: 12px; color: var(--gray); margin: 4px 0 2px; }

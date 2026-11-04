@@ -1,0 +1,962 @@
+{
+ "id": "demo-01",
+ "title": "在 MPC Sample 上做：Premier 式 Boom Bap",
+ "mode": "steps",
+ "lab": "01",
+ "steps": [
+  {
+   "id": "project",
+   "title": "① 打开 Project 菜单",
+   "controls": [
+    "SHIFT",
+    "PAD 16"
+   ],
+   "press": "按住 <kbd>SHIFT</kbd>，再按 <kbd>PAD 16</kbd>（PROJECT）。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/project-menu.png",
+    "marks": [
+     {
+      "x": 7,
+      "y": 28,
+      "n": 1
+     },
+     {
+      "x": 7,
+      "y": 58,
+      "n": 2
+     },
+     {
+      "x": 7,
+      "y": 43,
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① Load Project：装工程和鼓组（Kits）都在这里。",
+    "② New Project：清空重来——先存再新建。",
+    "③ Save Project：最后一步用来保存。"
+   ],
+   "next": "转 ENCODER 到 Load Project，按下 ENCODER。",
+   "ref": "手册 p.62",
+   "grid": null
+  },
+  {
+   "id": "kits",
+   "title": "② Internal → Kits",
+   "controls": [
+    "ENCODER"
+   ],
+   "press": "转 <kbd>ENCODER</kbd> 选中 <b>Kits</b>，按下 <kbd>ENCODER</kbd> 进入。",
+   "screen": {
+    "type": "list",
+    "sim": true,
+    "head": "Internal",
+    "items": [
+     "Demos",
+     "Kits",
+     "User"
+    ],
+    "sel": 1,
+    "foot": "Load Project",
+    "marks": [
+     {
+      "el": "head",
+      "n": 1
+     },
+     {
+      "el": "sel",
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① 顶部选 Internal（机内存储；有 microSD 卡时还能切到外部）。",
+    "② Kits = 整套鼓组；Demos = 示范工程；User = 你自己存的工程（手册 p.62 列出的三类）。"
+   ],
+   "next": "进入 Kits，找鼓组。",
+   "ref": "手册 p.62；Akai 支持文章《Where Are The Factory Kits?》",
+   "infer": "这一页的画面是按手册文字重绘的（推断），手册没有这一页的截图。",
+   "grid": null
+  },
+  {
+   "id": "loadkit",
+   "title": "③ 选鼓组 → B3 Load Kit",
+   "controls": [
+    "ENCODER",
+    "B3"
+   ],
+   "press": "转 <kbd>ENCODER</kbd> 选一个 <b>boom bap</b> 类或 <b>MPC Legends</b> 鼓组 → 按 <kbd>B3</kbd>（Load Kit）。",
+   "screen": {
+    "type": "list",
+    "sim": true,
+    "head": "Kits",
+    "items": [
+     "（分类 / 鼓组名以屏幕为准）",
+     "MPC Legends",
+     "…"
+    ],
+    "sel": 1,
+    "foot": "B3 = Load Kit",
+    "marks": [
+     {
+      "el": "sel",
+      "n": 1
+     },
+     {
+      "el": "foot",
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① MPC Legends 是 Akai 官方视频里出现过的出厂鼓组；boom bap 分类是官方视频口述，具体鼓组名本页不编造，以你的屏幕为准。",
+    "② B3 Load Kit = 只装声音、不装它自带的 4 条序列；按 ENCODER 则连序列一起装（手册 p.62）。"
+   ],
+   "next": "按 SAMPLE，把 16 个垫敲一遍，用纸记下 kick / snare / hat 在哪个垫。",
+   "ref": "手册 p.62；Akai 官方视频《Making a Hip Hop Beat》",
+   "infer": "列表画面为重绘（推断）。",
+   "grid": null
+  },
+  {
+   "id": "audition",
+   "title": "④ 试听、认垫",
+   "controls": [
+    "SAMPLE",
+    "PAD 1",
+    "PAD BANK"
+   ],
+   "press": "按 <kbd>SAMPLE</kbd>（29）→ 逐个敲垫；<kbd>PAD BANK</kbd>（25）切到 B 组再听一遍。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/sample-mix.png",
+    "marks": [
+     {
+      "x": 30,
+      "y": 25,
+      "n": 1
+     },
+     {
+      "x": 50,
+      "y": 55,
+      "n": 2
+     },
+     {
+      "x": 85,
+      "y": 25,
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① 垫号 + 采样名：这就是你刚敲的声音（例图里是一个 Kick）。",
+    "② 波形：鼓声应该是“一下”，尾巴越短越紧。",
+    "③ 小图标：Note On / 反向 / Loop / 16 Levels 开着时会亮。"
+   ],
+   "next": "找到 kick 后，按下面的标准判断要不要换。",
+   "ref": "手册 p.24",
+   "grid": null
+  },
+  {
+   "id": "pickkick",
+   "title": "⑤ 选 kick（不满意就换）",
+   "controls": [
+    "SAMPLE SELECT",
+    "ENCODER",
+    "B3"
+   ],
+   "press": "敲 kick 垫 → <kbd>SAMPLE SELECT</kbd>（26）→ 转 <kbd>ENCODER</kbd> 选文件夹 → 按下进入 → 转着试听（<kbd>B3</kbd> 开关自动试听）→ 按 <kbd>ENCODER</kbd> 装到垫上。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/browser-folders.png",
+    "marks": [
+     {
+      "x": 50,
+      "y": 8,
+      "n": 1
+     },
+     {
+      "x": 20,
+      "y": 40,
+      "n": 2
+     },
+     {
+      "x": 15,
+      "y": 88,
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① Internal / 外部卡切换（B2）。",
+    "② 采样分类文件夹（例图：808、Bass、Break、Claps…）。",
+    "③ 当前位置：Samples。",
+    "<b>90s 纽约 kick 的挑选标准：</b>短（不拖长尾）、低频圆（“咚”而不是“轰”）、开头带一点点 click（“哒”的起音），在小喇叭上也听得见。"
+   ],
+   "next": "装好后调 kick。",
+   "ref": "手册 p.7、p.36",
+   "grid": null
+  },
+  {
+   "id": "kicktrim",
+   "title": "⑥ 调 kick：收短尾巴（Trim）",
+   "controls": [
+    "SAMPLE",
+    "B1",
+    "K2"
+   ],
+   "press": "<kbd>SAMPLE</kbd> → 敲 kick 垫 → <kbd>B1</kbd> 翻到 <b>Trim</b> → 转 <kbd>K2</kbd>（End）往左收。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/sample-trim.png",
+    "marks": [
+     {
+      "x": 15,
+      "y": 8,
+      "n": 1
+     },
+     {
+      "x": 50,
+      "y": 55,
+      "n": 2
+     },
+     {
+      "x": 45,
+      "y": 86,
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① Trim 页（B1 在 Trim / Mix / Amp Env 之间轮换）。",
+    "② 波形里亮的部分 = 会播放的部分。",
+    "③ K2 End：终点（0–100%）。kick 尾巴收到“咚”刚结束（经验值：保留约前 60–80%）。"
+   ],
+   "next": "再到 Tune 页把 kick 调圆一点。",
+   "ref": "手册 p.25",
+   "grid": null
+  },
+  {
+   "id": "kicktune",
+   "title": "⑦ 调 kick：音高与力度感",
+   "controls": [
+    "B2",
+    "K1",
+    "B1",
+    "K3"
+   ],
+   "press": "<kbd>B2</kbd> 翻到 <b>Tune</b> → <kbd>K1</kbd> Semi Tune；再 <kbd>B1</kbd> 翻到 <b>Amp Env</b> → <kbd>K3</kbd> Vel Sens。",
+   "screen": {
+    "type": "param",
+    "sim": true,
+    "tabs": [
+     "Trim",
+     "Tune",
+     "Filter"
+    ],
+    "on": 1,
+    "name": "A01  你的 Kick",
+    "knobs": [
+     [
+      "Semi Tune",
+      "-1"
+     ],
+     [
+      "Fine Tune",
+      "0"
+     ],
+     [
+      "Warp",
+      "Off"
+     ]
+    ],
+    "marks": [
+     {
+      "el": "tab",
+      "n": 1
+     },
+     {
+      "el": "k1",
+      "n": 2
+     },
+     {
+      "el": "k2",
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① Tune 页：K1 Semi Tune（−24…+24 半音）、K2 Fine Tune（−90…+90 音分）。",
+    "② kick 往下调 1–2 个半音会更“圆”更沉（经验值），太低会糊。",
+    "③ Fine 微调让 kick 和贝斯不打架（经验值，靠耳朵）。Amp Env 页 K3 Vel Sens（0–127）决定敲轻敲重差多少：想要 ghost note 就别设 0。"
+   ],
+   "next": "轮到 snare。",
+   "ref": "手册 p.26–27",
+   "infer": "参数页画面为重绘（推断），数值为经验值。",
+   "grid": null
+  },
+  {
+   "id": "snare",
+   "title": "⑧ 调 snare：厚、带房间感",
+   "controls": [
+    "SAMPLE",
+    "B1",
+    "K1",
+    "B3"
+   ],
+   "press": "敲 snare 垫 → <kbd>B1</kbd> 翻到 <b>Mix</b> → <kbd>K1</kbd> Volume；嫌太亮就 <kbd>B3</kbd> 翻到 <b>Filter</b> 稍微收高频。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/sample-mix.png",
+    "marks": [
+     {
+      "x": 15,
+      "y": 8,
+      "n": 1
+     },
+     {
+      "x": 12,
+      "y": 86,
+      "n": 2
+     },
+     {
+      "x": 75,
+      "y": 86,
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① Mix 页。",
+    "② K1 Volume（−74…+6 dB）：snare 约 −1 dB（本课视频的数值）。",
+    "③ K3 Pan（50L–C–50R）：snare 放中间 C。",
+    "<b>挑选标准：</b>厚（中低频有“肉”）、有一点房间感或粗糙的颗粒；Tune 可 0～+1 半音让它更“啪”（经验值）。"
+   ],
+   "next": "轮到 hat。",
+   "ref": "手册 p.25、p.29",
+   "grid": null
+  },
+  {
+   "id": "hat",
+   "title": "⑨ 调 hat：紧、暗一点",
+   "controls": [
+    "B3",
+    "K1",
+    "K3",
+    "B2",
+    "K2"
+   ],
+   "press": "敲 closed hat 垫 → <kbd>B3</kbd> 翻到 <b>Filter</b> → <kbd>K3</kbd> Type 选 <b>LPF2</b> → <kbd>K1</kbd> Cutoff 往下一点；<kbd>B2</kbd> 翻到 <b>Play</b> → <kbd>K2</kbd> Mute Group 设 1（open hat 也设 1）。",
+   "screen": {
+    "type": "param",
+    "sim": true,
+    "tabs": [
+     "Filter",
+     "Filt Env",
+     ""
+    ],
+    "on": 0,
+    "name": "A03  你的 Closed Hat",
+    "knobs": [
+     [
+      "Cutoff",
+      "96"
+     ],
+     [
+      "Reso",
+      "0"
+     ],
+     [
+      "Type",
+      "LPF2"
+     ]
+    ],
+    "marks": [
+     {
+      "el": "k3",
+      "n": 1
+     },
+     {
+      "el": "k1",
+      "n": 2
+     },
+     {
+      "el": "name",
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① Type：LPF = 低通，切掉刺耳的高频，hat 就“暗”了。",
+    "② Cutoff 0–127：从 127 往下慢慢转，到不刺耳为止（经验值 90–105）。",
+    "③ 挑选标准：短、紧的 closed hat；音量约 −4 dB、Pan 约 10R（本课视频数值）。和 open hat 同一个 Mute Group，闭镲会掐断开镲（手册 p.28）。"
+   ],
+   "next": "声音准备好了，去设速度。",
+   "ref": "手册 p.28–29",
+   "infer": "参数页为重绘（推断），Cutoff 数值为经验值。",
+   "grid": null
+  },
+  {
+   "id": "bpm",
+   "title": "⑩ 设 BPM 92",
+   "controls": [
+    "SEQ",
+    "B1",
+    "ENCODER"
+   ],
+   "press": "按 <kbd>SEQ</kbd>（30）→ 敲一个暗灯的垫选空序列 → <b>按住</b> <kbd>B1</kbd> → 转 <kbd>ENCODER</kbd> 到 92 → 松开 B1。",
+   "screen": {
+    "type": "seq",
+    "sim": true,
+    "bpm": "92.00",
+    "seq": "Seq A01",
+    "sig": "4/4",
+    "metro": "On",
+    "countin": false,
+    "state": "stop",
+    "pos": "001 . 01",
+    "ticks": "000",
+    "bars": "1 Bar",
+    "q": "1/16",
+    "swing": "50%",
+    "bpmmode": "SEQ",
+    "recq": true,
+    "marks": {
+     "popup": 1,
+     "bpmmode": 2
+    },
+    "popup": {
+     "title": "BPM",
+     "value": "92.00"
+    }
+   },
+   "see": [
+    "① Sequence BPM 窗：按 ENCODER 在整数 / 小数之间切换。",
+    "② BPM: SEQ = 每条序列各自的速度（B2 可切到 GBL 全局）。"
+   ],
+   "next": "设序列长度和量化。",
+   "ref": "手册 p.39",
+   "infer": "Sequence 页按手册截图重绘，数值为本课设定。",
+   "grid": null
+  },
+  {
+   "id": "length",
+   "title": "⑪ 长度 1 小节、Q = 1/16",
+   "controls": [
+    "K1",
+    "K2",
+    "B3"
+   ],
+   "press": "转 <kbd>K1</kbd> 设 <b>1 Bar</b>；转 <kbd>K2</kbd> 设 <b>Q 1/16</b>；按 <kbd>B3</kbd> 让 <b>Rec Quant</b> 变亮（录音量化开）。",
+   "screen": {
+    "type": "seq",
+    "sim": true,
+    "bpm": "92.00",
+    "seq": "Seq A01",
+    "sig": "4/4",
+    "metro": "On",
+    "countin": false,
+    "state": "stop",
+    "pos": "001 . 01",
+    "ticks": "000",
+    "bars": "1 Bar",
+    "q": "1/16",
+    "swing": "50%",
+    "bpmmode": "SEQ",
+    "recq": true,
+    "marks": {
+     "bars": 1,
+     "q": 2,
+     "recq": 3
+    }
+   },
+   "see": [
+    "① 序列长度：先 1 小节，录完再 DOUBLE SEQ 成 2 小节。",
+    "② Q 1/16：每小节 16 格，敲的音会吸到最近的格子上。",
+    "③ Rec Quant 亮 = 录音时自动对齐。"
+   ],
+   "next": "设 Swing 58%。",
+   "ref": "手册 p.39",
+   "grid": null
+  },
+  {
+   "id": "swing",
+   "title": "⑫ Swing 58%（K3 · RT Swing）",
+   "controls": [
+    "K3"
+   ],
+   "press": "还在 Sequence 页：转 <kbd>K3</kbd>，把 <b>RT Swing</b> 调到 <b>58%</b>。",
+   "screen": {
+    "type": "seq",
+    "sim": true,
+    "bpm": "92.00",
+    "seq": "Seq A01",
+    "sig": "4/4",
+    "metro": "On",
+    "countin": false,
+    "state": "stop",
+    "pos": "001 . 01",
+    "ticks": "000",
+    "bars": "1 Bar",
+    "q": "1/16",
+    "swing": "58%",
+    "bpmmode": "SEQ",
+    "recq": true,
+    "marks": {
+     "swing": 1,
+     "q": 2
+    }
+   },
+   "see": [
+    "① RT Swing（K3）：实时摇摆，只改播放手感、不挪动已录的音符，所有垫一起生效（手册 p.39）。",
+    "② 摇摆以 Q 为单位：Q = 1/16 时，每拍的第 2、4 个 16 分音符被往后推。50% = 不摇；58% = 每对 16 分音符里第二个落在这对时长的 58% 处，92 BPM 下约晚 <b>26 毫秒</b>。",
+    "另一条路：<kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <kbd>K3</kbd> Swing → <kbd>B3</kbd> Do It! 会把选中垫的音符真正挪位（手册 p.59）；这里的 Swing 是全局值，也影响 NOTE REPEAT。手册没写可调范围。"
+   ],
+   "next": "打开节拍器和预备拍。",
+   "ref": "手册 p.39、p.59",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare",
+     "Hats"
+    ],
+    "bars": 1
+   }
+  },
+  {
+   "id": "metro",
+   "title": "⑬ 节拍器 Record + 预备拍",
+   "controls": [
+    "SHIFT",
+    "TAP TEMPO",
+    "PAD 4"
+   ],
+   "press": "<kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd>（27）切到 <b>Record</b>；<kbd>SHIFT</kbd> + <kbd>PAD 4</kbd>（COUNT-IN）打开预备拍。",
+   "screen": {
+    "type": "seq",
+    "sim": true,
+    "bpm": "92.00",
+    "seq": "Seq A01",
+    "sig": "4/4",
+    "metro": "Rec",
+    "countin": true,
+    "state": "stop",
+    "pos": "001 . 01",
+    "ticks": "000",
+    "bars": "1 Bar",
+    "q": "1/16",
+    "swing": "58%",
+    "bpmmode": "SEQ",
+    "recq": true,
+    "marks": {
+     "metro": 1,
+     "countin": 2
+    }
+   },
+   "see": [
+    "① 节拍器状态 Off / On / Record（只在录音时响）。",
+    "② 1234 图标变红 = 预备拍开：录音前先数 1 小节。"
+   ],
+   "next": "开始录 kick。",
+   "ref": "手册 p.40",
+   "grid": null
+  },
+  {
+   "id": "reckick",
+   "title": "⑭ 录 kick（第 1、8、11 步）",
+   "controls": [
+    "SEQ RECORD",
+    "PLAY",
+    "PAD 1"
+   ],
+   "press": "<kbd>SEQ RECORD</kbd>（38）→ <kbd>PLAY</kbd>（39）→ 数完 1 小节预备拍 → 只敲 <b>kick 垫</b>（例：PAD 1，以你纸上记的为准）。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/seq-record.png",
+    "marks": [
+     {
+      "x": 12,
+      "y": 62,
+      "n": 1
+     },
+     {
+      "x": 60,
+      "y": 62,
+      "n": 2
+     },
+     {
+      "x": 88,
+      "y": 10,
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① 红色圆点 = 正在录。",
+    "② 位置 小节 . 拍（右边小数字是 tick）。",
+    "③ Rec Quant 亮着：敲歪一点也会吸到格子上。SAMPLE 和 SEQ 一起闪 = Sample/Seq 模式，垫子仍是“敲声音”。"
+   ],
+   "next": "不要停，下一圈接着叠录 snare。",
+   "ref": "手册 p.41",
+   "grid": {
+    "layers": [
+     "Kick"
+    ],
+    "bars": 1
+   }
+  },
+  {
+   "id": "recsnare",
+   "title": "⑮ 叠录 snare（第 5、13 步）",
+   "controls": [
+    "PAD 2"
+   ],
+   "press": "序列走到结尾会自动进入叠录（overdub）：这一圈只敲 <b>snare 垫</b>（例：PAD 2）。",
+   "screen": {
+    "type": "seq",
+    "sim": true,
+    "bpm": "92.00",
+    "seq": "Seq A01",
+    "sig": "4/4",
+    "metro": "Rec",
+    "countin": true,
+    "state": "rec",
+    "pos": "001 . 02",
+    "ticks": "480",
+    "bars": "1 Bar",
+    "q": "1/16",
+    "swing": "58%",
+    "bpmmode": "SEQ",
+    "recq": true,
+    "marks": {
+     "state": 1,
+     "pos": 2
+    }
+   },
+   "see": [
+    "① 仍在录音（红）：每一圈都会叠加，不会抹掉上一圈。",
+    "② 第 5、13 步 = 第 2、4 拍，Boom bap 的 “Bap”。敲错：<kbd>SHIFT</kbd> + <kbd>−</kbd> 撤销这一遍。"
+   ],
+   "next": "再一圈：hat。",
+   "ref": "手册 p.41",
+   "infer": "录音状态画面为重绘。",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare"
+    ],
+    "bars": 1
+   }
+  },
+  {
+   "id": "rechat",
+   "title": "⑯ 叠录 hat（NOTE REPEAT 1/16）",
+   "controls": [
+    "NOTE REPEAT",
+    "B1",
+    "PAD 3"
+   ],
+   "press": "按住 <kbd>NOTE REPEAT</kbd>（24），用 <kbd>B1</kbd>–<kbd>B3</kbd> 选 <b>1/16</b>，再按住 <b>hat 垫</b>（例：PAD 3）一整圈；重拍按重一点、反拍轻一点。",
+   "screen": {
+    "type": "seq",
+    "sim": true,
+    "bpm": "92.00",
+    "seq": "Seq A01",
+    "sig": "4/4",
+    "metro": "Rec",
+    "countin": true,
+    "state": "rec",
+    "pos": "001 . 03",
+    "ticks": "240",
+    "bars": "1 Bar",
+    "q": "1/16",
+    "swing": "58%",
+    "bpmmode": "SEQ",
+    "recq": true,
+    "marks": {
+     "state": 1,
+     "swing": 2
+    }
+   },
+   "see": [
+    "① 继续叠录。",
+    "② Swing 58% 也作用在 NOTE REPEAT 上，所以连打出来的 hat 已经在“摇”。"
+   ],
+   "next": "按 STOP，再复制成 2 小节。",
+   "ref": "手册 p.19、p.59",
+   "infer": "力度是否跟随按压力度，需要实机确认（推断）。",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare",
+     "Hats"
+    ],
+    "bars": 1
+   }
+  },
+  {
+   "id": "double",
+   "title": "⑰ DOUBLE SEQ → 2 小节，补第 2 小节",
+   "controls": [
+    "STOP",
+    "SHIFT",
+    "PAD 3"
+   ],
+   "press": "<kbd>STOP</kbd>（40）→ <kbd>SHIFT</kbd> + <kbd>PAD 3</kbd>（DOUBLE SEQ）→ 再叠录第 2 小节的 kick（第 16 步）和很轻的 ghost snare（第 15 步）。",
+   "screen": {
+    "type": "seq",
+    "sim": true,
+    "bpm": "92.00",
+    "seq": "Seq A01",
+    "sig": "4/4",
+    "metro": "Rec",
+    "countin": true,
+    "state": "stop",
+    "pos": "001 . 01",
+    "ticks": "000",
+    "bars": "2 Bars",
+    "q": "1/16",
+    "swing": "58%",
+    "bpmmode": "SEQ",
+    "recq": true,
+    "marks": {
+     "bars": 1
+    }
+   },
+   "see": [
+    "① 长度从 1 Bar 变成 2 Bars，音符一起被复制（手册 p.42）。",
+    "第 2 小节第 15 步的 snare 是 ghost：轻到几乎听不见才对。"
+   ],
+   "next": "调力度和音量平衡。",
+   "ref": "手册 p.42",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare",
+     "Hats"
+    ],
+    "bars": 2
+   }
+  },
+  {
+   "id": "velocity",
+   "title": "⑱ 调力度 / 音量平衡",
+   "controls": [
+    "SHIFT",
+    "SEQ",
+    "ENCODER",
+    "K3"
+   ],
+   "press": "<kbd>SHIFT</kbd> + <kbd>SEQ</kbd> 进 <b>STEP EDIT</b> → 转 <kbd>ENCODER</kbd> 走到那一步 → 敲垫选中 → 转 <kbd>K3</kbd> 改力度。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/step-edit.png",
+    "marks": [
+     {
+      "x": 12,
+      "y": 62,
+      "n": 1
+     },
+     {
+      "x": 50,
+      "y": 62,
+      "n": 2
+     },
+     {
+      "x": 90,
+      "y": 62,
+      "n": 3
+     },
+     {
+      "x": 85,
+      "y": 90,
+      "n": 4
+     }
+    ]
+   },
+   "see": [
+    "① 选中的事件（哪个垫）。",
+    "② 它在序列里的位置 小节:拍:tick。",
+    "③ 力度 0–127：ghost snare 约 38，第 8 步 kick 约 95（本课数值）。",
+    "④ K3 = Velocity。音量平衡回 Sample 页 Mix：Kick 0 dB、Snare −1 dB、Hat −4 dB。"
+   ],
+   "next": "加贝斯。",
+   "ref": "手册 p.43、p.25",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare",
+     "Hats"
+    ],
+    "bars": 2
+   }
+  },
+  {
+   "id": "bass",
+   "title": "⑲ 贝斯：16 LEVELS Tune（PAD 4 = G1）",
+   "controls": [
+    "PAD BANK",
+    "SAMPLE",
+    "16 LEVELS",
+    "SHIFT"
+   ],
+   "press": "<kbd>PAD BANK</kbd> 切到 E 组 → PAD 1 装贝斯单音 → Tune 页把它调到 <b>G1</b> → 按 <kbd>16 LEVELS</kbd>（36）→ <kbd>SHIFT</kbd> + <kbd>16 LEVELS</kbd> 选 <b>Tune</b>。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/16-levels-type.png",
+    "marks": [
+     {
+      "x": 20,
+      "y": 32,
+      "n": 1
+     },
+     {
+      "x": 25,
+      "y": 58,
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① 16 Level 类型窗。",
+    "② Tune：原音高放在 PAD 4，往上每个垫更高（手册 p.22/35）。贝斯：第 1 步 C2 = PAD 9、第 8 步 Bb1 = PAD 7、第 11 步 G1 = PAD 4（第 2 小节见“音名与垫位”）。"
+   ],
+   "next": "SEQ RECORD → PLAY 照表录贝斯。",
+   "ref": "手册 p.22、p.35",
+   "infer": "每垫一个半音是按官方视频推算（推断）。",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare",
+     "Hats",
+     "Bass"
+    ],
+    "bars": 2
+   }
+  },
+  {
+   "id": "chop",
+   "title": "⑳ 采样切片：Premier 式切碎重排",
+   "controls": [
+    "CHOP",
+    "K3"
+   ],
+   "press": "和弦采样装到 F 组一个垫 → <kbd>SAMPLE</kbd> → <kbd>CHOP</kbd>（33）→ <kbd>K3</kbd> 选 <b>Regions 4</b>；每个和弦一块。详细按键反馈看「切片按键」标签。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/sample-chop.png",
+    "marks": [
+     {
+      "x": 15,
+      "y": 8,
+      "n": 1
+     },
+     {
+      "x": 50,
+      "y": 55,
+      "n": 2
+     },
+     {
+      "x": 85,
+      "y": 86,
+      "n": 3
+     }
+    ]
+   },
+   "see": [
+    "① Chop 页（Trim 旋钮被换成 Chop 旋钮）。",
+    "② 竖线 = 切点；垫 1、2… 就是第 1、2… 块。",
+    "③ K3 Chop Type：Threshold / Regions 4·8·16 / Manual。"
+   ],
+   "next": "每小节第 1、4、11 步按和弦块；然后加效果。",
+   "ref": "手册 p.31–32",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare",
+     "Hats",
+     "Bass",
+     "Sample"
+    ],
+    "bars": 2
+   }
+  },
+  {
+   "id": "fx",
+   "title": "㉑ 混音：Vintage Emulator（SP1200）",
+   "controls": [
+    "SHIFT",
+    "KNOB FX",
+    "ENCODER"
+   ],
+   "press": "<kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd>（32）→ 转 <kbd>ENCODER</kbd> 选 <b>Vintage Emulator</b> → 按下载入 → 只按和弦垫 → 退出后按 <kbd>KNOB FX</kbd> 打开，<kbd>K1</kbd> Type 选 <b>SP1200</b>。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/knob-fx-select.png",
+    "marks": [
+     {
+      "x": 35,
+      "y": 30,
+      "n": 1
+     },
+     {
+      "x": 88,
+      "y": 12,
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① 效果列表（往下翻有 Vintage Emulator、Vinyl Emulator）。",
+    "② 一次只能开一个 Knob FX；要叠黑胶声就先 RESAMPLE 固化再换（手册 p.42、p.55）。"
+   ],
+   "next": "保存。",
+   "ref": "手册 p.51–55",
+   "grid": null
+  },
+  {
+   "id": "save",
+   "title": "㉒ 保存工程",
+   "controls": [
+    "SHIFT",
+    "PAD 16",
+    "ENCODER",
+    "B3"
+   ],
+   "press": "<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> → <b>Save Project</b> → 转 <kbd>ENCODER</kbd> 选字母、按下确认 → <kbd>B3</kbd>（Do It!）。",
+   "screen": {
+    "type": "img",
+    "src": "assets/img/screens/src/name-entry.png",
+    "marks": [
+     {
+      "x": 40,
+      "y": 58,
+      "n": 1
+     },
+     {
+      "x": 80,
+      "y": 10,
+      "n": 2
+     }
+    ]
+   },
+   "see": [
+    "① 名字输入框（建议 PREMIER-ONBOARD；按住 SHIFT 出大写）。",
+    "② Do It! = 保存。机器也会在后台自动存。"
+   ],
+   "next": "完成！对照左边视频的第 4 段听一遍。",
+   "ref": "手册 p.62",
+   "grid": {
+    "layers": [
+     "Kick",
+     "Snare",
+     "Hats",
+     "Bass",
+     "Sample"
+    ],
+    "bars": 2
+   }
+  }
+ ]
+}

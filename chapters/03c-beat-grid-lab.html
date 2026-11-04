@@ -1,0 +1,1858 @@
+---
+title: "第三章附录 节奏网格实验室：看视频 → 在 MPC 上打出来"
+chapter: "3+"
+nav_order: 3.6
+short_title: "网格实验室"
+legacy: true
+legacy_js: ["updates-v5.js", "updates-lab.js"]
+---
+{% raw %}
+
+
+<h1 id="节奏网格实验室看视频--在-mpc-上打出来">节奏网格实验室：看视频 → 在 MPC 上打出来</h1>
+
+<p class="tapes"><span class="tape tape-yellow">3.5 风格配套</span> <span class="tape tape-cyan">竖屏网格视频 + 机上逐步课</span> <span class="tape tape-red">草稿 · 含推断</span></p>
+
+<p>每一节：<strong>先看视频</strong>（网格亮起的格子就是该敲的时候）→ <strong>在右边点网格、听声音</strong> → <strong>照动手卡在 MPC Sample 上用出厂音色打出来</strong>。视频里的声音全是代码合成的，底部都写着 <strong>“风格致敬 · 全部声音为代码原创合成 · 非原曲扒带”</strong>；本页的网格同样只是教学示例，不是任何原曲的扒谱。</p>
+
+<nav class="chips lab-toc" aria-label="本页目录"><a href="#lab-01"><b>01</b> Premier 式 Boom Bap</a><a href="#lab-02"><b>02</b> Dilla 式醉拍</a><a href="#lab-03"><b>03</b> Pete Rock 式 90s 铜管</a><a href="#lab-04"><b>04</b> Memphis / Trap 踩镲连击</a><a href="#lab-05"><b>05</b> 人声 Hook · 王道进行 4536</a><a href="#lab-06"><b>06</b> 和弦怎么看 · 爵士 6-2-5-1</a><a href="#lab-g"><b>G</b> 通用动手卡</a><a href="#lab-chords"><b>和弦</b> 和弦速成</a></nav>
+
+<p class="note">怎么读：点编号展开那一节（一次只开一节，可以直接用网址 #lab-01…#lab-06 打开）。每张动手卡写“按什么 → 屏幕上会出现什么 → 下一步”；按键后的数字是面板编号（见 <a href="../chapters/01b-reference.html">第一章附录</a>）；标（推断）的地方手册没写明，需要实机确认。虚线下划线的词可以点开看解释。</p>
+
+<div class="lab-accs">
+
+  <section class="lab-acc" id="lab-01" data-lab="01">
+
+    <p><a id="lab-premier"></a></p>
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-01-body"><span class="lab-num">01</span> <span class="lab-t">Premier 风格 Boom Bap</span> <span class="lab-meta">92 BPM · Swing 58%</span></button></h2>
+
+    <div class="lab-acc-body" id="lab-01-body">
+
+      <div class="lab-params hot"><div class="lp-row"><span class="lp"><small>速度</small><b>92 BPM</b></span><span class="lp"><small>调</small><b>C 小调</b></span><span class="lp"><small>摇摆</small><b>Swing 58%</b></span></div><p><b>BPM</b>：<kbd>SEQ</kbd> → 按住 <kbd>B1</kbd> → 转 <kbd>ENCODER</kbd>（手册 p.39）。<b>Swing</b>：在 Sequence 页转 <kbd>K3</kbd>（RT Swing）到 58%（p.39，只改播放手感、不挪音符）；要把音符真正挪位：<kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <kbd>K3</kbd> Swing → <kbd>B3</kbd> Do It!（p.59）。58% = 每拍第 2、4 个 16 分音符晚约 26 毫秒（50% 不摇）。 <a href="#lab-01" data-goto="mpc:swing">在模拟器里看这一步 →</a></p></div>
+
+      <div class="lab-cols">
+
+        <div class="lab-left">
+<video class="local-video portrait" controls="" preload="metadata" playsinline="" poster="../legacy/assets/video/beat-grid/01_premier_boombap-poster.jpg">
+<source src="../legacy/assets/video/beat-grid/01_premier_boombap.mp4" type="video/mp4" />
+你的浏览器不能播放此视频，请 <a href="../legacy/assets/video/beat-grid/01_premier_boombap.mp4">下载 mp4</a>。
+</video>
+<div class="bl-vctl"><p class="bl-small">片段：1. 先听底鼓：1拍重击 + 两个切分（0.0–5.2 秒） · 2. 加军鼓：打在 2、4 拍（5.2–10.4 秒） · 3. 踩镲走 16 分音符 + Swing 58%（10.4–15.7 秒） · 4. 加贝斯 + 采样切片：Cm9 → Abmaj7（15.7–20.9 秒）</p></div>
+<p class="video-note bl-vnote">🎬 <b>原创网格视频</b>（竖屏 1080×1920，约 22 秒，1.6 MB，<a href="../legacy/assets/video/beat-grid/01_premier_boombap.mp4">下载 mp4</a>）· 视频底部说明：<b>风格致敬 · 全部声音为代码原创合成 · 非原曲扒带</b>。片段芯片的起止秒数由 pattern JSON 的段落小节数 × 每小节 2.609 秒算出。</p>
+</div>
+
+        <div class="lab-right">
+
+          <div class="lab-tabs" role="tablist" aria-label="讲解分区"><button type="button" class="lab-tab" role="tab" data-tab="grid">网格</button><button type="button" class="lab-tab" role="tab" data-tab="score">谱子</button><button type="button" class="lab-tab" role="tab" data-tab="pads">音名与垫位</button><button type="button" class="lab-tab" role="tab" data-tab="mpc">在 MPC 上做</button><button type="button" class="lab-tab" role="tab" data-tab="chop">切片按键</button><button type="button" class="lab-tab" role="tab" data-tab="steps">动手步骤</button><button type="button" class="lab-tab" role="tab" data-tab="history">历史</button><button type="button" class="lab-tab" role="tab" data-tab="img">原图</button></div>
+
+          <div class="lab-pane" data-pane="grid" role="tabpanel" aria-label="网格"><div class="bl-gridbox"><p class="note">（开启 JavaScript 后这里是可点击的 16 格鼓网格；也可以看「原图」。）</p></div></div>
+
+          <div class="lab-pane" data-pane="score" role="tabpanel" aria-label="谱子"><p class="bl-score-cap">上：标准打击乐五线谱（x 符头 = 踩镲，第三间 = 军鼓，下间 = 底鼓；括号 = 鬼音；16 分音符，Swing 58%）。下：同一段的网格谱对照。在「网格」标签点 ▶ 播放时，谱子上当前的音符会跟着亮；在网格里改格子，谱子也会跟着变。</p><div class="bl-score"></div></div>
+
+          <div class="lab-pane" data-pane="pads" role="tabpanel" aria-label="音名与垫位"><div class="bl-padsbox"><p class="note">（开启 JavaScript 后可点击音名听音、看 16 LEVELS 垫位。）</p></div></div>
+
+          <div class="lab-pane" data-pane="mpc" role="tabpanel" aria-label="在 MPC 上做"><p class="bl-small">一步一步：左边面板上闪的就是要按的键，右边是屏幕上会出现什么（编号对应下面的说明）。依据官方手册 v1.3.0；标（推断）的需实机确认，鼓组名不编造。</p><div class="bl-sim" data-demo="demo-01"></div></div>
+
+          <div class="lab-pane" data-pane="chop" role="tabpanel" aria-label="切片按键"><p class="bl-small">Premier 式“切碎重排”要用的按键。点下面的按钮，或直接点面板上发光的键（CHOP、K3、B1–B3），屏幕模拟会切换并标注。依据手册 p.22、p.31–32。</p><div class="bl-sim" data-demo="chop-01"></div></div>
+
+          <div class="lab-pane lab-steps" data-pane="steps" role="tabpanel" aria-label="动手步骤">
+
+            <p>风格背景、历史和更多网格：<a href="../chapters/03b-styles.html#boombap">Boom bap ＋ DJ Premier 五法</a>。</p>
+
+            <h3 id="boom-bap-">0. 90 年代纽约 Boom bap 鼓：挑什么音色、怎么调</h3>
+
+            <div class="step">
+
+              <ul>
+                <li><strong>用什么：</strong> 出厂鼓组里的 <strong>MPC Legends</strong>（Akai 官方视频确认）或 Kits → <strong>boom bap</strong> 类（分类名来自官方视频口述；具体鼓组和采样名以屏幕为准，本页不编造）。</li>
+                <li><strong>Kick 挑选标准：</strong> 短、低频圆（“咚”不是“轰”）、开头带一点点 click。<strong>调法：</strong> Trim 页 <kbd>K2</kbd> End 收短尾巴；Tune 页 <kbd>K1</kbd> Semi Tune −1～−2 更沉（经验值）；Mix 页 Volume 0 dB。</li>
+                <li><strong>Snare 挑选标准：</strong> 厚、有房间感或粗糙颗粒。<strong>调法：</strong> Mix 页 Volume −1 dB、Pan C；嫌刺用 Filter（<kbd>B3</kbd>）LPF2 稍收高频；Tune 0～+1 更“啪”（经验值）。</li>
+                <li><strong>Hat 挑选标准：</strong> 紧、暗一点的 closed hat。<strong>调法：</strong> Filter LPF2、Cutoff 90–105（经验值）；Volume −4 dB、Pan 约 10R；和 open hat 设同一 Mute Group（Play 页 <kbd>K2</kbd>，手册 p.28）。</li>
+                <li><strong>力度：</strong> Amp Env 页 <kbd>K3</kbd> Vel Sens 别设 0，否则 ghost note 打不轻（手册 p.26）；精修用 STEP EDIT 的 <kbd>K3</kbd>（p.43）。也可以用 16 LEVELS 的 <strong>Velocity</strong> 类型，把一个 snare 铺成 16 个力度（p.22/35）。</li>
+                <li><strong>调试顺序：</strong> 选鼓组 → 选 kick → 调 kick → snare → hat → 设 BPM → 设 Swing → 录制 → 调力度 / 音量平衡。每一步按什么、屏幕上出现什么，见「在 MPC 上做」标签（第 ①–⑱ 步）。</li>
+              </ul>
+
+            </div>
+
+            <h3 id="section">1. 本节要做出什么</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>项目</th>
+                  <th>内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>速度</td>
+                  <td><strong>92 BPM</strong></td>
+                </tr>
+                <tr>
+                  <td>长度</td>
+                  <td>2 小节（第 2 小节鼓多两下、和弦换成 Abmaj7）</td>
+                </tr>
+                <tr>
+                  <td>Swing</td>
+                  <td><strong>58%</strong>（MPC 式刻度，Q = 1/16）</td>
+                </tr>
+                <tr>
+                  <td>声部</td>
+                  <td>底鼓、军鼓、踩镲、贝斯、采样切片</td>
+                </tr>
+                <tr>
+                  <td>鼓组</td>
+                  <td>Kits → <strong>boom bap</strong> 分类里任一鼓组（具体名字以屏幕为准，推断）；找不到就用已确认存在的 <strong>MPC Legends</strong>。</td>
+                </tr>
+                <tr>
+                  <td>Kick / Snare / Hat</td>
+                  <td>出厂 boom bap 鼓组或 MPC Legends 的鼓　<small>来源：MPC Legends：Akai 官方视频确认；boom bap 分类：Akai 视频口述（具体鼓组名推断）</small></td>
+                </tr>
+                <tr>
+                  <td>贝斯</td>
+                  <td>任一 one-shot bass（MPC Legends 里有，官方视频确认）或 <code class="language-plaintext highlighter-rouge">SAMPLE SELECT</code> 里的贝斯单音（文件夹名推断）　<small>来源：部分确认</small></td>
+                </tr>
+                <tr>
+                  <td>钢琴切片 Cm9 → Abmaj7</td>
+                  <td>钢琴 / 键盘单音 → G6 方法 B 重采样成“和弦采样”再切　<small>来源：乐器单音存在（手册 p.7）；具体钢琴文件名推断</small></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="section-1">2. 准备</h3>
+
+            <ol>
+              <li><a href="#g1">G1</a>：新建工程，装上表的鼓组。</li>
+              <li><a href="#g2">G2</a>：BPM <strong>92</strong>，K1 先设 <strong>1 小节</strong>，K2 <strong>Q = 1/16</strong>，B3 录音量化开，K3 RT Swing <strong>58%</strong>，节拍器 Record，预备拍开。</li>
+              <li>长度计划：先录 1 小节鼓 → DOUBLE SEQ 成 2 小节 → 补第 2 小节的 kick（第 16 步）和 ghost snare（第 15 步）。</li>
+            </ol>
+
+            <h3 id="section-2">3. 动手卡</h3>
+
+            <h4 id="section-3">3-1 鼓（底鼓、军鼓、踩镲）</h4>
+
+            <p><code class="language-plaintext highlighter-rouge">X</code> 重 · <code class="language-plaintext highlighter-rouge">x</code> 中/轻 · <code class="language-plaintext highlighter-rouge">g</code> 鬼音（很轻）· <code class="language-plaintext highlighter-rouge">O</code> 开镲 · <code class="language-plaintext highlighter-rouge">·</code> 空 · <code class="language-plaintext highlighter-rouge">r</code> 一格两下（1/32）· <code class="language-plaintext highlighter-rouge">3</code> 一格三下（1/32T）· <code class="language-plaintext highlighter-rouge">t</code> 两格三下（1/16T）；<code class="language-plaintext highlighter-rouge">b1</code>、<code class="language-plaintext highlighter-rouge">b2</code>＝只在第几小节。</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>step      1  2  3  4 | 5  6  7  8 | 9 10 11 12 |13 14 15 16
+Kick b1   X  ·  ·  · | ·  ·  ·  X | ·  ·  X  · | ·  ·  ·  ·
+Kick b2   X  ·  ·  · | ·  ·  ·  X | ·  ·  X  · | ·  ·  ·  x
+Snare b1  ·  ·  ·  · | X  ·  ·  · | ·  ·  ·  · | X  ·  ·  ·
+Snare b2  ·  ·  ·  · | X  ·  ·  · | ·  ·  ·  · | X  ·  g  ·
+Hat       X  g  X  g | X  g  X  g | X  g  X  g | X  g  X  g
+</code></pre></div>            </div>
+
+            <ul>
+              <li><strong>按什么 → 看到什么 → 下一步：</strong> 按 <a href="#g3">G3</a> 一件一件叠录。屏幕在 Sample/Seq 模式下仍显示序列页，播放头走到哪、敲到的垫就亮。录完按 <kbd>STOP</kbd>，再 <kbd>PLAY</kbd> 对照视频听。</li>
+              <li>第 2 小节第 15 步的 snare 是 <strong>ghost（力度约 38）</strong>，轻到几乎听不见才对。Kick 第 8 步也是轻的（约 95）。</li>
+            </ul>
+
+            <h4 id="levels-tunepad-4--g1">3-2 贝斯（16 LEVELS Tune，PAD 4 = <strong>G1</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> E 组 PAD 1 装贝斯单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>G1</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>C2</strong> → PAD 9（3） · 第 8 步 <strong>Bb1</strong> → PAD 7（2） · 第 11 步 <strong>G1</strong> → PAD 4（5）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>Ab1</strong> → PAD 5（3） · 第 8 步 <strong>Eb2</strong> → PAD 12（2） · 第 11 步 <strong>G1</strong> → PAD 4（5）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="pad-4--b3">3-3 采样切片（和弦，PAD 4 = <strong>B3</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> F 组 PAD 1 装钢琴单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>B3</strong> → 16 LEVELS Tune → 用 <a href="#g6">G6</a> 的方法 A（叠录）或方法 B（每个和弦一个垫）。</li>
+              <li><strong>你会看到 / 听到：</strong> 每叠一圈，和弦就厚一层；第一圈只有最低音时听起来像第二条贝斯，正常。</li>
+            </ul>
+
+            <p>和弦节奏：每小节第 <strong>1、4、11</strong> 步按（长度依次 3 / 2 / 4 格）。</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>和弦</th>
+                  <th>组成音</th>
+                  <th>音名 = 垫（从低到高按垫号）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Cm9</strong></td>
+                  <td>C Eb G Bb D</td>
+                  <td>C4=PAD 5 · D4=PAD 7* · Eb4=PAD 8 · G4=PAD 12 · Bb4=PAD 15</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>Abmaj7</strong></td>
+                  <td>Ab C Eb G</td>
+                  <td>Ab3=PAD 1 · C4=PAD 5 · Eb4=PAD 8 · G4=PAD 12</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="section-4">3-4 把和弦做成“旧唱片切片”</h4>
+            <ol>
+              <li>用 G6 <strong>方法 B</strong> 把 Cm9、Abmaj7 两个和弦重采样到一个垫，再 CHOP 成 2 块（Regions 4 后 Merge，或 Manual）。</li>
+              <li>选中和弦垫 → <kbd>SAMPLE</kbd> → <kbd>B3</kbd> 翻到 <strong>Filter</strong> → <kbd>K3</kbd> Type 选 <strong>HPF2</strong>，<kbd>K1</kbd> Cutoff 慢慢往上推，直到低频变薄（视频切掉了约 180 Hz 以下；Cutoff 0–127 和 Hz 的对应手册没写，靠耳朵）。</li>
+              <li><kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd> → 选 <strong>Vintage Emulator</strong> → <kbd>K1</kbd> Type 选 <strong>SP1200</strong> 或 <strong>MPC60</strong>（手册 p.55）→ 只按和弦垫。这就是视频里“低保真”的那一层。</li>
+              <li>和弦节奏：每小节第 <strong>1、4、11</strong> 步按（第 1 下长、第 4 下短、第 11 下中等）。用 Amp Env（<kbd>B1</kbd> 翻到 Amp Env，<kbd>K2</kbd> Decay）把尾巴收短，切片感更强。</li>
+            </ol>
+
+            <h3 id="section-5">4. 音名 → 垫位总表（推断）</h3>
+
+            <ul>
+              <li>依据：手册“Tune 类型下<strong>原音高在 PAD 4</strong>，往下的垫降调、往上的垫升调”（p.22/35）+ Akai 官方视频“按半音铺开”。所以 PAD n 的音 = PAD 4 的音 + (n − 4) 个半音，范围 PAD 1（−3）到 PAD 16（+12）。</li>
+              <li>
+                <p>音名按 <strong>C4 = 中央 C</strong>（MIDI 60）。“PAD 4 =” 是为了让本课所有音尽量落在 16 个垫里选的；你也可以换别的音，只要整张表一起平移。</p>
+              </li>
+              <li><strong>贝斯</strong>（PAD 4 = G1）：PAD 4 = G1、PAD 5 = Ab1、PAD 7 = Bb1、PAD 9 = C2、PAD 12 = Eb2</li>
+              <li><strong>采样切片</strong>（PAD 4 = B3）：PAD 1 = Ab3、PAD 5 = C4、PAD 7 = D4、PAD 8 = Eb4、PAD 12 = G4、PAD 15 = Bb4</li>
+            </ul>
+
+            <h3 id="section-6">5. 混音小提示和保存</h3>
+
+            <ul>
+              <li>Kick 0 dB、Snare −1 dB、Hat −4 dB 且 Pan 约 10R、贝斯 +1 dB、钢琴切片 +2 dB 且 Pan 约 5L（数值来自视频工程，Pan 换算到 50L–50R 为推断）。</li>
+              <li>黑胶底噪：Knob FX 换成 <strong>Vinyl Emulator</strong>（手册 p.55）给全部垫，<kbd>K2</kbd> Crackle 一点点。注意一次只能开一个 Knob FX——要和 Vintage Emulator 二选一，或先 RESAMPLE 固化再换。</li>
+              <li>通用步骤（音量 / 声像 / Knob FX / 压缩 / 保存 / 导出）见 <a href="#g8">G8</a>。建议工程名：<code class="language-plaintext highlighter-rouge">PREMIER-ONBOARD</code>。</li>
+            </ul>
+
+            <h3 id="section-7">6. 和视频不一样的地方 · 需要实机确认</h3>
+
+            <p><strong>不一样的地方</strong></p>
+
+            <ul>
+              <li>视频里所有声音都是代码合成的（底部写着“风格致敬 · 全部声音为代码原创合成 · 非原曲扒带”）；机上用的是出厂采样，音色一定不同。</li>
+              <li>视频的鼓和钢琴是代码合成，出厂鼓组的音色、长度不同，boom 感要靠选 kick。</li>
+              <li>视频有轻微侧链“压缩感”（duck 0.15）；机上可用 Knob FX <strong>Pumper</strong>（手册 p.53）模拟，但会占用 Knob FX。</li>
+              <li>视频的 lo-fi 和黑胶是同时叠的；机上 Knob FX 一次一个，用 RESAMPLE 分步固化。</li>
+            </ul>
+
+            <p><strong>需要实机确认（推断点）</strong></p>
+
+            <ul>
+              <li>出厂 Kits / 采样文件夹的确切名字（手册只举了 <strong>Snares</strong>；鼓组名只确认了 <strong>MPC Legends</strong>）。</li>
+              <li>16 LEVELS Tune 每垫是否正好一个半音；Semi Tune 是否叠加到 16 LEVELS 上。</li>
+              <li>退出 16 LEVELS 后，已录音符是否保持音高。</li>
+              <li>boom bap 分类下的具体鼓组名。</li>
+              <li>Filter Cutoff 值与 Hz 的对应。</li>
+            </ul>
+
+            <p>相关风格页：<a href="../chapters/03b-styles.html#boombap">Boom bap ＋ DJ Premier 五法</a></p>
+
+          </div>
+
+          <div class="lab-pane" data-pane="history" role="tabpanel" aria-label="历史"><div class="bl-hist"><p class="bl-small">Boom bap 是 80 年代末到 90 年代纽约 hip-hop 的鼓声：从老唱片采样、切碎重排，再配上硬朗的 kick 和 snare。下面每一条都附了来源；视频只链接 YouTube，不下载。离线（file://）打开时只显示链接。</p><div class="bl-hist-card"><p class="bl-hist-h"><b>Marley Marl</b> <span class="tape tape-cyan">Korg SDD-2000 采样延迟 ＋ Roland TR-808 触发</span></p><p class="bl-hist-t">代表作：MC Shan《The Bridge》（1986）</p><p>他在 Unique Studios 给 Captain Rock 做歌时误把一下军鼓采了进去，发现采来的鼓比鼓机的好听——从此用唱片上的 kick、snare 自己编鼓；《The Bridge》采了 Honey Drippers《Impeach the President》开头的鼓，用 808 的触发脉冲去“敲”采样器，在家里 4 轨录完。</p><p class="bl-hist-src">来源：<a href="https://www.npr.org/sections/microphonecheck/2013/09/11/221440934/marley-marl-on-the-bridge-wars-ll-cool-j-and-discovering-sampling" target="_blank" rel="noopener">NPR Microphone Check 访谈（2013）</a> · <a href="https://www.redbullmusicacademy.com/lectures/marley-marl-tokyo-2014/" target="_blank" rel="noopener">Red Bull Music Academy 讲座（2014）</a> · <a href="https://www.okayplayer.com/marley-marl-recreates-classic-production-for-mc-shans-the-bridge/773747" target="_blank" rel="noopener">Okayplayer：Classic Recipes 复刻《The Bridge》</a></p><div class="bl-yt" data-yt="6IxUXfhC8TI" data-title="Marley Marl &#x27;Classic Recipes&#x27; - Recreating MC Shan &#x27;The Bridge&#x27; w/ Akai MPC Renaissance（Dubspot · 后来用 MPC 复刻演示）"><a class="bl-yt-link" href="https://www.youtube.com/watch?v=6IxUXfhC8TI" target="_blank" rel="noopener">▶ YouTube：Marley Marl &#x27;Classic Recipes&#x27; - Recreating MC Shan &#x27;The Bridge&#x27; w/ Akai MPC Renaissance（Dubspot · 后来用 MPC 复刻演示）</a><button type="button" class="chip bl-yt-play">在页面里播放（youtube-nocookie）</button></div></div><div class="bl-hist-card"><p class="bl-hist-h"><b>DJ Premier</b> <span class="tape tape-cyan">Akai MPC60 ＋ Akai S950</span></p><p class="bl-hist-t">代表作：Gang Starr《Mass Appeal》（1994）</p><p>他只用 MPC60 触发鼓，采样都放在 S950 里（只有约 60 秒采样时间，逼着他把采样切短再排）；《Mass Appeal》的主旋律是一段放慢的约 2 秒 Vic Juris 采样，故意做成“电梯音乐”来讽刺当时电台的软化。</p><p class="bl-hist-src">来源：<a href="https://www.soundonsound.com/people/dj-premier" target="_blank" rel="noopener">Sound On Sound：DJ Premier</a> · <a href="https://www.powmag.net/p/the-making-of-gang-starrs-mass-appeal" target="_blank" rel="noopener">POW Mag：The Making of “Mass Appeal”（2019）</a> · <a href="https://www.billboard.com/music/rb-hip-hop/gang-starr-moment-of-truth-dj-premiere-interview-8501991/" target="_blank" rel="noopener">Billboard：Hard to Earn 25 周年访谈</a></p><div class="bl-yt" data-yt="y9lNbNGbo24" data-title="Gang Starr - Mass Appeal（官方 MV）"><a class="bl-yt-link" href="https://www.youtube.com/watch?v=y9lNbNGbo24" target="_blank" rel="noopener">▶ YouTube：Gang Starr - Mass Appeal（官方 MV）</a><button type="button" class="chip bl-yt-play">在页面里播放（youtube-nocookie）</button></div><div class="bl-yt" data-yt="yFrC9ul3Yj0" data-title="Off The Record: DJ Premier on “Mass Appeal”（Mass Appeal 频道）"><a class="bl-yt-link" href="https://www.youtube.com/watch?v=yFrC9ul3Yj0" target="_blank" rel="noopener">▶ YouTube：Off The Record: DJ Premier on “Mass Appeal”（Mass Appeal 频道）</a><button type="button" class="chip bl-yt-play">在页面里播放（youtube-nocookie）</button></div></div><div class="bl-hist-card"><p class="bl-hist-h"><b>Pete Rock</b> <span class="tape tape-cyan">E-mu SP-1200</span></p><p class="bl-hist-t">代表作：Pete Rock &amp; CL Smooth《They Reminisce Over You (T.R.O.Y.)》（1992）</p><p>他说早年作品“全是 SP-1200 做的”；和 Large Professor 一起挖唱片找到 Tom Scott《Today》，先从那段低音线做起，再加入萨克斯段落，部分工作在 Large Professor 家用他的采样器完成。</p><p class="bl-hist-src">来源：<a href="https://www.villagevoice.com/the-dirty-heartbeat-of-the-golden-age/" target="_blank" rel="noopener">Village Voice：The Dirty Heartbeat of the Golden Age</a> · <a href="https://www.complex.com/music/a/daniel-isenberg/interview-pete-rock-classics" target="_blank" rel="noopener">Complex：Pete Rock Tells All</a> · <a href="https://djbooth.net/features/2018-10-25-pete-rock-beat-break-interview/" target="_blank" rel="noopener">DJBooth：Beat Break（2018）</a></p><div class="bl-yt" data-yt="k6mdRv0ZdR8" data-title="Pete Rock &amp; CL Smooth - T.R.O.Y.（官方 MV）"><a class="bl-yt-link" href="https://www.youtube.com/watch?v=k6mdRv0ZdR8" target="_blank" rel="noopener">▶ YouTube：Pete Rock &amp; CL Smooth - T.R.O.Y.（官方 MV）</a><button type="button" class="chip bl-yt-play">在页面里播放（youtube-nocookie）</button></div></div><div class="bl-hist-card"><p class="bl-hist-h"><b>RZA</b> <span class="tape tape-cyan">Ensoniq EPS-16+（后来主力换成 ASR-10）</span></p><p class="bl-hist-t">代表作：Wu-Tang Clan《C.R.E.A.M.》（专辑 1993）</p><p>采了 The Charmels 1967 年《As Long as I’ve Got You》开头的钢琴旋律，切开后做成又暗又脏的 loop；Sweetwater 的器材考证说这首用的是 EPS-16+。</p><p class="bl-hist-src">来源：<a href="https://www.npr.org/2011/01/04/103319951/c-r-e-a-m-the-story-of-a-sample" target="_blank" rel="noopener">NPR：C.R.E.A.M. — The Story Of A Sample（2011）</a> · <a href="https://www.sweetwater.com/insync/the-gear-behind-wu-tang-clans-enter-the-wu-tang-36-chambers/" target="_blank" rel="noopener">Sweetwater：The Gear Behind Enter the Wu-Tang</a></p><div class="bl-yt" data-yt="PBwAxmrE194" data-title="Wu-Tang Clan - C.R.E.A.M.（官方 MV · 剪辑版）"><a class="bl-yt-link" href="https://www.youtube.com/watch?v=PBwAxmrE194" target="_blank" rel="noopener">▶ YouTube：Wu-Tang Clan - C.R.E.A.M.（官方 MV · 剪辑版）</a><button type="button" class="chip bl-yt-play">在页面里播放（youtube-nocookie）</button></div></div><div class="bl-hist-card"><p class="bl-hist-h"><b>Large Professor</b> <span class="tape tape-cyan">E-mu SP-1200</span></p><p class="bl-hist-t">代表作：Main Source《Looking at the Front Door》（专辑《Breaking Atoms》1991）</p><p>他说是工程师 Paul C 把他从“磁带拼接”时代带到 SP-1200；《Looking at the Front Door》取材 Donny Hathaway《The Way I Love You》，重新排了结构。</p><p class="bl-hist-src">来源：<a href="https://daily.redbullmusicacademy.com/2015/02/large-professor-interview/" target="_blank" rel="noopener">Red Bull Music Academy Daily 访谈（2015）</a> · <a href="https://theartofsampling.com/beat-breakdown-main-source-looking-at-the-front-door/" target="_blank" rel="noopener">The Art of Sampling：Beat Breakdown</a></p><div class="bl-yt" data-yt="4g-0Nxeq0Pg" data-title="Large Professor Tells His Life Story（VladTV 访谈）"><a class="bl-yt-link" href="https://www.youtube.com/watch?v=4g-0Nxeq0Pg" target="_blank" rel="noopener">▶ YouTube：Large Professor Tells His Life Story（VladTV 访谈）</a><button type="button" class="chip bl-yt-play">在页面里播放（youtube-nocookie）</button></div></div><div class="bl-hist-card"><p class="bl-hist-h"><b>Buckwild（D.I.T.C.）</b> <span class="tape tape-cyan">E-mu SP-1200（O.C.《Word…Life》时期）</span></p><p class="bl-hist-t">代表作：O.C.《Time’s Up》（1994）</p><p>他说那张专辑是“把采样切碎、加铜管、用 SP-1200 实验”出来的；《Time’s Up》改造了 Les DeMerle《A Day in the Life》的片段，并用了 Slick Rick 的人声。</p><p class="bl-hist-src">来源：<a href="https://www.complex.com/music/a/jaeki-cho/interview-buckwild" target="_blank" rel="noopener">Complex：Buckwild Tells All</a> · <a href="https://www.revolt.tv/article/2019-06-05/95849/the-produce-section-11-of-buckwilds-most-iconic-beats" target="_blank" rel="noopener">REVOLT：11 of Buckwild’s most iconic beats（2019）</a></p></div><p class="bl-small">机器背景：<a href="https://en.wikipedia.org/wiki/E-mu_SP-1200" target="_blank" rel="noopener">Wikipedia：E-mu SP-1200</a> · <a href="https://en.wikipedia.org/wiki/Boom_bap" target="_blank" rel="noopener">Wikipedia：Boom bap</a>。</p></div></div>
+
+          <div class="lab-pane" data-pane="img" role="tabpanel" aria-label="原图"><p class="bl-small">原速查图（点图看大图）。</p><a href="../legacy/assets/img/beat-grid/01_premier_boombap-grid.png"><img class="lab-grid" loading="lazy" src="../legacy/assets/img/beat-grid/01_premier_boombap-grid.png" alt="Premier 风格 Boom Bap 速查图：鼓网格、音名与 16 LEVELS 垫位" /></a></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="lab-acc" id="lab-02" data-lab="02">
+
+    <p><a id="lab-dilla"></a></p>
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-02-body"><span class="lab-num">02</span> <span class="lab-t">J Dilla 风格 醉拍</span> <span class="lab-meta">88 BPM · Swing 50%</span></button></h2>
+
+    <div class="lab-acc-body" id="lab-02-body">
+
+      <div class="lab-params"><div class="lp-row"><span class="lp"><small>速度</small><b>88 BPM</b></span><span class="lp"><small>调</small><b>D 小调</b></span><span class="lp"><small>摇摆</small><b>Swing 50%</b></span></div><p><b>BPM</b>：<kbd>SEQ</kbd> → 按住 <kbd>B1</kbd> → 转 <kbd>ENCODER</kbd>（手册 p.39）。<b>Swing</b>：在 Sequence 页转 <kbd>K3</kbd>（RT Swing）到 50%（p.39，只改播放手感、不挪音符）；要把音符真正挪位：<kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <kbd>K3</kbd> Swing → <kbd>B3</kbd> Do It!（p.59）。50% = 不摇。</p></div>
+
+      <div class="lab-cols">
+
+        <div class="lab-left">
+<video class="local-video portrait" controls="" preload="metadata" playsinline="" poster="../legacy/assets/video/beat-grid/02_dilla_drunk-poster.jpg">
+<source src="../legacy/assets/video/beat-grid/02_dilla_drunk.mp4" type="video/mp4" />
+你的浏览器不能播放此视频，请 <a href="../legacy/assets/video/beat-grid/02_dilla_drunk.mp4">下载 mp4</a>。
+</video>
+<div class="bl-vctl"><p class="bl-small">片段：1. 先听“量化”版：全部卡在网格上（0.0–5.5 秒） · 2. Dilla 风格：关掉量化，手动错位（5.5–10.9 秒） · 3. 加贝斯和 Rhodes：也故意慢半拍（10.9–19.1 秒）</p></div>
+<p class="video-note bl-vnote">🎬 <b>原创网格视频</b>（竖屏 1080×1920，约 20 秒，1.4 MB，<a href="../legacy/assets/video/beat-grid/02_dilla_drunk.mp4">下载 mp4</a>）· 视频底部说明：<b>风格致敬 · 全部声音为代码原创合成 · 非原曲扒带</b>。片段芯片的起止秒数由 pattern JSON 的段落小节数 × 每小节 2.727 秒算出。</p>
+<p class="bl-warn">⚠️ <b>字幕更正：</b>视频第 3 段字幕“也故意慢半拍”说得不准确——军鼓只晚约 <b>40–45 毫秒</b>、和弦晚约 <b>30–35 毫秒</b>，大约是 1/4 个 16 分音符，远不到半拍（88 BPM 半拍≈ 341 毫秒）。课文用准确说法。</p>
+</div>
+
+        <div class="lab-right">
+
+          <div class="lab-tabs" role="tablist" aria-label="讲解分区"><button type="button" class="lab-tab" role="tab" data-tab="grid">网格</button><button type="button" class="lab-tab" role="tab" data-tab="pads">音名与垫位</button><button type="button" class="lab-tab" role="tab" data-tab="steps">动手步骤</button><button type="button" class="lab-tab" role="tab" data-tab="img">原图</button></div>
+
+          <div class="lab-pane" data-pane="grid" role="tabpanel" aria-label="网格"><div class="bl-gridbox"><p class="note">（开启 JavaScript 后这里是可点击的 16 格鼓网格；也可以看「原图」。）</p></div></div>
+
+          <div class="lab-pane" data-pane="pads" role="tabpanel" aria-label="音名与垫位"><div class="bl-padsbox"><p class="note">（开启 JavaScript 后可点击音名听音、看 16 LEVELS 垫位。）</p></div></div>
+
+          <div class="lab-pane lab-steps" data-pane="steps" role="tabpanel" aria-label="动手步骤">
+
+            <p>风格背景、历史和更多网格：<a href="../chapters/03b-styles.html#dilla">Dilla 式律动</a>。</p>
+
+            <h3 id="section-8">1. 本节要做出什么</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>项目</th>
+                  <th>内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>速度</td>
+                  <td><strong>88 BPM</strong></td>
+                </tr>
+                <tr>
+                  <td>长度</td>
+                  <td>2 小节循环（视频第 3 段画了 3 小节，第 3 小节只是第 1 小节的重复）</td>
+                </tr>
+                <tr>
+                  <td>Swing</td>
+                  <td><strong>50%</strong>（不摇）</td>
+                </tr>
+                <tr>
+                  <td>声部</td>
+                  <td>底鼓、军鼓、踩镲、贝斯、电钢琴</td>
+                </tr>
+                <tr>
+                  <td>鼓组</td>
+                  <td>Kits → <strong>hip hop</strong> 或 <strong>R&amp;B</strong> 分类里声音偏软的鼓组（名字以屏幕为准，推断），或 <strong>MPC Legends</strong>。</td>
+                </tr>
+                <tr>
+                  <td>Kick / Snare / Hat</td>
+                  <td>软一点的出厂鼓组（hat 选暗一点的）　<small>来源：MPC Legends 确认；分类名来自 Akai 视频口述</small></td>
+                </tr>
+                <tr>
+                  <td>贝斯</td>
+                  <td>one-shot bass（MPC Legends 有）　<small>来源：官方视频确认</small></td>
+                </tr>
+                <tr>
+                  <td>电钢琴 Dm9 → Gm9</td>
+                  <td>Rhodes / 电钢琴类单音（文件夹名推断）　<small>来源：乐器单音存在（手册 p.7）；具体文件推断</small></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="section-9">2. 准备</h3>
+
+            <ol>
+              <li><a href="#g1">G1</a>：新建工程，装上表的鼓组。</li>
+              <li><a href="#g2">G2</a>：BPM <strong>88</strong>，K1 先设 <strong>1 小节</strong>，K2 <strong>Q = 1/16</strong>，B3 录音量化开，K3 RT Swing <strong>50%</strong>，节拍器 Record，预备拍开。</li>
+              <li>长度计划：先<strong>全部量化</strong>录 2 小节（Q = 1/16，Swing 50%），之后再按下面的“挪动表”把鼓挪出网格。</li>
+            </ol>
+
+            <h3 id="section-10">3. 动手卡</h3>
+
+            <h4 id="section-11">3-1 鼓（底鼓、军鼓、踩镲）</h4>
+
+            <p><code class="language-plaintext highlighter-rouge">X</code> 重 · <code class="language-plaintext highlighter-rouge">x</code> 中/轻 · <code class="language-plaintext highlighter-rouge">g</code> 鬼音（很轻）· <code class="language-plaintext highlighter-rouge">O</code> 开镲 · <code class="language-plaintext highlighter-rouge">·</code> 空 · <code class="language-plaintext highlighter-rouge">r</code> 一格两下（1/32）· <code class="language-plaintext highlighter-rouge">3</code> 一格三下（1/32T）· <code class="language-plaintext highlighter-rouge">t</code> 两格三下（1/16T）；<code class="language-plaintext highlighter-rouge">b1</code>、<code class="language-plaintext highlighter-rouge">b2</code>＝只在第几小节。</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>step      1  2  3  4 | 5  6  7  8 | 9 10 11 12 |13 14 15 16
+Kick b1   X  ·  ·  · | ·  ·  ·  X | ·  x  ·  · | ·  ·  ·  ·
+Kick b2   X  ·  ·  · | ·  ·  ·  X | ·  ·  X  · | ·  x  ·  ·
+Kick b3   X  ·  ·  · | ·  ·  ·  X | ·  x  ·  · | ·  ·  ·  ·
+Snare     ·  ·  ·  · | X  ·  ·  · | ·  ·  ·  · | X  ·  ·  ·
+Hat       X  ·  x  · | X  ·  x  · | X  ·  x  · | x  ·  x  ·
+</code></pre></div>            </div>
+
+            <ul>
+              <li><strong>按什么 → 看到什么 → 下一步：</strong> 按 <a href="#g3">G3</a> 一件一件叠录。屏幕在 Sample/Seq 模式下仍显示序列页，播放头走到哪、敲到的垫就亮。录完按 <kbd>STOP</kbd>，再 <kbd>PLAY</kbd> 对照视频听。</li>
+              <li>这条视频<strong>故意不摇（Swing 50%）</strong>，醉感全部来自下面的毫秒偏移。</li>
+            </ul>
+
+            <h4 id="levels-tunepad-4--d2">3-2 贝斯（16 LEVELS Tune，PAD 4 = <strong>D2</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> E 组 PAD 1 装贝斯单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>D2</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>D2</strong> → PAD 4（5） · 第 8 步 <strong>F2</strong> → PAD 7（2） · 第 11 步 <strong>A2</strong> → PAD 11（5）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>G2</strong> → PAD 9（5） · 第 8 步 <strong>Bb2</strong> → PAD 12（2） · 第 11 步 <strong>F2</strong> → PAD 7（5）</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>第 1 步 <strong>D2</strong> → PAD 4（5） · 第 8 步 <strong>F2</strong> → PAD 7（2） · 第 11 步 <strong>A2</strong> → PAD 11（5）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="pad-4--g3">3-3 电钢琴（和弦，PAD 4 = <strong>G3</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> F 组 PAD 1 装电钢琴单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>G3</strong> → 16 LEVELS Tune → 用 <a href="#g6">G6</a> 的方法 A（叠录）或方法 B（每个和弦一个垫）。</li>
+              <li><strong>你会看到 / 听到：</strong> 每叠一圈，和弦就厚一层；第一圈只有最低音时听起来像第二条贝斯，正常。</li>
+            </ul>
+
+            <p>和弦节奏：每小节第 <strong>1、8、11</strong> 步按（长度依次 6 / 2 / 5 格）。</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>和弦</th>
+                  <th>组成音</th>
+                  <th>音名 = 垫（从低到高按垫号）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Dm9</strong></td>
+                  <td>D F A C E</td>
+                  <td>F3=PAD 2 · A3=PAD 6 · C4=PAD 9 · D4=PAD 11 · E4=PAD 13</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>Gm9</strong></td>
+                  <td>G Bb D F A</td>
+                  <td>A3=PAD 6 · Bb3=PAD 7 · D4=PAD 11 · F4=PAD 14</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>Dm9</strong></td>
+                  <td>D F A C E</td>
+                  <td>F3=PAD 2 · A3=PAD 6 · C4=PAD 9 · D4=PAD 11 · E4=PAD 13</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="section-12">3-4 把鼓挪出网格（视频里的红蓝数字）</h4>
+            <p>视频字幕写“也故意慢半拍”，<strong>不准确</strong>：军鼓实际只晚 <strong>约 40–45 毫秒</strong>，和弦只晚 <strong>约 30–35 毫秒</strong>。88 BPM 下半拍≈ 341 毫秒、一个 16 分音符≈ 170 毫秒，所以真正的偏移只有<strong>四分之一个 16 分音符左右</strong>——听起来是“懒”，不是“慢半拍”。</p>
+
+            <p>MPC Sample 的序列精度是 <strong>960 tick / 拍</strong>（手册 p.65），88 BPM 下 1 tick ≈ 0.71 毫秒：</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>声部</th>
+                  <th>哪一步</th>
+                  <th>视频偏移</th>
+                  <th>约等于</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Snare</td>
+                  <td>5、13</td>
+                  <td>+40、+45 ms（拖后）</td>
+                  <td>+56、+63 tick</td>
+                </tr>
+                <tr>
+                  <td>Kick</td>
+                  <td>8</td>
+                  <td>−40 ms（抢拍）</td>
+                  <td>−56 tick</td>
+                </tr>
+                <tr>
+                  <td>Kick</td>
+                  <td>10（小节 1）/ 11、14（小节 2）</td>
+                  <td>+30 / +25、+45 ms</td>
+                  <td>+42 / +35、+63 tick</td>
+                </tr>
+                <tr>
+                  <td>Hat</td>
+                  <td>3、5、7、9、11、13、15</td>
+                  <td>+45、−10、+40、+5、+50、−15、+35 ms</td>
+                  <td>+63、−14、+56、+7、+70、−21、+49 tick</td>
+                </tr>
+                <tr>
+                  <td>贝斯</td>
+                  <td>每小节 1、8、11</td>
+                  <td>+20、−20、+25 ms</td>
+                  <td>+28、−28、+35 tick</td>
+                </tr>
+                <tr>
+                  <td>电钢琴</td>
+                  <td>每小节 1、8、11</td>
+                  <td>+30、+30、+35 ms</td>
+                  <td>+42、+42、+49 tick</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <ol>
+              <li><strong>Snare 整体拖后：</strong> <kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <strong>只按 snare 垫</strong>（屏幕上被选中的垫会高亮）→ <kbd>K3</kbd> Swing 保持 <strong>50%</strong> → <kbd>K2</kbd> <strong>Shift</strong> 往正方向调 → <kbd>B3</kbd> Do It!（手册 p.59）。<strong>推断：</strong> Shift 的单位手册没写，可能是 tick；先调一个小值，播放听“snare 是不是懒懒地落下”。</li>
+              <li><strong>Hat、Kick 每一下都不同：</strong> <kbd>SHIFT</kbd> + <kbd>SEQ</kbd> 进 <strong>STEP EDIT</strong> → 转 <kbd>ENCODER</kbd> 走到那一步 → 敲 hat 垫选中这下 → <strong>推 FADER</strong> 往上＝往后挪、往下＝往前挪（手册 p.43）。照上表一下一下挪。</li>
+              <li><strong>贝斯、电钢琴整体拖后：</strong> 也可以用 TIME CORRECT + Shift；但它们是 16 LEVELS 录的，选哪个垫才能选中这些音符手册没写（推断）。更简单的办法：录这两轨时按 <kbd>B3</kbd> <strong>关掉录音量化</strong>，故意弹得稍微晚一点。</li>
+              <li>随时 <kbd>SHIFT</kbd> + <kbd>−</kbd> 撤销。做完记得把 TIME CORRECT 的 Swing 留在 50%（它是全局值，会影响 NOTE REPEAT）。</li>
+            </ol>
+
+            <h3 id="section-13">4. 音名 → 垫位总表（推断）</h3>
+
+            <ul>
+              <li>依据：手册“Tune 类型下<strong>原音高在 PAD 4</strong>，往下的垫降调、往上的垫升调”（p.22/35）+ Akai 官方视频“按半音铺开”。所以 PAD n 的音 = PAD 4 的音 + (n − 4) 个半音，范围 PAD 1（−3）到 PAD 16（+12）。</li>
+              <li>
+                <p>音名按 <strong>C4 = 中央 C</strong>（MIDI 60）。“PAD 4 =” 是为了让本课所有音尽量落在 16 个垫里选的；你也可以换别的音，只要整张表一起平移。</p>
+              </li>
+              <li><strong>贝斯</strong>（PAD 4 = D2）：PAD 4 = D2、PAD 7 = F2、PAD 9 = G2、PAD 11 = A2、PAD 12 = Bb2</li>
+              <li><strong>电钢琴</strong>（PAD 4 = G3）：PAD 2 = F3、PAD 6 = A3、PAD 7 = Bb3、PAD 9 = C4、PAD 11 = D4、PAD 13 = E4、PAD 14 = F4</li>
+            </ul>
+
+            <h3 id="section-14">5. 混音小提示和保存</h3>
+
+            <ul>
+              <li>Hat −3 dB、Pan 约 13R；贝斯 +2 dB；电钢琴 0 dB 加一点 Reverb（Knob FX 只选电钢琴垫）。</li>
+              <li>视频的 Rhodes 是“扫弦”（每个音错开 14 ms）；方法 A 叠录时手指不完全同时按，反而更像。</li>
+              <li>通用步骤（音量 / 声像 / Knob FX / 压缩 / 保存 / 导出）见 <a href="#g8">G8</a>。建议工程名：<code class="language-plaintext highlighter-rouge">DILLA-ONBOARD</code>。</li>
+            </ul>
+
+            <h3 id="section-15">6. 和视频不一样的地方 · 需要实机确认</h3>
+
+            <p><strong>不一样的地方</strong></p>
+
+            <ul>
+              <li>视频里所有声音都是代码合成的（底部写着“风格致敬 · 全部声音为代码原创合成 · 非原曲扒带”）；机上用的是出厂采样，音色一定不同。</li>
+              <li>视频里偏移是逐个音符精确到毫秒的；机上 STEP EDIT 推子每次挪多少 tick 手册没写，只能边听边调。</li>
+              <li>视频的和弦“扫弦”、贝斯偏移是程序加的；机上靠关量化手弹。</li>
+              <li>视频画了 3 小节（D–G–D），本课用 2 小节循环。</li>
+            </ul>
+
+            <p><strong>需要实机确认（推断点）</strong></p>
+
+            <ul>
+              <li>出厂 Kits / 采样文件夹的确切名字（手册只举了 <strong>Snares</strong>；鼓组名只确认了 <strong>MPC Legends</strong>）。</li>
+              <li>16 LEVELS Tune 每垫是否正好一个半音；Semi Tune 是否叠加到 16 LEVELS 上。</li>
+              <li>退出 16 LEVELS 后，已录音符是否保持音高。</li>
+              <li>TIME CORRECT 的 Shift 单位与范围。</li>
+              <li>STEP EDIT 推子的挪动步长。</li>
+              <li>16 LEVELS 录的音符能否用 TIME CORRECT 单独选中。</li>
+            </ul>
+
+            <p>相关风格页：<a href="../chapters/03b-styles.html#dilla">Dilla 式律动</a></p>
+
+          </div>
+
+          <div class="lab-pane" data-pane="img" role="tabpanel" aria-label="原图"><p class="bl-small">原速查图（点图看大图）。</p><a href="../legacy/assets/img/beat-grid/02_dilla_drunk-grid.png"><img class="lab-grid" loading="lazy" src="../legacy/assets/img/beat-grid/02_dilla_drunk-grid.png" alt="J Dilla 风格 醉拍 速查图：鼓网格、音名与 16 LEVELS 垫位" /></a></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="lab-acc" id="lab-03" data-lab="03">
+
+    <p><a id="lab-peterock"></a></p>
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-03-body"><span class="lab-num">03</span> <span class="lab-t">Pete Rock 风格 90s 经典</span> <span class="lab-meta">94 BPM · Swing 56%</span></button></h2>
+
+    <div class="lab-acc-body" id="lab-03-body">
+
+      <div class="lab-params"><div class="lp-row"><span class="lp"><small>速度</small><b>94 BPM</b></span><span class="lp"><small>调</small><b>F 小调</b></span><span class="lp"><small>摇摆</small><b>Swing 56%</b></span></div><p><b>BPM</b>：<kbd>SEQ</kbd> → 按住 <kbd>B1</kbd> → 转 <kbd>ENCODER</kbd>（手册 p.39）。<b>Swing</b>：在 Sequence 页转 <kbd>K3</kbd>（RT Swing）到 56%（p.39，只改播放手感、不挪音符）；要把音符真正挪位：<kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <kbd>K3</kbd> Swing → <kbd>B3</kbd> Do It!（p.59）。56% = 每拍第 2、4 个 16 分音符晚约 19 毫秒（50% 不摇）。</p></div>
+
+      <div class="lab-cols">
+
+        <div class="lab-left">
+<video class="local-video portrait" controls="" preload="metadata" playsinline="" poster="../legacy/assets/video/beat-grid/03_peterock_90s-poster.jpg">
+<source src="../legacy/assets/video/beat-grid/03_peterock_90s.mp4" type="video/mp4" />
+你的浏览器不能播放此视频，请 <a href="../legacy/assets/video/beat-grid/03_peterock_90s.mp4">下载 mp4</a>。
+</video>
+<div class="bl-vctl"><p class="bl-small">片段：1. 90 年代经典：底鼓“弹跳” + 2、4 拍军鼓（0.0–5.1 秒） · 2. 踩镲 + 沙锤：让律动更“密”（5.1–10.2 秒） · 3. 贝斯跟着底鼓走（10.2–15.3 秒） · 4. 加铜管短切片 Stab：Fm7 → Dbmaj7（15.3–20.4 秒）</p></div>
+<p class="video-note bl-vnote">🎬 <b>原创网格视频</b>（竖屏 1080×1920，约 22 秒，1.7 MB，<a href="../legacy/assets/video/beat-grid/03_peterock_90s.mp4">下载 mp4</a>）· 视频底部说明：<b>风格致敬 · 全部声音为代码原创合成 · 非原曲扒带</b>。片段芯片的起止秒数由 pattern JSON 的段落小节数 × 每小节 2.553 秒算出。</p>
+</div>
+
+        <div class="lab-right">
+
+          <div class="lab-tabs" role="tablist" aria-label="讲解分区"><button type="button" class="lab-tab" role="tab" data-tab="grid">网格</button><button type="button" class="lab-tab" role="tab" data-tab="pads">音名与垫位</button><button type="button" class="lab-tab" role="tab" data-tab="steps">动手步骤</button><button type="button" class="lab-tab" role="tab" data-tab="img">原图</button></div>
+
+          <div class="lab-pane" data-pane="grid" role="tabpanel" aria-label="网格"><div class="bl-gridbox"><p class="note">（开启 JavaScript 后这里是可点击的 16 格鼓网格；也可以看「原图」。）</p></div></div>
+
+          <div class="lab-pane" data-pane="pads" role="tabpanel" aria-label="音名与垫位"><div class="bl-padsbox"><p class="note">（开启 JavaScript 后可点击音名听音、看 16 LEVELS 垫位。）</p></div></div>
+
+          <div class="lab-pane lab-steps" data-pane="steps" role="tabpanel" aria-label="动手步骤">
+
+            <p>风格背景、历史和更多网格：<a href="../chapters/03b-styles.html#boombap">Boom bap 风格页</a>。</p>
+
+            <h3 id="section-16">1. 本节要做出什么</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>项目</th>
+                  <th>内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>速度</td>
+                  <td><strong>94 BPM</strong></td>
+                </tr>
+                <tr>
+                  <td>长度</td>
+                  <td>2 小节（第 2 小节 kick 多第 15 步、snare 多第 8 步 ghost、和弦换 Dbmaj7）</td>
+                </tr>
+                <tr>
+                  <td>Swing</td>
+                  <td><strong>56%</strong>（MPC 式刻度，Q = 1/16）</td>
+                </tr>
+                <tr>
+                  <td>声部</td>
+                  <td>底鼓、军鼓、踩镲、沙锤、贝斯、铜管</td>
+                </tr>
+                <tr>
+                  <td>鼓组</td>
+                  <td>Kits → <strong>boom bap</strong> 或 <strong>90s</strong> 类鼓组（名字以屏幕为准，推断），或 <strong>MPC Legends</strong>（官方视频里有 shaker、open hat）。</td>
+                </tr>
+                <tr>
+                  <td>Kick / Snare / Hat / Open hat / Shaker</td>
+                  <td>MPC Legends 或 boom bap 鼓组　<small>来源：MPC Legends 的 shaker、open hat：Akai 官方视频确认</small></td>
+                </tr>
+                <tr>
+                  <td>贝斯</td>
+                  <td>one-shot bass　<small>来源：官方视频确认（MPC Legends）</small></td>
+                </tr>
+                <tr>
+                  <td>铜管 stab Fm7 → Dbmaj7</td>
+                  <td>铜管 / brass 类单音（<strong>推断</strong>：出厂内容有乐器单音，但有没有铜管手册没写）；找不到就用任一短促的键盘或合成器单音代替　<small>来源：推断</small></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="section-17">2. 准备</h3>
+
+            <ol>
+              <li><a href="#g1">G1</a>：新建工程，装上表的鼓组。</li>
+              <li><a href="#g2">G2</a>：BPM <strong>94</strong>，K1 先设 <strong>1 小节</strong>，K2 <strong>Q = 1/16</strong>，B3 录音量化开，K3 RT Swing <strong>56%</strong>，节拍器 Record，预备拍开。</li>
+              <li>长度计划：先录 1 小节 → DOUBLE SEQ → 补第 2 小节的变化。</li>
+            </ol>
+
+            <h3 id="section-18">3. 动手卡</h3>
+
+            <h4 id="section-19">3-1 鼓（底鼓、军鼓、踩镲、沙锤）</h4>
+
+            <p><code class="language-plaintext highlighter-rouge">X</code> 重 · <code class="language-plaintext highlighter-rouge">x</code> 中/轻 · <code class="language-plaintext highlighter-rouge">g</code> 鬼音（很轻）· <code class="language-plaintext highlighter-rouge">O</code> 开镲 · <code class="language-plaintext highlighter-rouge">·</code> 空 · <code class="language-plaintext highlighter-rouge">r</code> 一格两下（1/32）· <code class="language-plaintext highlighter-rouge">3</code> 一格三下（1/32T）· <code class="language-plaintext highlighter-rouge">t</code> 两格三下（1/16T）；<code class="language-plaintext highlighter-rouge">b1</code>、<code class="language-plaintext highlighter-rouge">b2</code>＝只在第几小节。</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>step      1  2  3  4 | 5  6  7  8 | 9 10 11 12 |13 14 15 16
+Kick b1   X  ·  ·  x | ·  ·  ·  · | ·  X  ·  · | ·  ·  ·  ·
+Kick b2   X  ·  ·  x | ·  ·  ·  · | ·  X  ·  · | ·  ·  x  ·
+Snare b1  ·  ·  ·  · | X  ·  ·  · | ·  ·  ·  · | X  ·  ·  ·
+Snare b2  ·  ·  ·  · | X  ·  ·  g | ·  ·  ·  · | X  ·  ·  ·
+Hat       X  ·  x  · | X  ·  x  · | X  ·  x  · | X  ·  O  ·
+Shaker    g  g  X  g | g  g  X  g | g  g  X  g | g  g  X  g
+</code></pre></div>            </div>
+
+            <ul>
+              <li><strong>按什么 → 看到什么 → 下一步：</strong> 按 <a href="#g3">G3</a> 一件一件叠录。屏幕在 Sample/Seq 模式下仍显示序列页，播放头走到哪、敲到的垫就亮。录完按 <kbd>STOP</kbd>，再 <kbd>PLAY</kbd> 对照视频听。</li>
+              <li><strong>Shaker 每一格都有</strong>，第 3、7、11、15 步重（反拍 8 分），其余很轻：按住 <kbd>NOTE REPEAT</kbd> 选 1/16，再按住 shaker 垫，重拍时按重一点（推断：Note Repeat 的力度跟随按压力度，需实机确认；不行就先 1/16 轻打一遍，再 1/8 叠一遍重的）。<strong>第 15 步是开镲</strong>：把 closed hat 垫和 open hat 垫设同一个 <strong>Mute Group</strong>（<kbd>SAMPLE</kbd> → <kbd>B2</kbd> 翻到 Play → <kbd>K2</kbd> Mute Group 设 1，两个垫都设；手册 p.28 就是用 hat 举例）。</li>
+            </ul>
+
+            <h4 id="levels-tunepad-4--c2">3-2 贝斯（16 LEVELS Tune，PAD 4 = <strong>C2</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> E 组 PAD 1 装贝斯单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>C2</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>F2</strong> → PAD 9（3） · 第 4 步 <strong>F2</strong> → PAD 9（2） · 第 10 步 <strong>Ab2</strong> → PAD 12（3） · 第 13 步 <strong>Eb2</strong> → PAD 7（3）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>Db2</strong> → PAD 5（3） · 第 4 步 <strong>Db2</strong> → PAD 5（2） · 第 10 步 <strong>Ab2</strong> → PAD 12（3） · 第 15 步 <strong>E2</strong> → PAD 8（2）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="pad-4--f4">3-3 铜管（和弦，PAD 4 = <strong>F4</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> F 组 PAD 1 装铜管单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>F4</strong> → 16 LEVELS Tune → 用 <a href="#g6">G6</a> 的方法 A（叠录）或方法 B（每个和弦一个垫）。</li>
+              <li><strong>你会看到 / 听到：</strong> 每叠一圈，和弦就厚一层；第一圈只有最低音时听起来像第二条贝斯，正常。</li>
+            </ul>
+
+            <p>和弦节奏：每小节第 <strong>1、7、11</strong> 步按（长度依次 3 / 1 / 4 格）。</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>和弦</th>
+                  <th>组成音</th>
+                  <th>音名 = 垫（从低到高按垫号）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Fm7</strong></td>
+                  <td>F Ab C Eb</td>
+                  <td>F4=PAD 4 · Ab4=PAD 7 · C5=PAD 11 · Eb5=PAD 14</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>Dbmaj7</strong></td>
+                  <td>Db F Ab C</td>
+                  <td>F4=PAD 4 · Ab4=PAD 7 · C5=PAD 11 · Db5=PAD 12</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="stab">3-4 铜管短切片（stab）</h4>
+            <ol>
+              <li>用 G4 把铜管单音放到 F 组，PAD 4 调到 <strong>F4</strong>，开 16 LEVELS Tune。</li>
+              <li>G6 方法 A 叠录：每小节第 <strong>1、7、11</strong> 步按（第 7 步很短）。</li>
+              <li>让它“短促”：<kbd>SAMPLE</kbd> → <kbd>B1</kbd> 翻到 <strong>Amp Env</strong> → <kbd>K2</kbd> Decay 调小（手册 p.26）。</li>
+              <li>做旧：Knob FX 选 <strong>Vintage Emulator</strong> → <strong>SP1200</strong>，只按铜管垫（手册 p.55）。</li>
+            </ol>
+
+            <h3 id="section-20">4. 音名 → 垫位总表（推断）</h3>
+
+            <ul>
+              <li>依据：手册“Tune 类型下<strong>原音高在 PAD 4</strong>，往下的垫降调、往上的垫升调”（p.22/35）+ Akai 官方视频“按半音铺开”。所以 PAD n 的音 = PAD 4 的音 + (n − 4) 个半音，范围 PAD 1（−3）到 PAD 16（+12）。</li>
+              <li>
+                <p>音名按 <strong>C4 = 中央 C</strong>（MIDI 60）。“PAD 4 =” 是为了让本课所有音尽量落在 16 个垫里选的；你也可以换别的音，只要整张表一起平移。</p>
+              </li>
+              <li><strong>贝斯</strong>（PAD 4 = C2）：PAD 5 = Db2、PAD 7 = Eb2、PAD 8 = E2、PAD 9 = F2、PAD 12 = Ab2</li>
+              <li><strong>铜管</strong>（PAD 4 = F4）：PAD 4 = F4、PAD 7 = Ab4、PAD 11 = C5、PAD 12 = Db5、PAD 14 = Eb5</li>
+            </ul>
+
+            <h3 id="section-21">5. 混音小提示和保存</h3>
+
+            <ul>
+              <li>Hat −5 dB、Pan 约 13R；Shaker −2 dB、Pan 约 15L；铜管 −2 dB、Pan 约 5R；贝斯 +1 dB（视频数值，Pan 换算推断）。</li>
+              <li>贝斯<strong>跟着 kick 走</strong>（第 1、4、10 步和 kick 同时进），这是本条的重点，音量要让 kick 和贝斯“粘”在一起。</li>
+              <li>通用步骤（音量 / 声像 / Knob FX / 压缩 / 保存 / 导出）见 <a href="#g8">G8</a>。建议工程名：<code class="language-plaintext highlighter-rouge">PETEROCK-ONBOARD</code>。</li>
+            </ul>
+
+            <h3 id="section-22">6. 和视频不一样的地方 · 需要实机确认</h3>
+
+            <p><strong>不一样的地方</strong></p>
+
+            <ul>
+              <li>视频里所有声音都是代码合成的（底部写着“风格致敬 · 全部声音为代码原创合成 · 非原曲扒带”）；机上用的是出厂采样，音色一定不同。</li>
+              <li>出厂内容不一定有铜管单音（推断）；替代音色会让“90s 东海岸”味道变淡。</li>
+              <li>Note Repeat 打 shaker 的轻重控制需实机确认。</li>
+            </ul>
+
+            <p><strong>需要实机确认（推断点）</strong></p>
+
+            <ul>
+              <li>出厂 Kits / 采样文件夹的确切名字（手册只举了 <strong>Snares</strong>；鼓组名只确认了 <strong>MPC Legends</strong>）。</li>
+              <li>16 LEVELS Tune 每垫是否正好一个半音；Semi Tune 是否叠加到 16 LEVELS 上。</li>
+              <li>退出 16 LEVELS 后，已录音符是否保持音高。</li>
+              <li>出厂内容里是否有 brass / horn 单音及其文件夹名。</li>
+              <li>NOTE REPEAT 下按压力度是否改变力度。</li>
+            </ul>
+
+            <p>相关风格页：<a href="../chapters/03b-styles.html#boombap">Boom bap 风格页</a></p>
+
+          </div>
+
+          <div class="lab-pane" data-pane="img" role="tabpanel" aria-label="原图"><p class="bl-small">原速查图（点图看大图）。</p><a href="../legacy/assets/img/beat-grid/03_peterock_90s-grid.png"><img class="lab-grid" loading="lazy" src="../legacy/assets/img/beat-grid/03_peterock_90s-grid.png" alt="Pete Rock 风格 90s 经典 速查图：鼓网格、音名与 16 LEVELS 垫位" /></a></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="lab-acc" id="lab-04" data-lab="04">
+
+    <p><a id="lab-memphis"></a></p>
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-04-body"><span class="lab-num">04</span> <span class="lab-t">Memphis / Trap 踩镲连击</span> <span class="lab-meta">70 BPM · Swing 50%</span></button></h2>
+
+    <div class="lab-acc-body" id="lab-04-body">
+
+      <div class="lab-params"><div class="lp-row"><span class="lp"><small>速度</small><b>70 BPM</b></span><span class="lp"><small>调</small><b>F 弗里几亚</b></span><span class="lp"><small>摇摆</small><b>Swing 50%</b></span></div><p><b>BPM</b>：<kbd>SEQ</kbd> → 按住 <kbd>B1</kbd> → 转 <kbd>ENCODER</kbd>（手册 p.39）。<b>Swing</b>：在 Sequence 页转 <kbd>K3</kbd>（RT Swing）到 50%（p.39，只改播放手感、不挪音符）；要把音符真正挪位：<kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <kbd>K3</kbd> Swing → <kbd>B3</kbd> Do It!（p.59）。50% = 不摇。</p></div>
+
+      <div class="lab-cols">
+
+        <div class="lab-left">
+<video class="local-video portrait" controls="" preload="metadata" playsinline="" poster="../legacy/assets/video/beat-grid/04_memphis_trap_rolls-poster.jpg">
+<source src="../legacy/assets/video/beat-grid/04_memphis_trap_rolls.mp4" type="video/mp4" />
+你的浏览器不能播放此视频，请 <a href="../legacy/assets/video/beat-grid/04_memphis_trap_rolls.mp4">下载 mp4</a>。
+</video>
+<div class="bl-vctl"><p class="bl-small">片段：1. Memphis / Trap：70 BPM 的慢速重拍（0.0–6.9 秒） · 2. 踩镲连击 Roll：1/32 和三连音（6.9–13.7 秒） · 3. 加 808 滑音 + 牛铃旋律（13.7–20.6 秒）</p></div>
+<p class="video-note bl-vnote">🎬 <b>原创网格视频</b>（竖屏 1080×1920，约 22 秒，1.4 MB，<a href="../legacy/assets/video/beat-grid/04_memphis_trap_rolls.mp4">下载 mp4</a>）· 视频底部说明：<b>风格致敬 · 全部声音为代码原创合成 · 非原曲扒带</b>。片段芯片的起止秒数由 pattern JSON 的段落小节数 × 每小节 3.429 秒算出。</p>
+</div>
+
+        <div class="lab-right">
+
+          <div class="lab-tabs" role="tablist" aria-label="讲解分区"><button type="button" class="lab-tab" role="tab" data-tab="grid">网格</button><button type="button" class="lab-tab" role="tab" data-tab="pads">音名与垫位</button><button type="button" class="lab-tab" role="tab" data-tab="steps">动手步骤</button><button type="button" class="lab-tab" role="tab" data-tab="img">原图</button></div>
+
+          <div class="lab-pane" data-pane="grid" role="tabpanel" aria-label="网格"><div class="bl-gridbox"><p class="note">（开启 JavaScript 后这里是可点击的 16 格鼓网格；也可以看「原图」。）</p></div></div>
+
+          <div class="lab-pane" data-pane="pads" role="tabpanel" aria-label="音名与垫位"><div class="bl-padsbox"><p class="note">（开启 JavaScript 后可点击音名听音、看 16 LEVELS 垫位。）</p></div></div>
+
+          <div class="lab-pane lab-steps" data-pane="steps" role="tabpanel" aria-label="动手步骤">
+
+            <p>风格背景、历史和更多网格：<a href="../chapters/03b-styles.html#memphis">Memphis 风格页</a>。</p>
+
+            <h3 id="section-23">1. 本节要做出什么</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>项目</th>
+                  <th>内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>速度</td>
+                  <td><strong>70 BPM</strong></td>
+                </tr>
+                <tr>
+                  <td>长度</td>
+                  <td>2 小节（两小节 kick 不同、hat 连击不同）</td>
+                </tr>
+                <tr>
+                  <td>Swing</td>
+                  <td><strong>50%</strong>（不摇）</td>
+                </tr>
+                <tr>
+                  <td>声部</td>
+                  <td>底鼓、拍手、踩镲、牛铃、808 贝斯</td>
+                </tr>
+                <tr>
+                  <td>鼓组</td>
+                  <td>Kits → <strong>trap</strong> 分类里的鼓组（名字以屏幕为准，推断），要有长尾 808 和 cowbell。</td>
+                </tr>
+                <tr>
+                  <td>Kick / Clap / Hat</td>
+                  <td>trap 分类出厂鼓组　<small>来源：分类名来自 Akai 视频口述；具体鼓组推断</small></td>
+                </tr>
+                <tr>
+                  <td>808 贝斯</td>
+                  <td>鼓组里的长尾 808（推断：trap 鼓组通常带）　<small>来源：推断</small></td>
+                </tr>
+                <tr>
+                  <td>牛铃旋律</td>
+                  <td>808 cowbell 类采样（<strong>推断</strong>：没有公开清单）；没有就用 rim / 木鱼等短音代替　<small>来源：推断</small></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="section-24">2. 准备</h3>
+
+            <ol>
+              <li><a href="#g1">G1</a>：新建工程，装上表的鼓组。</li>
+              <li><a href="#g2">G2</a>：BPM <strong>70</strong>，K1 先设 <strong>1 小节</strong>，K2 <strong>Q = 1/16</strong>，B3 录音量化开，K3 RT Swing <strong>50%</strong>，节拍器 Record，预备拍开。</li>
+              <li>长度计划：先录 1 小节的 kick + clap + 普通 hat → DOUBLE SEQ → 改第 2 小节 kick → 最后单独一遍录连击。</li>
+            </ol>
+
+            <h3 id="section-25">3. 动手卡</h3>
+
+            <h4 id="section-26">3-1 鼓（底鼓、拍手、踩镲）</h4>
+
+            <p><code class="language-plaintext highlighter-rouge">X</code> 重 · <code class="language-plaintext highlighter-rouge">x</code> 中/轻 · <code class="language-plaintext highlighter-rouge">g</code> 鬼音（很轻）· <code class="language-plaintext highlighter-rouge">O</code> 开镲 · <code class="language-plaintext highlighter-rouge">·</code> 空 · <code class="language-plaintext highlighter-rouge">r</code> 一格两下（1/32）· <code class="language-plaintext highlighter-rouge">3</code> 一格三下（1/32T）· <code class="language-plaintext highlighter-rouge">t</code> 两格三下（1/16T）；<code class="language-plaintext highlighter-rouge">b1</code>、<code class="language-plaintext highlighter-rouge">b2</code>＝只在第几小节。</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>step      1  2  3  4 | 5  6  7  8 | 9 10 11 12 |13 14 15 16
+Kick b1   X  ·  ·  · | ·  ·  ·  X | ·  ·  X  · | ·  ·  ·  ·
+Kick b2   X  ·  ·  · | ·  ·  X  · | ·  X  ·  · | ·  ·  X  ·
+Clap      ·  ·  ·  · | X  ·  ·  · | ·  ·  ·  · | X  ·  ·  ·
+Hat b1    X  x  X  x | X  x  X  r | X  x  X  x | X  x  r  r
+Hat b2    X  x  X  x | X  x  t  t | X  x  X  x | 3  3  X  x
+</code></pre></div>            </div>
+
+            <ul>
+              <li><strong>按什么 → 看到什么 → 下一步：</strong> 按 <a href="#g3">G3</a> 一件一件叠录。屏幕在 Sample/Seq 模式下仍显示序列页，播放头走到哪、敲到的垫就亮。录完按 <kbd>STOP</kbd>，再 <kbd>PLAY</kbd> 对照视频听。</li>
+              <li>70 BPM 是“半速”感（按 140 数也对）。Clap 在第 5、13 步。<strong>Swing 50%，不摇。</strong></li>
+            </ul>
+
+            <h4 id="levels-tunepad-4--c5">3-2 牛铃（16 LEVELS Tune，PAD 4 = <strong>C5</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> G 组 PAD 1 装牛铃 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>C5</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>F5</strong> → PAD 9（1） · 第 4 步 <strong>F5</strong> → PAD 9（1） · 第 7 步 <strong>Ab5</strong> → PAD 12（1） · 第 9 步 <strong>Gb5</strong> → PAD 10（1） · 第 12 步 <strong>F5</strong> → PAD 9（1） · 第 15 步 <strong>C5</strong> → PAD 4（1）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>F5</strong> → PAD 9（1） · 第 4 步 <strong>F5</strong> → PAD 9（1） · 第 7 步 <strong>Ab5</strong> → PAD 12（1） · 第 9 步 <strong>C6</strong> → PAD 16（1） · 第 12 步 <strong>Ab5</strong> → PAD 12（1） · 第 15 步 <strong>Gb5</strong> → PAD 10（1）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="levels-tunepad-4--f1">3-3 808 贝斯（16 LEVELS Tune，PAD 4 = <strong>F1</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> E 组 PAD 1 装808 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>F1</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>F1</strong> → PAD 4（6.5） · 第 8 步 <strong>Ab1</strong> → PAD 7（2.5） · 第 11 步 <strong>F1</strong> → PAD 4（6）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>F1</strong> → PAD 4（5.5） · 第 7 步 <strong>Gb1</strong> → PAD 5（2.5）（视频从 F1 滑上来） · 第 10 步 <strong>Eb1</strong> → PAD 2（4.5）（视频从 Gb1 滑上来） · 第 15 步 <strong>F1</strong> → PAD 4（2）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="section-27">3-4 踩镲连击：1/32 和三连音</h4>
+            <ol>
+              <li>先用 Q = 1/16 录好普通 16 分 hat（看网格里 X / x 的格）。</li>
+              <li><strong>单独一遍录连击：</strong> <kbd>K2</kbd> 把 Q 改成 <strong>1/32</strong>（或按 <kbd>B3</kbd> 暂时关掉录音量化）→ SEQ RECORD → PLAY。</li>
+              <li>按住 <kbd>NOTE REPEAT</kbd>，用 <kbd>B1</kbd>–<kbd>B3</kbd> 选 <strong>1/32</strong>，只在网格写 <code class="language-plaintext highlighter-rouge">×2</code> 的那一格按住 hat 垫（小节 1：第 8 步；第 15、16 步越来越重）。</li>
+              <li>三连音：按住 <kbd>SHIFT</kbd> 时 B1–B3 显示三连音分度（手册 p.19）。小节 2 第 7–8 步是“两格三下”＝ <strong>1/16T</strong>；第 13–14 步是“一格三下、共六下”＝ <strong>1/32T</strong>（推断：Q 和 Note Repeat 里有这些三连音分度，手册只写了“triplet time divisions”）。</li>
+              <li>录完把 Q 改回 1/16，避免以后录别的东西被 1/32 量化。</li>
+            </ol>
+
+            <h4 id="section-28">3-5 牛铃唱旋律 + 808 滑音</h4>
+            <ul>
+              <li><strong>牛铃：</strong> 这是 Memphis 的老办法——把牛铃调成不同音高当旋律（风格页有出处）。G4：牛铃放 G 组 PAD 1，PAD 4 调到 <strong>C5</strong>，16 LEVELS Tune，照表弹。</li>
+              <li><strong>808：</strong> G4：808 放 E 组，PAD 4 调到 <strong>F1</strong>；在 Play 页把 Polyphony 设 <strong>Mono</strong>，长尾音会被下一个音切断。</li>
+              <li><strong>滑音（glide）：</strong> 手册里<strong>没有</strong> 808 滑音 / portamento 功能。替代：<kbd>SHIFT</kbd> + <kbd>PAD 9</kbd>（FADER）选 <strong>Pad Tune</strong> → 录音时在那个音上推推子（手册 p.41：Tuning 可录自动化）。Pad Tune 改的是 Semi Tune，所以是<strong>一格一格的半音跳</strong>，不是平滑滑音（推断）。新手可以直接跳过，弹目标音即可。</li>
+            </ul>
+
+            <h3 id="section-29">4. 音名 → 垫位总表（推断）</h3>
+
+            <ul>
+              <li>依据：手册“Tune 类型下<strong>原音高在 PAD 4</strong>，往下的垫降调、往上的垫升调”（p.22/35）+ Akai 官方视频“按半音铺开”。所以 PAD n 的音 = PAD 4 的音 + (n − 4) 个半音，范围 PAD 1（−3）到 PAD 16（+12）。</li>
+              <li>
+                <p>音名按 <strong>C4 = 中央 C</strong>（MIDI 60）。“PAD 4 =” 是为了让本课所有音尽量落在 16 个垫里选的；你也可以换别的音，只要整张表一起平移。</p>
+              </li>
+              <li><strong>牛铃</strong>（PAD 4 = C5）：PAD 4 = C5、PAD 9 = F5、PAD 10 = Gb5、PAD 12 = Ab5、PAD 16 = C6</li>
+              <li><strong>808 贝斯</strong>（PAD 4 = F1）：PAD 2 = Eb1、PAD 4 = F1、PAD 5 = Gb1、PAD 7 = Ab1</li>
+            </ul>
+
+            <h3 id="section-30">5. 混音小提示和保存</h3>
+
+            <ul>
+              <li>Kick −1 dB、Hat −5 dB 且 Pan 约 10R、牛铃 −4 dB 且 Pan 约 10L 加 Delay（Knob FX 只选牛铃垫）、Clap 加一点 Reverb。</li>
+              <li>F 弗里几亚的 <strong>Gb</strong>（降二级）是暗黑感来源：牛铃和 808 都会用到 PAD 5 / PAD 10。</li>
+              <li>通用步骤（音量 / 声像 / Knob FX / 压缩 / 保存 / 导出）见 <a href="#g8">G8</a>。建议工程名：<code class="language-plaintext highlighter-rouge">MEMPHIS-ONBOARD</code>。</li>
+            </ul>
+
+            <h3 id="section-31">6. 和视频不一样的地方 · 需要实机确认</h3>
+
+            <p><strong>不一样的地方</strong></p>
+
+            <ul>
+              <li>视频里所有声音都是代码合成的（底部写着“风格致敬 · 全部声音为代码原创合成 · 非原曲扒带”）；机上用的是出厂采样，音色一定不同。</li>
+              <li>视频 808 有真正的平滑滑音；机上只能半音跳或省略。</li>
+              <li>出厂 cowbell 的音色和长短未知（推断）。</li>
+            </ul>
+
+            <p><strong>需要实机确认（推断点）</strong></p>
+
+            <ul>
+              <li>出厂 Kits / 采样文件夹的确切名字（手册只举了 <strong>Snares</strong>；鼓组名只确认了 <strong>MPC Legends</strong>）。</li>
+              <li>16 LEVELS Tune 每垫是否正好一个半音；Semi Tune 是否叠加到 16 LEVELS 上。</li>
+              <li>退出 16 LEVELS 后，已录音符是否保持音高。</li>
+              <li>trap 鼓组里的 808 / cowbell 名称。</li>
+              <li>Q 与 NOTE REPEAT 的三连音分度列表（1/16T、1/32T）。</li>
+              <li>FADER Pad Tune 录自动化后，16 LEVELS 垫上的效果。</li>
+            </ul>
+
+            <p>相关风格页：<a href="../chapters/03b-styles.html#memphis">Memphis 风格页</a></p>
+
+          </div>
+
+          <div class="lab-pane" data-pane="img" role="tabpanel" aria-label="原图"><p class="bl-small">原速查图（点图看大图）。</p><a href="../legacy/assets/img/beat-grid/04_memphis_trap_rolls-grid.png"><img class="lab-grid" loading="lazy" src="../legacy/assets/img/beat-grid/04_memphis_trap_rolls-grid.png" alt="Memphis / Trap 踩镲连击 速查图：鼓网格、音名与 16 LEVELS 垫位" /></a></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="lab-acc" id="lab-05" data-lab="05">
+
+    <p><a id="lab-4536"></a></p>
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-05-body"><span class="lab-num">05</span> <span class="lab-t">人声 Hook：王道进行 4536</span> <span class="lab-meta">84 BPM · Swing 54%</span></button></h2>
+
+    <div class="lab-acc-body" id="lab-05-body">
+
+      <div class="lab-params"><div class="lp-row"><span class="lp"><small>速度</small><b>84 BPM</b></span><span class="lp"><small>调</small><b>C 大调</b></span><span class="lp"><small>摇摆</small><b>Swing 54%</b></span></div><p><b>BPM</b>：<kbd>SEQ</kbd> → 按住 <kbd>B1</kbd> → 转 <kbd>ENCODER</kbd>（手册 p.39）。<b>Swing</b>：在 Sequence 页转 <kbd>K3</kbd>（RT Swing）到 54%（p.39，只改播放手感、不挪音符）；要把音符真正挪位：<kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <kbd>K3</kbd> Swing → <kbd>B3</kbd> Do It!（p.59）。54% = 每拍第 2、4 个 16 分音符晚约 14 毫秒（50% 不摇）。</p></div>
+
+      <div class="lab-cols">
+
+        <div class="lab-left">
+<video class="local-video portrait" controls="" preload="metadata" playsinline="" poster="../legacy/assets/video/beat-grid/05_vocal_hook_4536-poster.jpg">
+<source src="../legacy/assets/video/beat-grid/05_vocal_hook_4536.mp4" type="video/mp4" />
+你的浏览器不能播放此视频，请 <a href="../legacy/assets/video/beat-grid/05_vocal_hook_4536.mp4">下载 mp4</a>。
+</video>
+<div class="bl-vctl"><p class="bl-small">片段：1. 先听人声 Hook + 和弦（0.0–11.4 秒） · 2. 加入鼓和贝斯：Hook 秒变 Beat（11.4–22.9 秒）</p></div>
+<p class="video-note bl-vnote">🎬 <b>原创网格视频</b>（竖屏 1080×1920，约 24 秒，1.9 MB，<a href="../legacy/assets/video/beat-grid/05_vocal_hook_4536.mp4">下载 mp4</a>）· 视频底部说明：<b>风格致敬 · 全部声音为代码原创合成 · 非原曲扒带</b>。片段芯片的起止秒数由 pattern JSON 的段落小节数 × 每小节 2.857 秒算出。</p>
+</div>
+
+        <div class="lab-right">
+
+          <div class="lab-tabs" role="tablist" aria-label="讲解分区"><button type="button" class="lab-tab" role="tab" data-tab="grid">网格</button><button type="button" class="lab-tab" role="tab" data-tab="pads">音名与垫位</button><button type="button" class="lab-tab" role="tab" data-tab="steps">动手步骤</button><button type="button" class="lab-tab" role="tab" data-tab="img">原图</button></div>
+
+          <div class="lab-pane" data-pane="grid" role="tabpanel" aria-label="网格"><div class="bl-gridbox"><p class="note">（开启 JavaScript 后这里是可点击的 16 格鼓网格；也可以看「原图」。）</p></div></div>
+
+          <div class="lab-pane" data-pane="pads" role="tabpanel" aria-label="音名与垫位"><div class="bl-padsbox"><p class="note">（开启 JavaScript 后可点击音名听音、看 16 LEVELS 垫位。）</p></div></div>
+
+          <div class="lab-pane lab-steps" data-pane="steps" role="tabpanel" aria-label="动手步骤">
+
+            <p>和弦怎么读：<a href="#chord-basics">和弦速成</a>；同一套弹和弦方法也用在 <a href="#lab-6251">06 · 6251</a>。</p>
+
+            <h3 id="section-32">1. 本节要做出什么</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>项目</th>
+                  <th>内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>速度</td>
+                  <td><strong>84 BPM</strong></td>
+                </tr>
+                <tr>
+                  <td>长度</td>
+                  <td>4 小节（一小节一个和弦：Fmaj7 → G7 → Em7 → Am7）</td>
+                </tr>
+                <tr>
+                  <td>Swing</td>
+                  <td><strong>54%</strong>（MPC 式刻度，Q = 1/16）</td>
+                </tr>
+                <tr>
+                  <td>声部</td>
+                  <td>底鼓、军鼓、踩镲、贝斯、电钢琴、人声 la/ooh</td>
+                </tr>
+                <tr>
+                  <td>鼓组</td>
+                  <td>Kits → <strong>R&amp;B</strong> 分类里声音偏软的鼓组（名字以屏幕为准，推断），或 <strong>MPC Legends</strong>（官方确认，B 组还有 vocal chop）。</td>
+                </tr>
+                <tr>
+                  <td>Kick / Snare / Hat</td>
+                  <td>R&amp;B 类软鼓或 MPC Legends　<small>来源：MPC Legends 确认；R&amp;B 分类来自 Akai 视频口述</small></td>
+                </tr>
+                <tr>
+                  <td>贝斯</td>
+                  <td>one-shot bass（MPC Legends 有）　<small>来源：官方视频确认</small></td>
+                </tr>
+                <tr>
+                  <td>电钢琴和弦</td>
+                  <td>电钢琴 / 钢琴单音（文件夹名推断）→ G6　<small>来源：乐器单音存在（手册 p.7）；具体文件推断</small></td>
+                </tr>
+                <tr>
+                  <td>人声 hook</td>
+                  <td>MPC Legends B 组 vocal chop（拖长元音的那种）或自己哼（G7）　<small>来源：vocal chop 存在：官方视频确认；音高未知</small></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="section-33">2. 准备</h3>
+
+            <ol>
+              <li><a href="#g1">G1</a>：新建工程，装上表的鼓组。</li>
+              <li><a href="#g2">G2</a>：BPM <strong>84</strong>，K1 先设 <strong>1 小节</strong>，K2 <strong>Q = 1/16</strong>，B3 录音量化开，K3 RT Swing <strong>54%</strong>，节拍器 Record，预备拍开。</li>
+              <li>长度计划：鼓 1 小节就够：录 1 小节 → DOUBLE SEQ 两次 → 4 小节；贝斯、和弦、人声在 4 小节里录。</li>
+            </ol>
+
+            <h3 id="section-34">3. 动手卡</h3>
+
+            <h4 id="section-35">3-1 鼓（底鼓、军鼓、踩镲）</h4>
+
+            <p><code class="language-plaintext highlighter-rouge">X</code> 重 · <code class="language-plaintext highlighter-rouge">x</code> 中/轻 · <code class="language-plaintext highlighter-rouge">g</code> 鬼音（很轻）· <code class="language-plaintext highlighter-rouge">O</code> 开镲 · <code class="language-plaintext highlighter-rouge">·</code> 空 · <code class="language-plaintext highlighter-rouge">r</code> 一格两下（1/32）· <code class="language-plaintext highlighter-rouge">3</code> 一格三下（1/32T）· <code class="language-plaintext highlighter-rouge">t</code> 两格三下（1/16T）；<code class="language-plaintext highlighter-rouge">b1</code>、<code class="language-plaintext highlighter-rouge">b2</code>＝只在第几小节。</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>step      1  2  3  4 | 5  6  7  8 | 9 10 11 12 |13 14 15 16
+Kick      X  ·  ·  · | ·  ·  ·  X | ·  ·  X  · | ·  ·  ·  ·
+Snare     ·  ·  ·  · | X  ·  ·  · | ·  ·  ·  · | X  ·  ·  ·
+Hat       X  g  X  g | X  g  X  g | X  g  X  g | X  g  X  g
+</code></pre></div>            </div>
+
+            <ul>
+              <li><strong>按什么 → 看到什么 → 下一步：</strong> 按 <a href="#g3">G3</a> 一件一件叠录。屏幕在 Sample/Seq 模式下仍显示序列页，播放头走到哪、敲到的垫就亮。录完按 <kbd>STOP</kbd>，再 <kbd>PLAY</kbd> 对照视频听。</li>
+              <li>Hat 每格都有：拍上（第 1、3、5…步）中等、反拍很轻。最省事：按住 NOTE REPEAT 选 1/16，轻轻按住 hat 垫。</li>
+            </ul>
+
+            <h4 id="levels-tunepad-4--g2">3-2 贝斯（16 LEVELS Tune，PAD 4 = <strong>G2</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> E 组 PAD 1 装贝斯单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>G2</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>F2</strong> → PAD 2（5） · 第 8 步 <strong>F3</strong> → PAD 14（1） · 第 11 步 <strong>F2</strong> → PAD 2（4） · 第 15 步 <strong>C3</strong> → PAD 9（2）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>G2</strong> → PAD 4（5） · 第 8 步 <strong>G3</strong> → PAD 16（1） · 第 11 步 <strong>G2</strong> → PAD 4（4） · 第 15 步 <strong>D3</strong> → PAD 11（2）</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>第 1 步 <strong>E2</strong> → PAD 1（5） · 第 8 步 <strong>E3</strong> → PAD 13（1） · 第 11 步 <strong>E2</strong> → PAD 1（4） · 第 15 步 <strong>B2</strong> → PAD 8（2）</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>第 1 步 <strong>A2</strong> → PAD 6（5） · 第 8 步 <strong>A2</strong> → PAD 6（1） *原 A3 · 第 11 步 <strong>A2</strong> → PAD 6（4） · 第 15 步 <strong>E3</strong> → PAD 13（2）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="pad-4--g3-1">3-3 电钢琴（和弦，PAD 4 = <strong>G3</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> F 组 PAD 1 装电钢琴单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>G3</strong> → 16 LEVELS Tune → 用 <a href="#g6">G6</a> 的方法 A（叠录）或方法 B（每个和弦一个垫）。</li>
+              <li><strong>你会看到 / 听到：</strong> 每叠一圈，和弦就厚一层；第一圈只有最低音时听起来像第二条贝斯，正常。</li>
+            </ul>
+
+            <p>和弦节奏：每小节第 <strong>1、7、11</strong> 步按（长度依次 6 / 2 / 6 格）。</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>和弦</th>
+                  <th>组成音</th>
+                  <th>音名 = 垫（从低到高按垫号）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Fmaj7</strong></td>
+                  <td>F A C E</td>
+                  <td>F3=PAD 2 · A3=PAD 6 · C4=PAD 9 · E4=PAD 13</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>G7</strong></td>
+                  <td>G B D F</td>
+                  <td>G3=PAD 4 · B3=PAD 8 · D4=PAD 11 · F4=PAD 14</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>Em7</strong></td>
+                  <td>E G B D</td>
+                  <td>E3=PAD 1 · G3=PAD 4 · B3=PAD 8 · D4=PAD 11</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><strong>Am7</strong></td>
+                  <td>A C E G</td>
+                  <td>A3=PAD 6 · C4=PAD 9 · E4=PAD 13 · G4=PAD 16</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="laooh16-levels-tunepad-4--c5">3-4 人声 la/ooh（16 LEVELS Tune，PAD 4 = <strong>C5</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> G 组 PAD 1 装人声（<a href="#g7">G7</a> 选一条路） → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>C5</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>A4</strong> → PAD 1（3） · 第 5 步 <strong>C5</strong> → PAD 4（2） · 第 7 步 <strong>E5</strong> → PAD 8（2） · 第 9 步 <strong>E5</strong> → PAD 8（6）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>D5</strong> → PAD 6（2） · 第 3 步 <strong>E5</strong> → PAD 8（2） · 第 5 步 <strong>F5</strong> → PAD 9（4） · 第 9 步 <strong>E5</strong> → PAD 8（2） · 第 11 步 <strong>D5</strong> → PAD 6（2） · 第 13 步 <strong>B4</strong> → PAD 3（4）</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>第 1 步 <strong>B4</strong> → PAD 3（3） · 第 5 步 <strong>D5</strong> → PAD 6（2） · 第 7 步 <strong>E5</strong> → PAD 8（2） · 第 9 步 <strong>G5</strong> → PAD 11（6）</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>第 1 步 <strong>E5</strong> → PAD 8（2） · 第 3 步 <strong>D5</strong> → PAD 6（2） · 第 5 步 <strong>C5</strong> → PAD 4（4） · 第 9 步 <strong>B4</strong> → PAD 3（2） · 第 11 步 <strong>C5</strong> → PAD 4（2） · 第 13 步 <strong>A4</strong> → PAD 1（4）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="hook-">3-5 Hook 和声（视频里的第二个人声）</h4>
+            <p>视频在每个长音（约 0.5 秒以上，即 3 格以上）下面自动加了一个<strong>低 3–4 个半音</strong>、落在 C 大调音阶里的和声。机上做法：录完主旋律后，再叠录一遍，长音（小节 1 第 9 步 E5、小节 2 第 5 步 F5、小节 3 第 9 步 G5、小节 4 第 5 步 C5 等）各按低 3–4 个半音的垫（例如 E5 → C5，PAD 8 → PAD 4），音量调低一半，Pan 偏右。这一步可选。</p>
+
+            <h3 id="section-36">4. 音名 → 垫位总表（推断）</h3>
+
+            <ul>
+              <li>依据：手册“Tune 类型下<strong>原音高在 PAD 4</strong>，往下的垫降调、往上的垫升调”（p.22/35）+ Akai 官方视频“按半音铺开”。所以 PAD n 的音 = PAD 4 的音 + (n − 4) 个半音，范围 PAD 1（−3）到 PAD 16（+12）。</li>
+              <li>
+                <p>音名按 <strong>C4 = 中央 C</strong>（MIDI 60）。“PAD 4 =” 是为了让本课所有音尽量落在 16 个垫里选的；你也可以换别的音，只要整张表一起平移。</p>
+              </li>
+              <li><strong>贝斯</strong>（PAD 4 = G2）：PAD 1 = E2、PAD 2 = F2、PAD 4 = G2、PAD 6 = A2、PAD 8 = B2、PAD 9 = C3、PAD 11 = D3、PAD 13 = E3、PAD 14 = F3、PAD 16 = G3</li>
+              <li><strong>电钢琴</strong>（PAD 4 = G3）：PAD 1 = E3、PAD 2 = F3、PAD 4 = G3、PAD 6 = A3、PAD 8 = B3、PAD 9 = C4、PAD 11 = D4、PAD 13 = E4、PAD 14 = F4、PAD 16 = G4</li>
+              <li><strong>人声 la/ooh</strong>（PAD 4 = C5）：PAD 1 = A4、PAD 3 = B4、PAD 4 = C5、PAD 6 = D5、PAD 8 = E5、PAD 9 = F5、PAD 11 = G5</li>
+            </ul>
+
+            <h3 id="section-37">5. 混音小提示和保存</h3>
+
+            <ul>
+              <li>Hat −7 dB、Pan 约 13R；Snare −3 dB；电钢琴 −1 dB；人声 +1.5 dB。</li>
+              <li>Knob FX 选 <strong>Reverb Medium</strong>，只给电钢琴和人声垫，<kbd>K3</kbd> Mix 约 30%（视频 rev 0.3）。人声再想要回声，就把 Knob FX 换成 Delay 先 RESAMPLE 固化。</li>
+              <li>通用步骤（音量 / 声像 / Knob FX / 压缩 / 保存 / 导出）见 <a href="#g8">G8</a>。建议工程名：<code class="language-plaintext highlighter-rouge">4536-ONBOARD</code>。</li>
+            </ul>
+
+            <h3 id="section-38">6. 和视频不一样的地方 · 需要实机确认</h3>
+
+            <p><strong>不一样的地方</strong></p>
+
+            <ul>
+              <li>视频里所有声音都是代码合成的（底部写着“风格致敬 · 全部声音为代码原创合成 · 非原曲扒带”）；机上用的是出厂采样，音色一定不同。</li>
+              <li>视频人声是合成的 la/ooh，有歌词音节变化；内置 vocal chop 或自己哼只有一个元音（路 3 整句唱除外）。</li>
+              <li>第 4 小节第 8 步贝斯原本是高八度 A3，超出 16 LEVELS 范围，本课改成 A2（灰色 *）。</li>
+              <li>视频和弦是扫弦（每个音错开 9 ms），人声有自动和声；机上靠手按、靠叠录。</li>
+            </ul>
+
+            <p><strong>需要实机确认（推断点）</strong></p>
+
+            <ul>
+              <li>出厂 Kits / 采样文件夹的确切名字（手册只举了 <strong>Snares</strong>；鼓组名只确认了 <strong>MPC Legends</strong>）。</li>
+              <li>16 LEVELS Tune 每垫是否正好一个半音；Semi Tune 是否叠加到 16 LEVELS 上。</li>
+              <li>退出 16 LEVELS 后，已录音符是否保持音高。</li>
+              <li>vocal chop 的音高（用调音器测）。</li>
+              <li>16 LEVELS 下多垫同按是否全部发声。</li>
+            </ul>
+
+            <p>相关风格页：<a href="#chord-basics">和弦速成（本页）</a></p>
+
+          </div>
+
+          <div class="lab-pane" data-pane="img" role="tabpanel" aria-label="原图"><p class="bl-small">原速查图（点图看大图）。</p><a href="../legacy/assets/img/beat-grid/05_vocal_hook_4536-grid.png"><img class="lab-grid" loading="lazy" src="../legacy/assets/img/beat-grid/05_vocal_hook_4536-grid.png" alt="人声 Hook：王道进行 4536 速查图：鼓网格、音名与 16 LEVELS 垫位" /></a></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="lab-acc" id="lab-06" data-lab="06">
+
+    <p><a id="lab-6251"></a></p>
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-06-body"><span class="lab-num">06</span> <span class="lab-t">和弦怎么看？键盘灯光法</span> <span class="lab-meta">80 BPM · Swing 55%</span></button></h2>
+
+    <div class="lab-acc-body" id="lab-06-body">
+
+      <div class="lab-params"><div class="lp-row"><span class="lp"><small>速度</small><b>80 BPM</b></span><span class="lp"><small>调</small><b>C 大调</b></span><span class="lp"><small>摇摆</small><b>Swing 55%</b></span></div><p><b>BPM</b>：<kbd>SEQ</kbd> → 按住 <kbd>B1</kbd> → 转 <kbd>ENCODER</kbd>（手册 p.39）。<b>Swing</b>：在 Sequence 页转 <kbd>K3</kbd>（RT Swing）到 55%（p.39，只改播放手感、不挪音符）；要把音符真正挪位：<kbd>SHIFT</kbd> + <kbd>PAD 14</kbd>（TIME CORRECT）→ <kbd>K3</kbd> Swing → <kbd>B3</kbd> Do It!（p.59）。55% = 每拍第 2、4 个 16 分音符晚约 19 毫秒（50% 不摇）。</p></div>
+
+      <div class="lab-cols">
+
+        <div class="lab-left">
+<video class="local-video portrait" controls="" preload="metadata" playsinline="" poster="../legacy/assets/video/beat-grid/06_chords_keyboard_6251-poster.jpg">
+<source src="../legacy/assets/video/beat-grid/06_chords_keyboard_6251.mp4" type="video/mp4" />
+你的浏览器不能播放此视频，请 <a href="../legacy/assets/video/beat-grid/06_chords_keyboard_6251.mp4">下载 mp4</a>。
+</video>
+<div class="bl-vctl"><p class="bl-small">片段：1. 只听和弦：键盘上亮的就是和弦音（0.0–12.0 秒） · 2. 加入鼓 + 人声旋律：看蓝点（12.0–24.0 秒）</p></div>
+<p class="video-note bl-vnote">🎬 <b>原创网格视频</b>（竖屏 1080×1920，约 25 秒，2.0 MB，<a href="../legacy/assets/video/beat-grid/06_chords_keyboard_6251.mp4">下载 mp4</a>）· 视频底部说明：<b>风格致敬 · 全部声音为代码原创合成 · 非原曲扒带</b>。片段芯片的起止秒数由 pattern JSON 的段落小节数 × 每小节 3.000 秒算出。</p>
+</div>
+
+        <div class="lab-right">
+
+          <div class="lab-tabs" role="tablist" aria-label="讲解分区"><button type="button" class="lab-tab" role="tab" data-tab="grid">网格</button><button type="button" class="lab-tab" role="tab" data-tab="pads">音名与垫位</button><button type="button" class="lab-tab" role="tab" data-tab="steps">动手步骤</button><button type="button" class="lab-tab" role="tab" data-tab="img">原图</button></div>
+
+          <div class="lab-pane" data-pane="grid" role="tabpanel" aria-label="网格"><div class="bl-gridbox"><p class="note">（开启 JavaScript 后这里是可点击的 16 格鼓网格；也可以看「原图」。）</p></div></div>
+
+          <div class="lab-pane" data-pane="pads" role="tabpanel" aria-label="音名与垫位"><div class="bl-padsbox"><p class="note">（开启 JavaScript 后可点击音名听音、看 16 LEVELS 垫位。）</p></div></div>
+
+          <div class="lab-pane lab-steps" data-pane="steps" role="tabpanel" aria-label="动手步骤">
+
+            <p>风格背景、历史和更多网格：<a href="../chapters/03b-styles.html#jpjazzy">日系 jazzy 风格页</a>。 和弦怎么读：<a href="#chord-basics">和弦速成</a>。</p>
+
+            <h3 id="section-39">1. 本节要做出什么</h3>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>项目</th>
+                  <th>内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>速度</td>
+                  <td><strong>80 BPM</strong></td>
+                </tr>
+                <tr>
+                  <td>长度</td>
+                  <td>4 小节（Am9 → Dm9 → G13 → Cmaj9）</td>
+                </tr>
+                <tr>
+                  <td>Swing</td>
+                  <td><strong>55%</strong>（MPC 式刻度，Q = 1/16）</td>
+                </tr>
+                <tr>
+                  <td>声部</td>
+                  <td>底鼓、军鼓、踩镲、贝斯、电钢琴、人声</td>
+                </tr>
+                <tr>
+                  <td>鼓组</td>
+                  <td>Kits → <strong>R&amp;B</strong> 或 <strong>acoustic</strong> 类鼓组（名字以屏幕为准，推断），或 <strong>MPC Legends</strong>。</td>
+                </tr>
+                <tr>
+                  <td>Kick / Snare / Hat</td>
+                  <td>软鼓（hat 偏暗）　<small>来源：MPC Legends 确认；分类推断</small></td>
+                </tr>
+                <tr>
+                  <td>贝斯</td>
+                  <td>one-shot bass　<small>来源：官方视频确认</small></td>
+                </tr>
+                <tr>
+                  <td>电钢琴 9 和弦</td>
+                  <td>电钢琴 / 钢琴单音 → G6　<small>来源：乐器单音存在（手册 p.7）；具体文件推断</small></td>
+                </tr>
+                <tr>
+                  <td>人声旋律</td>
+                  <td>vocal chop 或自己哼（G7）　<small>来源：同 4536</small></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="section-40">2. 准备</h3>
+
+            <ol>
+              <li><a href="#g1">G1</a>：新建工程，装上表的鼓组。</li>
+              <li><a href="#g2">G2</a>：BPM <strong>80</strong>，K1 先设 <strong>1 小节</strong>，K2 <strong>Q = 1/16</strong>，B3 录音量化开，K3 RT Swing <strong>55%</strong>，节拍器 Record，预备拍开。</li>
+              <li>长度计划：鼓 1 小节 → DOUBLE SEQ 两次 → 4 小节。</li>
+            </ol>
+
+            <h3 id="section-41">3. 动手卡</h3>
+
+            <h4 id="section-42">3-1 鼓（底鼓、军鼓、踩镲）</h4>
+
+            <p><code class="language-plaintext highlighter-rouge">X</code> 重 · <code class="language-plaintext highlighter-rouge">x</code> 中/轻 · <code class="language-plaintext highlighter-rouge">g</code> 鬼音（很轻）· <code class="language-plaintext highlighter-rouge">O</code> 开镲 · <code class="language-plaintext highlighter-rouge">·</code> 空 · <code class="language-plaintext highlighter-rouge">r</code> 一格两下（1/32）· <code class="language-plaintext highlighter-rouge">3</code> 一格三下（1/32T）· <code class="language-plaintext highlighter-rouge">t</code> 两格三下（1/16T）；<code class="language-plaintext highlighter-rouge">b1</code>、<code class="language-plaintext highlighter-rouge">b2</code>＝只在第几小节。</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>step      1  2  3  4 | 5  6  7  8 | 9 10 11 12 |13 14 15 16
+Kick      X  ·  ·  · | ·  ·  ·  x | ·  ·  X  · | ·  ·  ·  ·
+Snare     ·  ·  ·  · | X  ·  ·  · | ·  ·  ·  · | X  ·  ·  ·
+Hat       X  ·  x  · | X  ·  x  · | X  ·  x  · | X  ·  x  ·
+</code></pre></div>            </div>
+
+            <ul>
+              <li><strong>按什么 → 看到什么 → 下一步：</strong> 按 <a href="#g3">G3</a> 一件一件叠录。屏幕在 Sample/Seq 模式下仍显示序列页，播放头走到哪、敲到的垫就亮。录完按 <kbd>STOP</kbd>，再 <kbd>PLAY</kbd> 对照视频听。</li>
+              <li>Hat 只有 8 分音符（单数步），拍上重、反拍中等。</li>
+            </ul>
+
+            <h4 id="levels-tunepad-4--a2">3-2 贝斯（16 LEVELS Tune，PAD 4 = <strong>A2</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> E 组 PAD 1 装贝斯单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>A2</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>A2</strong> → PAD 4（6） · 第 11 步 <strong>E3</strong> → PAD 11（4） · 第 15 步 <strong>A3</strong> → PAD 16（2）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>D3</strong> → PAD 9（6） *原 D2 · 第 11 步 <strong>A2</strong> → PAD 4（4） · 第 15 步 <strong>D3</strong> → PAD 9（2）</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>第 1 步 <strong>G2</strong> → PAD 2（6） · 第 11 步 <strong>D3</strong> → PAD 9（4） · 第 15 步 <strong>G3</strong> → PAD 14（2）</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>第 1 步 <strong>C3</strong> → PAD 7（6） *原 C2 · 第 11 步 <strong>G2</strong> → PAD 2（4） · 第 15 步 <strong>C3</strong> → PAD 7（2）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="pad-4--f3">3-3 电钢琴（和弦，PAD 4 = <strong>F3</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> F 组 PAD 1 装电钢琴单音 → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>F3</strong> → 16 LEVELS Tune → 用 <a href="#g6">G6</a> 的方法 A（叠录）或方法 B（每个和弦一个垫）。</li>
+              <li><strong>你会看到 / 听到：</strong> 每叠一圈，和弦就厚一层；第一圈只有最低音时听起来像第二条贝斯，正常。</li>
+            </ul>
+
+            <p>和弦节奏：每小节第 <strong>1、11</strong> 步按（长度依次 7 / 5 格）。</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>和弦</th>
+                  <th>组成音</th>
+                  <th>音名 = 垫（从低到高按垫号）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Am9</strong></td>
+                  <td>A C E G B</td>
+                  <td>G3=PAD 6* · A3=PAD 8 · B3=PAD 10* · C4=PAD 11 · E4=PAD 15</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>Dm9</strong></td>
+                  <td>D F A C E</td>
+                  <td>D3=PAD 1 · F3=PAD 4 · A3=PAD 8 · C4=PAD 11 · E4=PAD 15</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>G13</strong></td>
+                  <td>G B D F E</td>
+                  <td>G3=PAD 6 · B3=PAD 10 · D4=PAD 13 · E4=PAD 15* · F4=PAD 16</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><strong>Cmaj9</strong></td>
+                  <td>C E G B D</td>
+                  <td>E3=PAD 3 · G3=PAD 6 · B3=PAD 10 · C4=PAD 11* · D4=PAD 13</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="levels-tunepad-4--g4">3-4 人声（16 LEVELS Tune，PAD 4 = <strong>G4</strong>）</h4>
+
+            <ul>
+              <li><strong>按什么：</strong> G 组 PAD 1 装人声（<a href="#g7">G7</a> 选一条路） → <a href="#g4">G4</a> 把 PAD 4 调到 <strong>G4</strong> → 开 16 LEVELS（屏幕出现 “16” 图标）→ SHIFT + 16 LEVELS 选 <strong>Tune</strong>。</li>
+              <li><strong>然后：</strong> <a href="#g5">G5</a>，照下表录。灰色 / * 的音超出 16 个垫的范围，已移八度（推断的简化）。</li>
+            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>小节</th>
+                  <th>第几步 → 音名 / 垫（长度=格数）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>第 1 步 <strong>E5</strong> → PAD 13（3） · 第 5 步 <strong>C5</strong> → PAD 9（2） · 第 7 步 <strong>B4</strong> → PAD 8（2） · 第 9 步 <strong>G4</strong> → PAD 4（6）</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>第 1 步 <strong>F5</strong> → PAD 14（3） · 第 5 步 <strong>E5</strong> → PAD 13（2） · 第 7 步 <strong>C5</strong> → PAD 9（2） · 第 9 步 <strong>A4</strong> → PAD 6（6）</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>第 1 步 <strong>F5</strong> → PAD 14（3） · 第 5 步 <strong>E5</strong> → PAD 13（2） · 第 7 步 <strong>D5</strong> → PAD 11（2） · 第 9 步 <strong>B4</strong> → PAD 8（6）</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>第 1 步 <strong>E5</strong> → PAD 13（3） · 第 5 步 <strong>D5</strong> → PAD 11（2） · 第 7 步 <strong>B4</strong> → PAD 8（2） · 第 9 步 <strong>D5</strong> → PAD 11（7）</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="section-43">3-5 把“键盘灯光”搬到 16 个垫上</h4>
+            <p>视频用颜色标角色：<strong>红＝根音、橙＝三音、绿＝五音、紫＝七音、蓝＝九音</strong>。MPC Sample 没有琴键，但 16 LEVELS Tune 后 16 个垫就是一段 16 个半音的“小键盘”（PAD 4 = F3）：</p>
+
+            <ul>
+              <li>速查图里每个和弦都写了“音名 = 垫号”。先<strong>只按 3 个垫：根音、三音、七音</strong>（新手最重要的三个色），再加五音、九音。</li>
+              <li>5 个音的和弦一次按不过来很正常——用 G6 方法 A 分 2–3 圈叠录。</li>
+              <li>带 * 的音被移了八度（16 个垫只有 16 个半音），和弦名不变，只是排列不同。</li>
+            </ul>
+
+            <h3 id="section-44">4. 音名 → 垫位总表（推断）</h3>
+
+            <ul>
+              <li>依据：手册“Tune 类型下<strong>原音高在 PAD 4</strong>，往下的垫降调、往上的垫升调”（p.22/35）+ Akai 官方视频“按半音铺开”。所以 PAD n 的音 = PAD 4 的音 + (n − 4) 个半音，范围 PAD 1（−3）到 PAD 16（+12）。</li>
+              <li>
+                <p>音名按 <strong>C4 = 中央 C</strong>（MIDI 60）。“PAD 4 =” 是为了让本课所有音尽量落在 16 个垫里选的；你也可以换别的音，只要整张表一起平移。</p>
+              </li>
+              <li><strong>贝斯</strong>（PAD 4 = A2）：PAD 2 = G2、PAD 4 = A2、PAD 7 = C3、PAD 9 = D3、PAD 11 = E3、PAD 14 = G3、PAD 16 = A3</li>
+              <li><strong>电钢琴</strong>（PAD 4 = F3）：PAD 1 = D3、PAD 3 = E3、PAD 4 = F3、PAD 6 = G3、PAD 8 = A3、PAD 10 = B3、PAD 11 = C4、PAD 13 = D4、PAD 15 = E4、PAD 16 = F4</li>
+              <li><strong>人声</strong>（PAD 4 = G4）：PAD 4 = G4、PAD 6 = A4、PAD 8 = B4、PAD 9 = C5、PAD 11 = D5、PAD 13 = E5、PAD 14 = F5</li>
+            </ul>
+
+            <h3 id="section-45">5. 混音小提示和保存</h3>
+
+            <ul>
+              <li>Hat −8 dB、Pan 约 13R；Snare −4 dB；电钢琴 −1 dB 加 Reverb；人声 +1.5 dB。</li>
+              <li>9 和弦音多，低音区容易糊：给电钢琴垫 Filter 选 <strong>HPF2</strong> 稍微切掉低频，把低频让给贝斯。</li>
+              <li>通用步骤（音量 / 声像 / Knob FX / 压缩 / 保存 / 导出）见 <a href="#g8">G8</a>。建议工程名：<code class="language-plaintext highlighter-rouge">6251-ONBOARD</code>。</li>
+            </ul>
+
+            <h3 id="section-46">6. 和视频不一样的地方 · 需要实机确认</h3>
+
+            <p><strong>不一样的地方</strong></p>
+
+            <ul>
+              <li>视频里所有声音都是代码合成的（底部写着“风格致敬 · 全部声音为代码原创合成 · 非原曲扒带”）；机上用的是出厂采样，音色一定不同。</li>
+              <li>视频的和弦是 5 个音的完整排列；16 个垫装不下时本课移了八度（*）。</li>
+              <li>第 2、4 小节贝斯根音 D2、C2 超出范围，改成高八度 D3、C3。</li>
+              <li>视频旋律是合成人声；机上见 G7。</li>
+            </ul>
+
+            <p><strong>需要实机确认（推断点）</strong></p>
+
+            <ul>
+              <li>出厂 Kits / 采样文件夹的确切名字（手册只举了 <strong>Snares</strong>；鼓组名只确认了 <strong>MPC Legends</strong>）。</li>
+              <li>16 LEVELS Tune 每垫是否正好一个半音；Semi Tune 是否叠加到 16 LEVELS 上。</li>
+              <li>退出 16 LEVELS 后，已录音符是否保持音高。</li>
+              <li>同 4536：多垫同按、vocal chop 音高。</li>
+            </ul>
+
+            <p>相关风格页：<a href="../chapters/03b-styles.html#jpjazzy">日系 jazzy 风格页</a></p>
+
+          </div>
+
+          <div class="lab-pane" data-pane="img" role="tabpanel" aria-label="原图"><p class="bl-small">原速查图（点图看大图）。</p><a href="../legacy/assets/img/beat-grid/06_chords_keyboard_6251-grid.png"><img class="lab-grid" loading="lazy" src="../legacy/assets/img/beat-grid/06_chords_keyboard_6251-grid.png" alt="和弦怎么看？键盘灯光法 速查图：鼓网格、音名与 16 LEVELS 垫位" /></a></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="lab-acc" id="lab-g">
+
+    <p><a id="g-cards"></a></p>
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-g-body"><span class="lab-num">G</span> <span class="lab-t">通用动手卡 G1–G8</span> <span class="lab-meta">6 节共用</span></button></h2>
+
+    <div class="lab-acc-body lab-scroll" id="lab-g-body">
+
+      <p>6 节共用的操作，一次讲清。</p>
+
+      <p><a id="g1"></a></p>
+
+      <h4 id="g1--">G1 · 新建工程、装一套出厂鼓组</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>目标：</strong> 空工程 + 一套出厂鼓组在 Bank A（/B）上。</li>
+          <li><strong>要按什么：</strong>
+            <ol>
+              <li><kbd>SHIFT</kbd> + <kbd>PAD 16</kbd>（PROJECT）。
+<strong>屏幕上会出现什么：</strong> Project 菜单列表：<strong>Load Project / Save Project / New Project / SD Card Access</strong>（手册 p.62–63）。</li>
+              <li>转 <kbd>ENCODER</kbd> 到 <strong>New Project</strong> → 按下。有未保存内容时出现确认页：<kbd>B3</kbd> 确认清空，<kbd>B1</kbd> 返回（先去 Save Project 也行）。</li>
+              <li>再按 <kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> → <strong>Load Project</strong> → 屏幕顶部选 <strong>Internal</strong> → 进 <strong>Kits</strong>。
+<strong>屏幕上会出现什么：</strong> 分类 / 鼓组列表；分类按风格排（80s、acoustic、boom bap、hip hop、trap、R&amp;B…，Akai 官方视频口述，拼写以屏幕为准）。</li>
+              <li>选中想要的鼓组 → 按 <kbd>B3</kbd>（<strong>Load Kit</strong>）＝只装声音、不装它自带的 4 条序列（手册 p.62）。按 <kbd>ENCODER</kbd> 则连序列一起装。</li>
+              <li>按 <kbd>SAMPLE</kbd>（29），把 16 个垫都敲一遍，<strong>用纸记下</strong>哪个垫是 kick / snare / closed hat / open hat / clap / shaker。<kbd>PAD BANK</kbd>（25）切到 B 组再听一遍。</li>
+            </ol>
+          </li>
+          <li><strong>你会看到：</strong> 每敲一个垫，屏幕显示它的波形和采样名。</li>
+          <li><strong>下一步：</strong> 想换掉某个鼓：敲那个垫 → <kbd>SAMPLE SELECT</kbd>（26）→ 转 <kbd>ENCODER</kbd> 选文件夹（手册举例 <strong>Snares</strong>）→ 按下进入 → 转着试听（<kbd>B3</kbd> 开关自动试听）→ 按下 <kbd>ENCODER</kbd> 装到垫上 → 再按 <kbd>SAMPLE SELECT</kbd> 回去（手册 p.7、p.36）。</li>
+          <li><strong>常见错误：</strong> New Project 会清空当前工程——<strong>先存再新建</strong>。</li>
+        </ul>
+
+      </div>
+
+      <p><a id="g2"></a></p>
+
+      <h4 id="g2--bpmswing">G2 · 设序列：BPM、长度、量化、Swing、节拍器</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>要按什么：</strong>
+            <ol>
+              <li><kbd>SEQ</kbd>（30）→ 敲一个<strong>暗灯</strong>的垫＝选空序列（亮绿＝有内容，暗＝空）。
+<strong>屏幕上会出现什么：</strong> Sequence 页：速度、序列名（在速度下面）、拍号（在序列名下面）、节拍器状态、<strong>1234</strong> 预备拍图标；底部 K1 = 小节数、K2 = Q、K3 = RT Swing（手册 p.39–40）。</li>
+              <li><strong>按住</strong> <kbd>B1</kbd> → 弹出 <strong>Sequence BPM</strong> 窗 → 转 <kbd>ENCODER</kbd> 到目标速度（按 ENCODER 切整数/小数）→ 松开 B1。</li>
+              <li>转 <kbd>K1</kbd> 设小节数（1、2、4、8…；按住 SHIFT 转可设任意数）。</li>
+              <li>转 <kbd>K2</kbd> 设 <strong>Q = 1/16</strong>；按 <kbd>B3</kbd> 打开 <strong>录音量化</strong>（Rec Quantize）。</li>
+              <li>转 <kbd>K3</kbd> 设 <strong>RT Swing</strong>（本课每节写了数值）。RT Swing 只改播放手感、不挪音符，对<strong>所有垫</strong>一起生效（手册 p.39）。</li>
+              <li><kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd>（27）把节拍器切到 <strong>Record</strong>（只在录音时响）；<kbd>SHIFT</kbd> + <kbd>PAD 4</kbd> 打开 <strong>COUNT-IN</strong>（预备拍，1234 图标变红）。</li>
+            </ol>
+          </li>
+          <li><strong>下一步：</strong> G3 录鼓。</li>
+          <li><strong>小提示：</strong> 视频里的 Swing 用的就是 MPC 式刻度（50% = 不摇，只推后每拍第 2、4 个 16 分音符），数值可以直接照抄。手册没写 RT Swing 的可调范围（推断：50–75%）。</li>
+        </ul>
+
+      </div>
+
+      <p><a id="g3"></a></p>
+
+      <h4 id="g3--">G3 · 录鼓：一个鼓件一遍，叠上去</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>要按什么：</strong>
+            <ol>
+              <li>在 Sequence 页按 <kbd>SEQ RECORD</kbd>（38）。
+<strong>屏幕上会出现什么：</strong> SEQ RECORD 闪烁（已待录），<kbd>SAMPLE</kbd> 和 <kbd>SEQ</kbd> 一起闪＝<strong>Sample/Seq 模式</strong>：屏幕还是序列页，垫子变回“敲声音”（手册 p.41）。</li>
+              <li>按 <kbd>PLAY</kbd>（39）→ 先听 1 小节预备拍 → 照网格只敲 <strong>Kick</strong>。</li>
+              <li>到序列结尾会<strong>自动进入叠录（overdub）</strong>：下一圈接着敲 <strong>Snare</strong>，再下一圈敲 <strong>Hat</strong>……一圈加一件。</li>
+              <li>满意了按 <kbd>STOP</kbd>（40）。敲错：<kbd>SHIFT</kbd> + <kbd>−</kbd>（UNDO）撤销这一次录音；或在待录状态按住 <kbd>ERASE</kbd>（23）+ 那个垫，清掉这个垫的全部音符。</li>
+            </ol>
+          </li>
+          <li><strong>踩镲 16 分音符很难手打？</strong> 按住 <kbd>NOTE REPEAT</kbd>（24）再按住 hat 垫，机器按当前分度自动连打；分度用 <kbd>B1</kbd>–<kbd>B3</kbd> 选，按住 <kbd>SHIFT</kbd> 换成三连音分度（手册 p.19）。Time Correct 里的 Swing 也会作用到 NOTE REPEAT（手册 p.59）。</li>
+          <li><strong>两小节不一样？</strong> 先把 <strong>1 小节</strong>录好 → <kbd>SHIFT</kbd> + <kbd>PAD 3</kbd>（DOUBLE SEQ）复制成 2 小节（音符一起复制）→ 再叠录第 2 小节多出来的那几下（手册 p.42）。</li>
+          <li><strong>轻重（力度）：</strong> 网格里 <code class="language-plaintext highlighter-rouge">x</code>、<code class="language-plaintext highlighter-rouge">g</code> 是轻音。轻轻敲即可；要精确就 <kbd>SHIFT</kbd> + <kbd>SEQ</kbd> 进 <strong>STEP EDIT</strong> → 转 <kbd>ENCODER</kbd> 走到那一步 → <kbd>K3</kbd> 改力度（手册 p.43）。别开 FULL LEVEL（<kbd>SHIFT</kbd> + <kbd>PAD 1</kbd>），不然全是最大力度。</li>
+        </ul>
+
+      </div>
+
+      <p><a id="g4"></a></p>
+
+      <h4 id="g4--16-levels-tune">G4 · 把一个音色变成“键盘”：16 LEVELS Tune</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>目标：</strong> 一个贝斯（或钢琴、人声）单音铺满 16 个垫，<strong>PAD 4 = 原音高</strong>，往上每个垫高一点（手册 p.22/35）。Akai 官方视频说它是“按半音（chromatically）铺开”，所以本课按<strong>每垫一个半音</strong>推算：垫号 = 4 +（目标音 − PAD 4 的音）的半音数，能用的范围是 PAD 4 往下 3 个半音、往上 12 个半音。</li>
+          <li><strong>要按什么：</strong>
+            <ol>
+              <li><kbd>PAD BANK</kbd>（25）切到一个空的组（本课约定：<strong>E 组 = 贝斯，F 组 = 和弦乐器，G 组 = 人声 / 旋律</strong>）→ 敲 PAD 1 → <kbd>SAMPLE SELECT</kbd> 选一个<strong>单音</strong>（不是一整段 loop）装进来。</li>
+              <li><strong>先确认它是什么音：</strong> 手机开任意“调音器 / Tuner” App，敲 PAD 1 对着听，记下音名（例：显示 C）。</li>
+              <li><kbd>SAMPLE</kbd> → 按 <kbd>B2</kbd> 翻到 <strong>Tune</strong> 页 → <kbd>K1</kbd> <strong>Semi Tune</strong>（±24 半音）把它调到本课表格写的 <strong>“PAD 4 =”</strong> 那个音；差几音分就用 <kbd>K2</kbd> <strong>Fine Tune</strong> 补（手册 p.27）。</li>
+              <li>按 <kbd>16 LEVELS</kbd>（36）。<strong>屏幕上会出现什么：</strong> Sample 页出现 <strong>“16”</strong> 图标。</li>
+              <li><kbd>SHIFT</kbd> + <kbd>16 LEVELS</kbd> 连按，直到类型是 <strong>Tune</strong>（Velocity → Filter → Tune 轮换）。</li>
+              <li>敲 PAD 4 再用调音器确认一次音名；然后从 PAD 1 敲到 PAD 16 听音阶。</li>
+            </ol>
+          </li>
+          <li><strong>下一步：</strong> G5 把旋律录进去。</li>
+          <li><strong>常见错误：</strong> 在 SEQ 模式里按 16 LEVELS 没反应——它只在 Sample 模式可用（手册 p.23）。贝斯音互相拖尾：在 Sample 页 <kbd>B2</kbd> 翻到 <strong>Play</strong> → <kbd>K1</kbd> Polyphony 设 <strong>Mono</strong>（新音会切断旧音，手册 p.28；推断：开 16 LEVELS 前设好，复制出的 16 个垫会继承）。</li>
+          <li><strong>推断提醒：</strong> Semi Tune 是否叠加到 16 LEVELS 的音高上，手册没写——所以第 6 步一定用调音器再确认 PAD 4。</li>
+        </ul>
+
+      </div>
+
+      <p><a id="g5"></a></p>
+
+      <h4 id="g5---bass--">G5 · 弹 bass / 旋律并录进序列</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>要按什么：</strong>
+            <ol>
+              <li>保持在 <kbd>SAMPLE</kbd> 模式、16 LEVELS 开着 → 直接按 <kbd>SEQ RECORD</kbd>（38）→ <kbd>PLAY</kbd>（Akai 官方视频就是这样在 Sample 模式下录 bass 的）。</li>
+              <li>照“音名 → 垫号”表，在对应的步按对应的垫；一圈不够就靠叠录分几圈录（每圈只录一小节也可以）。</li>
+              <li>录完再按一次 <kbd>16 LEVELS</kbd> 退出（“16” 图标消失）。<strong>推断：</strong> 已录的音符仍按录入时的音高播放（官方视频退出 16 LEVELS 后 bass 照常播放），请实机确认。</li>
+            </ol>
+          </li>
+          <li><strong>音太长 / 太短：</strong> 想让“按多久响多久”，<kbd>SHIFT</kbd> + <kbd>CHOP</kbd>（33）打开 <strong>NOTE ON</strong>（屏幕出现音符图标），录的时候按住的长短就是音的长短（手册 p.32；推断：序列会记住按住的时长）。不想管长度就用 One Shot + Mono。</li>
+        </ul>
+
+      </div>
+
+      <p><a id="g6"></a></p>
+
+      <h4 id="g6--">G6 · 弹和弦：采样器怎么出“多个音”</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>先说清楚：</strong> MPC Sample <strong>每个垫只能放一个采样</strong>（Akai FAQ），但它有 <strong>32 个复音</strong>（手册 p.65），可以几个垫同时响。没有“按一个键出一个和弦”的和弦模式（手册里找不到）。所以有两条路：</li>
+          <li><strong>方法 A（新手推荐）· 16 LEVELS 叠录：</strong> 用 G4 把一个钢琴 / 电钢琴单音铺成 16 个垫（PAD 4 = 表里写的音）→ SEQ RECORD → PLAY → <strong>第 1 圈只按每个和弦的最低音</strong>，第 2 圈按第二个音，第 3 圈按第三个音……照“和弦节奏”在同样的步按。手指够的话也可以 2–3 个垫一起按（推断：16 LEVELS 下多个垫同时按会同时发声——32 复音支持，但手册没明写）。</li>
+          <li><strong>方法 B（进阶）· 每个和弦固化成一个垫：</strong>
+            <ol>
+              <li>新建一条<strong>临时序列</strong>（G2），小节数 = 和弦个数，每小节第 1 步用方法 A 叠出一个<strong>长按</strong>的和弦。</li>
+              <li><kbd>SHIFT</kbd> + <kbd>PAD 11</kbd>（RESAMPLE）→ 按一个空垫 → 整条序列被录成<strong>一个采样</strong>放到那个垫（手册 p.42）。</li>
+              <li>选中这个垫 → <kbd>CHOP</kbd>（33）→ <kbd>K3</kbd> Chop Type 选 <strong>Regions 4</strong>（4 个和弦；2 个和弦就先 Regions 4 再把多余的 Merge，或用 Manual）→ 现在每个垫就是一个和弦（手册 p.31）。</li>
+              <li>每一块按 <kbd>SHIFT</kbd> + <kbd>B1</kbd>（<strong>Extract</strong>）存成独立采样，自动放到下一个空垫（手册 p.32）。</li>
+              <li>回到正式序列，用这些“和弦垫”照和弦节奏一下一下按就行——这其实就是 90 年代“采一段和弦再切”的做法。</li>
+            </ol>
+          </li>
+          <li><strong>能不能直接用出厂的和弦采样？</strong> 出厂内容里有“旋律乐句”（手册 p.7），MPC Legends 上排垫就是旋律采样（Akai 官方视频）。它们的调和和弦名没有公开清单——用 16 LEVELS 移调时<strong>整块平移</strong>，大和弦移了还是大和弦，配不出“大–大–小–小”这类进行。所以要严格按本课的和弦走，用方法 A/B。</li>
+        </ul>
+
+      </div>
+
+      <p><a id="g7"></a></p>
+
+      <h4 id="g7-----hook">G7 · 人声 / 旋律 hook：机器里没有“会唱歌的音源”</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>诚实说明：</strong> 视频里的人声是代码合成的 la / ooh。MPC Sample 出厂内容里<strong>有 vocal chop</strong>（MPC Legends 的 B 组，Akai 官方视频），但没有能按音高随便唱词的“人声音源”。三条替代路：</li>
+          <li><strong>路 1（纯内置）：</strong> 在 MPC Legends 的 B 组里找一个<strong>拖长的元音</strong>（“ooh / ah” 类）chop → 复制到 G 组 PAD 1（<kbd>SHIFT</kbd> + <kbd>ERASE</kbd>＝COPY，按住时按目标垫，手册 p.19）→ G4 的 16 LEVELS Tune → G5 照表弹。chop 很短的话打开 <kbd>LOOP</kbd>（34）让它延长（手册 p.33）。</li>
+          <li><strong>路 2（自己哼一个音）：</strong> <kbd>SAMPLE RECORD</kbd>（37）→ <kbd>K1</kbd> Source 选 <strong>Mic</strong> → 敲 G 组空垫开始录 → 用调音器对着，稳稳哼 2 秒“ooh”（目标音见表的 PAD 4；太高唱不上就低八度哼，比如 C5 改 C4，整条旋律跟着低八度，垫号不变）→ 再敲一下垫停止（手册 p.11、p.37–38）。<kbd>SAMPLE</kbd> 里用 K1/K2 剪掉头尾，<kbd>SHIFT</kbd> + <kbd>PAD 13</kbd>（TRIM SAMPLE）。然后 G4 → G5。</li>
+          <li><strong>路 3（整句唱进去）：</strong> SAMPLE RECORD 页 <kbd>K2</kbd> Rec Length 设 <strong>Seq</strong>（录音长度＝序列长度，播放中会在下一圈开头开始录，手册 p.37）→ <strong>插耳机</strong>（用内置麦克风时喇叭会自动静音防啸叫）→ 播放中敲一个空垫 → 跟着伴奏把整句 hook 唱完。</li>
+          <li>路 2、3 用的是<strong>你自己的声音</strong>，不算“内置音源”，但最接近视频。</li>
+        </ul>
+
+      </div>
+
+      <p><a id="g8"></a></p>
+
+      <h4 id="g8--">G8 · 混音小提示、保存、导出</h4>
+
+      <div class="step">
+
+        <ul>
+          <li><strong>音量 / 声像：</strong> <kbd>SAMPLE</kbd> → 敲垫 → <kbd>B1</kbd> 翻到 <strong>Mix</strong>：<kbd>K1</kbd> Volume（−74 到 +6 dB，波形左边竖条）、<kbd>K3</kbd> Pan（50L–C–50R，右边竖条）（手册 p.25）。</li>
+          <li><strong>只给某几个垫加混响 / 延迟：</strong> <kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd>（32）→ 转 <kbd>ENCODER</kbd> 选 <strong>Reverb Medium</strong> 或 <strong>Delay</strong> → 按下载入 → <strong>按要加效果的垫</strong>（亮＝受影响）→ 退出后按 <kbd>KNOB FX</kbd> 打开，用 <kbd>K3</kbd> Mix 调量（手册 p.51–53）。一次只有一个 Knob FX。</li>
+          <li><strong>整体压一压：</strong> <kbd>SHIFT</kbd> + <kbd>PAD 5</kbd>（COMPRESSOR）→ <kbd>K3</kbd> Amount 20–30%，<kbd>B1</kbd> 打开 <strong>Color</strong>（一点低频和磁带感，手册 p.56）。</li>
+          <li><strong>保存：</strong> <kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> → <strong>Save Project</strong> → 用 <kbd>ENCODER</kbd> 和 <kbd>−</kbd>/<kbd>+</kbd> 输入名字（按住 SHIFT 出大写）→ <kbd>B3</kbd>（Do It!）（手册 p.62）。机器也会在后台自动存。</li>
+          <li><strong>导出成音频：</strong> <kbd>SHIFT</kbd> + <kbd>PAD 12</kbd>（SONG）→ 按序列垫 → <kbd>B3</kbd> 插入（想多遍就多插几次）→ <kbd>B1</kbd> 导出 → <kbd>B2</kbd> Audio mixdown → 命名 → <kbd>B3</kbd>（手册 p.44–45）。</li>
+        </ul>
+
+      </div>
+
+      <details class="card">
+        <summary>本页来源</summary>
+
+        <ul>
+          <li>Akai 官方手册 v1.3.0：https://cdn.inmusicbrands.com/akai/sample/MPC%20Sample%20-%20User%20Guide%20-%20v1.3.0%20(RevA).pdf —— 按键、屏幕、16 LEVELS（原音高在 PAD 4，p.22/35）、Kits/Demos（p.62）、“几百个采样，从单个鼓和乐器音到整段 break 和旋律乐句”与 <strong>Snares</strong> 文件夹（p.7）、32 复音（p.65）</li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Akai 官方视频《Getting Started with MPC Sample</td>
+                  <td>Making a Hip Hop Beat》：https://www.youtube.com/watch?v=YAKswgIC1LY —— 出厂鼓组 <strong>MPC Legends</strong>：上排垫是旋律采样、B 组有 vocal chop、有 one-shot bass、open hat、snap、shaker；16 LEVELS “把声音按半音铺满垫子”，开着 16 LEVELS 直接录 bass</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Akai 官方视频《Getting Started with MPC Sample</td>
+                  <td>Loading Kits and Samples》：https://www.youtube.com/watch?v=icD6d6H79cM —— Kits 按风格分类：80s、acoustic、boom bap、modern dance、hip hop、trap、R&amp;B（视频口述，屏幕上的拼写以机器为准）</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Akai 支持文章《MPC Sample</td>
+                  <td>Where Are The Factory Kits?》：https://support.akaipro.com/en/support/solutions/articles/69000878989-mpc-sample-where-are-the-factory-kits- —— SHIFT + PAD 16 → Load Project → 顶部选 Internal → Kits</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Akai 支持文章《MPC Sample</td>
+                  <td>Frequently Asked Questions》：https://support.akaipro.com/en/support/solutions/articles/69000876967-mpc-sample-frequently-asked-questions —— 约 2 GB 出厂内容、100+ 鼓组和旋律 loop、每个垫只能放一个采样</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>Bonedo 评测《AKAI Professional MPC Sample Test》：https://www.bonedo.de/artikel/akai-professionell-mpc-sample-test/ —— 100+ 鼓组，以 Boom Bap、Hip-Hop、Trap、RnB 为主，另有 Acoustic、80s、90s、Classics（第三方评测）</li>
+          <li>图案数据：本项目 beat-grid-videos 的 pattern JSON（BPM、Swing、每格力度和毫秒偏移、和弦、音高都从这里读出）。</li>
+          <li>01 历史卡片：见 01 节「历史」标签，每条附来源链接。</li>
+        </ul>
+
+      </details>
+
+    </div>
+
+  </section>
+
+  <section class="lab-acc" id="lab-chords">
+
+    <h2 class="lab-acc-h"><button type="button" class="lab-acc-btn" aria-expanded="true" aria-controls="lab-chords-body"><span class="lab-num">和弦</span> <span class="lab-t">和弦速成</span> <span class="lab-meta">看懂 05、06</span></button></h2>
+
+    <div class="lab-acc-body lab-scroll" id="lab-chords-body">
+
+      <p><a id="chord-basics"></a></p>
+
+      <h3 id="section-47">和弦速成（看懂 05、06 两条视频就够）</h3>
+
+      <div class="concept">
+
+        <p><strong>新概念 · 和弦</strong></p>
+
+        <ul>
+          <li><strong>和弦</strong> = 同时响的 3 个以上的音。名字的第一个字母是<strong>根音</strong>：<code class="language-plaintext highlighter-rouge">F</code>、<code class="language-plaintext highlighter-rouge">Am7</code> 的 A。</li>
+          <li>后缀：<code class="language-plaintext highlighter-rouge">m</code> = 小和弦（偏暗）；<code class="language-plaintext highlighter-rouge">7</code> = 再加一个“七音”（更有味道）；<code class="language-plaintext highlighter-rouge">maj7</code> = 大七（明亮、温暖）；<code class="language-plaintext highlighter-rouge">9</code>、<code class="language-plaintext highlighter-rouge">13</code> = 再往上叠的颜色音。</li>
+          <li><strong>级数</strong>：在 C 大调里，C D E F G A B 分别是 1–7 级。<strong>4536</strong> = F–G–Em–Am（日本流行歌常说的“王道进行”）；<strong>6251</strong> = Am–Dm–G–C（爵士最常见的回家路线）。</li>
+          <li>视频 06 的颜色：<strong>红 = 根音、橙 = 三音、绿 = 五音、紫 = 七音、蓝 = 九音</strong>。在 MPC 上先按红、橙、紫三个垫，就已经“像”这个和弦了。</li>
+          <li>MPC Sample 没有和弦模式，弹和弦靠 16 LEVELS + 叠录（见 <a href="#g6">G6</a>）。</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+<script src="../legacy/assets/data/beat-lab-data.js"></script>
+
+<script src="../legacy/assets/js/beat-lab.js"></script>
+
+
+
+
+  {% endraw %}

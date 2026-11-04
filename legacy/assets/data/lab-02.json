@@ -1,0 +1,644 @@
+{
+ "id": "02",
+ "vid": "02_dilla_drunk",
+ "title": "J Dilla 风格 醉拍",
+ "short": "Dilla 式醉拍",
+ "bpm": 88,
+ "swing": 50,
+ "key": "D 小调",
+ "bars": 2,
+ "bar_sec": 2.727,
+ "video": {
+  "src": "assets/video/beat-grid/02_dilla_drunk.mp4",
+  "poster": "assets/video/beat-grid/02_dilla_drunk-poster.jpg",
+  "duration": 20.373,
+  "stages": [
+   {
+    "n": 1,
+    "label": "底鼓+军鼓+踩镲",
+    "caption": "先听“量化”版：全部卡在网格上",
+    "detail": "整齐、标准，但有点像机器在打",
+    "t0": 0.0,
+    "t1": 5.455,
+    "bars": 2,
+    "lanes": [
+     "底鼓",
+     "军鼓",
+     "踩镲"
+    ]
+   },
+   {
+    "n": 2,
+    "label": "Dilla 风格",
+    "caption": "Dilla 风格：关掉量化，手动错位",
+    "detail": "虚线框=原来的格子；红字=拖后，蓝字=抢拍（单位毫秒）",
+    "t0": 5.455,
+    "t1": 10.909,
+    "bars": 2,
+    "lanes": [
+     "底鼓",
+     "军鼓",
+     "踩镲"
+    ]
+   },
+   {
+    "n": 3,
+    "label": "+贝斯+电钢琴",
+    "caption": "加贝斯和 Rhodes：也故意慢半拍",
+    "detail": "军鼓晚 40ms、和弦往后靠 = “醉拍”的慵懒感",
+    "t0": 10.909,
+    "t1": 19.091,
+    "bars": 3,
+    "lanes": [
+     "底鼓",
+     "军鼓",
+     "踩镲",
+     "贝斯",
+     "电钢琴"
+    ]
+   }
+  ],
+  "source": "beat-grid-videos/tools/patterns/02_dilla_drunk.json 的 stages[].bars × 每小节 2.727 秒（engine.Song.stage_start，视频从第 0 秒直接开始，无片头）"
+ },
+ "grid_png": "assets/img/beat-grid/02_dilla_drunk-grid.png",
+ "drums": [
+  {
+   "name": "Kick",
+   "cn": "底鼓",
+   "inst": "kick",
+   "bars": [
+    [
+     [
+      0.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      7.0,
+      1.0,
+      0.8,
+      -40,
+      0
+     ],
+     [
+      9.0,
+      1.0,
+      0.7,
+      30,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      1.0,
+      0,
+      0
+     ],
+     [
+      7.0,
+      1.0,
+      0.8,
+      -40,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.85,
+      25,
+      0
+     ],
+     [
+      13.0,
+      1.0,
+      0.6,
+      45,
+      0
+     ]
+    ]
+   ],
+   "offsets": true
+  },
+  {
+   "name": "Snare",
+   "cn": "军鼓",
+   "inst": "snare",
+   "bars": [
+    [
+     [
+      4.0,
+      1.0,
+      1.0,
+      40,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      1.0,
+      45,
+      0
+     ]
+    ],
+    [
+     [
+      4.0,
+      1.0,
+      1.0,
+      40,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      1.0,
+      45,
+      0
+     ]
+    ]
+   ],
+   "offsets": true
+  },
+  {
+   "name": "Hats",
+   "cn": "踩镲",
+   "inst": "hat",
+   "bars": [
+    [
+     [
+      0.0,
+      1.0,
+      0.8,
+      0,
+      0
+     ],
+     [
+      2.0,
+      1.0,
+      0.55,
+      45,
+      0
+     ],
+     [
+      4.0,
+      1.0,
+      0.75,
+      -10,
+      0
+     ],
+     [
+      6.0,
+      1.0,
+      0.6,
+      40,
+      0
+     ],
+     [
+      8.0,
+      1.0,
+      0.8,
+      5,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.5,
+      50,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      0.7,
+      -15,
+      0
+     ],
+     [
+      14.0,
+      1.0,
+      0.6,
+      35,
+      0
+     ]
+    ],
+    [
+     [
+      0.0,
+      1.0,
+      0.8,
+      0,
+      0
+     ],
+     [
+      2.0,
+      1.0,
+      0.55,
+      45,
+      0
+     ],
+     [
+      4.0,
+      1.0,
+      0.75,
+      -10,
+      0
+     ],
+     [
+      6.0,
+      1.0,
+      0.6,
+      40,
+      0
+     ],
+     [
+      8.0,
+      1.0,
+      0.8,
+      5,
+      0
+     ],
+     [
+      10.0,
+      1.0,
+      0.5,
+      50,
+      0
+     ],
+     [
+      12.0,
+      1.0,
+      0.7,
+      -15,
+      0
+     ],
+     [
+      14.0,
+      1.0,
+      0.6,
+      35,
+      0
+     ]
+    ]
+   ],
+   "offsets": true
+  }
+ ],
+ "pitched": [
+  {
+   "name": "Bass",
+   "cn": "贝斯",
+   "inst": "bass",
+   "kind": "mono",
+   "base": 38,
+   "base_name": "D2",
+   "pads": [
+    {
+     "pad": 1,
+     "name": "B1",
+     "midi": 35
+    },
+    {
+     "pad": 2,
+     "name": "C2",
+     "midi": 36
+    },
+    {
+     "pad": 3,
+     "name": "Db2",
+     "midi": 37
+    },
+    {
+     "pad": 4,
+     "name": "D2",
+     "midi": 38
+    },
+    {
+     "pad": 5,
+     "name": "Eb2",
+     "midi": 39
+    },
+    {
+     "pad": 6,
+     "name": "E2",
+     "midi": 40
+    },
+    {
+     "pad": 7,
+     "name": "F2",
+     "midi": 41
+    },
+    {
+     "pad": 8,
+     "name": "Gb2",
+     "midi": 42
+    },
+    {
+     "pad": 9,
+     "name": "G2",
+     "midi": 43
+    },
+    {
+     "pad": 10,
+     "name": "Ab2",
+     "midi": 44
+    },
+    {
+     "pad": 11,
+     "name": "A2",
+     "midi": 45
+    },
+    {
+     "pad": 12,
+     "name": "Bb2",
+     "midi": 46
+    },
+    {
+     "pad": 13,
+     "name": "B2",
+     "midi": 47
+    },
+    {
+     "pad": 14,
+     "name": "C3",
+     "midi": 48
+    },
+    {
+     "pad": 15,
+     "name": "Db3",
+     "midi": 49
+    },
+    {
+     "pad": 16,
+     "name": "D3",
+     "midi": 50
+    }
+   ],
+   "bars": [
+    [
+     {
+      "s": 0.0,
+      "l": 5.0,
+      "v": 1.0,
+      "m": 38,
+      "mm": 38,
+      "pad": 4,
+      "fold": false,
+      "name": "D2",
+      "orig": "D2",
+      "glide": null
+     },
+     {
+      "s": 7.0,
+      "l": 2.0,
+      "v": 0.7,
+      "m": 41,
+      "mm": 41,
+      "pad": 7,
+      "fold": false,
+      "name": "F2",
+      "orig": "F2",
+      "glide": null
+     },
+     {
+      "s": 10.0,
+      "l": 5.0,
+      "v": 0.9,
+      "m": 45,
+      "mm": 45,
+      "pad": 11,
+      "fold": false,
+      "name": "A2",
+      "orig": "A2",
+      "glide": null
+     }
+    ],
+    [
+     {
+      "s": 0.0,
+      "l": 5.0,
+      "v": 1.0,
+      "m": 43,
+      "mm": 43,
+      "pad": 9,
+      "fold": false,
+      "name": "G2",
+      "orig": "G2",
+      "glide": null
+     },
+     {
+      "s": 7.0,
+      "l": 2.0,
+      "v": 0.7,
+      "m": 46,
+      "mm": 46,
+      "pad": 12,
+      "fold": false,
+      "name": "Bb2",
+      "orig": "Bb2",
+      "glide": null
+     },
+     {
+      "s": 10.0,
+      "l": 5.0,
+      "v": 0.9,
+      "m": 41,
+      "mm": 41,
+      "pad": 7,
+      "fold": false,
+      "name": "F2",
+      "orig": "F2",
+      "glide": null
+     }
+    ]
+   ]
+  },
+  {
+   "name": "Rhodes",
+   "cn": "电钢琴",
+   "inst": "rhodes",
+   "kind": "chord",
+   "base": 55,
+   "base_name": "G3",
+   "pads": [
+    {
+     "pad": 1,
+     "name": "E3",
+     "midi": 52
+    },
+    {
+     "pad": 2,
+     "name": "F3",
+     "midi": 53
+    },
+    {
+     "pad": 3,
+     "name": "Gb3",
+     "midi": 54
+    },
+    {
+     "pad": 4,
+     "name": "G3",
+     "midi": 55
+    },
+    {
+     "pad": 5,
+     "name": "Ab3",
+     "midi": 56
+    },
+    {
+     "pad": 6,
+     "name": "A3",
+     "midi": 57
+    },
+    {
+     "pad": 7,
+     "name": "Bb3",
+     "midi": 58
+    },
+    {
+     "pad": 8,
+     "name": "B3",
+     "midi": 59
+    },
+    {
+     "pad": 9,
+     "name": "C4",
+     "midi": 60
+    },
+    {
+     "pad": 10,
+     "name": "Db4",
+     "midi": 61
+    },
+    {
+     "pad": 11,
+     "name": "D4",
+     "midi": 62
+    },
+    {
+     "pad": 12,
+     "name": "Eb4",
+     "midi": 63
+    },
+    {
+     "pad": 13,
+     "name": "E4",
+     "midi": 64
+    },
+    {
+     "pad": 14,
+     "name": "F4",
+     "midi": 65
+    },
+    {
+     "pad": 15,
+     "name": "Gb4",
+     "midi": 66
+    },
+    {
+     "pad": 16,
+     "name": "G4",
+     "midi": 67
+    }
+   ],
+   "rhythm": [
+    [
+     0.0,
+     6.0,
+     0.85
+    ],
+    [
+     7.0,
+     2.0,
+     0.55
+    ],
+    [
+     10.0,
+     5.0,
+     0.75
+    ]
+   ],
+   "chords": [
+    {
+     "bar": 1,
+     "name": "Dm9",
+     "tones": "D F A C E",
+     "notes": [
+      {
+       "name": "F3",
+       "pad": 2,
+       "midi": 53,
+       "fold": false
+      },
+      {
+       "name": "A3",
+       "pad": 6,
+       "midi": 57,
+       "fold": false
+      },
+      {
+       "name": "C4",
+       "pad": 9,
+       "midi": 60,
+       "fold": false
+      },
+      {
+       "name": "D4",
+       "pad": 11,
+       "midi": 62,
+       "fold": false
+      },
+      {
+       "name": "E4",
+       "pad": 13,
+       "midi": 64,
+       "fold": false
+      }
+     ]
+    },
+    {
+     "bar": 2,
+     "name": "Gm9",
+     "tones": "G Bb D F A",
+     "notes": [
+      {
+       "name": "A3",
+       "pad": 6,
+       "midi": 57,
+       "fold": true
+      },
+      {
+       "name": "A3",
+       "pad": 6,
+       "midi": 57,
+       "fold": false
+      },
+      {
+       "name": "Bb3",
+       "pad": 7,
+       "midi": 58,
+       "fold": false
+      },
+      {
+       "name": "D4",
+       "pad": 11,
+       "midi": 62,
+       "fold": false
+      },
+      {
+       "name": "F4",
+       "pad": 14,
+       "midi": 65,
+       "fold": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
