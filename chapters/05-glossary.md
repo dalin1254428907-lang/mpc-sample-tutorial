@@ -6,12 +6,18 @@ short_title: "术语表"
 status: done
 outline:
   - "三语表，可切换英中、英日"
+  - "新增术语"
 ---
 # 第五章 术语表（英中 / 英日）
 
-<p class="tapes"><span class="tape tape-yellow">English · 中文 · 日本語</span> <span class="tape tape-cyan">91 条</span></p>
+<p class="tapes"><span class="tape tape-yellow">English · 中文 · 日本語</span> <span class="tape tape-cyan">110 条</span></p>
 
 英中、英日两套术语表合在一张三语表里：在网站上可用下方按钮切换 **三语 / 英中 / 英日**，并按分类筛选；最后一列为该术语在 MPC Sample 上的对应按键或说明。
+
+<div class="glossary-search-wrap">
+  <input type="search" id="glossary-search" placeholder="🔍 实时搜索术语（英文 / 中文 / 日本語 / 按键）..." aria-label="搜索术语">
+  <span class="search-count" id="search-count">共 110 条术语</span>
+</div>
 
 <div class="glossary" markdown="1">
 
@@ -92,7 +98,7 @@ outline:
 | Cutoff | 截止频率 | カットオフ | — |
 | Resonance | 共振 | レゾナンス | — |
 | LPF / HPF / BPF | 低通 / 高通 / 带通 | ローパス / ハイパス / バンドパス | — |
-| Pitch | 音高 | ピッチ | — |
+| Pitch / Transpose | 音高 | ピッチ | 让采样听起来更高或更低 |
 | Tune | 调音 | チューン | Semi / Fine |
 | Semitone / Cent | 半音 / 音分 | 半音 / セント | — |
 | Pan | 声像 | パン | — |
@@ -140,5 +146,33 @@ outline:
 | CV / Sync Out | 控制电压 / 同步输出 | CV / シンクアウト | 5V |
 | TRS / TS | 三芯 / 两芯插头 | TRS / TS | — |
 | Audio Interface | 音频接口 | オーディオインターフェース | USB-C 双通道 |
+
+<div id="glossary-extra" class="doc-section" markdown="1">
+
+### 新增术语
+
+| English | 中文 | 日本語 | MPC Sample |
+|---|---|---|---|
+| Sample Rate | 采样率 | | 每秒采集多少个波形点，常见 44.1/48/96 kHz |
+| Bit Depth | 位深 | | 每个采样点的动态范围精度，常见 16/24-bit |
+| Zone / Region | 分区（Zone） | | 在一个 pad 上为不同力度或音高指定不同采样的映射范围 |
+| Trigger Mode | 触发模式 | | 垫子被击中时的播放方式（One-shot / Gate / Loop 等） |
+| Pitch / Transpose | 音高 | | 让采样听起来更高或更低 |
+| Start / End Point | 起始点 / 结束点 | | 采样实际播放的首尾位置，用于去除静音或点击音 |
+| Loop Point | 循环点 | | 设定采样循环播放的开始/结束位置 |
+| Fade In / Out | 淡入 / 淡出 | | 在起始/结束点做短促音量渐变，消除爆音 |
+| Low Frequency Oscillator (LFO) | LFO | | 低频振荡器，用于周期性调制音高、滤波器、音量等 |
+| Mod Matrix | 调制矩阵 | | 把来源（LFO/包络/速度/Aftertouch）路由到目标参数 |
+| Multi-layer / Velocity Layer | 多层采样 | | 同一垫按力度不同触发不同采样，模拟真实乐器 |
+| Layer / Stack | 叠层（Layer / Stack） | | 一个 pad 同时触发多个采样，把音色叠在一起 |
+| Solo / Mute | 独奏 / 静音 | | 仅监听或屏蔽某轨/某垫 |
+| Bus / Send | 总线 / 发送 | | 将多轨信号汇聚到公共效果（混响/延迟）的路径 |
+| Insert FX / Master FX | 插件效果 / 内置效果 | | 单轨/总出插入的动态、失真、EQ、调制等处理器 |
+| Template | 模板 | | 预设好轨道、路由、效果的空白工程，加快起步 |
+| Sample Frame | 帧 / 采样帧 | | 最小时间单位，1 帧 = 1/采样率 秒 |
+| Crossfade | 交叉淡入 | | 两段音频重叠区域音量相反渐变，实现无缝循环 |
+| Phase / Polarity | 相位 / 极性 | | 波形正负翻转，叠加时可能抵消或加强低频 |
+
+</div>
 
 </div>
