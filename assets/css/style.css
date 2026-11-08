@@ -368,3 +368,11 @@ h2.lab-acc-h { margin: 0; font-size: inherit; text-shadow: none; font-style: nor
 .bl-score-bar{margin:0 0 8px}
 
 .lab-acc [hidden], .bl-pop [hidden], .bl-pop[hidden]{display:none !important}
+
+/* ch1 screenshot gallery */
+.shot-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 0 0 16px; }
+.shot { margin: 0 0 12px; padding: 8px; background: var(--panel); border: 2px solid var(--line); border-radius: 12px; }
+.shot-gallery .shot { margin: 0; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.shot figcaption { font-size: .9em; margin-top: 6px; }
+.video-moved .shot { max-width: 420px; }
