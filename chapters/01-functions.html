@@ -49,242 +49,32 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
 <h1 id="第一章-新手入门">第一章 新手入门：从开机到第一段 beat</h1>
 
-<p class="tapes"><span class="tape tape-yellow">AKAI PROFESSIONAL · AC50</span> <span class="tape tape-cyan">手册 v1.3.0 核对</span> <span class="tape tape-red">零基础 · 图文 + 视频</span></p>
-
-<h2 id="先认识一下这个网站">先认识一下这个网站</h2>
-
-<p>这个网站是专门给零基础的人准备的。你不用先懂乐理，也不用会用电脑做音乐。我们想让你尽快上手、玩起来 MPC Sample，而不是坐在这儿读一本死板的说明书。这里有图、有一步一步的操作，也可以点着交互，边看边练。</p>
-
-<p>刚开始学，大家通常会卡在三件事：</p>
-
-<p>一是拍子和节奏。我们主要围绕 hip hop，这种音乐有很多特定的节奏风格，拍子打不稳，后面就不好玩儿。</p>
-
-<p>二是机器本身怎么操作。键多、旋钮多、屏幕小，刚上手很容易不知道该按哪儿。</p>
-
-<p>三是中文资料太少。网上能找到的，尤其是 YouTube 上，基本都是英文视频，看着费劲。</p>
-
+<section class="site-hero" aria-labelledby="先认识一下这个网站">
+<h2 id="先认识一下这个网站" class="hero-title"><small class="hero-kicker">先认识一下这个网站</small><span class="hero-slogan">无痛感受节奏</span></h2>
+<div class="hero-lead">
+<p class="hero-big">这个网站是专门给零基础的人准备的。你不用先懂乐理，也不用会用电脑做音乐。我们想让你尽快上手、玩起来 MPC Sample，而不是坐在这儿读一本死板的说明书。这里有图、有一步一步的操作，也可以点着交互，边看边练。</p>
+<p class="hero-mid">刚开始学，大家通常会卡在三件事：</p>
+<ol class="hero-pains">
+<li>一是拍子和节奏。我们主要围绕 hip hop，这种音乐有很多特定的节奏风格，拍子打不稳，后面就不好玩儿。</li>
+<li>二是机器本身怎么操作。键多、旋钮多、屏幕小，刚上手很容易不知道该按哪儿。</li>
+<li>三是中文资料太少。网上能找到的，尤其是 YouTube 上，基本都是英文视频，看着费劲。</li>
+</ol>
 <p>所以这个网站把三样东西放在一起：机器是什么、怎么用；采样、鼓组、节奏这些做音乐要用的知识；还有这两者怎么配合、怎么一块儿玩儿。</p>
-
-<p>跟着步骤做，对着图看，就能边玩边学会。</p>
-
-<h2 id="先看一眼这些界面">先看一眼这些界面</h2>
-
-<div class="shot-gallery">
-<figure class="shot"><img src="../assets/img/mpc-sample-panel.jpg" alt="MPC Sample 面板全貌" loading="lazy" /><figcaption>面板全貌：屏幕、旋钮、16 个垫</figcaption></figure>
-<figure class="shot"><img src="../assets/img/screens/s01-sample-main.png" alt="Sample 主屏 / 波形" loading="lazy" /><figcaption>Sample 主屏：看波形、修剪</figcaption></figure>
-<figure class="shot"><img src="../assets/img/screens/s02-chop.png" alt="Chop 切片页" loading="lazy" /><figcaption>Chop：把一段声音切成小块</figcaption></figure>
-<figure class="shot"><img src="../assets/img/screens/s03-browser.png" alt="采样浏览器" loading="lazy" /><figcaption>采样浏览器：找声音、载入到垫</figcaption></figure>
-<figure class="shot"><img src="../assets/img/screens/s04-sample-record.png" alt="采样录音页" loading="lazy" /><figcaption>采样录音：把外面的声音录进来</figcaption></figure>
-<figure class="shot"><img src="../assets/img/screens/s05-seq.png" alt="Seq 序列页" loading="lazy" /><figcaption>Seq：录 beat、看小节和速度</figcaption></figure>
-<figure class="shot"><img src="../assets/img/screens/s06-pad-fx.png" alt="Pad FX 页" loading="lazy" /><figcaption>Pad FX：敲垫就加效果</figcaption></figure>
+<p class="hero-go">跟着步骤做，对着图看，就能边玩边学会。</p>
 </div>
-
-<p><a id="s1-0"></a></p>
-
-<h2 id="10-怎么读这一章">1.0 怎么读这一章</h2>
-
-<p>写给<strong>从没碰过采样器的人</strong>，不用懂乐理，也不用电脑。</p>
-
-<p class="note">按键写法：<kbd>PLAY</kbd> = 按一下；<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> = 先按住前一个再按后一个；PAD = 打击垫 1–16。</p>
-
-<p><strong>学习路线</strong>（每次 10–20 分钟）：</p>
-
-<div class="chips">
-
-  <ul>
-    <li><a href="#s1-1"><strong>1</strong> 认识机器</a></li>
-    <li><a href="#s1-2"><strong>2</strong> 开箱开机</a></li>
-    <li><a href="#s1-3"><strong>3</strong> 面板 5 区</a></li>
-    <li><a href="#s1-4"><strong>4</strong> 小屏幕</a></li>
-    <li><a href="#s1-5"><strong>5</strong> SHIFT</a></li>
-    <li><a href="#s1-6"><strong>6</strong> 打击垫与 Bank</a></li>
-    <li><a href="#s1-7"><strong>7</strong> 播放 demo</a></li>
-    <li><a href="#s1-8"><strong>8</strong> 换鼓声</a></li>
-    <li><a href="#s1-9"><strong>9</strong> 序列</a></li>
-    <li><a href="#s1-10"><strong>10</strong> 录 beat</a></li>
-    <li><a href="#s1-11"><strong>11</strong> 采样</a></li>
-    <li><a href="#s1-12"><strong>12</strong> 效果</a></li>
-    <li><a href="#s1-13"><strong>13</strong> 保存</a></li>
-    <li><a href="#s1-14"><strong>FAQ</strong></a></li>
-    <li><a href="#s1-15"><strong>自查</strong></a></li>
-  </ul>
-
-</div>
-
-<p>只想查某个键？去 <a href="../chapters/01b-reference.html">第一章附录 · 功能速查</a>（编号 1–40、全部屏幕参数、灯光含义）。</p>
-
-<p><a id="ch1-zh-videos"></a></p>
-
-<h3 id="推荐视频附中文字幕--ai-中文配音">推荐视频（英文）</h3>
-
-<h4 id="-在-mpc-sample-上做第一个-beatave-mcree">① 在 MPC Sample 上做第一个 beat（Ave Mcree）</h4>
-
-<div class="video-embed"><iframe data-yt="b6uyqzjX0Ys" src="https://www.youtube-nocookie.com/embed/b6uyqzjX0Ys?enablejsapi=1" title="MPC SAMPLE - How to Make your First Beat（Ave Mcree）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
-
-<h4 id="-手指打鼓第一课jeremy-ellis">② 手指打鼓第一课（Jeremy Ellis）</h4>
-
-<div class="video-embed"><iframe data-yt="oEpLD6vD43E" src="https://www.youtube-nocookie.com/embed/oEpLD6vD43E?enablejsapi=1" title="Jeremy Ellis - MPC/MPD Basics 1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
-
-<h4 id="-exile-用-mpc2000xl-现场做-beatin-love">③ Exile 用 MPC2000XL 现场做 beat「In Love」</h4>
-
-<div class="video-embed"><iframe data-yt="ux0YibYptjM" src="https://www.youtube-nocookie.com/embed/ux0YibYptjM?enablejsapi=1" title="Exile makes a beat using MPC2000XL // Beat Name: In Love（Beat Gates）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
-
-<h4 id="rec-VqJUlCJCRw4"><a id="tx-VqJUlCJCRw4-anchor"></a>④ Akai 官方：MPC Sample 整机概览</h4>
-
-<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/VqJUlCJCRw4" title="MPC Sample | Overview（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
-
-<h4 id="rec-Q3DzJ2t6p68"><a id="tx-Q3DzJ2t6p68-anchor"></a>⑤ Akai 官方入门：导航与声音</h4>
-
-<div class="video-embed"><iframe data-yt="Q3DzJ2t6p68" src="https://www.youtube-nocookie.com/embed/Q3DzJ2t6p68?enablejsapi=1" title="Getting Started with MPC Sample | Navigation and Sounds（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
-
-<h4 id="rec-YAKswgIC1LY"><a id="tx-YAKswgIC1LY-anchor"></a>⑥ Akai 官方入门：做一段 Hip Hop beat</h4>
-
-<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/YAKswgIC1LY" title="Getting Started with MPC Sample | Making a Hip Hop Beat（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
-
-<h4 id="rec-yCWCuo6OZX0"><a id="tx-yCWCuo6OZX0-anchor"></a>⑦ Akai 官方入门：从黑胶采样</h4>
-
-<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/yCWCuo6OZX0" title="Getting Started with MPC Sample | Sampling From Vinyl（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
-
-<script src="../assets/js/transcript-player.js" defer=""></script>
-
-<p><a id="s1-1"></a></p>
-
-<h2 id="11-认识这台机器">1.1 认识这台机器</h2>
-
-<div class="concept">
-
-  <p><strong>新概念 ① 采样（Sample）</strong></p>
-
-  <p>动词：把一段声音录下来。</p>
-
-  <p><img src="../assets/img/beginner/concepts/c01-sample.png" alt="采样示意：从一段长声音里剪下一小段，就是一个采样" class="cfig" loading="lazy" /></p>
-
-  <p><strong>新概念 ② 采样器（Sampler）</strong></p>
-
-  <p>能<strong>录声音、把声音放到键上、一敲就响</strong>的乐器。</p>
-
-  <p><img src="../assets/img/beginner/concepts/c02-sampler.png" alt="采样器示意：一个声音 → 放到某个垫上 → 敲垫出声" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p><strong>和手机 / 电脑做音乐比：</strong> 用手指<strong>敲</strong>垫（轻敲声小、重敲声大）；<strong>电池、喇叭、麦克风</strong>都在机器里，不接电脑也能用（也能用 USB-C 接电脑，属于进阶）。</p>
-
-<p>MPC 系列从 1988 年的 MPC60 起就是 hip-hop 的经典工具。</p>
-
-<p>用 MPC 做 beat，永远是这四步：</p>
-
-<p><img src="../assets/img/beginner/b01-workflow.png" alt="MPC 的工作流程：采样 → 放到垫上 → 录成序列 → 串成歌曲" /></p>
-
-<div class="concept">
-
-  <p><strong>新概念 ③ 工程（Project）</strong></p>
-
-  <p>你做的一切（声音 + 节奏 + 设置）打包在一起，叫一个<strong>工程</strong>，就像游戏存档。</p>
-
-  <p><img src="../assets/img/beginner/b02-project.png" alt="一个工程里有什么：8 组 × 16 垫的声音 + 最多 128 个序列" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p>“组”和“序列”先不用记，1.6 和 1.9 节会讲。</p>
-
-<figure class="shot"><img src="../assets/img/screens/s01-sample-main.png" alt="Sample 主屏：开机后最常待的页面" loading="lazy" /><figcaption>Sample 主屏：开机后最常待的页面</figcaption></figure>
-
-<p><a id="s1-2"></a></p>
-
-<h2 id="12-开箱充电开关机接耳机">1.2 开箱、充电、开关机、接耳机</h2>
-
-<p><strong>盒子里有：</strong> 主机、USB-C 线、快速入门指南、安全与保修手册。</p>
-
-<p>接口都在<strong>后面板</strong>，microSD 卡槽在<strong>左侧面</strong>：</p>
-
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
-<figure class="fig-wrap" id="fig-f">
-<svg class="fig" viewBox="-30 -170 980 560" role="img" aria-label="F 区 后面板" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>F 区 后面板</title>
-<defs><clipPath id="cF"><rect x="0" y="0" width="912" height="231" rx="14.4"/></clipPath></defs>
-<image href="../assets/img/akai-mpc-sample-rear.webp" x="0" y="0" width="912" height="231" preserveAspectRatio="none" clip-path="url(#cF)"/>
-<rect x="0" y="0" width="912" height="231" rx="14.4" fill="none" stroke="#FFE500" stroke-width="1.92" stroke-dasharray="9.6 6"/>
-<g><line x1="82" y1="131" x2="40" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="82" y1="131" x2="40" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="82" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><line x1="251" y1="131" x2="228" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="251" y1="131" x2="228" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="251" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/><line x1="196" y1="131" x2="228" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="196" y1="131" x2="228" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="196" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><line x1="575" y1="131" x2="534" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="575" y1="131" x2="534" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="575" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/><line x1="493" y1="131" x2="534" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="493" y1="131" x2="534" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="493" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><line x1="743" y1="131" x2="800" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="743" y1="131" x2="800" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="743" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><line x1="138" y1="131" x2="110" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="138" y1="131" x2="110" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="138" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><line x1="402" y1="131" x2="362" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="402" y1="131" x2="362" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="402" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/><line x1="322" y1="131" x2="362" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="322" y1="131" x2="362" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="322" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><line x1="660" y1="131" x2="640" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="660" y1="131" x2="640" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="660" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><line x1="812" y1="131" x2="860" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="812" y1="131" x2="860" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="812" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
-<g><g transform="rotate(-2 40 -110)"><rect x="-11.6" y="-128.72" width="103.2" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="40" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">PHONES</text></g><text x="40" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">耳机</text></g>
-<g><g transform="rotate(2 228 -110)"><rect x="126" y="-128.72" width="204" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="228" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">MIDI OUT / IN</text></g><text x="228" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">3.5mm 转 DIN 线</text></g>
-<g><g transform="rotate(-2 534 -110)"><rect x="410.4" y="-128.72" width="247.2" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="534" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">AUDIO IN 2/R·1/L</text></g><text x="534" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">输入：麦/乐器/线路</text></g>
-<g><g transform="rotate(2 800 -110)"><rect x="755.6" y="-128.72" width="88.8" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="800" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">USB-C</text></g><text x="800" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">供电·音频·MIDI·传文件</text></g>
-<g><g transform="rotate(-2 110 300)"><rect x="44" y="281.28" width="132" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="110" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">SYNC OUT</text></g><text x="110" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">5V 时钟脉冲</text></g>
-<g><g transform="rotate(2 362 300)"><rect x="231.2" y="281.28" width="261.6" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="362" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">AUDIO OUT 2/R·1/L</text></g><text x="362" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">输出 → 音箱/调音台</text></g>
-<g><g transform="rotate(-2 640 300)"><rect x="574" y="281.28" width="132" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="640" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">REC GAIN</text></g><text x="640" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">输入增益</text></g>
-<g><g transform="rotate(2 860 300)"><rect x="815.6" y="281.28" width="88.8" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="860" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">POWER</text></g><text x="860" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">电源</text></g>
-</svg>
-</figure>
-
-<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-f.jpg" alt="后面板接口：PHONES、MIDI、SYNC OUT、AUDIO OUT、AUDIO IN、REC GAIN、USB-C、POWER" /></p>
-
-<p>现在只认 3 个：<strong>POWER</strong>（电源）、<strong>USB-C</strong>（充电）、<strong>PHONES</strong>（3.5 mm 耳机孔）。其他接口后面再讲。</p>
-
-<div class="step">
-
-  <h4 id="section">动手 1 · 充电</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 给电池充电。</li>
-    <li><strong>要按什么：</strong> 用附带的 USB-C 线，把后面板 <strong>USB-C</strong> 接到充电头或充电宝。</li>
-    <li><strong>你会看到：</strong> 顶面<strong>充电图标</strong>亮；充满或没接电时熄灭。电池图标颜色 = 剩余电量：绿 100–30% · 琥珀 29–15% · 红 14–5% · <strong>红闪 = 不到 5%，马上充</strong>。</li>
-    <li><strong>常见错误：</strong> 开着机充不进——视线材和电源，<strong>可能只在关机时充电</strong>。用附带线 + 5V 2A 最稳。满电约可连续播放 5 小时（官方 FAQ 写最长 6 小时）。</li>
-  </ul>
-
-</div>
-
-<div class="step">
-
-  <h4 id="section-1">动手 2 · 开机 / 关机</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 开机，看到 demo。</li>
-    <li><strong>要按什么：</strong> 按后面板 <kbd>POWER</kbd>；关机也按它。</li>
-    <li><strong>你会看到：</strong> 屏幕亮起，自动载入 demo，按键和垫亮灯。</li>
-    <li><strong>常见错误：</strong> 怕关机丢东西——机器会<strong>后台自动保存</strong>。想留有名字的存档，见 1.13 节。</li>
-  </ul>
-
-</div>
-
-<div class="step">
-
-  <h4 id="section-2">动手 3 · 接耳机（可选）</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 用耳机听，不吵别人。</li>
-    <li><strong>要按什么：</strong> 耳机插后面板 <strong>PHONES</strong>。音量仍用顶面 <kbd>MAIN VOLUME</kbd>。</li>
-    <li><strong>你会听到：</strong> 声音从耳机出，<strong>内置喇叭自动关闭</strong>。</li>
-    <li><strong>常见错误：</strong> 拔耳机前先调小音量。插着音箱线（AUDIO OUT）时喇叭也不响。</li>
-  </ul>
-
-</div>
-
-<p class="note">固件更新（可以玩熟了再做）：USB-C 接电脑、开机，浏览器打开 <code>mpc-sample.local</code>（不行试 <code>192.168.155.1</code>）；Windows 10 用 akaipro.com 的更新程序。官方演示：<a href="https://www.youtube.com/watch?v=L8g18bvb7Sw">How to Update MPC Sample</a>（43 秒）。</p>
+<p class="hero-sign">本站由 DALIN朴 一人打造。想合作，请通过 <a href="https://github.com/dalin1254428907-lang" target="_blank" rel="noopener">GitHub</a> 与我联系。</p>
+</section>
 
 <p><a id="s1-3"></a></p>
 
-<h2 id="13-认识面板的-5-个区">1.3 认识面板的 5 个区</h2>
+<h2 id="13-认识面板的-5-个区">认识面板的 5 个区</h2>
 
 <p>40 多个键<strong>不用一次记住</strong>，先记 5 个区“各管什么”：</p>
 
-<p><img src="../assets/img/beginner/b03-zones.jpg" alt="顶面 5 个区：A 看与听，B 切模式，C 三个旋钮，D 工具与播放录音，E 16 个打击垫" /></p>
+<p class="zone-tip">点图上任意一个彩色区域，直接跳到这个区的说明（颜色和下面 A–E 小标题一致）。</p>
+<div class="zone-map"><img src="../assets/img/beginner/b03-zones.jpg" alt="顶面 5 个区：A 看与听，B 切模式，C 三个旋钮，D 工具与播放录音，E 16 个打击垫" /><a class="zone-hot zone-a" href="#a看与听音量--屏幕--喇叭" style="left:4.9%;top:4.5%;width:90.3%;height:27.4%" title="跳到 A 看与听 的说明" aria-label="跳到 A 看与听 的说明"></a><a class="zone-hot zone-b" href="#b切模式--shift--推子" style="left:5.4%;top:35.3%;width:19.8%;height:63.2%" title="跳到 B 切模式 的说明" aria-label="跳到 B 切模式 的说明"></a><a class="zone-hot zone-c" href="#c三个参数旋钮-k1k3" style="left:26.9%;top:35.9%;width:46.2%;height:12.6%" title="跳到 C 三个旋钮 的说明" aria-label="跳到 C 三个旋钮 的说明"></a><a class="zone-hot zone-d" href="#d工具--浏览--录音--播放" style="left:75.2%;top:35.3%;width:19.3%;height:63.2%" title="跳到 D 工具·录音·播放 的说明" aria-label="跳到 D 工具·录音·播放 的说明"></a><a class="zone-hot zone-e" href="#e16-个打击垫" style="left:25.6%;top:48.9%;width:48.6%;height:50.6%" title="跳到 E 16 个打击垫 的说明" aria-label="跳到 E 16 个打击垫 的说明"></a></div>
 
-<p>先看 4 分钟导览短片（原创，中文字幕）：面板 5 个区，以及每按一个键屏幕会变成什么。</p>
-
-<video class="local-video" controls="" preload="metadata" playsinline="" poster="../assets/video/ch1-panel-tour-poster.jpg">
-  <source src="../assets/video/ch1-panel-tour.mp4" type="video/mp4" />
-  你的浏览器不能播放此视频，请 <a href="../assets/video/ch1-panel-tour.mp4">下载 mp4</a>。
-</video>
-
-<p class="video-note">🎬 <strong>原创短片：</strong>面板 5 区 + 按键后的屏幕（4 分钟，1080p，<a href="../assets/video/ch1-panel-tour.mp4">下载 mp4</a>）</p>
-
-<h3 id="a看与听音量--屏幕--喇叭"><span class="region-key">A</span>看与听：音量 · 屏幕 · 喇叭</h3>
+<h3 id="a看与听音量--屏幕--喇叭"><span class="region-key rk-a">A</span>看与听：音量 · 屏幕 · 喇叭</h3>
 
 <!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-a">
@@ -319,11 +109,11 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
   <p>屏幕上方的 3 个小键，<strong>没有固定功能</strong>。</p>
 
-  <p><img src="../assets/img/beginner/concepts/c04-function-keys.png" alt="B1–B3 示意：屏幕顶部的三个标签分别对应上方的 B1、B2、B3" class="cfig" loading="lazy" /></p>
+  <p><img src="../assets/img/beginner/concepts/c04-function-keys.png" alt="B1–B3 示意：屏幕顶部的三个标签分别对应上方的 B1、B2、B3" class="cfig cfig-wide" loading="lazy" /></p>
 
 </div>
 
-<h3 id="b切模式--shift--推子"><span class="region-key">B</span>切模式 · SHIFT · 推子</h3>
+<h3 id="b切模式--shift--推子"><span class="region-key rk-b">B</span>切模式 · SHIFT · 推子</h3>
 
 <!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-b">
@@ -368,7 +158,7 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
 <p>这一列还有 <kbd>SHIFT</kbd>（1.5 节）、<kbd>PAD BANK</kbd>（1.6 节）、效果键 <kbd>PAD FX</kbd> <kbd>KNOB FX</kbd>（1.12 节），和<strong>推子</strong>（上下推的滑块，默认调当前垫音量）。</p>
 
-<h3 id="c三个参数旋钮-k1k3"><span class="region-key">C</span>三个参数旋钮 K1–K3</h3>
+<h3 id="c三个参数旋钮-k1k3"><span class="region-key rk-c">C</span>三个参数旋钮 K1–K3</h3>
 
 <!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-c">
@@ -399,7 +189,7 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
 </div>
 
-<h3 id="d工具--浏览--录音--播放"><span class="region-key">D</span>工具 · 浏览 · 录音 · 播放</h3>
+<h3 id="d工具--浏览--录音--播放"><span class="region-key rk-d">D</span>工具 · 浏览 · 录音 · 播放</h3>
 
 <!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-d">
@@ -447,7 +237,7 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
   <li><strong>工具</strong>：<kbd>CHOP</kbd> 切片、<kbd>LOOP</kbd> 循环、<kbd>MUTE</kbd> 静音、<kbd>16 LEVELS</kbd>、<kbd>SAMPLE SELECT</kbd> 选声音、<kbd>TAP TEMPO</kbd> 定速度。本章只用后两个。</li>
 </ol>
 
-<h3 id="e16-个打击垫"><span class="region-key">E</span>16 个打击垫</h3>
+<h3 id="e16-个打击垫"><span class="region-key rk-e">E</span>16 个打击垫</h3>
 
 <p>中间 4×4 的方块。能感应<strong>力度</strong>（敲得重声音大）和按住后的<strong>压力</strong>。编号在 1.6 节讲。</p>
 
@@ -463,6 +253,174 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
   </ul>
 
 </div>
+
+<h2 id="先看一眼这些界面">先看一眼这些界面</h2>
+
+<div class="shot-gallery hover-gallery">
+<figure class="shot hovercard" tabindex="0"><div class="hc-text"><b>面板全貌</b><span>屏幕、旋钮、16 个垫</span><em>鼠标移上来看图</em></div><img src="../assets/img/mpc-sample-panel.jpg" alt="MPC Sample 面板全貌" loading="lazy" /></figure>
+<figure class="shot hovercard" tabindex="0"><div class="hc-text"><b>Sample 主屏</b><span>看波形、修剪</span><em>鼠标移上来看图</em></div><img src="../assets/img/screens/s01-sample-main.png" alt="Sample 主屏 / 波形" loading="lazy" /></figure>
+<figure class="shot hovercard" tabindex="0"><div class="hc-text"><b>Chop</b><span>把一段声音切成小块</span><em>鼠标移上来看图</em></div><img src="../assets/img/screens/s02-chop.png" alt="Chop 切片页" loading="lazy" /></figure>
+<figure class="shot hovercard" tabindex="0"><div class="hc-text"><b>采样浏览器</b><span>找声音、载入到垫</span><em>鼠标移上来看图</em></div><img src="../assets/img/screens/s03-browser.png" alt="采样浏览器" loading="lazy" /></figure>
+<figure class="shot hovercard" tabindex="0"><div class="hc-text"><b>采样录音</b><span>把外面的声音录进来</span><em>鼠标移上来看图</em></div><img src="../assets/img/screens/s04-sample-record.png" alt="采样录音页" loading="lazy" /></figure>
+<figure class="shot hovercard" tabindex="0"><div class="hc-text"><b>Seq</b><span>录 beat、看小节和速度</span><em>鼠标移上来看图</em></div><img src="../assets/img/screens/s05-seq.png" alt="Seq 序列页" loading="lazy" /></figure>
+<figure class="shot hovercard" tabindex="0"><div class="hc-text"><b>Pad FX</b><span>敲垫就加效果</span><em>鼠标移上来看图</em></div><img src="../assets/img/screens/s06-pad-fx.png" alt="Pad FX 页" loading="lazy" /></figure>
+</div>
+
+<p><a id="s1-0"></a></p>
+
+<h2 id="10-怎么读这一章">本章使用方法</h2>
+
+<p>写给<strong>从没碰过采样器的人</strong>，不用懂乐理，也不用电脑。</p>
+
+<p class="note">按键写法：<kbd>PLAY</kbd> = 按一下；<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> = 先按住前一个再按后一个；PAD = 打击垫 1–16。</p>
+
+<p><strong>学习路线</strong>（每次 10–20 分钟）：</p>
+
+<div class="chips">
+
+  <ul>
+    <li><a href="#s1-1"><strong>1</strong> 认识机器</a></li>
+    <li><a href="#s1-2"><strong>2</strong> 开箱开机</a></li>
+    <li><a href="#s1-3"><strong>3</strong> 面板 5 区</a></li>
+    <li><a href="#s1-4"><strong>4</strong> 小屏幕</a></li>
+    <li><a href="#s1-5"><strong>5</strong> SHIFT</a></li>
+    <li><a href="#s1-6"><strong>6</strong> 打击垫与 Bank</a></li>
+    <li><a href="#s1-7"><strong>7</strong> 播放 demo</a></li>
+    <li><a href="#s1-8"><strong>8</strong> 换鼓声</a></li>
+    <li><a href="#s1-9"><strong>9</strong> 序列</a></li>
+    <li><a href="#s1-10"><strong>10</strong> 录 beat</a></li>
+    <li><a href="#s1-11"><strong>11</strong> 采样</a></li>
+    <li><a href="#s1-12"><strong>12</strong> 效果</a></li>
+    <li><a href="#s1-13"><strong>13</strong> 保存</a></li>
+    <li><a href="#s1-14"><strong>FAQ</strong></a></li>
+    <li><a href="#s1-15"><strong>自查</strong></a></li>
+  </ul>
+
+</div>
+
+<p>只想查某个键？去 <a href="../chapters/01b-reference.html">第一章附录 · 功能速查</a>（编号 1–40、全部屏幕参数、灯光含义）。</p>
+
+<p><a id="s1-1"></a></p>
+
+<h2 id="11-认识这台机器">1.1 认识这台机器</h2>
+
+<div class="concept">
+
+  <p><strong>新概念 ① 采样（Sample）</strong></p>
+
+  <p>动词：把一段声音录下来。</p>
+
+  <p><img src="../assets/img/beginner/concepts/c01-sample.png" alt="采样示意：从一段长声音里剪下一小段，就是一个采样" class="cfig" loading="lazy" /></p>
+
+  <p><strong>新概念 ② 采样器（Sampler）</strong></p>
+
+  <p>能<strong>录声音、把声音放到键上、一敲就响</strong>的乐器。</p>
+
+  <p><img src="../assets/img/beginner/concepts/c02-sampler.png" alt="采样器示意：一个声音 → 放到某个垫上 → 敲垫出声" class="cfig" loading="lazy" /></p>
+
+</div>
+
+<p><strong>和手机 / 电脑做音乐比：</strong> 用手指<strong>敲</strong>垫（轻敲声小、重敲声大）；<strong>电池、喇叭、麦克风</strong>都在机器里，不接电脑也能用（也能用 USB-C 接电脑，属于进阶）。</p>
+
+<p>MPC 系列从 1988 年的 MPC60 起就是 hip-hop 的经典工具。</p>
+
+<p>用 MPC 做 beat，永远是这四步：</p>
+
+<p><img src="../assets/img/beginner/b01-workflow.png" alt="MPC 的工作流程：采样 → 放到垫上 → 录成序列 → 串成歌曲" /></p>
+
+<div class="concept">
+
+  <p><strong>新概念 ③ 工程（Project）</strong></p>
+
+  <p>你做的一切（声音 + 节奏 + 设置）打包在一起，叫一个<strong>工程</strong>，就像游戏存档。</p>
+
+  <p><img src="../assets/img/beginner/b02-project.png" alt="一个工程里有什么：8 组 × 16 垫的声音 + 最多 128 个序列" class="cfig cfig-xl" loading="lazy" /></p>
+
+</div>
+
+<p>“组”和“序列”先不用记，1.6 和 1.9 节会讲。</p>
+
+<figure class="shot"><div class="s01-hot"><img src="../assets/img/screens/s01-sample-main.png" alt="Sample 主屏：开机后最常待的页面" loading="lazy" /><span class="s01-dot" tabindex="0" style="left:23.2%;top:10.6%"><span class="s01-tip"><b>1</b> Trim / Tune / Filter：分别对应 B1 / B2 / B3，白底的是当前页。B1 多按会轮换 Trim → Mix → Amp Env。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:27.5%"><span class="s01-tip"><b>2</b> 标签下的小横条：这个键能轮换几页就有几条，亮的那条 = 第几页（推断）。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:37.8%"><span class="s01-tip"><b>3</b> A01 + 名字：当前垫上的采样名。A01 应是“A 组 1 号垫”（推断）。</span></span><span class="s01-dot" tabindex="0" style="left:96%;top:34.8%"><span class="s01-tip"><b>4</b> 四个小图标：♩ Note On、← Reverse、循环 = Loop、16 = 16 Levels，打开时会亮。</span></span><span class="s01-dot" tabindex="0" style="left:63.3%;top:46.8%"><span class="s01-tip"><b>5</b> 波形：声音的“形状图”。立体声采样显示为上下两条。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:61.7%"><span class="s01-tip"><b>6</b> 左边竖条：这个采样的音量（Mix 页的 Volume）。</span></span><span class="s01-dot" tabindex="0" style="left:96%;top:56.4%"><span class="s01-tip"><b>7</b> 右边竖条：声像 Pan，偏左还是偏右。</span></span><span class="s01-dot" tabindex="0" style="left:43.7%;top:91.3%"><span class="s01-tip"><b>8</b> End：K2 调终点。下排 Start / End / Loop = K1 / K2 / K3。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:78.5%"><span class="s01-tip"><b>9</b> 框住 Start 的白框：现在 ENCODER 调的那个参数（推断）。按 ENCODER 切换，转 ENCODER 或按 −/+ 改值。</span></span><span class="s01-dot" tabindex="0" style="left:84.2%;top:91.3%"><span class="s01-tip"><b>10</b> 锁形图标：应是 Loop Lock，循环点锁在起点上，SHIFT + B1 开关（推断）。</span></span><span class="s01-dot" tabindex="0" style="left:96%;top:82.7%"><span class="s01-tip"><b>11</b> ⇧：按住 SHIFT，下排换成第二组参数（Trim 页是缩放波形 Zoom）。</span></span></div><p class="s01-hint">鼠标移到图上的红色编号，看每个数字是什么意思。</p><figcaption>Sample 主屏：开机后最常待的页面</figcaption></figure>
+
+<p><a id="s1-2"></a></p>
+
+<h2 id="12-开箱充电开关机接耳机">1.2 开箱、充电、开关机、接耳机</h2>
+
+<p><strong>盒子里有：</strong> 主机、USB-C 线、快速入门指南、安全与保修手册。</p>
+
+<p>接口都在<strong>后面板</strong>，microSD 卡槽在<strong>左侧面</strong>：</p>
+
+<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
+<figure class="fig-wrap" id="fig-f">
+<svg class="fig" viewBox="-30 -170 980 560" role="img" aria-label="F 区 后面板" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>F 区 后面板</title>
+<defs><clipPath id="cF"><rect x="0" y="0" width="912" height="231" rx="14.4"/></clipPath></defs>
+<image href="../assets/img/akai-mpc-sample-rear.webp" x="0" y="0" width="912" height="231" preserveAspectRatio="none" clip-path="url(#cF)"/>
+<rect x="0" y="0" width="912" height="231" rx="14.4" fill="none" stroke="#FFE500" stroke-width="1.92" stroke-dasharray="9.6 6"/>
+<g><line x1="82" y1="131" x2="40" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="82" y1="131" x2="40" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="82" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><line x1="251" y1="131" x2="228" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="251" y1="131" x2="228" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="251" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/><line x1="196" y1="131" x2="228" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="196" y1="131" x2="228" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="196" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><line x1="575" y1="131" x2="534" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="575" y1="131" x2="534" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="575" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/><line x1="493" y1="131" x2="534" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="493" y1="131" x2="534" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="493" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><line x1="743" y1="131" x2="800" y2="-110" stroke="#0B0B0D" stroke-width="5.28"/><line x1="743" y1="131" x2="800" y2="-110" stroke="#FFE500" stroke-width="2.4"/><circle cx="743" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><line x1="138" y1="131" x2="110" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="138" y1="131" x2="110" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="138" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><line x1="402" y1="131" x2="362" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="402" y1="131" x2="362" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="402" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/><line x1="322" y1="131" x2="362" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="322" y1="131" x2="362" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="322" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><line x1="660" y1="131" x2="640" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="660" y1="131" x2="640" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="660" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><line x1="812" y1="131" x2="860" y2="300" stroke="#0B0B0D" stroke-width="5.28"/><line x1="812" y1="131" x2="860" y2="300" stroke="#FFE500" stroke-width="2.4"/><circle cx="812" cy="131" r="7.68" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.92"/></g>
+<g><g transform="rotate(-2 40 -110)"><rect x="-11.6" y="-128.72" width="103.2" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="40" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">PHONES</text></g><text x="40" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">耳机</text></g>
+<g><g transform="rotate(2 228 -110)"><rect x="126" y="-128.72" width="204" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="228" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">MIDI OUT / IN</text></g><text x="228" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">3.5mm 转 DIN 线</text></g>
+<g><g transform="rotate(-2 534 -110)"><rect x="410.4" y="-128.72" width="247.2" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="534" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">AUDIO IN 2/R·1/L</text></g><text x="534" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">输入：麦/乐器/线路</text></g>
+<g><g transform="rotate(2 800 -110)"><rect x="755.6" y="-128.72" width="88.8" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="800" y="-102.08" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">USB-C</text></g><text x="800" y="-70.4" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">供电·音频·MIDI·传文件</text></g>
+<g><g transform="rotate(-2 110 300)"><rect x="44" y="281.28" width="132" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="110" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">SYNC OUT</text></g><text x="110" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">5V 时钟脉冲</text></g>
+<g><g transform="rotate(2 362 300)"><rect x="231.2" y="281.28" width="261.6" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="362" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">AUDIO OUT 2/R·1/L</text></g><text x="362" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">输出 → 音箱/调音台</text></g>
+<g><g transform="rotate(-2 640 300)"><rect x="574" y="281.28" width="132" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="640" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">REC GAIN</text></g><text x="640" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">输入增益</text></g>
+<g><g transform="rotate(2 860 300)"><rect x="815.6" y="281.28" width="88.8" height="36" rx="2.88" fill="#FFE500" stroke="#0B0B0D" stroke-width="1.44"/><text x="860" y="307.92" font-size="24" font-weight="900" fill="#0B0B0D" text-anchor="middle">POWER</text></g><text x="860" y="339.6" font-size="22.08" font-weight="700" fill="#F5F5F5" text-anchor="middle" stroke="#16161B" stroke-width="2.88" paint-order="stroke">电源</text></g>
+</svg>
+</figure>
+
+<p class="note sync-note"><b>SYNC OUT「5V 时钟脉冲」是什么？</b>这里输出的<b>不是声音</b>，而是 5V 的时钟电信号（clock pulse）：按拍子发出一串很短的脉冲，用来让外面的模拟设备（比如老鼓机、模块合成器）跟着 MPC 的速度一起走。</p>
+
+<p class="gh-only"><img loading="lazy" src="../assets/img/annotated/fig-f.jpg" alt="后面板接口：PHONES、MIDI、SYNC OUT、AUDIO OUT、AUDIO IN、REC GAIN、USB-C、POWER" /></p>
+
+<p>现在只认 3 个：<strong>POWER</strong>（电源）、<strong>USB-C</strong>（充电）、<strong>PHONES</strong>（3.5 mm 耳机孔）。其他接口后面再讲。</p>
+
+<div class="step">
+
+  <h4 id="section">动手 1 · 充电</h4>
+
+  <ul>
+    <li><strong>目标：</strong> 给电池充电。</li>
+    <li><strong>要按什么：</strong> 用附带的 USB-C 线，把后面板 <strong>USB-C</strong> 接到充电头或充电宝。</li>
+    <li><strong>你会看到：</strong> 顶面<strong>充电图标</strong>亮；充满或没接电时熄灭。电池图标颜色 = 剩余电量：绿 100–30% · 琥珀 29–15% · 红 14–5% · <strong>红闪 = 不到 5%，马上充</strong>。</li>
+    <li><strong>常见错误：</strong> 开着机充不进——视线材和电源，<strong>可能只在关机时充电</strong>。用附带线 + 5V 2A 最稳。满电约可连续播放 5 小时（官方 FAQ 写最长 6 小时）。</li>
+  </ul>
+
+</div>
+
+<div class="step">
+
+  <h4 id="section-1">动手 2 · 开机 / 关机</h4>
+
+  <ul>
+    <li><strong>目标：</strong> 开机，看到 demo。</li>
+    <li><strong>要按什么：</strong> 按后面板 <kbd>POWER</kbd>；关机也按它。</li>
+    <li><strong>你会看到：</strong> 屏幕亮起，自动载入 demo，按键和垫亮灯。</li>
+    <li><strong>常见错误：</strong> 怕关机丢东西——机器会<strong>后台自动保存</strong>。想留有名字的存档，见 1.13 节。</li>
+  </ul>
+
+</div>
+
+<div class="step">
+
+  <h4 id="section-2">动手 3 · 接耳机（可选）</h4>
+
+  <ul>
+    <li><strong>目标：</strong> 用耳机听，不吵别人。</li>
+    <li><strong>要按什么：</strong> 耳机插后面板 <strong>PHONES</strong>。音量仍用顶面 <kbd>MAIN VOLUME</kbd>。</li>
+    <li><strong>你会听到：</strong> 声音从耳机出，<strong>内置喇叭自动关闭</strong>。</li>
+    <li><strong>常见错误：</strong> 拔耳机前先调小音量。插着音箱线（AUDIO OUT）时喇叭也不响。</li>
+  </ul>
+
+</div>
+
+<p class="note">固件更新（可以玩熟了再做）：USB-C 接电脑、开机，浏览器打开 <code>mpc-sample.local</code>（不行试 <code>192.168.155.1</code>）；Windows 10 用 akaipro.com 的更新程序。官方演示：<a href="https://www.youtube.com/watch?v=L8g18bvb7Sw">How to Update MPC Sample</a>（43 秒）。</p>
 
 <p><a id="s1-4"></a></p>
 
@@ -482,7 +440,11 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
 <h3 id="sample-模式主屏幕按-sample">Sample 模式主屏幕（按 <kbd>SAMPLE</kbd>）</h3>
 
-<p><img src="../assets/img/screens/s01-sample-main.png" alt="Sample 模式主屏幕（Trim 页）标注图，编号 1–11" class="sfig" loading="lazy" /></p>
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-b.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>SAMPLE</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
+<div class="s01-hot"><img src="../assets/img/screens/s01-sample-main.png" alt="Sample 模式主屏幕（Trim 页）标注图，编号 1–11" class="sfig" loading="lazy" /><span class="s01-dot" tabindex="0" style="left:23.2%;top:10.6%"><span class="s01-tip"><b>1</b> Trim / Tune / Filter：分别对应 B1 / B2 / B3，白底的是当前页。B1 多按会轮换 Trim → Mix → Amp Env。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:27.5%"><span class="s01-tip"><b>2</b> 标签下的小横条：这个键能轮换几页就有几条，亮的那条 = 第几页（推断）。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:37.8%"><span class="s01-tip"><b>3</b> A01 + 名字：当前垫上的采样名。A01 应是“A 组 1 号垫”（推断）。</span></span><span class="s01-dot" tabindex="0" style="left:96%;top:34.8%"><span class="s01-tip"><b>4</b> 四个小图标：♩ Note On、← Reverse、循环 = Loop、16 = 16 Levels，打开时会亮。</span></span><span class="s01-dot" tabindex="0" style="left:63.3%;top:46.8%"><span class="s01-tip"><b>5</b> 波形：声音的“形状图”。立体声采样显示为上下两条。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:61.7%"><span class="s01-tip"><b>6</b> 左边竖条：这个采样的音量（Mix 页的 Volume）。</span></span><span class="s01-dot" tabindex="0" style="left:96%;top:56.4%"><span class="s01-tip"><b>7</b> 右边竖条：声像 Pan，偏左还是偏右。</span></span><span class="s01-dot" tabindex="0" style="left:43.7%;top:91.3%"><span class="s01-tip"><b>8</b> End：K2 调终点。下排 Start / End / Loop = K1 / K2 / K3。</span></span><span class="s01-dot" tabindex="0" style="left:3.9%;top:78.5%"><span class="s01-tip"><b>9</b> 框住 Start 的白框：现在 ENCODER 调的那个参数（推断）。按 ENCODER 切换，转 ENCODER 或按 −/+ 改值。</span></span><span class="s01-dot" tabindex="0" style="left:84.2%;top:91.3%"><span class="s01-tip"><b>10</b> 锁形图标：应是 Loop Lock，循环点锁在起点上，SHIFT + B1 开关（推断）。</span></span><span class="s01-dot" tabindex="0" style="left:96%;top:82.7%"><span class="s01-tip"><b>11</b> ⇧：按住 SHIFT，下排换成第二组参数（Trim 页是缩放波形 Zoom）。</span></span></div><p class="s01-hint">鼠标移到图上的红色编号，看每个数字是什么意思。</p>
+
+<div class="trim-cue"><img src="../assets/img/beginner/b12b-trim.jpg" alt="修剪采样：SAMPLE → K1 起点 → K2 终点 → SHIFT + PAD 13 永久剪掉" loading="lazy" /><p><b>在机器上怎么进 Trim 页：</b>按 <kbd>SAMPLE</kbd>，敲一下要看的垫；屏幕顶部 <b>Trim</b> 没有白底时按 <kbd>B1</kbd>（B1 轮换 Trim → Mix → Amp Env），回到 Trim。这时 <kbd>K1</kbd> 调起点、<kbd>K2</kbd> 调终点（出处：本教程 1.4 动手 5、1.11 修剪步骤，及附录 Sample Mode 表“B1 → Trim”，依据手册 v1.3.0）。</p></div>
+</details>
 
 <p>垫被静音时，波形变灰、敲了不响。</p>
 
@@ -490,7 +452,9 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
 <h3 id="chop-切片时sample-模式下按-chop">Chop 切片时（Sample 模式下按 <kbd>CHOP</kbd>）</h3>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-d.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>CHOP</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s02-chop.png" alt="Chop 模式屏幕标注图，编号 1–4" class="sfig" loading="lazy" /></p>
+</details>
 
 <p>切片编辑<strong>不能撤销</strong>，第四章细讲。</p>
 
@@ -498,29 +462,39 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
 <h3 id="采样浏览器按-sample-select">采样浏览器（按 <kbd>SAMPLE SELECT</kbd>）</h3>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-d.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>SAMPLE SELECT</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s03-browser.png" alt="采样浏览器屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+</details>
 
 <p><a id="screen-record"></a></p>
 
 <h3 id="采样录音按-sample-record">采样录音（按 <kbd>SAMPLE RECORD</kbd>）</h3>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-d.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>SAMPLE RECORD</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s04-sample-record.png" alt="采样录音屏幕标注图，编号 1–8" class="sfig" loading="lazy" /></p>
+</details>
 
 <p><a id="screen-seq"></a></p>
 
 <h3 id="seq-序列模式按-seq">Seq 序列模式（按 <kbd>SEQ</kbd>）</h3>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-b.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>SEQ</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s05-seq.png" alt="Seq 模式屏幕标注图，编号 1–14" class="sfig" loading="lazy" /></p>
+</details>
 
 <p><a id="screen-fx"></a></p>
 
 <h3 id="pad-fx按-pad-fx">Pad FX（按 <kbd>PAD FX</kbd>）</h3>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-b.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>PAD FX</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s06-pad-fx.png" alt="Pad FX 屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
+</details>
 
 <h3 id="knob-fx按-knob-fx选效果按-shift--knob-fx">Knob FX（按 <kbd>KNOB FX</kbd>；选效果按 <kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd>）</h3>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-b.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>KNOB FX</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s07-knob-fx.png" alt="Knob FX 屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+</details>
 
 <p>在这一页敲垫，可以选哪些垫受影响（亮 = 受影响）。</p>
 
@@ -530,19 +504,25 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 
 <p>把几段序列排成一首歌（本章不用，先认个脸）。</p>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-e.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>SHIFT + PAD 12</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s08-song.png" alt="Song 页屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
+</details>
 
 <p><a id="screen-project"></a></p>
 
 <h3 id="project-菜单与起名页shift--pad-16">Project 菜单与起名页（<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd>）</h3>
 
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-e.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>SHIFT + PAD 16</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
 <p><img src="../assets/img/screens/s09-project.png" alt="Project 菜单与起名页标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+</details>
 
 <p>保存工程、保存采样、导出歌曲都用这个起名页。</p>
 
 <h3 id="其他页面">其他页面</h3>
 
-<p><img src="../assets/img/screens/s10-others.png" alt="其他页面速览：Step Edit、Flex Beat、Compressor、Input Config、Fader、Time Correct、MIDI Config、BPM 弹窗" class="sfig" loading="lazy" /></p>
+<details class="keycue"><summary><img src="../assets/img/annotated/fig-e.jpg" alt="机器按键位置图" loading="lazy" /><span>先在机器上找到 <kbd>SHIFT + 对应 PAD</kbd>，点这张按键图 → 看按下后的小屏幕</span></summary>
+<p><img src="../assets/img/screens/s10-others.png" alt="其他页面速览：Step Edit、Flex Beat、Compressor、Input Config、Fader、Time Correct、MIDI Config、BPM 弹窗" class="sfig sfig-xl" loading="lazy" /></p>
+</details>
 
 <p>MPC Sample <strong>没有叫 Settings 的总设置页</strong>，设置分在几个 SHIFT 菜单里：Input Config、Fader、Time Correct、MIDI Config（恢复出厂也在这里）。</p>
 
@@ -1177,6 +1157,58 @@ var s=document.createElement('script');s.src='../assets/js/review-mode.js';s.def
 <p><strong>全部打勾？你已经能独立做出第一段 beat 了。</strong> 第三章深入鼓组和写 beat 的七步。</p>
 
 <p><strong>本章速查：</strong> 所有按键、编号 1–40、各模式全部参数 → <a href="../chapters/01b-reference.html">第一章附录 · 功能速查</a>。</p>
+
+<p><a id="ch1-videos"></a></p>
+
+<h2 id="推荐视频">推荐视频</h2>
+
+<p>全章视频都放在这里，看完步骤再回来看。</p>
+
+<h3 id="中文导览短片">中文导览短片（原创）</h3>
+
+<p>4 分钟导览短片（原创，中文字幕）：面板 5 个区，以及每按一个键屏幕会变成什么。</p>
+
+<video class="local-video" controls="" preload="metadata" playsinline="" poster="../assets/video/ch1-panel-tour-poster.jpg">
+  <source src="../assets/video/ch1-panel-tour.mp4" type="video/mp4" />
+  你的浏览器不能播放此视频，请 <a href="../assets/video/ch1-panel-tour.mp4">下载 mp4</a>。
+</video>
+
+<p class="video-note">🎬 <strong>原创短片：</strong>面板 5 区 + 按键后的屏幕（4 分钟，1080p，<a href="../assets/video/ch1-panel-tour.mp4">下载 mp4</a>）</p>
+
+<p><a id="ch1-zh-videos"></a></p>
+
+<h3 id="推荐视频附中文字幕--ai-中文配音">英文视频（YouTube）</h3>
+
+<h4 id="-在-mpc-sample-上做第一个-beatave-mcree">① 在 MPC Sample 上做第一个 beat（Ave Mcree）</h4>
+
+<div class="video-embed"><iframe data-yt="b6uyqzjX0Ys" src="https://www.youtube-nocookie.com/embed/b6uyqzjX0Ys?enablejsapi=1" title="MPC SAMPLE - How to Make your First Beat（Ave Mcree）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+
+<h4 id="-手指打鼓第一课jeremy-ellis">② 手指打鼓第一课（Jeremy Ellis）</h4>
+
+<div class="video-embed"><iframe data-yt="oEpLD6vD43E" src="https://www.youtube-nocookie.com/embed/oEpLD6vD43E?enablejsapi=1" title="Jeremy Ellis - MPC/MPD Basics 1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+
+<h4 id="-exile-用-mpc2000xl-现场做-beatin-love">③ Exile 用 MPC2000XL 现场做 beat「In Love」</h4>
+
+<div class="video-embed"><iframe data-yt="ux0YibYptjM" src="https://www.youtube-nocookie.com/embed/ux0YibYptjM?enablejsapi=1" title="Exile makes a beat using MPC2000XL // Beat Name: In Love（Beat Gates）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+
+<h4 id="rec-VqJUlCJCRw4"><a id="tx-VqJUlCJCRw4-anchor"></a>④ Akai 官方：MPC Sample 整机概览</h4>
+
+<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/VqJUlCJCRw4" title="MPC Sample | Overview（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+
+<h4 id="rec-Q3DzJ2t6p68"><a id="tx-Q3DzJ2t6p68-anchor"></a>⑤ Akai 官方入门：导航与声音</h4>
+
+<div class="video-embed"><iframe data-yt="Q3DzJ2t6p68" src="https://www.youtube-nocookie.com/embed/Q3DzJ2t6p68?enablejsapi=1" title="Getting Started with MPC Sample | Navigation and Sounds（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+
+<h4 id="rec-YAKswgIC1LY"><a id="tx-YAKswgIC1LY-anchor"></a>⑥ Akai 官方入门：做一段 Hip Hop beat</h4>
+
+<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/YAKswgIC1LY" title="Getting Started with MPC Sample | Making a Hip Hop Beat（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+
+<h4 id="rec-yCWCuo6OZX0"><a id="tx-yCWCuo6OZX0-anchor"></a>⑦ Akai 官方入门：从黑胶采样</h4>
+
+<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/yCWCuo6OZX0" title="Getting Started with MPC Sample | Sampling From Vinyl（Akai Professional）" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+
+<script src="../assets/js/transcript-player.js" defer=""></script>
+
 
 <h2 id="资料">资料</h2>
 

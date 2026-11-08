@@ -74,6 +74,18 @@
     var padsBox = el('div', 'v5-pads');
     card.appendChild(wave); card.appendChild(row1); card.appendChild(row2);
     card.appendChild(padsBox); card.appendChild(status);
+    var midiHelp = el('details', 'v5-midihelp');
+    midiHelp.innerHTML = '<summary>「连接 MPC（Web MIDI）」怎么用？（点开看步骤）</summary>' +
+      '<ol>' +
+      '<li>用 USB-C 线把 MPC Sample 接到电脑，并开机。</li>' +
+      '<li>用 <b>Chrome 或 Edge</b> 打开本页（Safari 不支持 Web MIDI）。</li>' +
+      '<li>macOS 可先打开「应用程序 → 实用工具 → 音频 MIDI 设置」，菜单「窗口 → 显示 MIDI 工作室」，看看列表里有没有 MPC；没有的话换根能传数据的 USB-C 线或换个接口再试。</li>' +
+      '<li>点「连接 MPC（Web MIDI）」。浏览器地址栏下方会弹出「<b>想要使用您的 MIDI 设备</b>」之类的提示，点「<b>允许</b>」。</li>' +
+      '<li>如果之前点过「拒绝」：点地址栏左边的网站设置图标 →「MIDI 设备」改成「允许」→ 刷新页面再点一次按钮。</li>' +
+      '<li>连上后状态行会显示找到的 MIDI 输入名字；敲 MPC 的垫，网页里的切片会响。</li>' +
+      '</ol>' +
+      '<p class="v5-note">说明：这是网页实验功能，不保证每台电脑、每个固件都能连上。MPC 的垫是否通过 USB 发出 MIDI 音符，以实机 MIDI 设置为准（SHIFT + PAD 8 MIDI CONFIG）。连不上不影响学习，用鼠标点垫一样能练。</p>';
+    card.appendChild(midiHelp);
     concept1.parentNode.insertBefore(card, concept1.nextSibling);
 
     function drawWave() {
@@ -164,32 +176,43 @@
     });
     /* Web MIDI：收到真机垫子的音符就触发对应切片。垫位编号以实机为准：
        这里把收到的不同音符按从小到大排，依次对应垫 1、2、3…，并在状态行报出来。 */
-    var seenNotes = [];
-    bMidi.addEventListener('click', function () {
-      if (!navigator.requestMIDIAccess) {
-        status.textContent = '这个浏览器没有 Web MIDI（Safari 不支持），请用 Chrome 或 Edge 打开，并先在机器上把 MIDI 输出设为 USB（SHIFT+PAD 8 的设置以实机屏幕为准，待确认）。';
-        return;
+    var seenNotes = [], midiAccess = null;
+    function onMidi(msg) {
+      var st = msg.data[0] & 0xF0, note = msg.data[1], vel = msg.data[2];
+      if (st !== 0x90 || !vel) return; // 只认 Note On
+      if (seenNotes.indexOf(note) === -1 && seenNotes.length < 16) {
+        seenNotes.push(note); seenNotes.sort(function (a, b) { return a - b; });
       }
-      navigator.requestMIDIAccess().then(function (access) {
-        var n = 0;
-        access.inputs.forEach(function (input) {
-          n++;
-          input.onmidimessage = function (msg) {
-            var st = msg.data[0] & 0xF0, note = msg.data[1], vel = msg.data[2];
-            if (st !== 0x90 || vel === 0) return;
-            if (seenNotes.indexOf(note) === -1 && seenNotes.length < 16) {
-              seenNotes.push(note); seenNotes.sort(function (a, b) { return a - b; });
-            }
-            var idx = seenNotes.indexOf(note);
-            if (idx >= 0 && idx < slices) {
-              playSlice(idx, vel / 127);
-              status.textContent = '收到 MPC 的音符 ' + note + '（力度 ' + vel + '）→ 触发第 ' + (idx + 1) + ' 片。垫位对应是按音符从小到大自动排的，实机对不对请你核对后告诉我。';
-            }
-          };
-        });
-        status.textContent = n ? ('已连接 ' + n + ' 个 MIDI 输入，现在敲 MPC 的垫就能触发网页里的切片。')
-                               : '没找到 MIDI 输入，先把 MPC 用 USB 连上电脑再点一次。';
-      }).catch(function () { status.textContent = 'MIDI 连接被拒绝，检查浏览器权限后再试。'; });
+      var idx = seenNotes.indexOf(note);
+      if (idx >= 0 && idx < slices) {
+        playSlice(idx, vel / 127);
+        status.textContent = '收到 MIDI 音符 ' + note + '（力度 ' + vel + '）→ 触发第 ' + (idx + 1) + ' 片。垫位是按收到的音符从小到大自动排的，不一定和实机垫号一一对应。';
+      }
+    }
+    function bindInputs() {
+      var names = [];
+      midiAccess.inputs.forEach(function (input) { input.onmidimessage = onMidi; names.push(input.name || '未命名设备'); });
+      bMidi.classList.toggle('on', names.length > 0);
+      bMidi.textContent = names.length ? '已连接 MIDI ✓' : '连接 MPC（Web MIDI）';
+      status.textContent = names.length
+        ? ('已连接 MIDI 输入：' + names.join('、') + '。现在敲 MPC 的垫试试；没反应就看下面「怎么用」里的检查步骤。')
+        : '浏览器已允许 MIDI，但还没找到设备。插好 USB-C、开机后不用刷新，插上会自动识别。';
+    }
+    bMidi.addEventListener('click', function () {
+      if (!window.isSecureContext) { status.textContent = 'Web MIDI 只能在 https 页面里用，请从 github.io 的正式地址打开本页。'; return; }
+      if (!navigator.requestMIDIAccess) {
+        status.textContent = '这个浏览器没有 Web MIDI（Safari 不支持），请用 Chrome 或 Edge 打开。';
+        midiHelp.open = true; return;
+      }
+      status.textContent = '正在请求 MIDI 权限…如果浏览器弹出「使用 MIDI 设备」提示，请点「允许」。';
+      navigator.requestMIDIAccess({ sysex: false }).then(function (access) {
+        midiAccess = access;
+        access.onstatechange = bindInputs; // 之后插拔设备也能自动接上
+        bindInputs();
+      }).catch(function (err) {
+        status.textContent = 'MIDI 权限被拒绝或不可用（' + ((err && err.name) || '未知原因') + '）。点地址栏左边的网站设置，把「MIDI 设备」改成允许，刷新后再试。';
+        midiHelp.open = true;
+      });
     });
 
     buffer = makeDemoBuffer();
@@ -218,23 +241,29 @@
     var pCard = el('div', 'v5-card');
     pCard.innerHTML = '<h3>让这张图动起来：点 Bank 和序列试试</h3>' +
       '<p class="v5-note">静态图只能看，点一点就懂了：<b>Bank（组）</b>决定 16 个垫上装什么声音；<b>序列（Sequence）</b>是一段节奏编排。' +
-      '换 Bank = 换一整套垫；换序列 = 换一段编排，垫上的声音不变。下面的填充数量和谱面都是网页示意，具体装什么由你的工程决定。</p>';
+      '换 Bank = 换一整套垫；换序列 = 换一段编排，垫上的声音不变。下面的填充数量和谱面都是网页示意，具体装什么由你的工程决定。</p>' +
+      '<p class="v5-howto"><b>怎么玩：</b>先点上面一排 <b>Bank A–H</b>，看 16 个垫换颜色、换数量；再点下面 <b>SEQ 1–8</b>，看彩色节奏格换花样——垫的颜色不跟着变，这就是“换序列不换声音”。</p>';
     var banksRow = el('div', 'v5-banks');
     var bpads = el('div', 'v5-bankpads');
     var seqRow = el('div', 'v5-seqchips');
     var stepsBox = el('div', 'v5-seqsteps');
     var pInfo = el('div', 'v5-status');
     pCard.appendChild(banksRow); pCard.appendChild(bpads);
-    pCard.appendChild(el('div', 'v5-note', '序列（最多 128 个，这里只摆前 8 个示意）：'));
+    pCard.appendChild(el('div', 'v5-note v5-seqexplain',
+      '<b>SEQ 1–SEQ 8 是什么？</b>序列（Sequence）就是一段节奏编排：哪个垫、什么时候敲、多大力度。SEQ 1 到 SEQ 8 是 8 个可以快速切换的序列槽，' +
+      '比如 SEQ 1 放一段基础鼓，SEQ 2 放同一套鼓但多加了踩镲。换 SEQ = 换一段编排，垫上的声音不变。' +
+      '<br><b>在机器上：</b>按 <kbd>SEQ</kbd> 进入序列模式，这时<b>一个垫 = 一个序列</b>（浅绿 = 有内容，暗 = 空，亮绿常亮 = 正在播，闪 = 排队等着播）。' +
+      '播放中敲另一个垫，它会先闪，等当前这段放完再切过去；屏幕上的序列名也跟着变（见 1.9 动手 11 和 1.4 Seq 屏幕）。网页里的 SEQ 1–8 就相当于 SEQ 模式下的 PAD 1–8。一个工程最多 128 个序列。'));
     pCard.appendChild(seqRow); pCard.appendChild(stepsBox); pCard.appendChild(pInfo);
     projConcept.parentNode.insertBefore(pCard, projConcept.nextSibling);
 
-    function renderProject() {
+    function flash(node) { node.classList.remove('v5-flash'); void node.offsetWidth; node.classList.add('v5-flash'); }
+    function renderProject(what) {
       banksRow.innerHTML = '';
       bankNames.forEach(function (bn, i) {
         var b = el('button', 'v5-btn' + (i === curBank ? ' on' : ''), 'Bank ' + bn);
         b.type = 'button';
-        b.addEventListener('click', function () { curBank = i; renderProject(); });
+        b.addEventListener('click', function () { curBank = i; renderProject('bank'); });
         banksRow.appendChild(b);
       });
       bpads.innerHTML = '';
@@ -250,7 +279,7 @@
         (function (s) {
           var b = el('button', 'v5-btn' + (s === curSeq ? ' on' : ''), 'SEQ ' + (s + 1));
           b.type = 'button';
-          b.addEventListener('click', function () { curSeq = s; renderProject(); });
+          b.addEventListener('click', function () { curSeq = s; renderProject('seq'); });
           seqRow.appendChild(b);
         })(s);
       }
@@ -265,7 +294,20 @@
       }
       pInfo.textContent = '现在是 Bank ' + bankNames[curBank] + '（示意装了 ' + fills[curBank] + ' 个垫）+ SEQ ' + (curSeq + 1) +
         '。记住结构：一个工程 = 8 组 × 16 垫的声音 + 最多 128 个序列。红=底鼓格、黄=军鼓格、青=踩镲格（示意谱面）。';
+      if (what === 'bank') { flash(bpads); flash(pInfo); pInfo.textContent = '✓ 换到 Bank ' + bankNames[curBank] + '：16 个垫换成另一套声音（颜色变了），节奏格不变。 ' + pInfo.textContent; }
+      if (what === 'seq') { flash(stepsBox); flash(pInfo); pInfo.textContent = '✓ 换到 SEQ ' + (curSeq + 1) + '：节奏格换了花样，垫上的声音（颜色）没变。 ' + pInfo.textContent; }
     }
     renderProject();
+    pCard.classList.add('v5-projcard');
   }
+
+  /* ================= 「先看一眼这些界面」卡片：触屏点按切换 ================= */
+  $$('.hovercard').forEach(function (c) {
+    c.addEventListener('click', function () {
+      if (window.matchMedia && window.matchMedia('(hover: hover)').matches) return; // 桌面以悬停为准
+      var on = !c.classList.contains('show');
+      $$('.hovercard.show').forEach(function (x) { x.classList.remove('show'); });
+      if (on) c.classList.add('show');
+    });
+  });
 })();
