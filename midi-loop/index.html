@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>双向 MIDI 跟练原型 v2 · MPC Sample</title>
+<style>
+  :root{
+    --bg:#14161c; --panel:#1e212b; --panel2:#262a38; --line:#3a4056;
+    --txt:#e8eaf2; --dim:#9aa1b8; --acc:#ffb02e; --kick:#ff5d5d; --snare:#39c2ff; --hat:#ffd94a;
+    --ok:#3ddc84; --warn:#ff9f43; --bad:#ff5d7a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--txt); font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif; padding:18px; max-width:980px; margin:0 auto;}
+  h1{font-size:21px; margin-bottom:4px;}
+  .sub{color:var(--dim); font-size:13px; margin-bottom:14px; line-height:1.6;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:14px;}
+  .card h2{font-size:15px; margin-bottom:10px; color:var(--acc);}
+  .row{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  button{background:var(--panel2); color:var(--txt); border:1px solid var(--line); border-radius:8px; padding:8px 14px; font-size:14px; cursor:pointer;}
+  button:hover{border-color:var(--acc);}
+  button.primary{background:var(--acc); color:#191204; font-weight:700; border-color:var(--acc);}
+  button.armed{background:var(--bad); color:#fff; border-color:var(--bad);}
+  button:disabled{opacity:.45; cursor:not-allowed;}
+  select{background:var(--panel2); color:var(--txt); border:1px solid var(--line); border-radius:8px; padding:7px; font-size:13px; max-width:230px;}
+  .status{font-size:13px; color:var(--dim); line-height:1.7;}
+  .status b{color:var(--txt);}
+  .dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#666; vertical-align:middle; margin-right:5px;}
+  .dot.on{background:var(--ok);}
+  /* 连接引导图 */
+  .guidepics{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:10px 0;}
+  @media(max-width:760px){ .guidepics{grid-template-columns:1fr;} }
+  .pic{background:var(--panel2); border:1px solid var(--line); border-radius:10px; padding:10px; font-size:12px; line-height:1.6;}
+  .pic .cap{font-weight:700; color:var(--txt); font-size:13px; margin-bottom:6px;}
+  .devrow{display:flex; align-items:center; gap:6px; margin:8px 0;}
+  .dev{flex:1; text-align:center; background:#171a23; border:1px solid var(--line); border-radius:8px; padding:8px 2px; font-size:12px;}
+  .cable{flex:0 0 52px; text-align:center; color:var(--acc); font-size:11px; border-top:2px dashed var(--acc); padding-top:2px;}
+  .minipads{display:grid; grid-template-columns:repeat(4,1fr); gap:3px; max-width:150px; margin:6px auto;}
+  .minipads div{aspect-ratio:1.3; background:#333849; border-radius:4px; font-size:9px; display:flex; align-items:center; justify-content:center; color:var(--dim);}
+  .minipads div.hot{background:var(--bad); color:#fff; font-weight:700;}
+  .fakedrop{background:#171a23; border:1px solid var(--acc); border-radius:6px; padding:6px 8px; margin:5px 0; display:flex; justify-content:space-between; font-size:12px;}
+  .arrow{color:var(--bad); font-weight:700;}
+  /* 网格谱 */
+  .grid{display:grid; grid-template-columns:52px repeat(16,1fr); gap:4px; align-items:center;}
+  .grid .lab{font-size:12px; text-align:right; padding-right:6px; color:var(--dim);}
+  .cell{height:30px; border-radius:6px; background:#2b2f3f; border:1px solid #363c52; position:relative; transition:background .05s;}
+  .cell.beat{border-color:#4a5170;}
+  .cell.hit-kick{background:var(--kick);} .cell.hit-snare{background:var(--snare);} .cell.hit-hat{background:var(--hat);}
+  .cell.now{box-shadow:0 0 0 2px #fff inset;}
+  .cell.next{animation:pulse 0.5s infinite alternate;}
+  @keyframes pulse{from{box-shadow:0 0 0 0 rgba(255,255,255,.0);} to{box-shadow:0 0 0 2px rgba(255,255,255,.85) inset;}}
+  .cell.played-ok{background:var(--ok) !important;}
+  .cell.played-extra{background:var(--warn) !important;}
+  .cell .ms{position:absolute; left:0; right:0; bottom:-15px; font-size:9px; color:var(--dim); text-align:center;}
+  .stepnum{display:grid; grid-template-columns:52px repeat(16,1fr); gap:4px; margin-bottom:4px;}
+  .stepnum span{font-size:10px; color:var(--dim); text-align:center;}
+  /* 垫区 */
+  .pads{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:430px;}
+  .pad{aspect-ratio:1.25; border-radius:10px; background:linear-gradient(160deg,#333849,#232634); border:1px solid var(--line); display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; user-select:none; font-size:11px; color:var(--dim); gap:2px;}
+  .pad .n{font-size:13px; color:var(--txt); font-weight:700;}
+  .pad .role{font-size:10px; font-weight:700;}
+  .pad.flash{filter:brightness(1.9);}
+  .pad.role-kick{border-color:var(--kick);} .pad.role-snare{border-color:var(--snare);} .pad.role-hat{border-color:var(--hat);}
+  .rolepads{display:flex; gap:10px; flex-wrap:wrap;}
+  .rolepad{flex:1; min-width:130px; border-radius:10px; padding:12px; text-align:center; cursor:pointer; border:2px solid var(--line); user-select:none; font-weight:700;}
+  .rolepad small{display:block; font-weight:400; color:var(--dim); margin-top:3px; font-size:11px;}
+  .rolepad.kick{background:rgba(255,93,93,.14); border-color:var(--kick);}
+  .rolepad.snare{background:rgba(57,194,255,.12); border-color:var(--snare);}
+  .rolepad.hat{background:rgba(255,217,74,.12); border-color:var(--hat);}
+  .rolepad.flash{filter:brightness(1.8);}
+  .result{font-size:14px; line-height:1.9;}
+  .result .good{color:var(--ok);} .result .mid{color:var(--warn);} .result .poor{color:var(--bad);}
+  .hint{font-size:12px; color:var(--dim); line-height:1.7; margin-top:8px;}
+  #guide{font-size:16px; font-weight:700; color:var(--acc); min-height:24px;}
+  #rcNow{font-size:16px; font-weight:700; min-height:24px; margin:8px 0;}
+  kbd{background:#333; border:1px solid #555; border-bottom-width:2px; border-radius:4px; padding:0 5px; font-size:12px;}
+</style>
+<link rel="stylesheet" href="assets/css/review-mode.css">
+</head>
+<body>
+<h1>🥁 双向 MIDI 跟练原型 v2</h1>
+<div class="sub">闭环：<b>网页示范（发音符到真机出声）→ 你在真垫上跟敲 → 网页判定并画出你敲的谱</b>。谱例：Boom Bap 一小节，88 BPM，军鼓在 2、4 拍。<br>
+⚠️ 每台机器的鼓组垫位都不一样（哪个垫装什么声音由鼓组决定），所以<b>示范/跟练之前必须先做第 2 步「点名校准」</b>，否则网页打的垫和你机器上的声音必然对不上。没有机器也能先试流程：按 <kbd>1</kbd> 踩镲 <kbd>2</kbd> 军鼓 <kbd>3</kbd> 底鼓。<br>📝 发现任何不对的地方：点右下角「✏️ 批注」，点页面上想改的位置写下意见，写完点工具条上的「导出批注」把 .md 文件发我，我照着改。</div>
+
+<div class="card" id="cardConnect">
+  <h2>第 1 步 · 连接（照着图做）</h2>
+  <div class="guidepics">
+    <div class="pic">
+      <div class="cap">图 1 · 接线</div>
+      <div class="devrow">
+        <div class="dev">💻 Mac<br>开 Chrome</div>
+        <div class="cable">USB-C 线</div>
+        <div class="dev">🎛 MPC Sample<br>插后面板 USB 口</div>
+      </div>
+      就一根线，两头插好，机器开机。
+    </div>
+    <div class="pic">
+      <div class="cap">图 2 · 机器上开 MIDI（SHIFT + PAD 8）</div>
+      <div class="minipads" id="miniPads"></div>
+      ① 按住 <b>SHIFT</b> 不放 ② 点右上第二排的 <b>PAD 8</b>（红格）进 MIDI 页<br>
+      ③ <b>MIDI Port 选 USB</b> ④ <b>Pad MIDI In = 开，Pad MIDI Out = 开</b>
+    </div>
+    <div class="pic">
+      <div class="cap">图 3 · 网页上选口（下面第 1 步的两个下拉框）</div>
+      输入（机器→网页）
+      <div class="fakedrop"><span>MPC Sample</span><span>▼</span></div>
+      输出（网页→机器）
+      <div class="fakedrop"><span>MPC Sample</span><span>▼</span></div>
+      <span class="arrow">← 两个都选名字里带「Sample」的那个，是同一个口</span><br>
+      名字可能略有不同（如 Akai MPC Sample），认准 Sample 字样即可。
+    </div>
+  </div>
+  <div class="row">
+    <button id="btnMidi" class="primary">连接 MIDI</button>
+    <span class="status"><span class="dot" id="midiDot"></span><span id="midiState">未连接</span></span>
+  </div>
+  <div class="row" style="margin-top:8px;">
+    <span class="status">输入（机器→网页）</span><select id="selIn"><option value="all">全部输入</option></select>
+    <span class="status">输出（网页→机器）</span><select id="selOut"><option value="">（选择输出）</option></select>
+    <span class="status">声音来源</span>
+    <select id="selSound"><option value="both">真机 + 网页</option><option value="midi">只真机</option><option value="web">只网页</option></select>
+  </div>
+  <div class="hint">最近收到的音符：<b id="lastNote">—</b>（敲一下真垫，这里有数字跳出来 = 入站通了；点下面垫区的垫，机器响 = 出站通了）</div>
+</div>
+
+<div class="card" id="cardCalib">
+  <h2>第 2 步 · 点名校准（解决垫位对不上，约 30 秒，做一次就记住）</h2>
+  <div class="status" id="calibState">状态：底鼓 <b id="cs-kick">未校准</b> · 军鼓 <b id="cs-snare">未校准</b> · 踩镲 <b id="cs-hat">未校准</b></div>
+  <div id="rcNow">点「开始点名」：网页会从 PAD 1 到 PAD 16 逐个让你的机器响，你听到哪个是底鼓/军鼓/踩镲，就点对应的按钮。</div>
+  <div class="row">
+    <button id="btnRoll" class="primary">🔊 开始点名</button>
+    <button id="rcKick" disabled>这是底鼓</button>
+    <button id="rcSnare" disabled>这是军鼓</button>
+    <button id="rcHat" disabled>这是踩镲</button>
+    <button id="rcSkip" disabled>跳过这个垫</button>
+    <button id="rcStop" disabled>停止点名</button>
+  </div>
+  <div class="hint">点名时下方垫位图会同步高亮正在响的垫；点错了不用慌，重新点名或用下面的手动校准改。绑错垫重复绑定会自动互换，不会丢。</div>
+  <details style="margin-top:8px;">
+    <summary class="status" style="cursor:pointer;">备选：手动校准（点按钮 → 自己敲真垫）</summary>
+    <div class="row" id="calibRow" style="margin-top:8px;"></div>
+  </details>
+</div>
+
+<div class="card">
+  <h2>第 3 步 · 示范与跟练</h2>
+  <div id="guide">校准完点「示范」听一遍，再点「开始跟练」。</div>
+  <div style="height:8px"></div>
+  <div class="stepnum" id="stepNum"></div>
+  <div class="grid" id="targetGrid"></div>
+  <div style="height:22px"></div>
+  <div class="grid" id="playedGrid"></div>
+  <div class="row" style="margin-top:16px;">
+    <button id="btnDemo" class="primary">▶ 示范（真机出声）</button>
+    <button id="btnPractice" class="primary">🎯 开始跟练（2 小节）</button>
+    <button id="btnStop" disabled>■ 停止</button>
+    <span class="status">BPM <b id="bpmVal">88</b></span>
+    <input type="range" id="bpm" min="70" max="100" value="88" style="width:130px;">
+  </div>
+  <div class="result" id="result" style="margin-top:10px;"></div>
+</div>
+
+<div class="card">
+  <h2>机器垫位图（点垫 = 发音符到真机，也算一次敲击；彩色 = 已校准的角色垫）</h2>
+  <div class="rolepads" style="margin-bottom:12px;">
+    <div class="rolepad hat" id="rp-hat">踩镲 HAT<small>键 1 · 音符 <span id="rn-hat">—</span></small></div>
+    <div class="rolepad snare" id="rp-snare">军鼓 SNARE<small>键 2 · 音符 <span id="rn-snare">—</span></small></div>
+    <div class="rolepad kick" id="rp-kick">底鼓 KICK<small>键 3 · 音符 <span id="rn-kick">—</span></small></div>
+  </div>
+  <div class="pads" id="padGrid"></div>
+  <div class="hint">16 垫按音符 36–51 排列、左下起编号（与 MPC 垫号顺序一致是假设，实际以点名/试声为准）。</div>
+</div>
+
+<script>
+"use strict";
+/* ============ 谱例 ============ */
+const LANES = [
+  {id:'hat',   name:'踩镲', color:'hat',   steps:[0,2,4,6,8,10,12,14]},
+  {id:'snare', name:'军鼓', color:'snare', steps:[4,12]},
+  {id:'kick',  name:'底鼓', color:'kick',  steps:[0,6,10]},
+];
+const STEPS = 16;
+const $=id=>document.getElementById(id);
+/* ============ 垫位映射（点名校准的结果） ============ */
+let notes = {kick:null, snare:null, hat:null};
+let calib = {kick:false, snare:false, hat:false};
+try{ const s = JSON.parse(localStorage.getItem('midiLoopCalib2')||'null'); if(s){ notes=Object.assign(notes,s.notes||{}); calib=Object.assign(calib,s.calib||{}); } }catch(e){}
+function saveMap(){ try{ localStorage.setItem('midiLoopCalib2', JSON.stringify({notes, calib})); }catch(e){} refreshNoteLabels(); refreshCalibState(); }
+function laneOfNote(n){ for(const L of LANES){ if(notes[L.id]===n) return L.id; } return null; }
+function bindRole(lane, note){
+  /* 若该音符已绑给别的角色，互换，避免两个角色抢一个垫 */
+  const other = laneOfNote(note);
+  if(other && other!==lane){ notes[other]=notes[lane]; calib[other]=calib[lane]; }
+  notes[lane]=note; calib[lane]=true; saveMap();
+}
+function allCalibrated(){ return calib.kick&&calib.snare&&calib.hat; }
+function refreshCalibState(){ for(const L of LANES){ const e=$('cs-'+L.id); if(e) e.textContent = calib[L.id]? ('已校准（音符 '+notes[L.id]+'）') : '未校准'; } }
+/* ============ 音频（网页备用声） ============ */
+let AC = null, master = null;
+function audio(){ if(!AC){ AC = new (window.AudioContext||window.webkitAudioContext)(); master = AC.createGain(); master.gain.value = .9; master.connect(AC.destination);} if(AC.state==='suspended') AC.resume(); return AC; }
+function noiseBuf(dur){ const ac=audio(), b=ac.createBuffer(1, ac.sampleRate*dur, ac.sampleRate), d=b.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1; return b; }
+function playWeb(lane, when){
+  const ac=audio(), t=Math.max(when, ac.currentTime);
+  if(lane==='kick'){ const o=ac.createOscillator(), g=ac.createGain(); o.type='sine';
+    o.frequency.setValueAtTime(150,t); o.frequency.exponentialRampToValueAtTime(45,t+.12);
+    g.gain.setValueAtTime(1,t); g.gain.exponentialRampToValueAtTime(.001,t+.28);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t+.3); }
+  else if(lane==='snare'){ const src=ac.createBufferSource(); src.buffer=noiseBuf(.18);
+    const f=ac.createBiquadFilter(); f.type='bandpass'; f.frequency.value=1800;
+    const g=ac.createGain(); g.gain.setValueAtTime(.8,t); g.gain.exponentialRampToValueAtTime(.001,t+.16);
+    src.connect(f); f.connect(g); g.connect(master); src.start(t); src.stop(t+.2); }
+  else { const src=ac.createBufferSource(); src.buffer=noiseBuf(.06);
+    const f=ac.createBiquadFilter(); f.type='highpass'; f.frequency.value=7000;
+    const g=ac.createGain(); g.gain.setValueAtTime(.5,t); g.gain.exponentialRampToValueAtTime(.001,t+.05);
+    src.connect(f); f.connect(g); g.connect(master); src.start(t); src.stop(t+.07); }
+}
+/* ============ MIDI ============ */
+let midiOut=null, midiAccess=null;
+async function connectMIDI(){
+  if(!('requestMIDIAccess' in navigator)){ $('midiState').textContent='这个浏览器不支持 Web MIDI，请用 Chrome'; return; }
+  try{
+    midiAccess = await navigator.requestMIDIAccess({sysex:false});
+    fillPorts(); midiAccess.onstatechange = fillPorts;
+    $('midiDot').classList.add('on');
+  }catch(e){ $('midiState').textContent='连接被拒绝：'+e.message; }
+}
+function fillPorts(){
+  const si=$('selIn'), so=$('selOut'), iv=si.value, ov=so.value;
+  si.innerHTML='<option value="all">全部输入</option>'; so.innerHTML='<option value="">（选择输出）</option>';
+  midiAccess.inputs.forEach(p=>{ const o=document.createElement('option'); o.value=p.id; o.textContent=p.name||p.id; si.appendChild(o); });
+  midiAccess.outputs.forEach(p=>{ const o=document.createElement('option'); o.value=p.id; o.textContent=p.name||p.id; so.appendChild(o); });
+  if(iv) si.value=iv;
+  /* 自动选名字带 Sample 的口，省一步 */
+  if(!ov){ midiAccess.outputs.forEach(p=>{ if(/sample/i.test(p.name||'')) so.value=p.id; }); }
+  if(ov) so.value=ov;
+  hookInputs();
+  midiOut = so.value? midiAccess.outputs.get(so.value):null;
+  const ni=midiAccess.inputs.size, no=midiAccess.outputs.size;
+  $('midiState').innerHTML = (ni||no)? ('已连接：输入 '+ni+' 个，输出 '+no+' 个'+(midiOut?'（输出已选好）':'，<b>记得在右边选输出口</b>')) : '没检测到 MIDI 设备，检查 USB 线和机器的 MIDI Port=USB 设置';
+}
+function hookInputs(){
+  if(!midiAccess) return;
+  const sel=$('selIn').value;
+  midiAccess.inputs.forEach(p=>{ p.onmidimessage = (sel==='all'||sel===p.id)? onMIDI : null; });
+}
+let calibLane=null;
+function onMIDI(ev){
+  const [st, note, vel]=ev.data;
+  if((st&0xF0)!==0x90 || vel<=0) return;
+  if(calibLane){ bindRole(calibLane, note); $('lastNote').textContent=note+' → 已绑为'+LANES.find(x=>x.id===calibLane).name; calibLane=null; buildCalib(); flashNote(note); return; }
+  $('lastNote').textContent = note+'（力度 '+vel+'）';
+  const lane=laneOfNote(note);
+  flashNote(note); if(lane) flashRole(lane);
+  registerHit(note);
+}
+function sendNote(note, vel, whenMS){
+  if(!midiOut) return;
+  const t = whenMS||performance.now();
+  midiOut.send([0x90, note, vel||100], t);
+  midiOut.send([0x80, note, 0], t+120);
+}
+function triggerLane(lane, whenAudio){
+  const mode=$('selSound').value;
+  if(mode!=='web' && notes[lane]!=null){ const delay = whenAudio? (whenAudio-audio().currentTime)*1000 : 0; sendNote(notes[lane], 100, performance.now()+Math.max(0,delay)); }
+  if(mode!=='midi'){ playWeb(lane, whenAudio||audio().currentTime); }
+  flashRole(lane);
+}
+/* ============ 点名（roll call） ============ */
+const rc={on:false, idx:0, timer:null, current:null};
+function rcButtons(dis){ ['rcKick','rcSnare','rcHat','rcSkip','rcStop'].forEach(id=>$(id).disabled=dis); $('btnRoll').disabled=!dis; }
+function rcPlay(){
+  if(!rc.on) return;
+  if(rc.idx>15 || allCalibrated()){ rcDone(); return; }
+  rc.current = 36+rc.idx;
+  sendNote(rc.current, 100);
+  flashNote(rc.current);
+  $('rcNow').innerHTML='🔊 现在响的是 <b>PAD '+(rc.idx+1)+'</b>（音符 '+rc.current+'）— 听出是什么就点按钮，没这三个声音就「跳过」';
+  rc.timer=setTimeout(()=>{ rc.idx++; rcPlay(); }, 2200);
+}
+function rcNext(){ clearTimeout(rc.timer); rc.idx++; rcPlay(); }
+function rcDone(){
+  rc.on=false; clearTimeout(rc.timer); rcButtons(true);
+  $('rcNow').innerHTML = allCalibrated()? '✅ 三个角色都点完名了，可以去第 3 步点「示范」了。' : '点名停了。还差的角色可以再点一次「开始点名」，或用手动校准补上。';
+}
+function startRoll(){
+  if(!midiOut){ $('rcNow').innerHTML='⚠️ 先完成第 1 步：连接 MIDI 并选好输出口（图 3），点名靠网页发声给机器，不选输出口机器不会响。'; if($('cardConnect').scrollIntoView) $('cardConnect').scrollIntoView({behavior:'smooth'}); return; }
+  rc.on=true; rc.idx=0; rcButtons(false); rcPlay();
+}
+function rcBind(lane){
+  if(rc.current==null) return;
+  bindRole(lane, rc.current); flashNote(rc.current);
+  if(allCalibrated()){ rcDone(); return; }
+  rcNext();
+}
+/* ============ 界面构建 ============ */
+function buildMiniPads(){ const g=$('miniPads'); const order=[13,14,15,16,9,10,11,12,5,6,7,8,1,2,3,4]; g.innerHTML=order.map(n=>'<div class="'+(n===8?'hot':'')+'">'+n+'</div>').join(''); }
+function buildNums(){ $('stepNum').innerHTML='<span></span>'+Array.from({length:STEPS},(_,i)=>'<span>'+(i+1)+'</span>').join(''); }
+function buildGrid(el, cls){
+  el.innerHTML='';
+  LANES.forEach(L=>{
+    const lab=document.createElement('div'); lab.className='lab'; lab.textContent=L.name; el.appendChild(lab);
+    for(let s=0;s<STEPS;s++){ const c=document.createElement('div'); c.className='cell'+((s%4===0)?' beat':''); c.id=cls+'-'+L.id+'-'+s; el.appendChild(c); }
+  });
+}
+function paintTarget(){ LANES.forEach(L=>L.steps.forEach(s=>{ $('t-'+L.id+'-'+s).classList.add('hit-'+L.color); })); }
+function buildPads(){
+  const g=$('padGrid'); g.innerHTML='';
+  for(let r=3;r>=0;r--) for(let cix=0;cix<4;cix++){
+    const idx=r*4+cix, note=36+idx;
+    const d=document.createElement('div'); d.className='pad'; d.id='pad-'+note;
+    d.innerHTML='<span class="n">'+note+'</span><span>PAD '+(idx+1)+'</span><span class="role" id="pr-'+note+'"></span>';
+    d.onclick=()=>{ audio(); sendNote(note,100); const lane=laneOfNote(note); if(lane){ playWeb(lane, audio().currentTime); flashRole(lane);} flashNote(note); if(rc.on){ rc.current=note; $('rcNow').innerHTML='🔊 刚响的是 <b>PAD '+(idx+1)+'</b>（音符 '+note+'）— 是哪个角色就点哪个按钮'; } registerHit(note); };
+    g.appendChild(d);
+  }
+  refreshPadRoles();
+}
+function refreshPadRoles(){
+  document.querySelectorAll('.pad').forEach(p=>p.classList.remove('role-kick','role-snare','role-hat'));
+  document.querySelectorAll('.pad .role').forEach(e=>{ const note=+e.id.replace('pr-',''); const lane=laneOfNote(note); const L=lane? LANES.find(x=>x.id===lane):null; e.textContent = L? L.name : ''; e.style.color = L? 'var(--'+L.color+')' : ''; });
+  for(const L of LANES){ const p=$('pad-'+notes[L.id]); if(p) p.classList.add('role-'+L.color); }
+}
+function refreshNoteLabels(){ for(const L of LANES){ const e=$('rn-'+L.id); if(e) e.textContent = notes[L.id]==null? '—' : notes[L.id]; } refreshPadRoles(); refreshCalibState(); }
+function flashNote(note){ const p=$('pad-'+note); if(!p) return; p.classList.add('flash'); setTimeout(()=>p.classList.remove('flash'),130); }
+function flashRole(lane){ const rp=$('rp-'+lane); if(rp){ rp.classList.add('flash'); setTimeout(()=>rp.classList.remove('flash'),130);} }
+/* 手动校准（备选） */
+function buildCalib(){
+  const row=$('calibRow'); row.innerHTML='';
+  LANES.forEach(L=>{
+    const b=document.createElement('button'); b.id='cal-'+L.id;
+    b.textContent='校准'+L.name+(calib[L.id]? '（现在 = '+notes[L.id]+'）':'（未校准）');
+    b.onclick=()=>{ calibLane=L.id; b.classList.add('armed'); b.textContent='请敲一下机器上的'+L.name+'垫…（再点取消）'; b.onclick=()=>{ calibLane=null; buildCalib(); }; };
+    const t=document.createElement('button'); t.textContent=L.name+'试声';
+    t.onclick=()=>{ audio(); if(notes[L.id]!=null){ triggerLane(L.id); flashNote(notes[L.id]); } };
+    row.appendChild(b); row.appendChild(t);
+  });
+}
+/* ============ 播放引擎 ============ */
+let playing=false, mode=null, timerID=null, rafID=null;
+let startCtxTime=0, barDur=0, totalBars=0, expected=[], played=[];
+function bpm(){ return +$('bpm').value; }
+function stepDur(){ return 60/bpm()/4; }
+function startEngine(m){
+  /* 未校准拦截：声音走真机时，没点名必然对不上 */
+  if($('selSound').value!=='web' && !allCalibrated()){
+    $('guide').textContent='⚠️ 还没点名校准：网页不知道你机器上哪个垫是哪个声音，打出来必然对不上。先做第 2 步「开始点名」（约 30 秒），或者把声音来源切成「只网页」先试流程。';
+    if($('cardCalib').scrollIntoView) $('cardCalib').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  audio();
+  mode=m; playing=true; played=[]; expected=[];
+  barDur=stepDur()*STEPS; totalBars = (m==='demo')? 2 : 3;
+  if(m==='practice'){
+    for(let b=0;b<2;b++) LANES.forEach(L=>L.steps.forEach(s=>{
+      expected.push({lane:L.id, step:s, bar:b, t: barDur + b*barDur + s*stepDur(), hit:false, grade:null, off:0});
+    }));
+    expected.sort((a,b2)=>a.t-b2.t);
+    paintNext();
+  }
+  startCtxTime = audio().currentTime + 0.15;
+  let step = (m==='demo')? 0 : -16;
+  const totalSteps = totalBars*STEPS;
+  $('btnDemo').disabled = $('btnPractice').disabled = true; $('btnStop').disabled=false;
+  $('guide').textContent = (m==='demo')? '听示范：谱在亮，机器在打（共 2 小节）' : '预备 1 小节（只听节拍）… 然后跟敲 2 小节！';
+  if(m==='practice') $('result').innerHTML=''; clearPlayed();
+  timerID=setInterval(()=>{
+    if(!playing) return;
+    const ahead = audio().currentTime + 0.12;
+    while(true){
+      const tAbs = startCtxTime + step*stepDur();
+      if(tAbs > ahead) break;
+      if(step>=totalSteps){ stopEngine(true); return; }
+      if(step>=0){
+        const sInBar = step % STEPS;
+        if(mode==='demo'){ LANES.forEach(L=>{ if(L.steps.includes(sInBar)) triggerLane(L.id, tAbs); }); }
+        else if(mode==='practice' && step < STEPS){ if(sInBar%4===0) playWeb('hat', tAbs); }
+      }
+      step++;
+    }
+  }, 30);
+  const draw=()=>{
+    if(!playing) return;
+    const now=(audio().currentTime-startCtxTime)/stepDur();
+    const cur=Math.floor(now);
+    document.querySelectorAll('#targetGrid .cell').forEach(c=>c.classList.remove('now'));
+    if(cur>=0 && cur<totalBars*STEPS){ const sb=cur%STEPS; LANES.forEach(L=>{ const c=$('t-'+L.id+'-'+sb); if(c) c.classList.add('now'); }); }
+    rafID=requestAnimationFrame(draw);
+  };
+  draw();
+}
+function stopEngine(finished){
+  playing=false; clearInterval(timerID); cancelAnimationFrame(rafID);
+  $('btnDemo').disabled = $('btnPractice').disabled = false; $('btnStop').disabled=true;
+  document.querySelectorAll('#targetGrid .cell').forEach(c=>c.classList.remove('now','next'));
+  if(mode==='practice' && finished) gradePractice();
+  if(finished) $('guide').textContent = (mode==='demo')? '示范结束。点「开始跟练」，轮到你了。' : '跟练结束，看下面的判定。';
+  mode=null;
+}
+function paintNext(){
+  document.querySelectorAll('#targetGrid .cell').forEach(c=>c.classList.remove('next'));
+  const nxt = expected.find(e=>!e.hit);
+  if(nxt){ const c=$('t-'+nxt.lane+'-'+nxt.step); if(c) c.classList.add('next'); }
+}
+function clearPlayed(){ document.querySelectorAll('#playedGrid .cell').forEach(c=>{ c.classList.remove('played-ok','played-extra','hit-kick','hit-snare','hit-hat'); const m=c.querySelector('.ms'); if(m) m.remove(); }); }
+function registerHit(note){
+  if(mode!=='practice'||!playing) return;
+  const lane=laneOfNote(note); if(!lane) return;
+  const t = audio().currentTime - startCtxTime;
+  played.push({lane, t});
+  let best=null, bestAbs=1e9, bestOff=0;
+  expected.forEach(e=>{ if(e.lane===lane && !e.hit){ const d=t-e.t; if(Math.abs(d)<bestAbs){ bestAbs=Math.abs(d); best=e; bestOff=d; } } });
+  if(best && bestAbs<=0.14){
+    best.hit=true; best.off=bestOff; best.grade = bestAbs<=0.07? 'perfect':'good';
+    drawPlayedCell(best);
+  } else { drawPlayedExtra(lane, t); }
+  paintNext();
+}
+function drawPlayedCell(e){
+  const c=$('p-'+e.lane+'-'+e.step); if(!c) return;
+  c.classList.add('played-ok');
+  const m=document.createElement('span'); m.className='ms'; m.textContent=(e.off>=0?'+':'')+Math.round(e.off*1000)+'ms';
+  c.appendChild(m);
+}
+function drawPlayedExtra(lane, t){
+  const bar = Math.floor(t/barDur)-1; if(bar<0) return;
+  const step = Math.round((t - barDur - bar*barDur)/stepDur())%STEPS;
+  const c=$('p-'+lane+'-'+step); if(c) c.classList.add('played-extra');
+}
+function gradePractice(){
+  const tot=expected.length, hit=expected.filter(e=>e.hit);
+  const perf=hit.filter(e=>e.grade==='perfect').length, good=hit.filter(e=>e.grade==='good').length;
+  const miss=tot-hit.length;
+  const extra = played.length - hit.length;
+  const avg = hit.length? Math.round(hit.reduce((a,e)=>a+e.off,0)/hit.length*1000):0;
+  const tend = hit.length? (avg>15?'整体偏<b>拖</b>':(avg<-15?'整体偏<b>抢</b>':'整体很稳')):'';
+  $('result').innerHTML =
+    '目标 '+tot+' 下 · 命中 <span class="good">'+hit.length+'</span>（完美 '+perf+' · 良好 '+good+'）· 漏敲 <span class="poor">'+miss+'</span> · 多敲 <span class="mid">'+Math.max(0,extra)+'</span><br>'+
+    (hit.length? '平均偏差 '+avg+'ms — '+tend+'。' : '一个都没对上：先检查点名校准和声音来源。')+
+    '<br><span style="color:var(--dim);font-size:12px;">上面是你敲的谱：绿色 = 对上了（格子下是偏差毫秒），橙色 = 多敲/敲错位置。</span>';
+}
+/* ============ 事件绑定 ============ */
+$('btnMidi').onclick=connectMIDI;
+$('selIn').onchange=hookInputs;
+$('selOut').onchange=()=>{ if(midiAccess) midiOut = $('selOut').value? midiAccess.outputs.get($('selOut').value):null; if(midiOut) $('midiState').innerHTML='输出已选：<b>'+($('selOut').selectedOptions[0]?.textContent||'')+'</b>'; };
+$('btnDemo').onclick=()=>startEngine('demo');
+$('btnPractice').onclick=()=>startEngine('practice');
+$('btnStop').onclick=()=>stopEngine(false);
+$('bpm').oninput=()=>{ $('bpmVal').textContent=$('bpm').value; };
+$('btnRoll').onclick=startRoll;
+$('rcKick').onclick=()=>rcBind('kick');
+$('rcSnare').onclick=()=>rcBind('snare');
+$('rcHat').onclick=()=>rcBind('hat');
+$('rcSkip').onclick=rcNext;
+$('rcStop').onclick=rcDone;
+document.querySelectorAll('.rolepad').forEach(rp=>{
+  const lane=rp.id.replace('rp-','');
+  rp.onclick=()=>{ audio(); if(notes[lane]!=null){ triggerLane(lane); registerHit(notes[lane]); } else { playWeb(lane, audio().currentTime); flashRole(lane); } };
+});
+document.addEventListener('keydown',e=>{
+  const map={'1':'hat','2':'snare','3':'kick'};
+  if(map[e.key] && !e.repeat){ audio(); const lane=map[e.key]; if(notes[lane]!=null){ triggerLane(lane); registerHit(notes[lane]); } else { playWeb(lane, audio().currentTime); flashRole(lane); } }
+});
+/* init */
+buildMiniPads(); buildNums(); buildGrid($('targetGrid'),'t'); buildGrid($('playedGrid'),'p'); paintTarget(); buildPads(); buildCalib(); refreshNoteLabels(); refreshCalibState();
+if(!('requestMIDIAccess' in navigator)) $('midiState').textContent='当前浏览器不支持 Web MIDI（请用桌面版 Chrome）— 但网页声音 + 屏幕垫仍可完整试流程';
+</script>
+<script src="assets/js/review-mode.js" defer></script>
+</body>
+</html>
