@@ -5,6 +5,8 @@
   'use strict';
   if (window.__mpcReview) return;
   var doc = document, win = window;
+  // 脚本执行时保存地址；init 可能等到 DOMContentLoaded 才运行。
+  var reviewScriptSrc = doc.currentScript && doc.currentScript.src;
   var NS = 'mpcReview:v1:';            // 固定命名空间（与端口/路径前缀无关）
   var PAGE_PREFIX = NS + 'page:';
   var MODE_KEY = NS + 'mode';
@@ -505,11 +507,28 @@
     items = []; closePop(); renderBadges(); renderPanel(); updateCounts(); toast('已清空');
   }
 
+  /* ---------- 预置批注：仅由批注模式脚本加载，沿用导入的按 id 合并 ---------- */
+  function loadSeedNotes() {
+    if (!reviewScriptSrc || !win.fetch) return;
+    var url = new URL('../data/restructure-notes.json', reviewScriptSrc);
+    win.fetch(url.href).then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.text();
+    }).then(function (text) {
+      // importText 会保留已有同 id 批注（包括本地修改），并刷新徽章、列表和计数。
+      importText(text);
+    }).catch(function (error) {
+      // 种子不可用时仍可正常使用本地批注。
+      if (win.console && win.console.warn) win.console.warn('预置批注加载失败：', error);
+    });
+  }
+
   /* ---------- 启动 ---------- */
   function init() {
     buildUI(); updateCounts();
     var m = null; try { m = win.sessionStorage.getItem(MODE_KEY); } catch (e) {}
     if (m === '1') toggle(true);
+    loadSeedNotes();
   }
   // 其他标签页里改了批注 → 同步
   win.addEventListener('storage', function (e) { if (e.key && e.key.indexOf(PAGE_PREFIX) === 0) { items = loadItems(); if (on) { renderBadges(); renderPanel(); } updateCounts(); } });
