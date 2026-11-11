@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第三章 采样、速度节奏、beat 风格 · MPC Sample 图文教程</title>
+  <meta name="description" content="Akai Professional MPC Sample（AC50，2026 年 3 月上市）硬件全图解 · 图文教程">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/review-mode.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html">MPC Sample <span>图文教程</span></a>
+    <nav class="chapter-nav" aria-label="章节">
+      
+      <a href="../chapters/01-functions.html"><b>1</b>新手入门</a>
+      
+      <a href="../chapters/01b-reference.html"><b>1+</b>功能速查</a>
+      
+      <a href="../chapters/02-drums-and-beats.html"><b>2</b>打击乐与写 beat</a>
+      
+      <a href="../chapters/03-sampling-tempo-styles.html" class="on" aria-current="page"><b>3</b>采样与节奏风格</a>
+      
+      <a href="../chapters/03b-styles.html"><b>3+</b>风格页</a>
+      
+      <a href="../chapters/03c-beat-grid-lab.html"><b>3+</b>网格实验室</a>
+      
+      <a href="../chapters/04-controls-reference.html"><b>4</b>旋钮按键全解</a>
+      
+      <a href="../chapters/05-glossary.html"><b>5</b>术语表</a>
+      
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+
+<h1 id="第三章-采样速度节奏beat-风格">第三章 采样、速度节奏、beat 风格</h1>
+
+<p class="tapes"><span class="tape tape-yellow">AKAI PROFESSIONAL · AC50</span> <span class="tape tape-cyan">手册 v1.3.0 核对</span> <span class="tape tape-red">写作中 · 3.3 / 3.5 可读</span></p>
+
+<p><a id="s3-0"></a></p>
+
+<h2 id="30-怎么读这一章">3.0 怎么读这一章</h2>
+
+<p>第一章你已经会录一个声音、敲出一段 beat。这一章学<strong>把采样“改造”成你自己的东西</strong>：剪短、切块、变速、铺满 16 个垫、再录回去。</p>
+
+<ul>
+  <li>写法和第一章一样：<kbd>按键</kbd> → <strong>屏幕上会出现什么</strong> → 下一步。</li>
+  <li>按键后面的数字（例如 <kbd>CHOP</kbd>（33））是 <a href="../chapters/01b-reference.html">第一章附录</a> 的面板编号。</li>
+  <li>标 <strong>（推断）</strong> 的地方手册没写明，以 <a href="https://cdn.inmusicbrands.com/akai/sample/MPC%20Sample%20-%20User%20Guide%20-%20v1.3.0%20(RevA).pdf">官方手册 v1.3.0</a> 和你机器上的实际显示为准。</li>
+</ul>
+
+<div class="chips">
+
+  <ul>
+    <li><a href="#s3-3-trim"><strong>3.3a</strong> Trim 剪头尾</a></li>
+    <li><a href="#s3-3-norm"><strong>3.3b</strong> Normalize</a></li>
+    <li><a href="#s3-3-chop"><strong>3.3c</strong> Chop 切片</a></li>
+    <li><a href="#s3-3-warp"><strong>3.3d</strong> Warp 变速</a></li>
+    <li><a href="#s3-3-16"><strong>3.3e</strong> 16 LEVELS</a></li>
+    <li><a href="#s3-3-resample"><strong>3.3f</strong> Resample</a></li>
+    <li><a href="#s3-3-save"><strong>3.3g</strong> 保存采样</a></li>
+    <li><a href="../chapters/03b-styles.html"><strong>3.5</strong> 风格页</a></li>
+  </ul>
+
+</div>
+
+<p><a id="s3-1"></a></p>
+
+<h2 id="31-采样基础与版权常识">3.1 采样基础与版权常识</h2>
+
+<p class="tapes"><span class="tape tape-dark">待写</span></p>
+
+<p>本节待写。先记住一条：用别人的唱片做公开发布的作品，要么取得授权，要么改造到“明显不是原曲”（3.3 的 Chop 练习自查清单里有这一步）。不构成法律意见。</p>
+
+<p><a id="s3-2"></a></p>
+
+<h2 id="32-sample-record-实战">3.2 SAMPLE RECORD 实战</h2>
+
+<p class="tapes"><span class="tape tape-dark">待写</span></p>
+
+<p>基础录音流程先看 <a href="../chapters/01-functions.html#s1-11">1.11 采第一个声音</a>，屏幕各部分见 <a href="../chapters/01-functions.html#screen-record">1.4 采样录音屏幕</a>。</p>
+
+<p><a id="s3-3"></a></p>
+
+<h2 id="33-编辑把一段采样改造成能用的素材">3.3 编辑：把一段采样改造成能用的素材</h2>
+
+<p>所有编辑都在 <strong>Sample 模式</strong>里做。先认一下这个屏幕：</p>
+
+<p><img src="../../assets/img/screens/s01-sample-main.png" alt="Sample 模式主屏幕（Trim 页）标注图" class="sfig" loading="lazy" /></p>
+
+<div class="concept">
+
+  <p><strong>新概念 ① Sample 模式的“页”</strong></p>
+
+  <p>Sample 模式下屏幕底部有三个参数，对应 <kbd>K1</kbd> <kbd>K2</kbd> <kbd>K3</kbd> 三个旋钮。换一页，三个旋钮的功能就跟着换：</p>
+
+  <ul>
+    <li>按 <kbd>B1</kbd> 依次切换：<strong>Trim</strong>（剪长度）→ <strong>Mix</strong>（音量/声像）→ <strong>Amp Env</strong>（包络）……</li>
+    <li>按 <kbd>B2</kbd> 依次切换：<strong>Tune</strong>（音高 + Warp）→ <strong>Play</strong>（播放方式）……</li>
+    <li>屏幕左上角/参数栏的页名告诉你现在在哪一页（具体位置见上图编号）。</li>
+  </ul>
+
+  <p><strong>记法：</strong> 永远先看屏幕底部三个参数名，再转旋钮。</p>
+
+</div>
+
+<p><a id="s3-3-trim"></a></p>
+
+<h3 id="33a-trim剪掉头尾的空白">3.3a Trim：剪掉头尾的空白</h3>
+
+<div class="concept">
+
+  <p><strong>新概念 ② 起点 / 终点（Start / End）</strong></p>
+
+  <p>采样从哪里开始响、到哪里停。只是“标记”，原声音还在；按 TRIM SAMPLE 才会真的剪掉。</p>
+
+</div>
+
+<div class="step">
+
+  <h4 id="section">动手 3-1 · 设起点和终点</h4>
+
+  <ul>
+    <li><strong>目标：</strong> 让垫子一按就响，不要前面半秒空白。</li>
+    <li><strong>要按什么：</strong>
+      <ol>
+        <li>按 <kbd>SAMPLE</kbd>（29），再敲放着采样的垫子。
+<strong>屏幕上会出现什么：</strong> 这个垫的波形、采样名，底部三个参数 <strong>Start / End / Loop</strong>（如果不是，按 <kbd>B1</kbd> 直到出现 <strong>Trim</strong>）。</li>
+        <li>转 <kbd>K1</kbd>（Start）向右。
+<strong>屏幕上会出现什么：</strong> 波形上的<strong>起点竖线</strong>往右移，K1 下方的百分比（0–100%）变大；左边被跳过的部分（推断）显示为变暗。</li>
+        <li>转 <kbd>K2</kbd>（End）向左，把尾巴的空白去掉。
+<strong>屏幕上会出现什么：</strong> <strong>终点竖线</strong>左移。</li>
+        <li>对不准就按住 <kbd>SHIFT</kbd> 再转 <kbd>K1</kbd> / <kbd>K2</kbd>（Zoom: Start / Zoom: End）。
+<strong>屏幕上会出现什么：</strong> 波形以起点/终点为中心放大，竖线附近的细节看得清。</li>
+        <li>敲垫子试听。</li>
+      </ol>
+    </li>
+    <li><strong>你会听到：</strong> 只播 Start 到 End 之间。</li>
+    <li><strong>常见错误：</strong> 转了旋钮数值不动——手册说看参数名旁边的<strong>箭头</strong>，往箭头方向转，直到“接上”当前值。</li>
+  </ul>
+
+</div>
+
+<div class="step">
+
+  <h4 id="trim-sample">动手 3-2 · 真的剪掉（TRIM SAMPLE）</h4>
+
+  <ul>
+    <li><strong>要按什么：</strong> 按住 <kbd>SHIFT</kbd> + <kbd>PAD 13</kbd>（TRIM SAMPLE）。</li>
+    <li><strong>屏幕上会出现什么：</strong> 波形重画，<strong>起点/终点之外的部分消失</strong>，Start 回到 0%、End 回到 100%（推断）。</li>
+    <li><strong>下一步：</strong> 这一步会丢弃头尾音频。想留原版，先 <a href="#s3-3-save">保存一份</a>。</li>
+  </ul>
+
+</div>
+
+<p class="note"><b>K3 Loop：</b>同一页的 K3 是循环点（采样设为 Loop 播放时从这里回绕），SHIFT+K3 放大循环点。SHIFT+B1 <b>Loop Lock</b> 把循环点锁在起点。</p>
+
+<p><a id="s3-3-norm"></a></p>
+
+<h3 id="33b-normalize把音量拉满">3.3b Normalize：把音量拉满</h3>
+
+<div class="step">
+
+  <h4 id="section-1">动手 3-3 · 标准化</h4>
+
+  <ul>
+    <li><strong>目标：</strong> 录得太小声的采样，一键拉到合适音量。</li>
+    <li><strong>要按什么：</strong> 在 Sample 模式里，按住 <kbd>SHIFT</kbd> + <kbd>B2</kbd>（Normalize）。</li>
+    <li><strong>屏幕上会出现什么：</strong> 按住 SHIFT 时 B2 上方的标签变成 <strong>Normalize</strong>；按下后波形<strong>整体变高</strong>，最高的峰刚好碰到顶（0 dB）。</li>
+    <li><strong>注意：</strong> 只处理 <strong>Start 到 End 之间</strong>的部分——所以先 Trim 再 Normalize。</li>
+    <li><strong>常见错误：</strong> 底噪也会一起变大。录音时尽量录大声一点，Normalize 只是补救。</li>
+  </ul>
+
+</div>
+
+<p><a id="s3-3-chop"></a></p>
+
+<h3 id="33c-chop把一段采样切成-16-块用垫子重新说话">3.3c Chop：把一段采样切成 16 块，用垫子重新“说话”</h3>
+
+<div class="concept">
+
+  <p><strong>新概念 ③ 切片（Chop / Slice）</strong></p>
+
+  <p>把一段采样切成几小块（slice），每块自动放到一个垫子上。以前按一个垫子，整段 loop 从头播到尾；切完之后，<strong>垫 1 是第 1 块、垫 2 是第 2 块……</strong> 你可以打乱顺序、重复某块、跳过某块——同一段素材就变成新的旋律。最多 <strong>16 块</strong>。</p>
+
+  <blockquote>
+    <p>手册举例：采样被切成 8 块时，按 <strong>垫 5</strong> 就选中第 5 块。</p>
+  </blockquote>
+
+</div>
+
+<p><img src="../../assets/img/screens/s02-chop.png" alt="Chop 模式屏幕标注图" class="sfig" loading="lazy" /></p>
+
+<div class="step">
+
+  <h4 id="chop-">动手 3-4 · 第 1 步：进入 Chop 模式</h4>
+
+  <ul>
+    <li><strong>要按什么：</strong> <kbd>SAMPLE</kbd>（29）→ 敲放着采样的垫子 → <kbd>CHOP</kbd>（33）。</li>
+    <li><strong>屏幕上会出现什么：</strong>
+      <ul>
+        <li>波形上出现多条<strong>竖线 = 切点</strong>。默认切法是 <strong>Threshold（按音量自动切）</strong>，所以一进来就已经切好了。</li>
+        <li>底部三个旋钮的功能<strong>变了</strong>，Trim 被换成 Chop：</li>
+      </ul>
+    </li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>旋钮</th>
+        <th>功能</th>
+        <th>按住 SHIFT 时</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>K1 Start</strong></td>
+        <td>当前这一块的起点</td>
+        <td><strong>Zoom: Start</strong> 放大起点附近</td>
+      </tr>
+      <tr>
+        <td><strong>K2 End</strong></td>
+        <td>当前这一块的终点</td>
+        <td><strong>Zoom: End</strong> 放大终点附近</td>
+      </tr>
+      <tr>
+        <td><strong>K3 Chop Type</strong></td>
+        <td>切法（见下一步）</td>
+        <td><strong>Threshold</strong> 灵敏度 0–100%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>16 个垫子对应 16 块：<strong>亮着的垫子 = 有切片</strong>。</li>
+  </ul>
+
+</div>
+
+<div class="step">
+
+  <h4 id="k3">动手 3-5 · 第 2 步：选一种切法（转 K3）</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>切法</th>
+        <th>怎么切</th>
+        <th>适合</th>
+        <th>新手建议</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Threshold</strong></td>
+        <td>按音量起伏自动放切点</td>
+        <td>鼓 break、一下一下很清楚的钢琴/吉他</td>
+        <td>SHIFT+K3 往<strong>高</strong>调 = 切得<strong>少</strong>；往低 = 切得多</td>
+      </tr>
+      <tr>
+        <td><strong>Regions 4 / 8 / 16</strong></td>
+        <td>平均分成 4、8、16 块</td>
+        <td>已卡准小节的 loop</td>
+        <td>1 小节 loop 选 16 = 每块一个 16 分音符</td>
+      </tr>
+      <tr>
+        <td><strong>Manual</strong></td>
+        <td>你边听边拍出切点</td>
+        <td>人声、弦乐等没有明显起伏的素材</td>
+        <td>按<strong>垫 1</strong> 开始播放并放第一个切点，听到想切处就拍下一个垫</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li><strong>屏幕上会出现什么：</strong> K3 下方的名字跟着变；竖线<strong>重新排布</strong>（Regions 是等距的，Threshold 落在音头上）；亮着的垫子数量随块数变化。</li>
+    <li>💡 先试 Threshold；乱就换 Regions；只要“那一句”就用 Manual。</li>
+  </ul>
+
+</div>
+
+<div class="step">
+
+  <h4 id="section-2">动手 3-6 · 第 3 步：修切片（每一块都要听）</h4>
+
+  <p>敲一个垫子 = 选中那一块（屏幕上这块被高亮，推断），然后：</p>
+
+  <ul>
+    <li><kbd>K1</kbd> / <kbd>K2</kbd> 微调这块起止点；对不准就 SHIFT+K1 / SHIFT+K2 放大。<strong>屏幕：</strong> 被选块两边的竖线移动。</li>
+    <li><kbd>SHIFT</kbd> + <kbd>B1</kbd> = <strong>Extract</strong>：把这块导出成新采样，放到下一个空垫。<strong>不破坏原采样</strong>。<strong>屏幕：</strong> 按住 SHIFT 时 B1 标签显示 Extract（推断）；之后那个空垫会亮起。</li>
+    <li><kbd>SHIFT</kbd> + <kbd>B2</kbd> = <strong>Split</strong>：这块一分为二，后面编号都 +1。<strong>屏幕：</strong> 这块中间多一条竖线。</li>
+    <li><kbd>SHIFT</kbd> + <kbd>B3</kbd> = <strong>Merge</strong>：这块并进前一块，后面编号都 −1（8 块里合并第 2 块 → 剩 7 块，原第 3 块变成第 2 块）。<strong>屏幕：</strong> 少一条竖线。</li>
+    <li>按住 <kbd>ERASE</kbd>（23）+ 敲垫子：删掉这个切点（同样并进前一块）。</li>
+  </ul>
+
+  <blockquote>
+    <p>⚠️ 两个坑（手册原文）：</p>
+    <ol>
+      <li>只要你动手改了切片，K3 的 Chop Type 会<strong>自动变成 Manual</strong>——屏幕上看到 Manual 别慌。</li>
+      <li>改切片<strong>不能用 UNDO 撤销</strong>。大改前先 SHIFT+B1 Extract 把好用的块存一份。</li>
+    </ol>
+  </blockquote>
+
+</div>
+
+<div class="step">
+
+  <h4 id="section-3">动手 3-7 · 第 4 步：决定垫子怎么“发声”</h4>
+
+  <ul>
+    <li>默认是 <strong>One Shot</strong>：敲一下，这块完整播完。</li>
+    <li><kbd>SHIFT</kbd> + <kbd>CHOP</kbd>（33）= <strong>Note On</strong>：按住才响，松手就停。</li>
+    <li><strong>屏幕上会出现什么：</strong> 采样名旁边出现<strong>音符图标</strong>。Amp Env 页里 K2 的名字从 <strong>Decay</strong> 变成 <strong>Release</strong>。</li>
+    <li><strong>用途：</strong> 切人声、长和弦时，靠按的长短控制每块长度，打起来像在“弹”采样。</li>
+  </ul>
+
+</div>
+
+<div class="step">
+
+  <h4 id="section-4">动手 3-8 · 第 5 步：退出</h4>
+
+  <ul>
+    <li><strong>要按什么：</strong> 再按一次 <kbd>CHOP</kbd>（33）。</li>
+    <li><strong>屏幕上会出现什么：</strong> 底部参数变回 <strong>Start / End / Loop</strong>（Trim 页）。切片还在，垫子照样能弹。</li>
+  </ul>
+
+</div>
+
+<p class="note"><b>边录边切（彩蛋）：</b>在 SAMPLE RECORD（37）录音时，手册写明可以一边录一边敲其他垫子来切。错过好段落：SHIFT + SAMPLE RECORD = <b>RECALL</b>，取回当前输入源<b>最近 25 秒</b>，放到下一个空垫。</p>
+
+<p><a id="s3-3-warp"></a></p>
+
+<h3 id="33d-warp让采样跟上你的速度">3.3d Warp：让采样跟上你的速度</h3>
+
+<div class="concept">
+
+  <p><strong>新概念 ④ Warp（变速）的两种模式</strong></p>
+
+  <ul>
+    <li><strong>Time Stretch</strong>：变长/变短，<strong>音高不变</strong>（像倍速看视频但声音不变调）。</li>
+    <li><strong>Pitch</strong>：变长/变短，<strong>音高跟着变</strong>（像黑胶转速调慢——慢了也低了）。这是老派 hip-hop“放慢唱片”的声音。</li>
+  </ul>
+
+  <p>Warp 值：<strong>Off</strong>（不变）· <strong>50–200%</strong>（50% = 一半长 = 快一倍；200% = 两倍长 = 慢一倍）· <strong>Seq</strong>（锁定当前序列速度）。</p>
+
+</div>
+
+<div class="step">
+
+  <h4 id="loop-">动手 3-9 · 把一段 loop 锁到序列速度</h4>
+
+  <ul>
+    <li><strong>目标：</strong> 别人 98 BPM 的 loop，放进你 90 BPM 的 beat 也对拍。</li>
+    <li><strong>要按什么：</strong>
+      <ol>
+        <li><kbd>SAMPLE</kbd> → 敲 loop 所在的垫 → 按 <kbd>B2</kbd> 直到页名是 <strong>Tune</strong>。
+<strong>屏幕上会出现什么：</strong> 底部三个参数 <strong>Semi Tune / Fine Tune / Warp</strong>。</li>
+        <li>按住 <kbd>SHIFT</kbd> 转 <kbd>K3</kbd>（<strong># Beats</strong>），设成这段 loop 的拍数（1 小节 4/4 = 4，2 小节 = 8）。
+<strong>屏幕上会出现什么：</strong> K3 位置显示 # Beats 和数字。机器用“长度 ÷ 拍数”判断原速度。</li>
+        <li>松开 SHIFT，转 <kbd>K3</kbd>（Warp）到 <strong>Seq</strong>。
+<strong>屏幕上会出现什么：</strong> K3 显示 <strong>Seq</strong>。</li>
+        <li><kbd>SHIFT</kbd> + <kbd>PAD 15</kbd>（WARP）在 <strong>Time Stretch / Pitch</strong> 之间切换。
+<strong>屏幕上会出现什么：</strong> 模式名切换（推断：显示在参数栏或弹出提示）；切到 <strong>Pitch</strong> 时 Semi Tune / Fine Tune <strong>变灰不可用</strong>（手册：Pitch 模式下这两项不可用）。</li>
+      </ol>
+    </li>
+    <li><strong>你会听到：</strong> 和序列一起播时 loop 对拍。Time Stretch 不变调；Pitch 会随速度升降调。</li>
+    <li><strong>常见错误：</strong> # Beats 设错，loop 会快一倍或慢一倍——数一下原 loop 有几拍。Time Stretch 拉得太多会有“颗粒/金属”声（推断，一般时间拉伸算法的通病）。</li>
+  </ul>
+
+</div>
+
+<p class="note">想要 Dilla / 日系 jazzy 那种“放慢采样”的味道：Warp 模式选 <b>Pitch</b>，Warp 值设 110–130%（推断的起点值，靠耳朵定）。见 <a href="../chapters/03b-styles.html#dilla">风格页 · Dilla 式</a>。</p>
+
+<p><a id="s3-3-16"></a></p>
+
+<h3 id="33e-16-levels一个声音铺满-16-个垫">3.3e 16 LEVELS：一个声音铺满 16 个垫</h3>
+
+<div class="concept">
+
+  <p><strong>新概念 ⑤ 16 LEVELS</strong></p>
+
+  <p>把<strong>当前选中的采样复制到全部 16 个垫</strong>，每个垫的某个参数逐级变化。三种 TYPE：</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>TYPE</th>
+        <th>16 个垫怎么变</th>
+        <th>用来做什么</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Velocity</strong></td>
+        <td>力度从小到大</td>
+        <td>精确打出轻重不同的 hat / ghost snare</td>
+      </tr>
+      <tr>
+        <td><strong>Filter</strong></td>
+        <td>垫 1–8：截止频率从最低升到当前 Cutoff；垫 9–16：从当前值升到最高</td>
+        <td>闷 → 亮 的扫频感</td>
+      </tr>
+      <tr>
+        <td><strong>Tune</strong></td>
+        <td><strong>垫 4 = 原音高</strong>，往下的垫降调、往上的垫升调</td>
+        <td>用一个 808 / 贝斯音弹 bass line</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="step">
+
+  <h4 id="tune--bass">动手 3-10 · 用 Tune 弹一条 bass</h4>
+
+  <ul>
+    <li><strong>要按什么：</strong>
+      <ol>
+        <li><kbd>SAMPLE</kbd> → 敲一个贝斯 / 808 采样的垫（选中它）。</li>
+        <li>按 <kbd>16 LEVELS</kbd>（36）。
+<strong>屏幕上会出现什么：</strong> Sample 页出现 <strong>“16” 图标</strong>，表示 16 Levels 已开启；16 个垫现在都是这个声音。</li>
+        <li>按住 <kbd>SHIFT</kbd> + <kbd>16 LEVELS</kbd>，多按几次切到 <strong>Tune</strong>。
+<strong>屏幕上会出现什么：</strong> 每按一次，TYPE 在 Velocity / Filter / Tune 之间轮换（推断：屏幕弹出当前 TYPE 名）。</li>
+        <li>从垫 1 敲到垫 16。</li>
+      </ol>
+    </li>
+    <li><strong>你会听到：</strong> 垫 4 是原音，垫 1–3 更低，垫 5–16 越来越高（推断：每垫一个半音）。</li>
+    <li><strong>下一步：</strong> 按 <kbd>SEQ</kbd>（30）→ <kbd>SEQ RECORD</kbd>（38），用这些垫弹 bass 录进序列。</li>
+    <li><strong>退出：</strong> 再按一次 <kbd>16 LEVELS</kbd>，“16” 图标消失，垫子恢复原来的声音。</li>
+    <li><strong>常见错误：</strong> 在 Sequence 模式里按 16 LEVELS 没反应——手册说明 Sequence 模式下不能用 Chop 和 16 Levels，先回 Sample 模式。Filter TYPE 范围小时，先去 Filter 页调 Cutoff。</li>
+    <li><strong>实战：</strong> 用 16 LEVELS 弹 bass、和弦、人声 hook 的完整例子见 <a href="../chapters/03c-beat-grid-lab.html">节奏网格实验室</a>（6 条视频，各有音名 → 垫号表）。</li>
+  </ul>
+
+</div>
+
+<p><a id="s3-3-resample"></a></p>
+
+<h3 id="33f-resample把整段序列录成一个采样">3.3f Resample：把整段序列录成一个采样</h3>
+
+<div class="concept">
+
+  <p><strong>新概念 ⑥ 重采样（Resample）</strong></p>
+
+  <p>把机器<strong>自己放出来的声音</strong>（多个垫 + 效果）录成一个新采样，放到一个垫上。好处：腾出垫子；效果“烧”进声音里；还可以再切、再 Warp。第一章 <a href="../chapters/01-functions.html#s1-11">1.11</a> 提过一次，这里实战。</p>
+
+</div>
+
+<div class="step">
+
+  <h4 id="a-resample-">动手 3-11 · 方法 A：一键 Resample 当前序列</h4>
+
+  <ul>
+    <li><strong>要按什么：</strong>
+      <ol>
+        <li>先确认序列能正常播放（<kbd>PLAY</kbd> 听一遍，再 <kbd>STOP</kbd>）。</li>
+        <li>按住 <kbd>SHIFT</kbd> + <kbd>PAD 11</kbd>（RESAMPLE）。
+<strong>屏幕上会出现什么：</strong> 提示你<strong>选一个垫</strong>（推断：文字类似“Select pad”）。</li>
+        <li>敲一个<strong>空垫</strong>。
+<strong>屏幕上会出现什么：</strong> 序列被渲染成音频（推断：短暂处理提示），完成后那个垫亮起，Sample 页能看到一整段新波形。</li>
+      </ol>
+    </li>
+    <li><strong>你会听到：</strong> 敲这个垫 = 整个序列的声音。</li>
+    <li><strong>常见错误：</strong> 选了有声音的垫会被替换（推断）——选空垫最稳。</li>
+  </ul>
+
+</div>
+
+<div class="step">
+
+  <h4 id="b-sample-record-">动手 3-12 · 方法 B：用 SAMPLE RECORD 录“机器自己”</h4>
+
+  <ul>
+    <li><strong>要按什么：</strong> <kbd>SAMPLE RECORD</kbd>（37）→ 转 <kbd>K1</kbd> 把 Source 选 <strong>Resample</strong> → 转 <kbd>K2</kbd> 选 <strong>Seq</strong>（按序列长度录）或 <strong>Free</strong> → 敲空垫开录，然后弹/播放。</li>
+    <li><strong>屏幕上会出现什么：</strong> K1 显示 <strong>Resample</strong>；K2 显示 Seq/Free；录音中电平表跳动。选 Seq 且正在播放时，<strong>从当前循环结束处开始录</strong>（手册原文）。</li>
+    <li><strong>适合：</strong> 边玩 PAD FX / KNOB FX 边录，把即兴效果固定下来。</li>
+  </ul>
+
+</div>
+
+<p><a id="s3-3-save"></a></p>
+
+<h3 id="33g-保存采样">3.3g 保存采样</h3>
+
+<div class="concept">
+
+  <p><strong>新概念 ⑦ 保存采样 ≠ 保存工程</strong></p>
+
+  <p>保存<strong>工程</strong>（SHIFT + PAD 16，见 <a href="../chapters/01-functions.html#s1-13">1.13</a>）存的是整套东西；保存<strong>采样</strong>是把一个垫上的声音单独存成文件，以后别的工程也能用 SAMPLE SELECT 载入。</p>
+
+</div>
+
+<div class="step">
+
+  <h4 id="section-5">动手 3-13 · 给采样起名并保存</h4>
+
+  <ul>
+    <li><strong>要按什么：</strong>
+      <ol>
+        <li>选中要存的垫，按住 <kbd>SHIFT</kbd> + <kbd>SAMPLE SELECT</kbd>（SAVE SAMPLE）。
+<strong>屏幕上会出现什么：</strong> 起名页，显示当前名字和光标。</li>
+        <li>转 <kbd>ENCODER</kbd> 选字母，按 <kbd>ENCODER</kbd> 确认并跳到下一位；按住 <kbd>SHIFT</kbd> = 大写；<kbd>−</kbd>/<kbd>+</kbd> 移动光标；<kbd>B2</kbd> 删一个字，SHIFT+B2 全删。
+<strong>屏幕上会出现什么：</strong> 名字逐字变化，光标移动。</li>
+        <li>按 <kbd>B3</kbd>（<strong>Do It!</strong>）保存；不想存按 <kbd>B1</kbd>（Cancel）。
+<strong>屏幕上会出现什么：</strong> 回到之前的页面（推断：可能有“已保存”提示）。</li>
+      </ol>
+    </li>
+    <li><strong>以后怎么找：</strong> <kbd>SAMPLE SELECT</kbd> 打开浏览器，B2 切换内部 / microSD；microSD 默认目录 <code class="language-plaintext highlighter-rouge">MPC-Sample/Samples</code>。</li>
+    <li><strong>起名建议：</strong> <code class="language-plaintext highlighter-rouge">90bpm-rhodes-chop1</code>——速度 + 素材 + 用途。</li>
+  </ul>
+
+</div>
+
+<div class="recap">
+
+  <p><strong>3.3 本节小结</strong></p>
+
+  <ul>
+    <li>Trim 设起止点，SHIFT+PAD 13 真剪；Normalize = SHIFT+B2，只处理起止点之间。</li>
+    <li>CHOP（33）切片：K3 选切法，SHIFT+B1/B2/B3 = Extract / Split / Merge；<strong>改切片不能 UNDO</strong>。</li>
+    <li>Warp 在 Tune 页 K3：Seq 锁速度；SHIFT+PAD 15 切 Time Stretch / Pitch。</li>
+    <li>16 LEVELS（36）：Velocity / Filter / Tune，Tune 原音高在垫 4。</li>
+    <li>Resample：SHIFT+PAD 11 → 敲空垫。保存采样：SHIFT+SAMPLE SELECT → B3 Do It!</li>
+  </ul>
+
+</div>
+
+<h3 id="练习-33-a一段-loop-切出新旋律20-分钟">练习 3.3-A：一段 loop 切出新旋律（20 分钟）</h3>
+
+<ol>
+  <li>准备一段 <strong>1 小节</strong>、已对齐拍子的乐器 loop（钢琴/电钢最好）。</li>
+  <li>SAMPLE（29）→ 选中垫子 → CHOP（33）→ K3 选 <strong>Regions 8</strong>。<strong>屏幕：</strong> 8 条等距的块，垫 1–8 亮。</li>
+  <li>依次敲垫 1–8，确认每块是“一个音或一个和弦”。切在音中间的块用 K1/K2 调。</li>
+  <li>SEQ（30）→ SEQ RECORD（38），按新顺序打 1 小节：<code class="language-plaintext highlighter-rouge">1 · 1 3 | 5 · 4 · | 1 · 1 3 | 7 · 8 ·</code>（数字 = 垫号，<code class="language-plaintext highlighter-rouge">·</code> = 空一个 8 分）。</li>
+  <li>加上鼓（参考 <a href="../chapters/03b-styles.html#boombap">风格页 · Boom bap 网格</a>），和原 loop 比，是不是已经“不是同一首歌”了？</li>
+</ol>
+
+<h3 id="练习-33-bmanual-切一句人声15-分钟">练习 3.3-B：Manual 切一句人声（15 分钟）</h3>
+
+<ol>
+  <li>选一段人声或说话录音（可用内置麦克风自己录一句）。</li>
+  <li>CHOP（33）→ K3 选 <strong>Manual</strong> → 按<strong>垫 1</strong>开始，在每个字开头依次拍垫 2、3、4……</li>
+  <li>SHIFT+CHOP 开 Note On（屏幕出现音符图标），用按住时长控制每个字的长短，打一个 2 小节人声 hook。</li>
+</ol>
+
+<h3 id="练习-33-cwarp--16-levels--resample-串起来25-分钟">练习 3.3-C：Warp + 16 LEVELS + Resample 串起来（25 分钟）</h3>
+
+<ol>
+  <li>把 3.3-A 的 loop 用 Warp=Seq 锁到 90 BPM。</li>
+  <li>一个 808 用 16 LEVELS Tune 弹 2 小节 bass。</li>
+  <li>SHIFT+PAD 11 把整段 Resample 到空垫，再 CHOP 成 Regions 8 重新排一次——“采样的采样”。</li>
+  <li>SHIFT+SAMPLE SELECT 存成 <code class="language-plaintext highlighter-rouge">90bpm-ex33c</code>。</li>
+</ol>
+
+<h3 id="自查清单">自查清单</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />每一块都单独听过，没有切在音的中间</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />出现“咔嗒”时，K1 往后挪一点或 SHIFT+K1 放大对准</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />重要的块已经 SHIFT+B1 Extract 备份（改切片不能 UNDO）</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />知道自己用的是 One Shot 还是 Note On</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Warp 的 # Beats 设对了，loop 跟序列不跑拍</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />会用 16 LEVELS Tune 弹 bass，知道原音高在垫 4</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Resample 后的新采样已保存并起了带 BPM 的名字</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />新排列和原曲<strong>明显不同</strong>（3.1 版权自查的一步）</li>
+</ul>
+
+<p><a id="s3-4"></a></p>
+
+<h2 id="34-节奏bpm--quantize--swing">3.4 节奏：BPM · Quantize · Swing</h2>
+
+<p class="tapes"><span class="tape tape-dark">待写</span></p>
+
+<p>先看 <a href="../chapters/01-functions.html#s1-10">1.10 录第一段 beat</a>。分声部 Time Correct 与 STEP EDIT 微调已在 <a href="../chapters/03b-styles.html#dilla">风格页 · Dilla 式</a> 里有实操。</p>
+
+<p><a id="s3-5"></a></p>
+
+<h2 id="35-风格页">3.5 风格页</h2>
+
+<p>单独成页：<strong><a href="../chapters/03b-styles.html">第三章附录 · 风格页</a></strong></p>
+
+<ul>
+  <li><a href="../chapters/03b-styles.html#boombap">Boom bap + DJ Premier 五法</a>（已润色）</li>
+  <li><a href="../chapters/03b-styles.html#dilla">Dilla 式律动</a> · <a href="../chapters/03b-styles.html#jpjazzy">日系 jazzy</a> · <a href="../chapters/03b-styles.html#memphis">Memphis</a>（草稿迁入）</li>
+  <li>Lo-fi · Trap · Drill · House 等（待写）</li>
+</ul>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li><a href="https://cdn.inmusicbrands.com/akai/sample/MPC%20Sample%20-%20User%20Guide%20-%20v1.3.0%20(RevA).pdf">Akai《MPC Sample User Guide v1.3.0》</a>：Sample Mode（Trim / Tune / Warp / Normalize）、Pad Play（Chop / Note On / 16 Levels）、Loading and Saving Samples、Sample Record Mode、SHIFT+PAD 功能表。</li>
+</ul>
+
+<p class="note">图片说明：屏幕截图来自 Akai Professional《MPC Sample User Guide v1.3.0》，编号为本教程添加。</p>
+
+<nav class="pager" aria-label="翻页">
+  <a class="card" href="../chapters/02-drums-and-beats.html"><small>← 上一章</small>第二章 打击乐音色、使用场景、写 beat</a>
+  <a class="card next" href="../chapters/03b-styles.html"><small>下一章 →</small>第三章附录 风格页（3.5）</a>
+</nav>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>MPC Sample 图文教程 · Akai Professional MPC Sample（AC50）· 内容依据官方 User Guide v1.3.0 核对 · 后面板/侧面照片为 Akai 官方产品图（akaipro.com）</p>
+  </footer>
+  <script src="../../assets/js/site.js" defer></script>
+  <script src="../../assets/js/review-mode.js" defer></script>
+</body>
+</html>
