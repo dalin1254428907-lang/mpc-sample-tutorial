@@ -10,9 +10,62 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/updates-v5.css">
+  <style>
+    /* 第一章功能介绍：左侧分层导航（大类 → 小类），沿用功能速查的 quick-nav 模式并扩展为两级。 */
+    .quick-layout { display: grid; grid-template-columns: 192px minmax(0, 1fr); gap: 30px; align-items: start; }
+    .quick-nav { position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto; padding: 14px; background: var(--panel); border: 2px solid var(--line); border-radius: 16px; }
+    .quick-nav-title { margin: 0 0 10px; color: var(--yellow); font-size: 14px; font-weight: 900; letter-spacing: .08em; }
+    .quick-nav a { display: block; margin: 4px 0; padding: 8px 10px; border-left: 4px solid transparent; border-radius: 8px; color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.35; }
+    .quick-nav a:hover { background: var(--panel2); color: var(--yellow); text-decoration: none; }
+    .quick-nav a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+    .quick-nav a[aria-current="true"] { background: var(--yellow); border-left-color: var(--red); color: var(--black); }
+    .quick-nav .qn-group { margin: 16px 0 4px; padding: 0 10px; color: var(--yellow); font-size: 13px; font-weight: 900; letter-spacing: .1em; }
+    .quick-nav .qn-group:first-of-type { margin-top: 4px; }
+    .quick-nav a.qn-sub { margin-left: 10px; padding-top: 6px; padding-bottom: 6px; font-size: 14px; font-weight: 400; color: var(--gray); }
+    .quick-nav a.qn-sub:hover { color: var(--yellow); }
+    .quick-nav a.qn-sub[aria-current="true"] { color: var(--black); font-weight: 700; }
+    .quick-content { min-width: 0; }
+    .quick-content > h2:first-of-type { margin-top: 22px; }
+    .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 96px; }
+    .quick-reference-page .v5-toc, .quick-reference-page .v5-sidenav { display: none !important; }
+    /* 面板分区图（本章入口）：点彩色区跳到该区解说 */
+    .zone-entry { margin: 26px 0 6px; }
+    .zone-map { position: relative; max-width: 700px; margin: 10px auto 6px; }
+    .zone-map img { display: block; width: 100%; height: auto; border-radius: 14px; }
+    .zone-hit { position: absolute; border-radius: 10px; }
+    .zone-hit:hover, .zone-hit:focus-visible { background: rgba(255, 229, 0, .14); outline: 3px solid var(--yellow); outline-offset: -3px; }
+    .zone-hint { max-width: 700px; margin: 4px auto 0; text-align: center; color: var(--gray); font-size: 15px; }
+    @media (min-width: 901px) and (max-width: 1399px) {
+      .quick-nav { top: 152px; max-height: calc(100vh - 168px); }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 164px; }
+    }
+    @media (max-width: 900px) {
+      .quick-layout { display: block; }
+      .quick-nav { top: 143px; z-index: 6; display: flex; align-items: center; gap: 8px; max-height: none; margin-bottom: 18px; padding: 8px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+      .quick-nav::-webkit-scrollbar { display: none; }
+      .quick-nav-title { flex: 0 0 auto; margin: 0 2px; }
+      .quick-nav a { flex: 0 0 auto; margin: 0; white-space: nowrap; }
+      .quick-nav .qn-group { flex: 0 0 auto; margin: 0; padding: 0 2px 0 12px; border-left: 2px solid var(--line); }
+      .quick-nav .qn-group:first-of-type { border-left: 0; padding-left: 2px; }
+      .quick-nav a.qn-sub { margin-left: 0; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 224px; }
+    }
+    @media (max-width: 560px) {
+      .quick-nav { top: 187px; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 268px; }
+    }
+    @media (max-width: 370px) {
+      .quick-nav { top: 231px; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 330px; }
+    }
+    @media (max-width: 340px) {
+      .quick-nav { top: 275px; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 374px; }
+    }
+  </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
-<body>
+<body class="quick-reference-page">
 
   <header class="site-header">
     <a class="brand" href="../index.html">MPC Sample <span>图文教程</span></a>
@@ -31,6 +84,52 @@
 <h1 id="第一章-新手入门">第一章 功能介绍</h1>
 
 <p class="tapes"><span class="tape tape-yellow">AKAI PROFESSIONAL · AC50</span> <span class="tape tape-red">零基础 · 图文 + 视频</span></p>
+
+<div class="quick-layout">
+  <aside class="quick-nav" aria-label="第一章分层导航">
+    <p class="quick-nav-title">本章导航</p>
+    <p class="qn-group">先认识机器</p>
+    <a class="qn-sub" href="#s1-0">怎么读这一章</a>
+    <a class="qn-sub" href="#s1-1">认识这台机器</a>
+    <a class="qn-sub" href="#s1-2">开箱 · 充电 · 开机</a>
+    <a class="qn-sub" href="#fig-f">后面板接口 F</a>
+    <p class="qn-group">面板 5 个区</p>
+    <a class="qn-sub" href="#s1-3">5 区总览</a>
+    <a class="qn-sub" href="#a看与听音量--屏幕--喇叭">A 看与听</a>
+    <a class="qn-sub" href="#b切模式--shift--推子">B 切模式 · SHIFT · 推子</a>
+    <a class="qn-sub" href="#c三个参数旋钮-k1k3">C 三个旋钮 K1–K3</a>
+    <a class="qn-sub" href="#d工具--浏览--录音--播放">D 工具 · 录音 · 播放</a>
+    <a class="qn-sub" href="#e16-个打击垫">E 16 个打击垫</a>
+    <p class="qn-group">小屏幕</p>
+    <a class="qn-sub" href="#s1-4">屏幕的看法</a>
+    <a class="qn-sub" href="#sample-模式主屏幕按-sample">Sample 主屏幕</a>
+    <a class="qn-sub" href="#chop-切片时sample-模式下按-chop">Chop 切片</a>
+    <a class="qn-sub" href="#采样浏览器按-sample-select">采样浏览器</a>
+    <a class="qn-sub" href="#采样录音按-sample-record">采样录音</a>
+    <a class="qn-sub" href="#seq-序列模式按-seq">Seq 序列模式</a>
+    <a class="qn-sub" href="#pad-fx按-pad-fx">Pad FX</a>
+    <a class="qn-sub" href="#knob-fx按-knob-fx选效果按-shift--knob-fx">Knob FX</a>
+    <a class="qn-sub" href="#song-歌曲页shift--pad-12">Song 歌曲页</a>
+    <a class="qn-sub" href="#project-菜单与起名页shift--pad-16">Project 菜单</a>
+    <a class="qn-sub" href="#其他页面">其他页面</a>
+    <p class="qn-group">按键基础</p>
+    <a class="qn-sub" href="#s1-5">SHIFT 与第二功能</a>
+    <a class="qn-sub" href="#s1-6">打击垫与 Bank</a>
+    <p class="qn-group">第一次上手</p>
+    <a class="qn-sub" href="#s1-7">播放 demo</a>
+    <a class="qn-sub" href="#s1-8">换一个鼓声</a>
+    <a class="qn-sub" href="#s1-9">认识序列</a>
+    <a class="qn-sub" href="#s1-10">录第一段 beat</a>
+    <a class="qn-sub" href="#s1-11">采第一个声音</a>
+    <a class="qn-sub" href="#s1-12">加第一个效果</a>
+    <a class="qn-sub" href="#s1-13">保存工程</a>
+    <p class="qn-group">问题与小结</p>
+    <a class="qn-sub" href="#s1-14">常见问题 FAQ</a>
+    <a class="qn-sub" href="#s1-15">本章小结 · 自查</a>
+    <a class="qn-sub" href="#资料">资料</a>
+  </aside>
+
+  <div class="quick-content">
 
 <p><a id="s1-0"></a></p>
 
@@ -57,32 +156,25 @@
 
 </div>
 
-<p><strong>学习路线</strong>（每次 10–20 分钟）：</p>
-
-<div class="chips">
-
-  <ul>
-    <li><a href="#s1-1"><strong>1</strong> 认识机器</a></li>
-    <li><a href="#s1-2"><strong>2</strong> 开箱开机</a></li>
-    <li><a href="#s1-3"><strong>3</strong> 面板 5 区</a></li>
-    <li><a href="#s1-4"><strong>4</strong> 小屏幕</a></li>
-    <li><a href="#s1-5"><strong>5</strong> SHIFT</a></li>
-    <li><a href="#s1-6"><strong>6</strong> 打击垫与 Bank</a></li>
-    <li><a href="#s1-7"><strong>7</strong> 播放 demo</a></li>
-    <li><a href="#s1-8"><strong>8</strong> 换鼓声</a></li>
-    <li><a href="#s1-9"><strong>9</strong> 序列</a></li>
-    <li><a href="#s1-10"><strong>10</strong> 录 beat</a></li>
-    <li><a href="#s1-11"><strong>11</strong> 采样</a></li>
-    <li><a href="#s1-12"><strong>12</strong> 效果</a></li>
-    <li><a href="#s1-13"><strong>13</strong> 保存</a></li>
-    <li><a href="#s1-14"><strong>FAQ</strong></a></li>
-    <li><a href="#s1-15"><strong>自查</strong></a></li>
-  </ul>
-
-</div>
-
 <p>只想查某个键？去 <a href="../chapters/01b-reference.html">第一章附录 · 功能速查</a>（编号 1–40、全部屏幕参数、灯光含义）。</p>
 
+
+<div class="zone-entry">
+
+  <p><strong>先看整台机器。</strong>这一章以机器本身为主：面板分成 5 个区，先记住每个区大概管什么，后面再逐区细看。</p>
+
+  <div class="zone-map">
+    <img src="../../assets/img/beginner/b03-zones.jpg" alt="顶面 5 个区：A 看与听，B 切模式，C 三个旋钮，D 工具与播放录音，E 16 个打击垫" />
+    <a class="zone-hit" style="left:4%;top:4%;width:92.5%;height:31%" href="#a看与听音量--屏幕--喇叭" title="A 看与听：音量 · 屏幕 · 喇叭" aria-label="跳到 A 区解说：看与听"></a>
+    <a class="zone-hit" style="left:6.5%;top:35%;width:20.5%;height:64%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
+    <a class="zone-hit" style="left:28%;top:36%;width:45%;height:15%" href="#c三个参数旋钮-k1k3" title="C 三个参数旋钮 K1–K3" aria-label="跳到 C 区解说：三个参数旋钮 K1–K3"></a>
+    <a class="zone-hit" style="left:75.5%;top:35%;width:19.5%;height:64%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
+    <a class="zone-hit" style="left:28%;top:50.5%;width:46%;height:48.5%" href="#e16-个打击垫" title="E 16 个打击垫" aria-label="跳到 E 区解说：16 个打击垫"></a>
+  </div>
+
+  <p class="zone-hint">点图上的区域，跳到那一段解说。机器背面还有 F 区（后面板接口），看 1.2 节的<a href="#fig-f">后面板图</a>。</p>
+
+</div>
 
 <p><a id="s1-1"></a></p>
 
@@ -228,8 +320,6 @@
 <h2 id="13-认识面板的-5-个区">1.3 认识面板的 5 个区</h2>
 
 <p>40 多个键<strong>不用一次记住</strong>，先记 5 个区“各管什么”：</p>
-
-<p><img src="../../assets/img/beginner/b03-zones.jpg" alt="顶面 5 个区：A 看与听，B 切模式，C 三个旋钮，D 工具与播放录音，E 16 个打击垫" /></p>
 
 <p>先看 4 分钟导览短片（原创，中文字幕）：面板 5 个区，以及每按一个键屏幕会变成什么。面板是依据官方手册绘制的示意图，屏幕画面取自官方手册。</p>
 
@@ -1367,6 +1457,9 @@
   <a class="card next" href="../chapters/04-controls-reference.html"><small>下一章 →</small>第一章 功能介绍 · 界面介绍：每个界面的每个旋钮与按键</a>
 </nav>
 
+  </div>
+</div>
+
   </main>
 
   <footer class="site-footer">
@@ -1375,6 +1468,95 @@
   <script src="../../assets/js/site.js" defer></script>
   <script src="../../assets/js/updates-v5.js" defer></script>
   <script src="../../assets/js/updates-ch1.js" defer></script>
+  <script>
+    (function () {
+      'use strict';
+      var nav = document.querySelector('.quick-nav');
+      if (!nav) return;
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+      var zoneHits = Array.prototype.slice.call(document.querySelectorAll('.zone-hit[href^="#"]'));
+      function targetOf(link) {
+        var hash = link.getAttribute('href');
+        var el = null;
+        try { el = document.querySelector(hash); } catch (e) { el = document.getElementById(hash.slice(1)); }
+        if (!el) return null;
+        if (el.tagName === 'A') {
+          var holder = el.closest('p');
+          var heading = holder ? holder.nextElementSibling : null;
+          return (heading && /^H[23]$/.test(heading.tagName)) ? heading : el;
+        }
+        return el;
+      }
+      // 本页很多图片懒加载，跳转途中加载完成会把目标越推越远：
+      // 点击后短时间盯住目标位置，漂移就瞬时校正；用户手动滚动则立即停手。
+      var jumpSeq = 0;
+      function followJump(link) {
+        var target = targetOf(link);
+        if (!target) return;
+        var mySeq = ++jumpSeq;
+        var stopped = false;
+        function stop() { stopped = true; }
+        ['wheel', 'touchstart', 'keydown'].forEach(function (ev) {
+          window.addEventListener(ev, stop, { once: true, passive: true });
+        });
+        var lastY = -1, stable = 0, tries = 0;
+        var iv = setInterval(function () {
+          if (stopped || mySeq !== jumpSeq || ++tries > 14) { clearInterval(iv); return; }
+          var margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+          var want = Math.max(0, target.getBoundingClientRect().top + window.scrollY - margin);
+          if (Math.abs(window.scrollY - want) > 6) {
+            window.scrollTo({ top: want, behavior: 'instant' });
+            stable = 0;
+          } else if (window.scrollY === lastY) {
+            if (++stable >= 2) clearInterval(iv);
+          } else {
+            stable = 0;
+          }
+          lastY = window.scrollY;
+        }, 300);
+      }
+      var sections = links.map(targetOf);
+      function setActive(activeLink) {
+        links.forEach(function (link) {
+          if (link === activeLink) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+        if (nav.scrollWidth > nav.clientWidth && activeLink) {
+          nav.scrollTo({
+            left: activeLink.offsetLeft - (nav.clientWidth - activeLink.clientWidth) / 2,
+            behavior: 'smooth'
+          });
+        }
+      }
+      links.forEach(function (link) {
+        link.addEventListener('click', function () { setActive(link); followJump(link); });
+      });
+      zoneHits.forEach(function (link) {
+        link.addEventListener('click', function () { followJump(link); });
+      });
+      var byTarget = new Map();
+      sections.forEach(function (section, index) { if (section) byTarget.set(section, links[index]); });
+      if ('IntersectionObserver' in window && byTarget.size) {
+        var visible = new Set();
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) visible.add(entry.target);
+            else visible.delete(entry.target);
+          });
+          var candidates = sections.filter(function (section) { return visible.has(section); });
+          if (!candidates.length) return;
+          var chosen = candidates[0];
+          candidates.forEach(function (section) {
+            if (section.getBoundingClientRect().top <= window.innerHeight * 0.4) chosen = section;
+          });
+          setActive(byTarget.get(chosen));
+        }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
+        byTarget.forEach(function (_, section) { observer.observe(section); });
+      }
+      var initial = links.filter(function (link) { return link.getAttribute('href') === window.location.hash; })[0];
+      setActive(initial || links[0]);
+    })();
+  </script>
   <script src="../../assets/js/review-mode.js" defer></script>
 </body>
 </html>
