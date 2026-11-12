@@ -15,12 +15,14 @@
     .preface-slogan { display: inline-block; background: var(--yellow); color: var(--black); font-weight: 900; font-size: clamp(20px, 3.4vw, 30px); letter-spacing: .06em; padding: 6px 18px; box-shadow: 4px 4px 0 var(--red); transform: rotate(-1.5deg); margin: 4px 0 10px; }
     .preface-title { margin-top: 10px; }
     .preface p { line-height: 1.75; }
-    .showcase { position: relative; overflow: hidden; margin-top: 18px; }
-    .showcase img { display: block; width: 100%; height: auto; border-radius: 8px; }
-    .showcase::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,.16) 47%, rgba(0,229,255,.14) 53%, transparent 68%); transform: translateX(-130%) skewX(-8deg); transition: transform .9s ease; pointer-events: none; }
-    .showcase:hover::after, .showcase:active::after { transform: translateX(130%) skewX(-8deg); }
+    .showcase { position: relative; overflow: hidden; margin: 18px auto 0; max-width: 66%; perspective: 1100px; cursor: grab; touch-action: pan-y; }
+    @media (max-width: 640px) { .showcase { max-width: 88%; } }
+    .showcase img { display: block; width: 100%; height: auto; border-radius: 8px; will-change: transform; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+    .showcase::after { content: ""; position: absolute; inset: 0; background: radial-gradient(430px circle at var(--gx, 50%) var(--gy, 42%), rgba(255,255,255,.20), rgba(0,229,255,.10) 45%, transparent 72%); opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+    .showcase:hover::after, .showcase.dragging::after { opacity: 1; }
     .showcase:hover { border-color: var(--cyan); box-shadow: 0 0 26px rgba(0,229,255,.22); }
-    .showcase:active img { filter: brightness(1.12); }
+    .showcase.dragging { cursor: grabbing; }
+    .showcase:active img { filter: brightness(1.1); }
   </style>
   <link rel="stylesheet" href="../assets/css/review-mode.css">
 </head>
@@ -28,31 +30,16 @@
 
   <header class="site-header">
     <a class="brand" href="./index.html">MPC Sample <span>图文教程</span></a>
-    <nav class="chapter-nav" aria-label="章节">      
-      
+        <nav class="chapter-nav" aria-label="章节">
       <a href="./index.html" class="on" aria-current="page"><b>前言</b>导读</a>
-      
       <a href="./chapters/01-functions.html"><b>1</b>功能介绍</a>
-      
-      <a href="./chapters/04-controls-reference.html"><b>1</b>界面介绍</a>
-      
-      <a href="./chapters/01b-reference.html"><b>1+</b>功能速查</a>
-      
-      <a href="./chapters/02-drums-and-beats.html"><b>2</b>乐理与鼓组</a>
-      
+      <a href="./chapters/02-drums-and-beats.html"><b>2</b>节奏乐理</a>
       <a href="./chapters/03-sampling-tempo-styles.html"><b>3</b>采样</a>
-      
-      <a href="./chapters/03b-styles.html"><b>4</b>风格乐理</a>
-      
-      <a href="./chapters/03c-beat-grid-lab.html"><b>练</b>节奏实验室</a>
-      
-      <a href="./chapters/05-glossary.html"><b>5</b>术语表</a>
-      
-          </nav>
+      <a href="./chapters/03b-styles.html"><b>4</b>节奏实验</a>
+    </nav>
   </header>
 
   <main class="wrap">
-
 
 <h1 class="cover-title">MPC Sample</h1>
 
@@ -73,97 +60,43 @@
 
 <p class="gh-only"><img loading="lazy" src="../assets/img/annotated/overview.jpg" alt="MPC Sample 面板总览：红色编号 1–40，青色虚线框为分区 A–E" /></p>
 
-<div class="chips">
-
-  <ul>
-    <li><a href="./chapters/01b-reference.html#region-a"><strong>A</strong> 顶部：音量·屏幕·喇叭</a></li>
-    <li><a href="./chapters/01b-reference.html#region-b"><strong>B</strong> 左列：模式·SHIFT·推子</a></li>
-    <li><a href="./chapters/01b-reference.html#region-c"><strong>C</strong> K1–K3 旋钮</a></li>
-    <li><a href="./chapters/01b-reference.html#region-d"><strong>D</strong> 右列：PAD PLAY·走带</a></li>
-    <li><a href="./chapters/01b-reference.html#region-e"><strong>E</strong> 16 垫 + SHIFT</a></li>
-    <li><a href="./chapters/01b-reference.html#region-f"><strong>F</strong> 后面板 + microSD</a></li>
-  </ul>
-
-</div>
-
-<blockquote>
-  <p><span class="tape tape-red">零基础？</span> <strong>从 <a href="./chapters/01-functions.html">第一章 功能介绍</a> 开始</strong>：一步一个概念，图文 + 视频带你从开机做到第一段 beat。上面的 A–F 分区按钮通往 <a href="./chapters/01b-reference.html">功能速查</a>。</p>
-</blockquote>
-
-<p class="note">照片：你的机器。编号沿用官方手册 Features 章。11、12、14 为指示灯，照片中未亮，位置依官方线稿。⇧ = 按住 SHIFT。（编号和 A–F 分区会在功能速查里逐项说明。）</p>
-
-<h2 id="全书大纲">全书大纲</h2>
+<h2 id="全书大纲">全站大纲</h2>
 
 <div class="outline">
 
   <details class="card outline-item" open>
     <summary>
-      <a href="./index.html">前言 导读：认识这个网站</a>
+      <a href="./chapters/01-functions.html">第一章 功能介绍（带交互）</a>
     </summary>
-    <ul><li>无痛感受节奏——作者导读。</li></ul>
-  </details>
-
-  <details class="card outline-item" open>
-    <summary>
-      <a href="./chapters/01-functions.html">第一章 功能与界面介绍 · 功能介绍：从开机到第一段 beat</a>
-    </summary>
-    <ul><li>从开机到录出第一段 beat，一步一个概念。</li></ul>
+    <ul><li>认识机器、每个界面与全部参数，从开机到第一段 beat。</li><li><small>功能介绍 · 界面介绍 · 功能速查</small></li></ul>
   </details>
 
   <details class="card outline-item">
     <summary>
-      <a href="./chapters/04-controls-reference.html">第一章 功能与界面介绍 · 界面介绍：每个界面的每个旋钮与按键</a>
+      <a href="./chapters/02-drums-and-beats.html">第二章 节奏乐理（带交互）</a>
     </summary>
-    <ul><li>每个界面的全部旋钮、按键与参数。</li></ul>
-  </details>
-
-  <details class="card outline-item" open>
-    <summary>
-      <a href="./chapters/01b-reference.html">第一章附录 功能速查</a>
-    </summary>
-    <ul><li>规格、面板图解与全部屏幕参数，查表用。</li></ul>
+    <ul><li>够用的乐理、鼓组与不同风格的基础节奏型，照着敲出来。</li><li><small>节奏乐理 · 术语表</small></li></ul>
   </details>
 
   <details class="card outline-item">
     <summary>
-      <a href="./chapters/02-drums-and-beats.html">第二章 乐理与鼓组：打击乐音色、使用场景、写 beat</a>
+      <a href="./chapters/03-sampling-tempo-styles.html">第三章 采样（带交互）</a>
     </summary>
-    <ul><li>鼓组构成、各鼓件的用法，与写 beat 的七个步骤。</li></ul>
+    <ul><li>录声音、切片、改造，做成自己的音色。</li><li><small>采样与编辑</small></li></ul>
   </details>
 
   <details class="card outline-item">
     <summary>
-      <a href="./chapters/03-sampling-tempo-styles.html">第三章 采样</a>
+      <a href="./chapters/03b-styles.html">第四章 节奏实验（带交互）</a>
     </summary>
-    <ul><li>采样、编辑与节奏：录一个声音，切好、用好。</li></ul>
+    <ul><li>各风格的乐理与网格实验，跟着打、连真机练。</li><li><small>风格乐理 · 节奏网格实验室</small></li></ul>
   </details>
 
   <details class="card outline-item">
     <summary>
-      <a href="./chapters/03b-styles.html">第四章 风格乐理</a>
+      <span>论坛</span>
     </summary>
-    <ul><li>Boom bap、Dilla 式、日系 jazzy、Memphis 等风格的律动与做法。</li></ul>
-  </details>
-
-  <details class="card outline-item">
-    <summary>
-      <a href="./chapters/03c-beat-grid-lab.html">节奏网格实验室：看视频 → 在 MPC 上打出来（第二章 / 第四章 · 章内交互）</a>
-    </summary>
-    <ul><li>跟着网格视频，在机器上把经典节奏打出来。</li></ul>
-  </details>
-
-  <details class="card outline-item" open>
-    <summary>
-      <a href="./chapters/05-glossary.html">第五章 术语表（英中 / 英日）</a>
-    </summary>
-    <ul><li>英中 / 英日三语术语对照。</li></ul>
-  </details>
-
-  <details class="card outline-item">
-    <summary>
-      <span>第六章 论坛</span>
-    </summary>
-    <ul><li>交流区，暂未开放。</li></ul>
+    <ul><li>交流区，即将开放。</li></ul>
   </details>
 
 </div>
@@ -179,44 +112,24 @@
     </thead>
     <tbody>
       <tr>
-        <td><a href="./index.html">前言 导读：认识这个网站</a></td>
-        <td>作者导读 · 全站地图</td>
+        <td><a href="./chapters/01-functions.html">第一章 功能介绍（带交互）</a></td>
+        <td>功能介绍 · 界面介绍 · 功能速查</td>
       </tr>
       <tr>
-        <td><a href="./chapters/01-functions.html">第一章 功能与界面介绍 · 功能介绍：从开机到第一段 beat</a></td>
-        <td>认识机器 · 开箱开机 · 面板 5 区（原创视频）· 认识小屏幕 · SHIFT · 打击垫与 Bank · 播放 demo · 换鼓声 · 序列 · 录 beat · 采样 · 效果 · 保存 · FAQ · 自查清单</td>
+        <td><a href="./chapters/02-drums-and-beats.html">第二章 节奏乐理（带交互）</a></td>
+        <td>节奏乐理 · 术语表（英中 / 英日）</td>
       </tr>
       <tr>
-        <td><a href="./chapters/04-controls-reference.html">第一章 功能与界面介绍 · 界面介绍：每个界面的每个旋钮与按键</a></td>
-        <td>编号 1–40 速查 · 各模式全部参数 · SHIFT 组合键速查卡</td>
+        <td><a href="./chapters/03-sampling-tempo-styles.html">第三章 采样（带交互）</a></td>
+        <td>采样基础 · 录采样 · 编辑</td>
       </tr>
       <tr>
-        <td><a href="./chapters/01b-reference.html">第一章附录 功能速查</a></td>
-        <td>规格 · 面板全图解（A–F，编号 1–40）· 16 垫 SHIFT 功能 · 灯光 · 全部屏幕/模式 · 五分钟上手 · 待确认</td>
+        <td><a href="./chapters/03b-styles.html">第四章 节奏实验（带交互）</a></td>
+        <td>风格乐理 · 节奏网格实验室</td>
       </tr>
       <tr>
-        <td><a href="./chapters/02-drums-and-beats.html">第二章 乐理与鼓组：打击乐音色、使用场景、写 beat</a></td>
-        <td>鼓组构成 · 各鼓件声音与调法 · 使用场景 · 写 beat 七步 · 风格练习</td>
-      </tr>
-      <tr>
-        <td><a href="./chapters/03-sampling-tempo-styles.html">第三章 采样</a></td>
-        <td>采样基础 · SAMPLE RECORD · 编辑 · 节奏</td>
-      </tr>
-      <tr>
-        <td><a href="./chapters/03b-styles.html">第四章 风格乐理</a></td>
-        <td>Boom bap + DJ Premier 五法 · Dilla 式律动 · 日系 jazzy · Memphis · Lo-fi · Trap · Drill · House</td>
-      </tr>
-      <tr>
-        <td><a href="./chapters/03c-beat-grid-lab.html">节奏网格实验室（第二章 / 第四章 · 章内交互）</a></td>
-        <td>6 条原创网格视频 · 用出厂音色在 MPC Sample 上复刻 · 鼓网格 · 音名 → 16 LEVELS 垫位 · 和弦与人声替代方案</td>
-      </tr>
-      <tr>
-        <td><a href="./chapters/05-glossary.html">第五章 术语表（英中 / 英日）</a></td>
-        <td>三语表，可切换英中、英日</td>
-      </tr>
-      <tr>
-        <td>第六章 论坛</td>
-        <td>注册（ID / 区域）· 会员付费方案 · 交流板块，暂未开放</td>
+        <td>论坛</td>
+        <td>即将开放</td>
       </tr>
     </tbody>
   </table>
@@ -233,12 +146,46 @@
   <li><a href="https://www.akaipro.com/downloads-and-support/downloads/?product=MPC+Sample">下载 · 固件</a></li>
 </ul>
 
-
   </main>
 
   <footer class="site-footer">
     <p>MPC Sample 图文教程 · Akai Professional MPC Sample（AC50）· 内容依据官方 User Guide v1.3.0 核对 · 后面板/侧面照片为 Akai 官方产品图（akaipro.com）</p>
   </footer>
+  <script>
+  (function () {
+    var fig = document.getElementById('fig-overview');
+    if (!fig) return;
+    var img = fig.querySelector('img');
+    var dragging = false, sx = 0, sy = 0, rx = 0, ry = 0;
+    function apply() {
+      img.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+      fig.style.setProperty('--gx', (50 + ry * 2.2) + '%');
+      fig.style.setProperty('--gy', (46 - rx * 2.2) + '%');
+    }
+    fig.addEventListener('pointerdown', function (e) {
+      dragging = true; sx = e.clientX; sy = e.clientY;
+      img.style.transition = 'none';
+      fig.classList.add('dragging');
+      try { fig.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    fig.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      ry = Math.max(-26, Math.min(26, (e.clientX - sx) / 6));
+      rx = Math.max(-20, Math.min(20, -(e.clientY - sy) / 6));
+      apply();
+    });
+    function end() {
+      if (!dragging) return;
+      dragging = false; rx = 0; ry = 0;
+      fig.classList.remove('dragging');
+      img.style.transition = 'transform .5s ease';
+      apply();
+      setTimeout(function () { img.style.transition = ''; }, 520);
+    }
+    fig.addEventListener('pointerup', end);
+    fig.addEventListener('pointercancel', end);
+  })();
+  </script>
   <script src="../assets/js/site.js" defer></script>
   <script src="../assets/js/review-mode.js" defer></script>
 </body>
