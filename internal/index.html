@@ -15,15 +15,14 @@
     .preface-slogan { display: inline-block; background: var(--yellow); color: var(--black); font-weight: 900; font-size: clamp(20px, 3.4vw, 30px); letter-spacing: .06em; padding: 6px 18px; box-shadow: 4px 4px 0 var(--red); transform: rotate(-1.5deg); margin: 4px 0 14px; }
     .preface-title { margin: 16px 0 18px; }
     .preface > p:not(.preface-slogan) { font-size: 17.5px; line-height: 1.9; max-width: 40em; margin: 0 0 1.15em; }
-    .showcase { position: relative; overflow: hidden; margin: 18px auto 0; max-width: 66%; cursor: grab; touch-action: pan-y; }
+    .showcase { position: relative; overflow: hidden; margin: 18px auto 0; max-width: 66%; perspective: 1100px; cursor: grab; touch-action: pan-y; }
     @media (max-width: 640px) { .showcase { max-width: 88%; } }
-    .showcase img { display: block; width: 100%; height: auto; border-radius: 8px; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
-    .showcase::after { content: ""; position: absolute; inset: 0; background: radial-gradient(430px circle at 50% 42%, rgba(255,255,255,.20), rgba(0,229,255,.10) 45%, transparent 72%); opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+    .showcase img { display: block; width: 100%; height: auto; border-radius: 8px; will-change: transform; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+    .showcase::after { content: ""; position: absolute; inset: 0; background: radial-gradient(430px circle at var(--gx, 50%) var(--gy, 42%), rgba(255,255,255,.20), rgba(0,229,255,.10) 45%, transparent 72%); opacity: 0; transition: opacity .3s ease; pointer-events: none; }
     .showcase:hover::after, .showcase.dragging::after { opacity: 1; }
     .showcase:hover { border-color: var(--cyan); box-shadow: 0 0 26px rgba(0,229,255,.22); }
     .showcase.dragging { cursor: grabbing; }
     .showcase:active img { filter: brightness(1.1); }
-    .orbit-hint { margin: 8px 0 0; text-align: center; font-size: 13px; color: var(--gray); }
     /* 全站大纲卡片：默认收起，标题行右端箭头指示展开/收起（本页专用；原生三角在 summary 变 flex 后不显示，故统一用此箭头并隐藏原生标记） */
     .outline-item > summary { list-style: none; }
     .outline-item > summary::-webkit-details-marker { display: none; }
@@ -60,8 +59,7 @@
   <p>现在大家的时间都被短视频切得很碎，很难静下心来做完一件事。我希望观看网站的你能在这里慢下来，跟着机器和节奏，一点一点敲出自己的 beat。</p>
   <p>欢迎你加入论坛交流，也欢迎用任何方式联系我。你的想法，或者合作，都可以。</p>
   <figure class="fig-wrap showcase" id="fig-overview">
-    <img src="../assets/img/orbit/frame-00.jpg" alt="MPC Sample" width="540" height="960" draggable="false">
-    <figcaption class="orbit-hint">按住左右拖动，转一圈看看整台机器</figcaption>
+    <img src="../assets/img/mpc-sample-panel.jpg" alt="MPC Sample" width="1556" height="1806">
   </figure>
 </section>
 
@@ -163,47 +161,31 @@
     var fig = document.getElementById('fig-overview');
     if (!fig) return;
     var img = fig.querySelector('img');
-    var TOTAL = 60;      // 帧总数：frame-00.jpg … frame-59.jpg
-    var PX_PER_FRAME = 6; // 每拖动 6px 换一帧
-    var firstSrc = img.getAttribute('src');
-    var base = firstSrc.replace(/frame-\d+\.jpg$/, 'frame-');
-    var loaded = {};
-    loaded[firstSrc] = true;
-    function frameSrc(i) {
-      return base + (i < 10 ? '0' : '') + i + '.jpg';
+    var dragging = false, sx = 0, sy = 0, rx = 0, ry = 0;
+    function apply() {
+      img.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+      fig.style.setProperty('--gx', (50 + ry * 2.2) + '%');
+      fig.style.setProperty('--gy', (46 - rx * 2.2) + '%');
     }
-    // 预加载全部帧；没加载到的帧不切换，避免拖动时出现破图
-    for (var i = 0; i < TOTAL; i++) {
-      (function (src) {
-        var pre = new Image();
-        pre.onload = function () { loaded[src] = true; };
-        pre.src = src;
-      })(frameSrc(i));
-    }
-    var cur = 0;
-    function show(i) {
-      i = ((i % TOTAL) + TOTAL) % TOTAL; // 绕圈循环：过最后一帧接回第一帧
-      if (i === cur) return;
-      var src = frameSrc(i);
-      if (!loaded[src]) return; // 这一帧还没下载好，先停在当前帧
-      img.src = src;
-      cur = i;
-    }
-    var dragging = false, startX = 0, startFrame = 0;
     fig.addEventListener('pointerdown', function (e) {
-      dragging = true; startX = e.clientX; startFrame = cur;
+      dragging = true; sx = e.clientX; sy = e.clientY;
+      img.style.transition = 'none';
       fig.classList.add('dragging');
       try { fig.setPointerCapture(e.pointerId); } catch (err) {}
-      e.preventDefault();
     });
     fig.addEventListener('pointermove', function (e) {
       if (!dragging) return;
-      show(startFrame + Math.round((e.clientX - startX) / PX_PER_FRAME));
+      ry = Math.max(-26, Math.min(26, (e.clientX - sx) / 6));
+      rx = Math.max(-20, Math.min(20, -(e.clientY - sy) / 6));
+      apply();
     });
     function end() {
       if (!dragging) return;
-      dragging = false; // 松手就停在当前帧
+      dragging = false; rx = 0; ry = 0;
       fig.classList.remove('dragging');
+      img.style.transition = 'transform .5s ease';
+      apply();
+      setTimeout(function () { img.style.transition = ''; }, 520);
     }
     fig.addEventListener('pointerup', end);
     fig.addEventListener('pointercancel', end);
