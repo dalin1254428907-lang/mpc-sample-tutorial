@@ -10,9 +10,53 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/updates-v5.css">
+  <style>
+    /* 功能速查样板：长页面快速导航。后续长页可复用 quick-layout / quick-nav / quick-content 三件套。 */
+    .quick-lead { max-width: 790px; margin: 2px 0 26px; color: var(--gray); font-size: 19px; }
+    .quick-lead a { font-weight: 800; }
+    .quick-layout { display: grid; grid-template-columns: 192px minmax(0, 1fr); gap: 30px; align-items: start; }
+    .quick-nav { position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto; padding: 14px; background: var(--panel); border: 2px solid var(--line); border-radius: 16px; }
+    .quick-nav-title { margin: 0 0 10px; color: var(--yellow); font-size: 14px; font-weight: 900; letter-spacing: .08em; }
+    .quick-nav a { display: block; margin: 4px 0; padding: 8px 10px; border-left: 4px solid transparent; border-radius: 8px; color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.35; }
+    .quick-nav a:hover { background: var(--panel2); color: var(--yellow); text-decoration: none; }
+    .quick-nav a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+    .quick-nav a[aria-current="true"] { background: var(--yellow); border-left-color: var(--red); color: var(--black); }
+    .quick-content { min-width: 0; }
+    .quick-content > h2:first-of-type { margin-top: 22px; }
+    .quick-content h2, .quick-content [id^="s1-"] { scroll-margin-top: 96px; }
+    .quick-reference-page .v5-toc, .quick-reference-page .v5-sidenav { display: none !important; }
+    .usage-notes ul { list-style: none; margin: 0; padding: 16px; background: var(--panel); border: 2px solid var(--cyan); border-radius: 16px; }
+    .usage-notes li { padding: 7px 0; border-bottom: 1px solid var(--line); }
+    .usage-notes li:last-child { border-bottom: 0; }
+    @media (min-width: 901px) and (max-width: 1399px) {
+      .quick-nav { top: 152px; max-height: calc(100vh - 168px); }
+      .quick-content h2, .quick-content [id^="s1-"] { scroll-margin-top: 164px; }
+    }
+    @media (max-width: 900px) {
+      .quick-layout { display: block; }
+      .quick-nav { top: 143px; z-index: 6; display: flex; align-items: center; gap: 8px; max-height: none; margin-bottom: 18px; padding: 8px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+      .quick-nav::-webkit-scrollbar { display: none; }
+      .quick-nav-title { flex: 0 0 auto; margin: 0 2px; }
+      .quick-nav a { flex: 0 0 auto; margin: 0; white-space: nowrap; }
+      .quick-content h2, .quick-content [id^="s1-"] { scroll-margin-top: 224px; }
+    }
+    @media (max-width: 560px) {
+      .quick-lead { font-size: 17px; }
+      .quick-nav { top: 187px; }
+      .quick-content h2, .quick-content [id^="s1-"] { scroll-margin-top: 268px; }
+    }
+    @media (max-width: 370px) {
+      .quick-nav { top: 231px; }
+      .quick-content h2, .quick-content [id^="s1-"] { scroll-margin-top: 330px; }
+    }
+    @media (max-width: 340px) {
+      .quick-nav { top: 275px; }
+      .quick-content h2, .quick-content [id^="s1-"] { scroll-margin-top: 374px; }
+    }
+  </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
-<body>
+<body class="quick-reference-page">
 
   <header class="site-header">
     <a class="brand" href="../index.html">MPC Sample <span>图文教程</span></a>
@@ -44,24 +88,24 @@
 
 <h1 id="第一章附录--功能速查">第一章附录 · 功能速查</h1>
 
-<p class="tapes"><span class="tape tape-yellow">AKAI PROFESSIONAL · AC50</span> <span class="tape tape-red">速查 · 查表用</span></p>
+<p class="quick-lead">这一页集中查 MPC Sample 的规格、按键编号、面板分区、接口、灯光和全部模式；第一次使用，先读 <a href="../chapters/01-functions.html">第一章 功能介绍</a>。</p>
 
-<blockquote>
-  <p><span class="tape tape-cyan">查表版</span> 所有按键、编号、屏幕参数集中在这一页，适合已经入门、想快速查某个键的读者。
-<strong>第一次接触 MPC Sample？请先读 <a href="../chapters/01-functions.html">第一章 功能介绍</a>，一步一步来。</strong></p>
-</blockquote>
+<div class="quick-layout">
+  <aside class="quick-nav" aria-label="功能速查快速导航">
+    <p class="quick-nav-title">快速预览</p>
+    <a href="#s1-1">大体介绍</a>
+    <a href="#s1-2">规格</a>
+    <a href="#s1-3">面板全图解（1–40 / A–F）</a>
+    <a href="#s1-4">后面板与侧面</a>
+    <a href="#s1-5">顶部面板控件</a>
+    <a href="#s1-6">16 垫 SHIFT 功能</a>
+    <a href="#s1-7">灯光含义</a>
+    <a href="#s1-8">全部屏幕 / 模式</a>
+    <a href="#s1-9">五分钟上手</a>
+    <a href="#s1-10">资料差异与未说明项</a>
+  </aside>
 
-<p><strong>本章目录：</strong>
-<a href="#s1-1">R.1 机器定位</a> ·
-<a href="#s1-2">R.2 规格</a> ·
-<a href="#s1-3">R.3 面板全图解</a> ·
-<a href="#s1-4">R.4 后面板与侧面</a> ·
-<a href="#s1-5">R.5 顶部面板控件</a> ·
-<a href="#s1-6">R.6 16 垫 SHIFT 功能</a> ·
-<a href="#s1-7">R.7 灯光含义</a> ·
-<a href="#s1-8">R.8 全部屏幕/模式</a> ·
-<a href="#s1-9">R.9 五分钟上手</a> ·
-<a href="#s1-10">R.10 待确认</a></p>
+  <div class="quick-content">
 
 <p><a id="s1-1"></a></p>
 
@@ -1302,7 +1346,7 @@
     </tr>
     <tr>
       <td>PAD 2–16</td>
-      <td>切碎 · 搓碟 · 门限等（各垫名称待确认）</td>
+      <td>切碎 · 搓碟 · 门限等（各垫名称：手册未逐一列明）</td>
     </tr>
     <tr>
       <td>K1 / K3 / B3</td>
@@ -1516,9 +1560,9 @@
 
 <p><a id="s1-10"></a></p>
 
-<h2 id="r10-待确认">R.10 待确认</h2>
+<h2 id="r10-资料差异与未说明项">R.10 资料差异与未说明项</h2>
 
-<div class="todo">
+<div class="usage-notes">
 
   <ul>
     <li>RECALL 时长：手册正文 25 秒 vs 规格表 30 秒</li>
@@ -1549,6 +1593,9 @@
   <a class="card next" href="../chapters/02-drums-and-beats.html"><small>下一章 →</small>第二章 乐理与鼓组：打击乐音色、使用场景、写 beat</a>
 </nav>
 
+  </div>
+</div>
+
   </main>
 
   <footer class="site-footer">
@@ -1556,6 +1603,56 @@
   </footer>
   <script src="../../assets/js/site.js" defer></script>
   <script src="../../assets/js/updates-v5.js" defer></script>
+  <script>
+    (function () {
+      'use strict';
+      var nav = document.querySelector('.quick-nav');
+      if (!nav) return;
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+      var sections = links.map(function (link) {
+        var anchor = document.querySelector(link.getAttribute('href'));
+        var holder = anchor ? anchor.closest('p') : null;
+        var heading = holder ? holder.nextElementSibling : null;
+        return heading && heading.tagName === 'H2' ? heading : anchor;
+      });
+      function setActive(activeLink) {
+        links.forEach(function (link) {
+          if (link === activeLink) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+        if (nav.scrollWidth > nav.clientWidth && activeLink) {
+          nav.scrollTo({
+            left: activeLink.offsetLeft - (nav.clientWidth - activeLink.clientWidth) / 2,
+            behavior: 'smooth'
+          });
+        }
+      }
+      links.forEach(function (link) {
+        link.addEventListener('click', function () { setActive(link); });
+      });
+      var byTarget = new Map();
+      sections.forEach(function (section, index) { if (section) byTarget.set(section, links[index]); });
+      if ('IntersectionObserver' in window && byTarget.size) {
+        var visible = new Set();
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) visible.add(entry.target);
+            else visible.delete(entry.target);
+          });
+          var candidates = sections.filter(function (section) { return visible.has(section); });
+          if (!candidates.length) return;
+          var chosen = candidates[0];
+          candidates.forEach(function (section) {
+            if (section.getBoundingClientRect().top <= window.innerHeight * 0.4) chosen = section;
+          });
+          setActive(byTarget.get(chosen));
+        }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
+        byTarget.forEach(function (_, section) { observer.observe(section); });
+      }
+      var initial = links.filter(function (link) { return link.getAttribute('href') === window.location.hash; })[0];
+      setActive(initial || links[0]);
+    })();
+  </script>
   <script src="../../assets/js/review-mode.js" defer></script>
 </body>
 </html>
