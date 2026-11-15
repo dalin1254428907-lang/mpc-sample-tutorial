@@ -63,6 +63,167 @@
       .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 374px; }
     }
   </style>
+  <style>
+    /* 第一章 · 实时机器固定面板：宽屏固定在右侧栏，中屏吸顶横条，窄屏吸顶紧凑条。
+       小屏幕全程不动，左侧点到哪、正文讲到哪，它都陪着。 */
+    .live-panel { margin: 0 0 20px; padding: 14px 16px; background: var(--panel); border: 2px solid var(--yellow); border-radius: 16px; }
+    .live-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .live-title { font-size: 18px; font-weight: 900; color: var(--yellow); }
+    .live-conn { font-size: 14px; color: var(--gray); }
+    .live-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #8a8f98; margin-right: 6px; vertical-align: baseline; }
+    .live-dot.ok { background: #34d399; }
+    .live-dot.bad { background: #f87171; }
+    .live-screen img, .live-screen canvas { display: block; width: 100%; height: auto; background: #000; border: 2px solid var(--line); border-radius: 8px; image-rendering: pixelated; }
+    .live-screen canvas[hidden] { display: none; }
+    .live-note { color: var(--gray); font-size: 14px; margin: 8px 0 0; }
+    .live-state { display: grid; gap: 8px; margin: 12px 0 0; }
+    .live-state > div { background: var(--panel2); border-radius: 10px; padding: 8px 12px; }
+    .live-state dt { font-size: 12px; color: var(--gray); }
+    .live-state dd { margin: 2px 0 0; font-weight: 700; }
+    /* Sample 页讲解卡（回到 §1.4 原位，当普通讲解） */
+    .live-guide-title { font-weight: 900; color: var(--cyan); margin: 18px 0 10px; }
+    .live-terms { display: grid; gap: 12px; }
+    .live-term { border-left: 4px solid var(--yellow); padding: 2px 0 2px 12px; }
+    .live-term strong { color: var(--white); }
+    .live-term p { margin: 3px 0 0; font-size: 14.5px; }
+    /* 宽屏 ≥1280：正文右侧留出固定栏，面板 position:fixed 不随页滚动 */
+    @media (min-width: 1280px) {
+      .ch1-wrap { max-width: 1460px; }
+      .quick-content { margin-right: 354px; }
+      .live-panel { position: fixed; top: 96px; right: calc(18px + max(0px, (100vw - 1460px) / 2)); width: 324px; max-height: calc(100vh - 116px); overflow-y: auto; z-index: 5; margin: 0; }
+    }
+    @media (min-width: 1280px) and (max-width: 1399px) {
+      .live-panel { top: 164px; max-height: calc(100vh - 184px); }
+    }
+    /* 中屏 901–1279：面板吸顶横条（屏幕在左、状态在右），跟着正文一起吸在顶部 */
+    @media (min-width: 901px) and (max-width: 1279px) {
+      .live-panel { position: sticky; top: 152px; z-index: 5; }
+      .live-layout { display: flex; gap: 14px; align-items: flex-start; }
+      .live-screen { flex: 0 0 208px; }
+      .live-side { flex: 1 1 auto; min-width: 0; }
+      .live-state { margin: 0; grid-template-columns: repeat(3, 1fr); }
+      .live-note { display: none; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 392px; }
+    }
+    /* 窄屏 ≤900：面板吸顶紧凑条，贴在横向导航条下面 */
+    @media (max-width: 900px) {
+      .live-panel { position: sticky; top: 199px; z-index: 5; padding: 10px 12px; margin-bottom: 16px; }
+      .live-head { margin-bottom: 8px; }
+      .live-title { font-size: 15px; }
+      .live-conn { font-size: 12.5px; }
+      .live-layout { display: flex; gap: 10px; align-items: flex-start; }
+      .live-screen { flex: 0 0 148px; }
+      .live-side { flex: 1 1 auto; min-width: 0; }
+      .live-state { margin: 0; gap: 6px; }
+      .live-state > div { padding: 5px 9px; }
+      .live-state > div:last-child { display: none; }
+      .live-state dd { font-size: 14px; }
+      .live-note { display: none; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 394px; }
+    }
+    @media (max-width: 560px) {
+      .live-panel { top: 243px; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 438px; }
+    }
+    @media (max-width: 370px) {
+      .live-panel { top: 287px; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 500px; }
+    }
+    @media (max-width: 340px) {
+      .live-panel { top: 331px; }
+      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 544px; }
+    }
+    /* 上手教程 · 步进流程 */
+    .flow { margin: 22px 0 30px; }
+    .flow-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .flow-title { margin: 0; }
+    .flow-done { background: #34d399; color: var(--black); font-weight: 900; font-size: 14px; border-radius: 999px; padding: 3px 12px; }
+    .flow-intro { color: var(--gray); margin: 6px 0 12px; }
+    .flow-steps { display: grid; gap: 10px; }
+    .flow-step { background: var(--panel); border: 2px solid var(--line); border-radius: 14px; padding: 12px 16px; }
+    .flow-step.is-current { border-color: var(--yellow); background: var(--panel2); }
+    .flow-step.is-done { opacity: .72; }
+    .flow-step.is-todo { opacity: .55; }
+    .flow-step-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .flow-step-no { font-size: 13px; font-weight: 900; letter-spacing: .06em; color: var(--gray); }
+    .flow-step-badge { font-size: 13px; font-weight: 900; border-radius: 999px; padding: 2px 10px; background: var(--panel); color: var(--gray); border: 1.5px solid var(--line); }
+    .flow-step-badge.now { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+    .flow-step-badge.ok { background: #34d399; color: var(--black); border-color: #34d399; }
+    .flow-do { margin: 8px 0 0; font-size: 16.5px; }
+    .flow-expect { margin: 6px 0 0; font-size: 14.5px; color: var(--gray); }
+    .flow-expect strong { color: var(--cyan); }
+    .flow-check { margin: 6px 0 0; font-size: 13.5px; color: var(--gray); }
+    .flow-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .flow-btn { font-family: var(--font); font-size: 15px; font-weight: 800; border-radius: 999px; padding: 7px 18px; cursor: pointer; border: 2px solid var(--yellow); background: var(--yellow); color: var(--black); }
+    .flow-btn-ghost { background: transparent; color: var(--gray); border-color: var(--line); }
+    .flow-btn-ghost:hover { color: var(--yellow); border-color: var(--yellow); }
+    .flow-foot { margin-top: 10px; }
+    .live-step-hint { margin: 8px 0 0; padding: 7px 9px; border-radius: 8px; background: #fff7e6; border: 1px solid #f0d48a; font-size: 12.5px; line-height: 1.55; color: #6b5410; }
+    .flow-result { margin: 4px 0 12px; }
+    .flow-result img { width: 100%; max-width: 420px; border-radius: 10px; border: 1px solid var(--line); display: block; }
+    .flow-result figcaption { margin-top: 6px; font-size: 13.5px; line-height: 1.6; }
+    .flow-keys { display: none; }
+    .flow-step.is-current .flow-keys { display: flex; gap: 14px; align-items: flex-start; margin: 2px 0 8px; flex-wrap: wrap; }
+    .flow-key-chips { display: flex; gap: 6px; flex-wrap: wrap; padding-top: 2px; }
+    .flow-key { display: inline-block; padding: 3px 9px; border: 1.5px solid #9aa5b1; border-bottom-width: 3px; border-radius: 7px; background: #f6f8fa; font: 700 12.5px/1.5 ui-monospace, Menlo, monospace; color: #24292f; }
+    .zmini { position: relative; width: 168px; flex: 0 0 auto; }
+    .zmini img { width: 100%; display: block; border-radius: 8px; border: 1px solid var(--line); }
+    .zmini .zhl { position: absolute; border: 2.5px solid #ff3b30; background: rgba(255, 59, 48, .16); border-radius: 5px; pointer-events: none; }
+    .zmini .zcap { display: block; margin-top: 4px; font-size: 11.5px; color: var(--gray); }
+    .flow-finale { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; background: #eef7ee; border: 1px solid #bfe3c0; font-size: 13.5px; line-height: 1.65; }
+    .flow-btn-hot { box-shadow: 0 0 0 3px rgba(26, 127, 55, .3); animation: flowpulse 1.2s ease-in-out infinite; }
+    @keyframes flowpulse { 0%, 100% { box-shadow: 0 0 0 2px rgba(26, 127, 55, .18); } 50% { box-shadow: 0 0 0 5px rgba(26, 127, 55, .32); } }
+  </style>
+  <style>
+    /* 第一章底座版（四部分重排）：分区图色块跳转、按键行、按键基础醒目块、屏幕位置对照、上手卡片 */
+    .zone-map2 { position: relative; max-width: 520px; margin: 10px auto 4px; }
+    .zone-map2 > img { display: block; width: 100%; height: auto; border-radius: 14px; }
+    .zone-map2 .zone-hit { border: 3px solid; }
+    .zone-map2 .zt-a { background: rgba(255, 229, 0, .15); border-color: var(--yellow); }
+    .zone-map2 .zt-b { background: rgba(255, 59, 59, .15); border-color: var(--red); }
+    .zone-map2 .zt-c { background: rgba(0, 229, 255, .15); border-color: var(--cyan); }
+    .zone-map2 .zt-d { background: rgba(105, 219, 124, .16); border-color: #69DB7C; }
+    .zone-map2 .zt-e { background: rgba(255, 169, 77, .18); border-color: #FFA94D; }
+    .zone-legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 640px; margin: 8px auto 0; }
+    .zone-chip { padding: 5px 14px; border-radius: 999px; font-weight: 900; font-size: 14.5px; color: var(--black); border: 2px solid var(--black); }
+    .zone-chip:hover { text-decoration: none; filter: brightness(1.12); }
+    .zstrip { display: flex; gap: 10px; align-items: baseline; margin: 7px 0; }
+    .zstrip .ztag { flex: 0 0 auto; font-weight: 900; font-size: 13.5px; padding: 1px 9px; border-radius: 6px; color: var(--black); border: 1.5px solid var(--black); }
+    .zstrip p { margin: 0; font-size: 14.5px; color: var(--gray); }
+    .common-keys { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+    .common-keys span { background: var(--panel2); border: 1.5px solid var(--yellow); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700; }
+    .btn-rows { margin: 8px 0 4px; }
+    .btn-row { display: flex; gap: 14px; align-items: baseline; padding: 6px 2px; border-bottom: 1px dashed var(--line); }
+    .btn-row:last-child { border-bottom: 0; }
+    .btn-row .bk { flex: 0 0 172px; }
+    .btn-row p { margin: 0; font-size: 15px; }
+    .btn-row .sh { color: var(--cyan); font-size: 13.5px; font-weight: 700; }
+    @media (max-width: 560px) { .btn-row .bk { flex-basis: 118px; } }
+    .key-basics { margin: 20px 0; padding: 16px 18px 12px; border-radius: 16px; background: var(--yellow); color: var(--black); border: 3px solid var(--black); box-shadow: 7px 7px 0 var(--red); }
+    .key-basics h4 { margin: 0 0 8px; font-size: 20px; font-weight: 900; color: var(--black); }
+    .key-basics p { color: var(--black); font-size: 15px; margin: 6px 0; }
+    .key-basics strong { color: var(--black); }
+    .key-basics img { display: block; width: 100%; height: auto; border-radius: 10px; margin: 8px 0; }
+    .key-basics kbd { background: var(--black); color: var(--yellow); border: 1px solid var(--black); box-shadow: 0 2px 0 var(--black); }
+    .key-basics table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; }
+    .key-basics th, .key-basics td { border: 1.5px solid var(--black); padding: 6px 9px; font-size: 14px; color: var(--black); text-align: left; }
+    .key-basics th { background: var(--black); color: var(--yellow); }
+    .key-basics td kbd { font-size: 12.5px; }
+    .key-basics a { color: var(--black); font-weight: 700; text-decoration: underline; }
+    .pos-map { max-width: 540px; margin: 14px auto 6px; }
+    .pos-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .pos-key { background: var(--panel2); border: 2px solid var(--yellow); border-radius: 10px; padding: 6px 4px; text-align: center; font-weight: 900; font-size: 17px; }
+    .pos-key small { display: block; font-size: 12.5px; font-weight: 700; color: var(--cyan); margin-top: 1px; }
+    .pos-arrow { text-align: center; color: var(--yellow); font-size: 15px; line-height: 1.5; letter-spacing: .4em; }
+    .pos-screen img { display: block; width: 100%; height: auto; border: 2px solid var(--line); border-radius: 10px; }
+    .start-card { background: var(--panel); border: 2px solid var(--line); border-radius: 16px; padding: 16px 18px 10px; margin: 18px 0; scroll-margin-top: 96px; }
+    .start-card h3 { margin: 0 0 6px; }
+    .start-card img.lead { display: block; width: 100%; height: auto; border-radius: 10px; margin: 8px 0; }
+    .start-card .err { color: var(--gray); font-size: 14px; }
+    .scr-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 760px; margin: 10px auto; }
+    .scr-duo img { width: 100%; height: auto; border-radius: 10px; display: block; }
+    @media (max-width: 560px) { .scr-duo { grid-template-columns: 1fr; } }
+  </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
 <body class="quick-reference-page">
@@ -78,7 +239,7 @@
     </nav>
   </header>
 
-  <main class="wrap">
+  <main class="wrap ch1-wrap">
 
 
 <h1 id="第一章-新手入门">第一章 功能介绍</h1>
@@ -86,22 +247,22 @@
 <p class="tapes"><span class="tape tape-yellow">AKAI PROFESSIONAL · AC50</span> <span class="tape tape-red">零基础 · 图文 + 视频</span></p>
 
 <div class="quick-layout">
-  <aside class="quick-nav" aria-label="第一章分层导航">
+    <aside class="quick-nav" aria-label="第一章分层导航">
     <p class="quick-nav-title">本章导航</p>
-    <p class="qn-group">先认识机器</p>
-    <a class="qn-sub" href="#s1-0">怎么读这一章</a>
-    <a class="qn-sub" href="#s1-1">认识这台机器</a>
-    <a class="qn-sub" href="#s1-2">开箱 · 充电 · 开机</a>
-    <a class="qn-sub" href="#fig-f">后面板接口 F</a>
-    <p class="qn-group">面板 5 个区</p>
-    <a class="qn-sub" href="#s1-3">5 区总览</a>
+    <p class="qn-group">认识机器</p>
+    <a class="qn-sub" href="#zone-map">分区图 · 点颜色跳</a>
+    <a class="qn-sub" href="#s1-1">采样 · 采样器 · 工程</a>
+    <a class="qn-sub" href="#s1-2">开机 · 充电 · 接口</a>
+    <p class="qn-group">区域详细介绍</p>
     <a class="qn-sub" href="#a看与听音量--屏幕--喇叭">A 看与听</a>
     <a class="qn-sub" href="#b切模式--shift--推子">B 切模式 · SHIFT · 推子</a>
+    <a class="qn-sub" href="#key-shift">按键基础 · SHIFT</a>
     <a class="qn-sub" href="#c三个参数旋钮-k1k3">C 三个旋钮 K1–K3</a>
     <a class="qn-sub" href="#d工具--浏览--录音--播放">D 工具 · 录音 · 播放</a>
     <a class="qn-sub" href="#e16-个打击垫">E 16 个打击垫</a>
-    <p class="qn-group">小屏幕</p>
-    <a class="qn-sub" href="#s1-4">屏幕的看法</a>
+    <a class="qn-sub" href="#key-bank">按键基础 · 垫与 Bank</a>
+    <p class="qn-group">实时机器</p>
+    <a class="qn-sub" href="#s1-4">实时画面 · 小屏幕</a>
     <a class="qn-sub" href="#sample-模式主屏幕按-sample">Sample 主屏幕</a>
     <a class="qn-sub" href="#chop-切片时sample-模式下按-chop">Chop 切片</a>
     <a class="qn-sub" href="#采样浏览器按-sample-select">采样浏览器</a>
@@ -112,10 +273,8 @@
     <a class="qn-sub" href="#song-歌曲页shift--pad-12">Song 歌曲页</a>
     <a class="qn-sub" href="#project-菜单与起名页shift--pad-16">Project 菜单</a>
     <a class="qn-sub" href="#其他页面">其他页面</a>
-    <p class="qn-group">按键基础</p>
-    <a class="qn-sub" href="#s1-5">SHIFT 与第二功能</a>
-    <a class="qn-sub" href="#s1-6">打击垫与 Bank</a>
     <p class="qn-group">第一次上手</p>
+    <a class="qn-sub" href="#s1-flows">跟着做 · 采样 / 换鼓组</a>
     <a class="qn-sub" href="#s1-7">播放 demo</a>
     <a class="qn-sub" href="#s1-8">换一个鼓声</a>
     <a class="qn-sub" href="#s1-9">认识序列</a>
@@ -123,82 +282,55 @@
     <a class="qn-sub" href="#s1-11">采第一个声音</a>
     <a class="qn-sub" href="#s1-12">加第一个效果</a>
     <a class="qn-sub" href="#s1-13">保存工程</a>
-    <p class="qn-group">问题与小结</p>
+    <p class="qn-group">章末</p>
     <a class="qn-sub" href="#s1-14">常见问题 FAQ</a>
-    <a class="qn-sub" href="#s1-15">本章小结 · 自查</a>
+    <a class="qn-sub" href="#s1-15">自查清单</a>
     <a class="qn-sub" href="#资料">资料</a>
   </aside>
 
   <div class="quick-content">
 
-<p><a id="s1-0"></a></p>
+<p><a id="s1-0"></a><a id="s1-1"></a></p>
 
-<h2 id="10-怎么读这一章">1.0 怎么读这一章</h2>
+<h2 id="11-认识这台机器"><span class="region-key">1</span>认识机器</h2>
 
-<p>写给<strong>从没碰过采样器的人</strong>，不用懂乐理，也不用电脑。</p>
+<div class="zone-entry" id="zone-map">
 
-<ul>
-  <li><strong>新概念</strong>卡片（青框）：一次讲一个新词，配一张小图。</li>
-  <li><strong>动手</strong>卡片（黄边）：目标 · 要按什么 · 你会看到 · 常见错误。</li>
-  <li><strong>本节小结</strong>：看懂再往下。</li>
-</ul>
-
-<div class="concept">
-
-  <p><strong>怎么看按键写法</strong></p>
-
-  <ul>
-    <li><kbd>PLAY</kbd>：按一下这个键（键名就是机器上印的英文）。</li>
-    <li><kbd>SHIFT</kbd> + <kbd>PAD 16</kbd>：<strong>先按住</strong>前一个，<strong>再按</strong>后一个。</li>
-    <li>转 <kbd>ENCODER</kbd> = 转大旋钮；按 <kbd>ENCODER</kbd> = 把它按下去。</li>
-    <li>PAD = 打击垫，数字是编号 1–16。</li>
-  </ul>
-
-</div>
-
-<p>只想查某个键？去 <a href="../chapters/01b-reference.html">第一章附录 · 功能速查</a>（编号 1–40、全部屏幕参数、灯光含义）。</p>
-
-
-<div class="zone-entry">
-
-  <p><strong>先看整台机器。</strong>这一章以机器本身为主：面板分成 5 个区，先记住每个区大概管什么，后面再逐区细看。</p>
-
-  <div class="zone-map">
-    <img src="../../assets/img/beginner/b03-zones.jpg" alt="顶面 5 个区：A 看与听，B 切模式，C 三个旋钮，D 工具与播放录音，E 16 个打击垫" />
-    <a class="zone-hit" style="left:4%;top:4%;width:92.5%;height:31%" href="#a看与听音量--屏幕--喇叭" title="A 看与听：音量 · 屏幕 · 喇叭" aria-label="跳到 A 区解说：看与听"></a>
-    <a class="zone-hit" style="left:6.5%;top:35%;width:20.5%;height:64%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
-    <a class="zone-hit" style="left:28%;top:36%;width:45%;height:15%" href="#c三个参数旋钮-k1k3" title="C 三个参数旋钮 K1–K3" aria-label="跳到 C 区解说：三个参数旋钮 K1–K3"></a>
-    <a class="zone-hit" style="left:75.5%;top:35%;width:19.5%;height:64%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
-    <a class="zone-hit" style="left:28%;top:50.5%;width:46%;height:48.5%" href="#e16-个打击垫" title="E 16 个打击垫" aria-label="跳到 E 区解说：16 个打击垫"></a>
+  <div class="zone-map2">
+    <img src="../../assets/img/mpc-sample-panel.jpg" alt="MPC Sample 顶面全图，五个区分五色：A 看与听（黄）、B 切模式（红）、C 三个旋钮（青）、D 工具与播放（绿）、E 打击垫（橙）" />
+    <a class="zone-hit zt-a" style="left:4.9%;top:3.7%;width:90.2%;height:23.1%" href="#a看与听音量--屏幕--喇叭" title="A 看与听：音量 · 屏幕 · 喇叭" aria-label="跳到 A 区解说：看与听"></a>
+    <a class="zone-hit zt-b" style="left:5.1%;top:29.5%;width:20.1%;height:53.3%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
+    <a class="zone-hit zt-c" style="left:26.7%;top:30.1%;width:46.5%;height:11.1%" href="#c三个参数旋钮-k1k3" title="C 三个参数旋钮 K1–K3" aria-label="跳到 C 区解说：三个参数旋钮 K1–K3"></a>
+    <a class="zone-hit zt-d" style="left:75.2%;top:29.5%;width:19.4%;height:53.3%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
+    <a class="zone-hit zt-e" style="left:25.3%;top:40.6%;width:49.2%;height:43.2%" href="#e16-个打击垫" title="E 16 个打击垫" aria-label="跳到 E 区解说：16 个打击垫"></a>
   </div>
 
-  <p class="zone-hint">点图上的区域，跳到那一段解说。机器背面还有 F 区（后面板接口），看 1.2 节的<a href="#fig-f">后面板图</a>。</p>
+  <div class="zone-legend">
+    <a class="zone-chip" style="background:#FFE500" href="#a看与听音量--屏幕--喇叭">A 看与听</a>
+    <a class="zone-chip" style="background:#FF3B3B;color:#fff" href="#b切模式--shift--推子">B 切模式</a>
+    <a class="zone-chip" style="background:#00E5FF" href="#c三个参数旋钮-k1k3">C 三个旋钮</a>
+    <a class="zone-chip" style="background:#69DB7C" href="#d工具--浏览--录音--播放">D 工具 · 播放</a>
+    <a class="zone-chip" style="background:#FFA94D" href="#e16-个打击垫">E 打击垫</a>
+  </div>
+
+  <p class="zone-hint">点图上的颜色，或点下面的色签，跳到那一区。</p>
 
 </div>
 
-<p><a id="s1-1"></a></p>
-
-<h2 id="11-认识这台机器">1.1 认识这台机器</h2>
+<div class="zstrip"><span class="ztag" style="background:#FFE500">A 看与听</span><p>MAIN VOLUME · B1–B3 · 屏幕 · 电平表 · 喇叭</p></div>
+<div class="zstrip"><span class="ztag" style="background:#FF3B3B;color:#fff">B 切模式</span><p>SAMPLE · SEQ · PAD FX · KNOB FX · SHIFT · PAD BANK · 推子 · ERASE · NOTE REPEAT</p></div>
+<div class="zstrip"><span class="ztag" style="background:#00E5FF">C 旋钮</span><p>K1 · K2 · K3</p></div>
+<div class="zstrip"><span class="ztag" style="background:#69DB7C">D 工具 · 播放</span><p>CHOP · LOOP · SAMPLE SELECT · ENCODER · −/+ · SAMPLE RECORD · SEQ RECORD · PLAY · STOP · MUTE · 16 LEVELS · TAP TEMPO · 麦克风</p></div>
+<div class="zstrip"><span class="ztag" style="background:#FFA94D">E 打击垫</span><p>PAD 1–16 × 8 组（Bank A–H）</p></div>
+<div class="zstrip"><span class="ztag" style="background:#B4B4BE">F 后面板</span><p>接口在机器背面，见下面「开机 · 充电 · 接口」。</p></div>
 
 <div class="concept">
 
-  <p><strong>新概念 ① 采样（Sample）</strong></p>
+  <p><strong>新概念 ① 采样</strong>：把一段声音录下来；录下来的那段声音，也叫采样。一声鼓、一句人声、唱片里的两小节，都可以是一个采样。</p>
 
-  <p>动词：把一段声音录下来。名词：录下来的那段声音。一声鼓、一句人声、唱片里的两小节，都可以是一个采样。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c01-sample.png" alt="采样示意：从一段长声音里剪下一小段，就是一个采样" class="cfig" loading="lazy" /></p>
-
-  <p><strong>新概念 ② 采样器（Sampler）</strong></p>
-
-  <p>能<strong>录声音、把声音放到键上、一敲就响</strong>的乐器。MPC Sample 有 16 个<strong>打击垫</strong>（Pad，方形橡胶键），每个垫放一个声音。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c02-sampler.png" alt="采样器示意：一个声音 → 放到某个垫上 → 敲垫出声" class="cfig" loading="lazy" /></p>
+  <p><strong>新概念 ② 采样器</strong>：能录声音、把声音放到垫上、一敲就响的乐器。敲垫有力度：轻敲声小、重敲声大。电池、喇叭、麦克风都在机器里，不接电脑也能用。</p>
 
 </div>
-
-<p><strong>和手机 / 电脑做音乐比：</strong> 用手指<strong>敲</strong>垫（轻敲声小、重敲声大）；<strong>电池、喇叭、麦克风</strong>都在机器里，不接电脑也能用（也能用 USB-C 接电脑，属于进阶）。</p>
-
-<p>MPC 系列从 1988 年的 MPC60 起就是 hip-hop 的经典工具。MPC Sample（型号 AC50，2026 年 3 月上市）是最小、最便宜的一台，外观致敬 MPC60。</p>
 
 <p>用 MPC 做 beat，永远是这四步：</p>
 
@@ -206,36 +338,18 @@
 
 <div class="concept">
 
-  <p><strong>新概念 ③ 工程（Project）</strong></p>
-
-  <p>你做的一切（声音 + 节奏 + 设置）打包在一起，叫一个<strong>工程</strong>，就像游戏存档。开机会自动载入一个<strong>示范工程（demo）</strong>，里面已有鼓声和节奏，开机就能玩。</p>
+  <p><strong>新概念 ③ 工程（Project）</strong>：你做的一切（声音 + 节奏 + 设置）打包在一起，叫一个工程，就像游戏存档。开机会自动载入一个示范工程（demo），里面已有鼓声和节奏，开机就能玩。</p>
 
   <p><img src="../../assets/img/beginner/b02-project.png" alt="一个工程里有什么：8 组 × 16 垫的声音 + 最多 128 个序列" class="cfig" loading="lazy" /></p>
 
 </div>
 
-<p>“组”和“序列”先不用记，1.6 和 1.9 节会讲。</p>
-
-
-<div class="recap">
-
-  <ul>
-    <li>采样 = 录下来的一段声音；采样器 = 敲垫就响的乐器。</li>
-    <li>工作流：采样 → 放到垫上 → 录成序列 → 串成歌曲。</li>
-    <li>工程 = 存档；开机自动载入 demo。</li>
-  </ul>
-
-</div>
+<p class="note">按键写法：<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> = 先按住 SHIFT 再按 PAD 16；转 <kbd>ENCODER</kbd> = 转大旋钮，按 <kbd>ENCODER</kbd> = 把它按下去。</p>
 
 <p><a id="s1-2"></a></p>
 
-<h2 id="12-开箱充电开关机接耳机">1.2 开箱、充电、开关机、接耳机</h2>
+<h3 id="12-开箱充电开关机接耳机">开机 · 充电 · 后面板接口</h3>
 
-<p><strong>盒子里有：</strong> 主机、USB-C 线、快速入门指南、安全与保修手册。<strong>没有充电头</strong>——用你自己的 USB-C 充电头或充电宝（建议 5V 2A 以上）。</p>
-
-<p>接口都在<strong>后面板</strong>，microSD 卡槽在<strong>左侧面</strong>：</p>
-
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-f">
 <svg class="fig" viewBox="-30 -170 980 560" role="img" aria-label="F 区 后面板" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>F 区 后面板</title>
 <defs><clipPath id="cF"><rect x="0" y="0" width="912" height="231" rx="14.4"/></clipPath></defs>
@@ -262,77 +376,34 @@
 
 <p class="gh-only"><img loading="lazy" src="../../assets/img/annotated/fig-f.jpg" alt="后面板接口：PHONES、MIDI、SYNC OUT、AUDIO OUT、AUDIO IN、REC GAIN、USB-C、POWER" /></p>
 
-<p>现在只认 3 个：<strong>POWER</strong>（电源）、<strong>USB-C</strong>（充电）、<strong>PHONES</strong>（3.5 mm 耳机孔）。其他接口后面再讲。</p>
-
-<div class="step">
-
-  <h4 id="section">动手 1 · 充电</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 给电池充电。</li>
-    <li><strong>要按什么：</strong> 用附带的 USB-C 线，把后面板 <strong>USB-C</strong> 接到充电头或充电宝。</li>
-    <li><strong>你会看到：</strong> 顶面<strong>充电图标</strong>亮；充满或没接电时熄灭。电池图标颜色 = 剩余电量：绿 100–30% · 琥珀 29–15% · 红 14–5% · <strong>红闪 = 不到 5%，马上充</strong>。</li>
-    <li><strong>常见错误：</strong> 开着机充不进——视线材和电源，<strong>可能只在关机时充电</strong>。用附带线 + 5V 2A 最稳。满电约可连续播放 5 小时（官方 FAQ 写最长 6 小时）。</li>
-  </ul>
-
-</div>
-
-<div class="step">
-
-  <h4 id="section-1">动手 2 · 开机 / 关机</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 开机，看到 demo。</li>
-    <li><strong>要按什么：</strong> 按后面板 <kbd>POWER</kbd>；关机也按它。</li>
-    <li><strong>你会看到：</strong> 屏幕亮起，自动载入 demo，按键和垫亮灯。</li>
-    <li><strong>常见错误：</strong> 怕关机丢东西——机器会<strong>后台自动保存</strong>。想留有名字的存档，见 1.13 节。</li>
-  </ul>
-
-</div>
-
-<div class="step">
-
-  <h4 id="section-2">动手 3 · 接耳机（可选）</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 用耳机听，不吵别人。</li>
-    <li><strong>要按什么：</strong> 耳机插后面板 <strong>PHONES</strong>。音量仍用顶面 <kbd>MAIN VOLUME</kbd>。</li>
-    <li><strong>你会听到：</strong> 声音从耳机出，<strong>内置喇叭自动关闭</strong>。</li>
-    <li><strong>常见错误：</strong> 拔耳机前先调小音量。插着音箱线（AUDIO OUT）时喇叭也不响。</li>
-  </ul>
-
-</div>
-
-<p class="note">固件更新（可以玩熟了再做）：USB-C 接电脑、开机，浏览器打开 <code>mpc-sample.local</code>（不行试 <code>192.168.155.1</code>）；Windows 10 用 akaipro.com 的更新程序。官方演示：<a href="https://www.youtube.com/watch?v=L8g18bvb7Sw">How to Update MPC Sample</a>（43 秒）。</p>
-
-<div class="recap">
-
-  <ul>
-    <li>USB-C 充电；电池图标红闪 = 快没电。</li>
-    <li><kbd>POWER</kbd> 开关机，会自动保存。</li>
-    <li>插耳机喇叭自动关；音量都用 <kbd>MAIN VOLUME</kbd>。</li>
-  </ul>
-
-</div>
+<ul>
+  <li><strong>POWER</strong>：开关机都按它。机器会后台自动保存，不怕关机丢东西。</li>
+  <li><strong>USB-C</strong>：充电（盒子里没有充电头，用自己的 USB-C 充电头或充电宝，5V 2A 以上）。电池图标颜色 = 剩余电量：绿 100–30% · 琥珀 29–15% · 红 14–5% · <strong>红闪 = 不到 5%，马上充</strong>。开着机可能充不进，关机充最稳。</li>
+  <li><strong>PHONES</strong>：3.5 mm 耳机孔。插耳机后内置喇叭自动关闭，音量仍用顶面 <kbd>MAIN VOLUME</kbd>。</li>
+  <li>microSD 卡槽在机身<strong>左侧面</strong>。</li>
+</ul>
 
 <p><a id="s1-3"></a></p>
 
-<h2 id="13-认识面板的-5-个区">1.3 认识面板的 5 个区</h2>
-
-<p>40 多个键<strong>不用一次记住</strong>，先记 5 个区“各管什么”：</p>
-
-<p>先看 4 分钟导览短片（原创，中文字幕）：面板 5 个区，以及每按一个键屏幕会变成什么。面板是依据官方手册绘制的示意图，屏幕画面取自官方手册。</p>
+<h2 id="13-认识面板的-5-个区"><span class="region-key">2</span>区域详细介绍</h2>
 
 <video class="local-video" controls="" preload="metadata" playsinline="" poster="../../assets/video/ch1-panel-tour-poster.jpg">
   <source src="../../assets/video/ch1-panel-tour.mp4" type="video/mp4" />
   你的浏览器不能播放此视频，请 <a href="../../assets/video/ch1-panel-tour.mp4">下载 mp4</a>。
 </video>
 
-<p class="video-note">🎬 <strong>原创短片：</strong>面板 5 区 + 按键后的屏幕（4 分钟，1080p，<a href="../../assets/video/ch1-panel-tour.mp4">下载 mp4</a>）</p>
+<p class="video-note">🎬 <strong>原创短片：</strong>面板 5 区 + 按键后的屏幕（4 分钟，1080p）</p>
+
+<div class="common-keys">
+  <span>确认：按 <kbd>ENCODER</kbd></span>
+  <span>返回：<kbd>B1</kbd>（列表页）</span>
+  <span>回主屏：<kbd>SAMPLE</kbd></span>
+  <span>撤销：<kbd>SHIFT</kbd> + <kbd>−</kbd></span>
+  <span>全停：连按两下 <kbd>STOP</kbd></span>
+</div>
 
 <h3 id="a看与听音量--屏幕--喇叭"><span class="region-key">A</span>看与听：音量 · 屏幕 · 喇叭</h3>
 
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-a">
 <svg class="fig" viewBox="140 25 1520 760" role="img" aria-label="A 区 顶部" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>A 区 顶部</title>
 <defs><clipPath id="cA"><rect x="196" y="152" width="1404" height="418" rx="18"/></clipPath></defs>
@@ -353,25 +424,16 @@
 
 <p class="gh-only"><img loading="lazy" src="../../assets/img/annotated/fig-a.jpg" alt="A 区：MAIN VOLUME、B1–B3、屏幕、电平表、喇叭" /></p>
 
-<ul>
-  <li><kbd>MAIN VOLUME</kbd>：总音量（喇叭、耳机、AUDIO OUT 都归它管）。</li>
-  <li><strong>屏幕</strong>：2.4 英寸彩屏，1.4 节专门讲。</li>
-  <li><strong>喇叭</strong>：3 W。新机喇叭上写着 REMOVE BEFORE USE 的是保护贴，可以撕掉。</li>
-</ul>
-
-<div class="concept">
-
-  <p><strong>新概念 ④ 功能键 B1–B3</strong></p>
-
-  <p>屏幕上方的 3 个小键，<strong>没有固定功能</strong>。屏幕最上面一排写着什么，它们就做什么。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c04-function-keys.png" alt="B1–B3 示意：屏幕顶部的三个标签分别对应上方的 B1、B2、B3" class="cfig" loading="lazy" /></p>
-
+<div class="btn-rows">
+  <div class="btn-row"><span class="bk"><kbd>MAIN VOLUME</kbd></span><p>总音量：喇叭、耳机、AUDIO OUT 都归它管。</p></div>
+  <div class="btn-row"><span class="bk"><kbd>B1</kbd> · <kbd>B2</kbd> · <kbd>B3</kbd></span><p>屏幕功能键：没有固定功能，屏幕最上面一排写什么，它们就做什么。</p></div>
+  <div class="btn-row"><span class="bk">屏幕</span><p>2.4″ 彩屏：看菜单和波形。第 3 部分逐页细讲。</p></div>
+  <div class="btn-row"><span class="bk">电平表 METERS</span><p>看输出 / 输入电平高低。</p></div>
+  <div class="btn-row"><span class="bk">喇叭</span><p>3 W。插耳机或接了 AUDIO OUT 后自动静音。</p></div>
 </div>
 
 <h3 id="b切模式--shift--推子"><span class="region-key">B</span>切模式 · SHIFT · 推子</h3>
 
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-b">
 <svg class="fig" viewBox="-280 575 1300 1060" role="img" aria-label="B 区 左列" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>B 区 左列</title>
 <defs><clipPath id="cB"><rect x="200" y="618" width="312" height="962" rx="19.2"/></clipPath></defs>
@@ -402,28 +464,52 @@
 
 <p class="gh-only"><img loading="lazy" src="../../assets/img/annotated/fig-b.jpg" alt="B 区：SAMPLE、SEQ、PAD FX、KNOB FX、SHIFT、PAD BANK、推子、ERASE、NOTE REPEAT" /></p>
 
-<div class="concept">
+<p><strong>模式</strong>：同样 16 个垫，在不同模式下作用不同。<strong>亮着的键 = 当前模式。</strong>迷路就按 <kbd>SAMPLE</kbd>。</p>
 
-  <p><strong>新概念 ⑤ 模式（Mode）</strong></p>
+<div class="btn-rows">
+  <div class="btn-row"><span class="bk"><kbd>SAMPLE</kbd></span><p>采样模式（主界面）：敲垫出声。<span class="sh">⇧ INPUT CONFIG 输入设置</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>SEQ</kbd></span><p>序列模式：垫 = 一段序列。<span class="sh">⇧ STEP EDIT 逐步编辑</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>PAD FX</kbd></span><p>打击垫效果。<span class="sh">⇧ FLEX BEAT 节奏变形</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>KNOB FX</kbd></span><p>旋钮效果 开 / 关。<span class="sh">⇧ FX SELECT 选效果</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>PAD BANK</kbd></span><p>切换分组 A–H。<span class="sh">⇧ 上一组</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>SHIFT</kbd></span><p>按住 = 第二功能。见下面黄框「按键基础」。</p></div>
+  <div class="btn-row"><span class="bk">推子 FADER</span><p>上下推的滑块，默认调当前垫音量；旁边 LED 越亮 = 数值越高。</p></div>
+  <div class="btn-row"><span class="bk"><kbd>ERASE</kbd></span><p>删采样 / 序列 / 音符。<span class="sh">⇧ COPY 复制</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>NOTE REPEAT</kbd></span><p>按住垫自动连打。<span class="sh">⇧ TRIPLET 三连音</span></p></div>
+</div>
 
-  <p>同样 16 个垫，在不同<strong>模式</strong>下作用不同。先认两个：</p>
+<p><a id="s1-5"></a></p>
 
-  <ul>
-    <li><kbd>SAMPLE</kbd> 采样模式：敲垫 = 出声（主界面）。</li>
-    <li><kbd>SEQ</kbd> 序列模式：敲垫 = 选一段节奏（1.9 节）。</li>
-  </ul>
+<div class="key-basics" id="key-shift">
 
-  <p><strong>亮着的键 = 当前模式。</strong> 迷路就按 <kbd>SAMPLE</kbd>。</p>
+  <h4>按键基础 · SHIFT 与第二功能</h4>
 
-  <p><img src="../../assets/img/beginner/concepts/c05-mode.png" alt="模式示意：SAMPLE 模式下垫是声音，SEQ 模式下垫是序列" class="cfig" loading="lazy" /></p>
+  <p>键和垫<strong>下方印的小字</strong>是第二功能：<strong>先按住 <kbd>SHIFT</kbd>，再按</strong>那个键，像电脑上 Shift + 数字打符号。按住 SHIFT 时，<strong>有第二功能的键亮红灯</strong>。</p>
+
+  <p><img src="../../assets/img/beginner/b05-shift.jpg" alt="SHIFT 组合键：先按住 SHIFT，再按 PAD 16 打开工程菜单" loading="lazy" /></p>
+
+  <p>试一下：按住 <kbd>SHIFT</kbd> 再按 <kbd>PAD 16</kbd> → 屏幕打开 <strong>Project 菜单</strong>。看一眼，按 <kbd>SAMPLE</kbd> 退出。顺序反了只是敲了一下垫——<strong>先按住 SHIFT</strong>。</p>
+
+  <table>
+    <thead>
+      <tr><th>组合</th><th>作用</th><th>用在</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><kbd>SHIFT</kbd> + <kbd>PAD 4</kbd></td><td>COUNT-IN 预备拍 开 / 关</td><td><a href="#s1-10">录 beat</a></td></tr>
+      <tr><td><kbd>SHIFT</kbd> + <kbd>PAD 10</kbd></td><td>REC QUANTIZE 录音量化 开 / 关</td><td><a href="#s1-10">录 beat</a></td></tr>
+      <tr><td><kbd>SHIFT</kbd> + <kbd>PAD 13</kbd></td><td>TRIM SAMPLE 永久剪掉首尾</td><td><a href="#s1-11">采声音</a></td></tr>
+      <tr><td><kbd>SHIFT</kbd> + <kbd>PAD 16</kbd></td><td>PROJECT 工程菜单（载入 / 保存 / 新建）</td><td><a href="#s1-13">保存工程</a></td></tr>
+      <tr><td><kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd></td><td>METRO 节拍器 Off / On / Record</td><td><a href="#s1-10">录 beat</a></td></tr>
+      <tr><td><kbd>SHIFT</kbd> + <kbd>−</kbd> / <kbd>+</kbd></td><td>UNDO 撤销 / REDO 重做</td><td>随时</td></tr>
+    </tbody>
+  </table>
+
+  <p>全部第二功能见 <a href="../chapters/01b-reference.html#s1-6">附录 · 功能速查</a>。</p>
 
 </div>
 
-<p>这一列还有 <kbd>SHIFT</kbd>（1.5 节）、<kbd>PAD BANK</kbd>（1.6 节）、效果键 <kbd>PAD FX</kbd> <kbd>KNOB FX</kbd>（1.12 节），和<strong>推子</strong>（上下推的滑块，默认调当前垫音量）。</p>
-
 <h3 id="c三个参数旋钮-k1k3"><span class="region-key">C</span>三个参数旋钮 K1–K3</h3>
 
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-c">
 <svg class="fig" viewBox="480 590 840 420" role="img" aria-label="C 区 K1–K3" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>C 区 K1–K3</title>
 <defs><clipPath id="cC"><rect x="535" y="628" width="724" height="200" rx="18"/></clipPath></defs>
@@ -440,21 +526,16 @@
 
 <p class="gh-only"><img loading="lazy" src="../../assets/img/annotated/fig-c.jpg" alt="C 区：K1、K2、K3 旋钮" /></p>
 
-<p>K1、K2、K3 调屏幕<strong>最下面一排</strong>的 3 个参数。屏幕写什么，它们就调什么。</p>
-
-<div class="concept">
-
-  <p><strong>新概念 ⑥ 绝对位置旋钮</strong></p>
-
-  <p>旋钮（和推子）转到哪，数值就到哪。换页后，旋钮位置可能和数值对不上，参数名旁会出现<strong>箭头</strong>：朝箭头方向转，转到箭头消失，就接管了。<strong>“转了没反应”几乎都是这个原因。</strong></p>
-
-  <p><img src="../../assets/img/beginner/concepts/c06-absolute-knob.png" alt="绝对位置旋钮示意：参数名旁出现箭头时，朝箭头方向转到箭头消失" class="cfig" loading="lazy" /></p>
-
+<div class="btn-rows">
+  <div class="btn-row"><span class="bk"><kbd>K1</kbd></span><p>调屏幕<strong>最下面一排</strong>的第 1 个参数。<span class="sh">⇧ 第二组参数</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>K2</kbd></span><p>调屏幕最下面一排的第 2 个参数。<span class="sh">⇧ 第二组参数</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>K3</kbd></span><p>调屏幕最下面一排的第 3 个参数。<span class="sh">⇧ 第二组参数</span></p></div>
 </div>
+
+<p><strong>转了没反应？</strong>旋钮（和推子）是绝对位置的：换页后位置可能和数值对不上，参数名旁会出现<strong>箭头</strong>——朝箭头方向转，转到箭头消失就接管了。</p>
 
 <h3 id="d工具--浏览--录音--播放"><span class="region-key">D</span>工具 · 浏览 · 录音 · 播放</h3>
 
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
 <figure class="fig-wrap" id="fig-d">
 <svg class="fig" viewBox="850 590 1230 1030" role="img" aria-label="D 区 右列" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>D 区 右列</title>
 <defs><clipPath id="cD"><rect x="1290" y="618" width="302" height="962" rx="16.8"/></clipPath></defs>
@@ -491,176 +572,194 @@
 
 <p class="gh-only"><img loading="lazy" src="../../assets/img/annotated/fig-d.jpg" alt="D 区：CHOP、LOOP、MUTE、16 LEVELS、SAMPLE SELECT、TAP TEMPO、MIC、ENCODER、−/+、SAMPLE RECORD、SEQ RECORD、PLAY、STOP" /></p>
 
-<p>从下往上记：</p>
-
-<ol>
-  <li><strong>播放</strong>：<kbd>PLAY</kbd> ▶ 从头放，<kbd>STOP</kbd> ■ 停（快速按两下 = 停掉所有声音）。</li>
-  <li><strong>录音</strong>：<kbd>SAMPLE RECORD</kbd> 录声音，<kbd>SEQ RECORD</kbd> 录节奏。</li>
-  <li><strong>导航</strong>：<kbd>ENCODER</kbd> 转 = 浏览 / 改值，按 = 确认；<kbd>−</kbd> <kbd>+</kbd> 减 / 加。旁边的小孔是<strong>内置麦克风</strong>。</li>
-  <li><strong>工具</strong>：<kbd>CHOP</kbd> 切片、<kbd>LOOP</kbd> 循环、<kbd>MUTE</kbd> 静音、<kbd>16 LEVELS</kbd>、<kbd>SAMPLE SELECT</kbd> 选声音、<kbd>TAP TEMPO</kbd> 定速度。本章只用后两个。</li>
-</ol>
+<div class="btn-rows">
+  <div class="btn-row"><span class="bk"><kbd>CHOP</kbd></span><p>自动切片。<span class="sh">⇧ NOTE ON 按住才响</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>MUTE</kbd></span><p>静音。<span class="sh">⇧ UNMUTE ALL 全部取消</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>LOOP</kbd></span><p>循环播放。<span class="sh">⇧ REVERSE 反向</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>16 LEVELS</kbd></span><p>一个采样铺满 16 垫。<span class="sh">⇧ TYPE 力度 / 滤波 / 音高</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>SAMPLE SELECT</kbd></span><p>打开采样浏览器，选声音。<span class="sh">⇧ SAVE SAMPLE 保存采样</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>TAP TEMPO</kbd></span><p>敲击定速。<span class="sh">⇧ METRO 节拍器</span></p></div>
+  <div class="btn-row"><span class="bk">MIC</span><p>内置麦克风（小孔）。</p></div>
+  <div class="btn-row"><span class="bk"><kbd>ENCODER</kbd></span><p>大旋钮：转 = 浏览 / 改值，<strong>按 = 确认</strong>。</p></div>
+  <div class="btn-row"><span class="bk"><kbd>−</kbd> / <kbd>+</kbd></span><p>数值减 / 加。<span class="sh">⇧ UNDO 撤销 / REDO 重做</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>SAMPLE RECORD</kbd></span><p>录采样。<span class="sh">⇧ RECALL 找回刚才的声音</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>SEQ RECORD</kbd></span><p>录序列。<span class="sh">⇧ RECALL 找回刚弹的</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>PLAY</kbd> ▶</span><p>从头播放。<span class="sh">⇧ CONTINUE 从当前位置</span></p></div>
+  <div class="btn-row"><span class="bk"><kbd>STOP</kbd> ■</span><p>停止；快速连按两下 = 停掉所有声音。</p></div>
+</div>
 
 <h3 id="e16-个打击垫"><span class="region-key">E</span>16 个打击垫</h3>
 
-<p>中间 4×4 的方块。能感应<strong>力度</strong>（敲得重声音大）和按住后的<strong>压力</strong>。编号在 1.6 节讲。</p>
+<p>中间 4×4 的方块。能感应<strong>力度</strong>（敲得重声音大）和按住后的<strong>压力</strong>。</p>
 
-<div class="step">
+<p><a id="s1-6"></a></p>
 
-  <h4 id="section-3">动手 4 · 找键游戏（1 分钟）</h4>
+<div class="key-basics" id="key-bank">
 
-  <ul>
-    <li><strong>目标：</strong> 不看图，在机器上指出键在哪个区。</li>
-    <li><strong>要做什么：</strong> 依次用手指点（不用按）：<kbd>MAIN VOLUME</kbd>（A）→ <kbd>SAMPLE</kbd>（B）→ <kbd>K2</kbd>（C）→ <kbd>PLAY</kbd>（D）→ PAD 1（E）→ <kbd>ENCODER</kbd>（D）→ <kbd>SHIFT</kbd>（B）。</li>
-    <li><strong>你会发现：</strong> 播放 / 录音在右下，模式在左上，很有规律。</li>
-    <li><strong>常见错误：</strong> 忽略 B1–B3，它们后面会常用。</li>
-  </ul>
+  <h4>按键基础 · 打击垫编号与 Bank</h4>
 
-</div>
+  <p><img src="../../assets/img/beginner/b06-pads-bank.jpg" alt="打击垫编号：1 在左下，16 在右上；PAD BANK 切换 A–H" loading="lazy" /></p>
 
-<div class="recap">
+  <p><strong>编号</strong>：PAD 1 在<strong>左下</strong>，往右 2、3、4，往上一行行到 13–16（PAD 16 在右上）。和电话键盘相反。</p>
 
-  <ul>
-    <li>A 看与听 · B 切模式 · C 三个旋钮 · D 工具 / 录音 / 播放 · E 打击垫 · 背面 F 接口。</li>
-    <li>屏幕下排 ↔ K1–K3；屏幕上排 ↔ B1–B3。</li>
-    <li>迷路就按 <kbd>SAMPLE</kbd>；旋钮没反应就看箭头。</li>
-  </ul>
+  <p><strong>Bank（组）</strong>：一共 <strong>8 组（A–H）</strong>，每组 16 个垫，最多 <strong>128 个声音</strong>。按 <kbd>PAD BANK</kbd> 换组：同样的垫，换一批声音。按住 <kbd>PAD BANK</kbd> 再按 PAD 1–8 可以直达某组；<kbd>SHIFT</kbd> + <kbd>PAD BANK</kbd> = 上一组。当前组显示在 MAIN VOLUME 旁边。</p>
+
+  <p>练一遍：按 <kbd>SAMPLE</kbd> → 从 PAD 1 敲到 PAD 16，轻、重各敲一次 → 按 <kbd>PAD BANK</kbd> 换组再敲。垫闪却没声 = 在 SEQ 模式，按 <kbd>SAMPLE</kbd> 回来；轻重一样响 = 开了 FULL LEVEL 满力度（<kbd>SHIFT</kbd> + <kbd>PAD 1</kbd> 关）。</p>
 
 </div>
+
+<p><strong>找键游戏（1 分钟）</strong>：不看图，用手指依次点出（不用按）：<kbd>MAIN VOLUME</kbd> → <kbd>SAMPLE</kbd> → <kbd>K2</kbd> → <kbd>PLAY</kbd> → PAD 1 → <kbd>ENCODER</kbd> → <kbd>SHIFT</kbd>。播放 / 录音在右下，模式在左上，很有规律。</p>
 
 <p><a id="s1-4"></a></p>
 
-<h2 id="14-认识小屏幕每个页面显示什么">1.4 认识小屏幕：每个页面显示什么</h2>
+<h2 id="14-认识小屏幕每个页面显示什么"><span class="region-key">3</span>实时机器：看懂小屏幕</h2>
 
-<p>屏幕只有 2.4 英寸，但信息很多。先记住<strong>三条规律</strong>，每个页面都适用：</p>
+<section class="live-panel" id="live-box" aria-label="实时机器">
+  <div class="live-head">
+    <span class="live-title">🖥 实时机器：接上你的 MPC Sample</span>
+    <span class="live-conn"><span class="live-dot bad" id="live-dot"></span><span id="live-conn-text">未连接 · 现在显示的是静态截图</span></span>
+  </div>
+  <div class="live-layout">
+    <div class="live-screen">
+      <img id="live-fallback" src="../../assets/img/screens/live-sample-static.png" alt="Sample 页屏幕截图：Trim 页签、采样名、双声道波形和下排 Start / End / Loop" width="320" height="240" />
+      <canvas id="live-canvas" width="320" height="240" hidden></canvas>
+      <p class="live-note" id="live-note">把你的 MPC Sample 开机、用 USB 线连上这台电脑，这张截图就会变成机器的实时画面：你在机器上切页、换采样，这里都会跟着变。读这一章时它会一直陪在这里。</p>
+    </div>
+    <div class="live-side">
+      <dl class="live-state">
+        <div><dt>当前页面</dt><dd id="live-page">—</dd></div>
+        <div><dt>选中采样</dt><dd id="live-sel">—</dd></div>
+        <div><dt>状态栏</dt><dd id="live-status">—</dd></div>
+      </dl>
+      <p class="live-step-hint" id="live-step-hint" hidden></p>
+    </div>
+  </div>
+</section>
 
-<ol>
-  <li><strong>最上面一排</strong> = <kbd>B1</kbd> <kbd>B2</kbd> <kbd>B3</kbd> 的作用（从左到右）。</li>
-  <li><strong>最下面一排</strong> = <kbd>K1</kbd> <kbd>K2</kbd> <kbd>K3</kbd> 调的参数，下面的细条 = 当前数值。</li>
-  <li><strong>右下角小箭头 ⇧</strong> = 按住 <kbd>SHIFT</kbd> 还有另一组参数。</li>
-</ol>
-
-<p>截图来自官方手册 v1.3.0，红色编号是本教程加的。手册没写明、靠截图推断的地方标“（推断）”。固件更新后画面可能略有不同。</p>
+<p>屏幕只有 2.4 英寸，看法只有一条：<strong>最上面一排归 B1–B2–B3，最下面一排归 K1–K2–K3</strong>，位置一一对应。右下角小箭头 ⇧ = 按住 <kbd>SHIFT</kbd> 还有第二组参数。下面逐页看，先看主屏幕。</p>
 
 <p><a id="screen-sample"></a></p>
 
-<h3 id="sample-模式主屏幕按-sample">Sample 模式主屏幕（按 <kbd>SAMPLE</kbd>）</h3>
+<h3 id="sample-模式主屏幕按-sample">Sample 主屏幕（按 <kbd>SAMPLE</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s01-sample-main.png" alt="Sample 模式主屏幕（Trim 页）标注图，编号 1–11" class="sfig" loading="lazy" /></p>
+<div class="pos-map" aria-label="Sample 页：屏幕上下两排与 B1–B3、K1–K3 的位置对照">
+  <div class="pos-row">
+    <div class="pos-key">B1<small>Trim 页签</small></div>
+    <div class="pos-key">B2<small>Tune 页签</small></div>
+    <div class="pos-key">B3<small>Filter 页签</small></div>
+  </div>
+  <div class="pos-arrow">▼ ▼ ▼</div>
+  <div class="pos-screen"><img src="../../assets/img/screens/src/sample-trim.png" alt="Sample 页实拍：上排 Trim / Tune / Filter，中间波形，下排 Start / End / Loop" loading="lazy" /></div>
+  <div class="pos-arrow">▲ ▲ ▲</div>
+  <div class="pos-row">
+    <div class="pos-key">K1<small>Start 起点</small></div>
+    <div class="pos-key">K2<small>End 终点</small></div>
+    <div class="pos-key">K3<small>Loop 循环点</small></div>
+  </div>
+</div>
 
-<ol>
-  <li><strong>Trim / Tune / Filter</strong>：分别对应 B1 / B2 / B3，白底的是当前页。同一个键多按几次会轮换：B1 = Trim → Mix → Amp Env，B2 = Tune → Play，B3 = Filter → Filt Env。</li>
-  <li><strong>标签下的小横条</strong>：数量和该键能轮换的页数一样（B1 下 3 条，B2、B3 下各 2 条），亮的那条 = 第几页（推断）。</li>
-  <li><strong>A01 + 名字</strong>：当前垫上的采样名。A01 应是“A 组 1 号垫”（推断）。</li>
-  <li><strong>四个小图标</strong>：♩ Note On（按住才响）、← Reverse（反向）、循环图标 = Loop、16 = 16 Levels。功能打开时对应图标会亮。</li>
-  <li><strong>波形</strong>：声音的“形状图”。截图里的立体声采样显示为上下两条。</li>
-  <li><strong>左边竖条</strong>：这个采样的音量（Mix 页的 Volume）。</li>
-  <li><strong>右边竖条</strong>：声像 Pan（偏左还是偏右）。</li>
-  <li><strong>下排 Start / End / Loop</strong>：K1 / K2 / K3 正在调的参数——起点、终点、循环点。</li>
-  <li><strong>框住 Start 的白框</strong>：按 <kbd>ENCODER</kbd> 可在下排三个参数间切换，再转 ENCODER 或按 −/+ 改值；白框应是“现在 ENCODER 调的那个”（推断）。</li>
-  <li><strong>锁形图标</strong>：应是 Loop Lock 状态——循环点锁在起点上，<kbd>SHIFT</kbd> + <kbd>B1</kbd> 开关（推断）。</li>
-  <li><strong>⇧</strong>：按住 SHIFT，下排变成第二组参数（Trim 页是缩放波形 Zoom）。</li>
-</ol>
+<p class="caption" style="text-align:center">看屏幕上排，就摸上方 B1–B3；看屏幕下排，就转下方 K1–K3。</p>
 
-<p>垫被静音时，波形变灰、敲了不响。</p>
+<div class="live-terms">
+  <div class="live-term">
+    <strong>Trim / Tune / Filter（上排三个页签）</strong>
+    <p>Sample 页的三组编辑页：Trim 管起止和循环，Tune 管音高，Filter 管滤波（声音的亮和暗）。白底 = 当前页。按 <kbd>B1</kbd> / <kbd>B2</kbd> / <kbd>B3</kbd> 切换；同键多按几次轮换下一组（B1：Trim → Mix → Amp Env，B2：Tune → Play，B3：Filter → Filt Env）。只换页，不改声音。</p>
+  </div>
+  <div class="live-term">
+    <strong>A01 + 采样名</strong>
+    <p>当前选中的垫编号 + 它上面的采样（A01 = A 组 1 号垫）。敲任意一个垫就切到那个垫，波形和下排参数跟着换。</p>
+  </div>
+  <div class="live-term">
+    <strong>波形区（中间）</strong>
+    <p>采样的「形状图」：立体声是上下两条 = 左 / 右声道，竖线 = Start 位置。左边竖条 = 这个采样的音量，右边竖条 = 声像（偏左还是偏右）。垫被静音时波形变灰、敲了不响。</p>
+  </div>
+  <div class="live-term">
+    <strong>四个小图标（采样名右边）</strong>
+    <p>状态灯，亮 = 已打开：♩ Note On（按住才响）、← Reverse（倒着播）、循环图标 Loop、16 = 16 Levels。图标只显示状态，开关在各自的设置页（如 Note On、Reverse 在 B2 轮换到的 Play 页）。</p>
+  </div>
+  <div class="live-term">
+    <strong>Start / End（下排左、中）</strong>
+    <p><kbd>K1</kbd> / <kbd>K2</kbd> 调采样的起点和终点，下面的细条是当前数值。按 <kbd>ENCODER</kbd> 在下排三个参数间切换（白框框住的 = 当前选中），转 ENCODER 或按 − / + 改值。敲垫只播 Start 到 End 之间这一段。</p>
+  </div>
+  <div class="live-term">
+    <strong>Loop（下排右，蓝色字）</strong>
+    <p><kbd>K3</kbd> 调循环点；显示成蓝色 = 循环已打开。播放到循环点后回到 Start 继续，适合把一小段声音拉成持续的音色。</p>
+  </div>
+</div>
 
 <p><a id="screen-chop"></a></p>
 
 <h3 id="chop-切片时sample-模式下按-chop">Chop 切片时（Sample 模式下按 <kbd>CHOP</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s02-chop.png" alt="Chop 模式屏幕标注图，编号 1–4" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/src/sample-chop.png" alt="Chop 页实拍：波形被竖线切成几片，下排是这片的起止点和切法" class="sfig" loading="lazy" /></p>
 
-<ol>
-  <li><strong>Trim 变成 Chop</strong>：说明正在切片，再按 <kbd>CHOP</kbd> 回到 Trim。</li>
-  <li><strong>右上数字</strong>：当前选中的切片编号（推断）。切好后，敲 PAD 5 就是第 5 片。</li>
-  <li><strong>竖线</strong>：切点。每两条竖线之间是一片。</li>
-  <li><strong>下排</strong>：K1 / K2 = 这一片的起点 / 终点，K3 = Chop Type 切法（Threshold 自动、Regions 4/8/16 等分、Manual 手动）。</li>
-</ol>
-
-<p>切片编辑<strong>不能撤销</strong>，第三章细讲。</p>
+<ul>
+  <li><strong>Trim 变成 Chop</strong> = 正在切片；再按 <kbd>CHOP</kbd> 回到 Trim。</li>
+  <li><strong>竖线</strong> = 切点，每两条竖线之间是一片；切好后敲 PAD 5 就是第 5 片。</li>
+  <li><strong>下排</strong>：K1 / K2 = 这一片的起点 / 终点，K3 = Chop Type 切法（Threshold 自动 · Regions 4/8/16 等分 · Manual 手动）。</li>
+  <li>切片编辑<strong>不能撤销</strong>，第三章细讲。</li>
+</ul>
 
 <p><a id="screen-browser"></a></p>
 
 <h3 id="采样浏览器按-sample-select">采样浏览器（按 <kbd>SAMPLE SELECT</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s03-browser.png" alt="采样浏览器屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/src/browser-folders.png" alt="采样浏览器实拍：文件夹列表，高亮行是当前选中的文件夹" class="sfig" loading="lazy" /></p>
 
-<ol>
-  <li><strong>Back</strong>（B1）：回上一级文件夹。</li>
-  <li><strong>Internal</strong>（B2）：在内部存储和 microSD 卡之间切换。</li>
-  <li><strong>Preview</strong>（B3）：自动试听开 / 关。</li>
-  <li><strong>高亮行</strong>：当前选中的声音。转 ENCODER 移动，按 ENCODER 载入到垫上。</li>
-  <li><strong>底部路径</strong>：你在哪个文件夹（这里是 Samples/Snares）。</li>
-  <li><strong>右侧滚动条</strong>：列表还有多长。</li>
-</ol>
+<ul>
+  <li><strong>上排</strong>：B1 Back 回上一级 · B2 Internal 在内部存储和 microSD 卡之间切换 · B3 Preview 自动试听 开 / 关。</li>
+  <li><strong>高亮行</strong> = 当前选中的声音 / 文件夹。转 <kbd>ENCODER</kbd> 移动，按 <kbd>ENCODER</kbd> 打开文件夹或把声音载入到垫上。</li>
+  <li><strong>底部一行</strong> = 你在哪个文件夹；右侧滚动条 = 列表还有多长。</li>
+</ul>
 
 <p><a id="screen-record"></a></p>
 
 <h3 id="采样录音按-sample-record">采样录音（按 <kbd>SAMPLE RECORD</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s04-sample-record.png" alt="采样录音屏幕标注图，编号 1–8" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/src/sample-record.png" alt="采样录音页实拍：Tap pad to record，下排 Mic / Free / Thresh" class="sfig" loading="lazy" /></p>
 
-<ol>
-  <li><strong>喇叭图标</strong>：内置喇叭状态，<strong>打叉 = 喇叭关了</strong>（比如用内置麦克风录音，或插着耳机 / 音箱线）。</li>
-  <li><strong>Auto</strong>：监听设置，B1 在 Off / Auto / On 间切换。</li>
-  <li><strong>右上波形图标</strong>：输入声音超过门槛（Threshold）时亮起。</li>
+<ul>
   <li><strong>Tap pad to record</strong>：敲一个垫就开录。</li>
-  <li><strong>Mic</strong>（K1）：录音来源。</li>
-  <li><strong>Free</strong>（K2）：录音长度。Free = 不限，Seq = 和当前序列一样长。</li>
-  <li><strong>Thresh</strong>（K3）：门槛，声音大过它才自动开录。</li>
-  <li><strong>正在录音</strong>：屏幕显示 Recording 和垫号（截图中 A05 应是正在录的垫，推断）。</li>
-</ol>
+  <li><strong>下排</strong>：K1 = 录音来源（先用 Mic）· K2 = 长度（Free 不限，Seq 和当前序列一样长）· K3 = 门槛 Thresh（声音大过它才自动开录）。</li>
+  <li><strong>左上喇叭图标打叉</strong> = 喇叭关了（用内置麦克风录音，或插着耳机 / 音箱线时）。右上波形图标在输入声音超过门槛时亮起。</li>
+  <li><strong>Auto</strong>（B1）：监听设置，Off / Auto / On 切换。</li>
+</ul>
 
 <p><a id="screen-seq"></a></p>
 
 <h3 id="seq-序列模式按-seq">Seq 序列模式（按 <kbd>SEQ</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s05-seq.png" alt="Seq 模式屏幕标注图，编号 1–14" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/src/seq-record.png" alt="Seq 页实拍（录音中）：BPM 90.00、Seq A09、4/4、节拍器 On、1234 预备拍红色、红色位置条、下排 2 Bars / Q 1/16 / RT Swing" class="sfig" loading="lazy" /></p>
 
-<ol>
-  <li><strong>90.00</strong>：速度 BPM。按住 B1 + 转 ENCODER 修改。</li>
-  <li><strong>BPM: SEQ</strong>（B2）：SEQ = 每个序列有自己的速度；GBL = 所有序列共用一个速度。</li>
-  <li><strong>Rec Quant</strong>（B3）：录音量化开 / 关。</li>
-  <li><strong>Seq A01</strong>：当前序列名。</li>
-  <li><strong>4/4</strong>：拍号（SHIFT + K2 改，所有序列共用）。</li>
-  <li><strong>节拍器图标 + On</strong>：节拍器状态 Off / On / Record（SHIFT + TAP TEMPO）。</li>
-  <li><strong>1234</strong>：预备拍。<strong>红 = 开，灰 = 关</strong>（SHIFT + PAD 4）。</li>
-  <li><strong>▶</strong>：正在播放。</li>
-  <li><strong>001 . 04</strong>：播放位置。手册只说这里是“当前时间”，按“第几小节 . 第几拍”读最直观；右边小数字是拍内更细的刻度（推断）。</li>
-  <li><strong>4 Bars</strong>（K1）：序列长度（小节）。</li>
-  <li><strong>Q 1/16</strong>（K2）：量化格子大小。</li>
-  <li><strong>RT Swing</strong>（K3）：实时摇摆（1.10 节）。</li>
-  <li><strong>⇧</strong>：按住 SHIFT：K1 = 任意长度 1–128 小节，K2 = 拍号，K3 = 节拍器音量。</li>
-  <li><strong>录音中</strong>：这一条变红，▶ 变成 ●。</li>
-</ol>
+<ul>
+  <li><strong>90.00</strong> = 速度 BPM。按住 B1 + 转 <kbd>ENCODER</kbd> 修改；B2 = BPM 跟随方式（SEQ 每序列各自 · GBL 全局共用）；B3 = 录音量化 开 / 关。</li>
+  <li><strong>Seq A09</strong> = 当前序列名；<strong>4/4</strong> = 拍号（SHIFT + K2 改）。</li>
+  <li><strong>节拍器图标 + On</strong> = 节拍器状态（SHIFT + TAP TEMPO 切 Off / On / Record）；<strong>1234</strong> = 预备拍，红 = 开、灰 = 关（SHIFT + PAD 4）。</li>
+  <li><strong>中间长条</strong> = 播放位置（第几小节 . 第几拍）；播放时 ▶，录音时变红、● 亮。</li>
+  <li><strong>下排</strong>：K1 = 序列长度（小节）· K2 = 量化 Q · K3 = RT Swing。按住 SHIFT：K1 = 任意长度 1–128 小节，K2 = 拍号，K3 = 节拍器音量。</li>
+</ul>
 
 <p><a id="screen-fx"></a></p>
 
 <h3 id="pad-fx按-pad-fx">Pad FX（按 <kbd>PAD FX</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s06-pad-fx.png" alt="Pad FX 屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/src/pad-fx.png" alt="Pad FX 页实拍：4×4 效果格子，下排是当前效果的三个参数" class="sfig" loading="lazy" /></p>
 
-<ol>
-  <li><strong>Latch</strong>（B1）：把效果“锁住”，不用一直按。</li>
-  <li><strong>4×4 格子 = 16 个垫</strong>，位置一一对应。最上一排 = PAD 13–16（Beat Repeat、Rev Stepper、Delay、Reverb）。</li>
-  <li><strong>最下一排</strong> = PAD 1–4（Half Speed、Chorus、Flanger、Phaser）。</li>
-  <li><strong>橙框高亮的格子</strong>：当前选中 / 正在用的效果（推断）。</li>
-  <li><strong>下排</strong>：这个效果的 3 个参数（Phaser 是 Feedback / Speed / Range）。</li>
-</ol>
+<ul>
+  <li><strong>4×4 格子 = 16 个垫</strong>，位置一一对应。最上一排 = PAD 13–16（Beat Repeat、Rev Stepper、Delay、Reverb），最下一排 = PAD 1–4（Half Speed、Chorus、Flanger、Phaser）。</li>
+  <li><strong>Latch</strong>（B1）：把效果锁住，不用一直按着。</li>
+  <li><strong>下排</strong> = 当前效果的 3 个参数，K1–K3 调。</li>
+</ul>
 
 <h3 id="knob-fx按-knob-fx选效果按-shift--knob-fx">Knob FX（按 <kbd>KNOB FX</kbd>；选效果按 <kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s07-knob-fx.png" alt="Knob FX 屏幕标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/src/knob-fx-select.png" alt="Knob FX 选效果页实拍：效果列表，下排是选中效果的参数" class="sfig" loading="lazy" /></p>
 
-<ol>
-  <li><strong>KNOB FX 开着时</strong>：下排变成效果参数（截图里是橙色），K1–K3 专门调效果。按下 KNOB FX 时屏幕还会短暂显示效果名。</li>
-  <li><strong>左上</strong>：当前效果名。</li>
-  <li><strong>All Pads</strong>（B2）：效果作用到所有垫。</li>
-  <li><strong>Bypass</strong>（B3）：旁通，暂时关掉效果。</li>
-  <li><strong>列表</strong>：可选的效果。转 ENCODER 选，按 ENCODER 载入。</li>
-  <li><strong>下排</strong>：这个效果的参数。</li>
-</ol>
-
-<p>在这一页敲垫，可以选哪些垫受影响（亮 = 受影响）。</p>
+<ul>
+  <li><strong>KNOB FX 开着时</strong>：下排变成效果参数（橙色），K1–K3 专门调效果；左上角是当前效果名。</li>
+  <li><strong>选效果</strong>：转 <kbd>ENCODER</kbd> 选，按 <kbd>ENCODER</kbd> 载入。B2 All Pads = 作用到所有垫，B3 Bypass = 旁通，暂时关掉效果。</li>
+  <li>在这一页<strong>敲垫</strong>，可以选哪些垫受影响（亮 = 受影响）。</li>
+</ul>
 
 <p><a id="screen-song"></a></p>
 
@@ -668,32 +767,27 @@
 
 <p>把几段序列排成一首歌（本章不用，先认个脸）。</p>
 
-<p><img src="../../assets/img/screens/s08-song.png" alt="Song 页屏幕标注图，编号 1–5" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/src/song.png" alt="Song 页实拍：序列播放顺序列表，每行是序列名、速度、小节数" class="sfig" loading="lazy" /></p>
 
-<ol>
-  <li><strong>Export</strong>（B1）：导出成音频，或导出成一个新序列。</li>
-  <li><strong>Remove</strong>（B2）：删掉高亮的那一段。</li>
-  <li><strong>Insert</strong>（B3）：把你用垫选中的序列插进来。</li>
-  <li><strong>列表</strong>：歌曲的播放顺序，每行 = 序列名 · 速度 · 小节数。</li>
-  <li><strong>高亮行</strong>：当前位置，转 ENCODER 移动。</li>
-</ol>
+<ul>
+  <li><strong>上排</strong>：B1 Export 导出（成音频或一个新序列）· B2 Remove 删掉高亮那一段 · B3 Insert 把你用垫选中的序列插进来。</li>
+  <li><strong>列表</strong> = 歌曲的播放顺序，每行 = 序列名 · 速度 · 小节数；高亮行 = 当前位置，转 <kbd>ENCODER</kbd> 移动。</li>
+</ul>
 
 <p><a id="screen-project"></a></p>
 
 <h3 id="project-菜单与起名页shift--pad-16">Project 菜单与起名页（<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd>）</h3>
 
-<p><img src="../../assets/img/screens/s09-project.png" alt="Project 菜单与起名页标注图，编号 1–6" class="sfig" loading="lazy" /></p>
+<div class="scr-duo">
+  <img src="../../assets/img/screens/src/project-menu.png" alt="Project 菜单实拍：Load Project、Save Project、New Project、SD Card Access" loading="lazy" />
+  <img src="../../assets/img/screens/src/name-entry.png" alt="起名页实拍：名字输入框，上排 Cancel / Erase / Do It!" loading="lazy" />
+</div>
 
-<ol>
-  <li><strong>四个选项</strong>：Load Project 载入 · Save Project 保存 · New Project 新建 · SD Card Access 读卡。转 ENCODER 选，按下确认。</li>
-  <li><strong>Cancel</strong>（B1）：不保存，退出。</li>
-  <li><strong>Erase</strong>（B2）：删掉当前字符（SHIFT + B2 全删）。</li>
-  <li><strong>Do It!</strong>（B3）：确认。</li>
-  <li><strong>名字框</strong>：白块 = 正在输入的位置。</li>
-  <li><strong>右下角</strong>：保存到哪里。截图里有时写 Internal，有时写 Save to External；手册正文没说怎么切换。</li>
-</ol>
-
-<p>保存工程、保存采样、导出歌曲都用这个起名页。</p>
+<ul>
+  <li><strong>四个选项</strong>：Load Project 载入 · Save Project 保存 · New Project 新建 · SD Card Access 读卡。转 <kbd>ENCODER</kbd> 选，按下确认。</li>
+  <li><strong>起名页</strong>：B1 Cancel 不保存退出 · B2 Erase 删字符（SHIFT + B2 全删）· B3 Do It! 确认。白块 = 正在输入的位置。</li>
+  <li>保存工程、保存采样、导出歌曲，都用这个起名页。</li>
+</ul>
 
 <h3 id="其他页面">其他页面</h3>
 
@@ -701,641 +795,178 @@
 
 <p>MPC Sample <strong>没有叫 Settings 的总设置页</strong>，设置分在几个 SHIFT 菜单里：Input Config、Fader、Time Correct、MIDI Config（恢复出厂也在这里）。全部参数见 <a href="../chapters/01b-reference.html#s1-8">附录 R.8</a>。</p>
 
-<div class="step">
+<p><a id="s1-flows"></a></p>
 
-  <h4 id="section-4">动手 5 · 翻翻页面</h4>
+<h2 id="上手教程跟着做"><span class="region-key">4</span>第一次上手</h2>
 
-  <ul>
-    <li><strong>目标：</strong> 看懂“上排 = B1–B3、下排 = K1–K3”。</li>
-    <li><strong>要按什么：</strong> <kbd>SAMPLE</kbd> → 敲 PAD 1 → 按 <kbd>B1</kbd> 三次，看 Trim → Mix → Amp Env；再按 <kbd>SEQ</kbd>，找到 BPM、序列名、1234 图标。</li>
-    <li><strong>你会看到：</strong> 每按一次 B1，顶部标签和下排参数一起变。</li>
-    <li><strong>常见错误：</strong> 在 Mix / Amp Env 页转 K1 却想调起点——先按 B1 回到 Trim。</li>
-  </ul>
+<p>先跟着两个流程做完两件大事，再用下面的卡片逐个练。每一步只做一次按键动作；接上机器时，固定的<strong>小屏幕</strong>会核对你在哪一步——状态对上了打 ✓，你再点「下一步」，不会自己往下跳；没连机器照图文走也行，「跳过这步」一直在。SHIFT 的第二功能不单开课：流程里用到的那一步顺手教。</p>
 
-</div>
+<div class="flow" id="flow-sampling"></div>
 
-<div class="recap">
-
-  <ul>
-    <li>上排 ↔ B1–B3，下排 ↔ K1–K3，⇧ = 按住 SHIFT 还有更多。</li>
-    <li>Sample 页看波形和采样参数；Seq 页看速度、序列名、节拍器、预备拍、位置。</li>
-    <li>没有总设置页；设置在 SHIFT 菜单里。</li>
-  </ul>
-
-</div>
-
-<p><a id="s1-5"></a></p>
-
-<h2 id="15-shift-与第二功能">1.5 SHIFT 与第二功能</h2>
-
-<div class="concept">
-
-  <p><strong>新概念 ⑦ 第二功能（SHIFT 功能）</strong></p>
-
-  <p>键和垫<strong>下方</strong>印的小字（如 PAD 16 下的 <strong>PROJECT</strong>）是<strong>第二功能</strong>：<strong>按住 <kbd>SHIFT</kbd> 再按</strong>才触发，像电脑上 Shift + 数字打符号。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c07-shift.png" alt="第二功能示意：直接按 PAD 16 = 敲垫；按住 SHIFT 再按 = PROJECT 菜单" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p><img src="../../assets/img/beginner/b05-shift.jpg" alt="SHIFT 组合键：先按住 SHIFT，再按 PAD 16 打开工程菜单" /></p>
-
-<div class="step">
-
-  <h4 id="section-5">动手 6 · 看看哪些键有第二功能</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 学会“按住 SHIFT”。</li>
-    <li><strong>要按什么：</strong> 按住 <kbd>SHIFT</kbd> 不放，看面板；再同时按 <kbd>PAD 16</kbd>，然后松开。</li>
-    <li><strong>你会看到：</strong> 按住 SHIFT 时，<strong>有第二功能的键亮红灯</strong>；按 PAD 16 后屏幕打开 <strong>Project 菜单</strong>。看一眼，按 <kbd>SAMPLE</kbd> 退出。</li>
-    <li><strong>常见错误：</strong> 顺序反了只是敲了一下垫。<strong>先按住 SHIFT。</strong></li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r06-project-menu.png" alt="按住 SHIFT 再按 PAD 16 → 屏幕变成 Project 菜单" class="rfig" loading="lazy" /></p>
-
-</div>
-
-<p>本章用到这几个（全部见 <a href="../chapters/01b-reference.html#s1-6">速查</a>）：</p>
-
-<!-- 由 tools/build_figures.py 生成，请修改 _data/*.yml 后重新生成 -->
-<figure class="fig-wrap" id="fig-e">
-<svg class="fig" viewBox="504 808 785 800" role="img" aria-label="16 打击垫 SHIFT 功能" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>16 打击垫 SHIFT 功能</title>
-<defs><clipPath id="clipE"><rect x="514" y="818" width="765" height="780" rx="16"/></clipPath></defs>
-<image href="../../assets/img/mpc-sample-panel.jpg" x="120" y="85" width="1556" height="1806" preserveAspectRatio="none" clip-path="url(#clipE)"/>
-<g><rect x="540" y="884" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="548" cy="886" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="548" y="893" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">13</text><text x="626" y="918" font-size="17" font-weight="900" fill="#FFE500" text-anchor="middle">TRIM SAMPLE</text><text x="626" y="949" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">修剪采样</text></g>
-<g><rect x="724" y="884" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="732" cy="886" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="732" y="893" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">14</text><text x="810" y="918" font-size="17" font-weight="900" fill="#FFE500" text-anchor="middle">TIME CORRECT</text><text x="810" y="949" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">时值校正</text></g>
-<g><rect x="910" y="884" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="918" cy="886" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="918" y="893" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">15</text><text x="996" y="918" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">WARP</text><text x="996" y="949" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">伸缩模式</text></g>
-<g><rect x="1094" y="884" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="1102" cy="886" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="1102" y="893" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">16</text><text x="1180" y="918" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">PROJECT</text><text x="1180" y="949" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">工程菜单</text></g>
-<g><rect x="540" y="1070" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="548" cy="1072" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="548" y="1079" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">9</text><text x="626" y="1104" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">FADER</text><text x="626" y="1135" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">推子设置</text></g>
-<g><rect x="724" y="1070" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="732" cy="1072" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="732" y="1079" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">10</text><text x="810" y="1104" font-size="17" font-weight="900" fill="#FFE500" text-anchor="middle">REC QUANTIZE</text><text x="810" y="1135" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">录音量化</text></g>
-<g><rect x="910" y="1070" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="918" cy="1072" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="918" y="1079" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">11</text><text x="996" y="1104" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">RESAMPLE</text><text x="996" y="1135" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">重采样</text></g>
-<g><rect x="1094" y="1070" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="1102" cy="1072" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="1102" y="1079" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">12</text><text x="1180" y="1104" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">SONG</text><text x="1180" y="1135" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">歌曲模式</text></g>
-<g><rect x="540" y="1254" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="548" cy="1256" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="548" y="1263" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">5</text><text x="626" y="1288" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">COMPRESSOR</text><text x="626" y="1319" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">压缩器</text></g>
-<g><rect x="724" y="1254" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="732" cy="1256" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="732" y="1263" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">6</text><text x="810" y="1288" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">HALF SPEED</text><text x="810" y="1319" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">半速</text></g>
-<g><rect x="910" y="1254" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="918" cy="1256" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="918" y="1263" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">7</text><text x="996" y="1288" font-size="17" font-weight="900" fill="#FFE500" text-anchor="middle">DOUBLE SPEED</text><text x="996" y="1319" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">倍速</text></g>
-<g><rect x="1094" y="1254" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="1102" cy="1256" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="1102" y="1263" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">8</text><text x="1180" y="1288" font-size="17" font-weight="900" fill="#FFE500" text-anchor="middle">MIDI CONFIG</text><text x="1180" y="1319" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">MIDI 设置</text></g>
-<g><rect x="540" y="1438" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="548" cy="1440" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="548" y="1447" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">1</text><text x="626" y="1472" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">FULL LEVEL</text><text x="626" y="1503" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">满力度</text></g>
-<g><rect x="724" y="1438" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="732" cy="1440" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="732" y="1447" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">2</text><text x="810" y="1472" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">HALF SEQ</text><text x="810" y="1503" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">序列减半</text></g>
-<g><rect x="910" y="1438" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="918" cy="1440" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="918" y="1447" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">3</text><text x="996" y="1472" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">DOUBLE SEQ</text><text x="996" y="1503" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">序列加倍</text></g>
-<g><rect x="1094" y="1438" width="160" height="78" rx="8" fill="#0B0B0D" fill-opacity="0.84" stroke="#FFE500" stroke-width="2.5"/><circle cx="1102" cy="1440" r="19" fill="#FF3B3B" stroke="#0B0B0D" stroke-width="3"/><text x="1102" y="1447" font-size="20" font-weight="900" fill="#F5F5F5" text-anchor="middle">4</text><text x="1180" y="1472" font-size="20" font-weight="900" fill="#FFE500" text-anchor="middle">COUNT-IN</text><text x="1180" y="1503" font-size="21" font-weight="700" fill="#F5F5F5" text-anchor="middle">预备拍</text></g>
-</svg>
-</figure>
-
-<p class="gh-only"><img loading="lazy" src="../../assets/img/annotated/fig-e.jpg" alt="16 个打击垫下方印的 SHIFT 第二功能" /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>组合</th>
-      <th>作用</th>
-      <th>用在</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><kbd>SHIFT</kbd> + <kbd>PAD 4</kbd></td>
-      <td>COUNT-IN 预备拍 开/关</td>
-      <td>1.10</td>
-    </tr>
-    <tr>
-      <td><kbd>SHIFT</kbd> + <kbd>PAD 10</kbd></td>
-      <td>REC QUANTIZE 录音量化 开/关</td>
-      <td>1.10</td>
-    </tr>
-    <tr>
-      <td><kbd>SHIFT</kbd> + <kbd>PAD 13</kbd></td>
-      <td>TRIM SAMPLE 永久剪掉首尾</td>
-      <td>1.11</td>
-    </tr>
-    <tr>
-      <td><kbd>SHIFT</kbd> + <kbd>PAD 16</kbd></td>
-      <td>PROJECT 工程菜单（载入 / <strong>保存</strong> / 新建）</td>
-      <td>1.13</td>
-    </tr>
-    <tr>
-      <td><kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd></td>
-      <td>METRO 节拍器 Off / On / Record</td>
-      <td>1.10</td>
-    </tr>
-    <tr>
-      <td><kbd>SHIFT</kbd> + <kbd>−</kbd> / <kbd>+</kbd></td>
-      <td>UNDO 撤销 / REDO 重做</td>
-      <td>随时</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="recap">
-
-  <ul>
-    <li>键下小字 = 第二功能；<strong>先按住</strong> <kbd>SHIFT</kbd> 再按。</li>
-    <li>按住 SHIFT 时，有第二功能的键亮红灯。</li>
-    <li>最常用：<kbd>SHIFT</kbd> + <kbd>−</kbd> = 撤销。</li>
-  </ul>
-
-</div>
-
-<p><a id="s1-6"></a></p>
-
-<h2 id="16-打击垫与-bank">1.6 打击垫与 Bank</h2>
-
-<p><img src="../../assets/img/beginner/b06-pads-bank.jpg" alt="打击垫编号：1 在左下，16 在右上；PAD BANK 切换 A–H" /></p>
-
-<p><strong>编号：</strong> PAD 1 在<strong>左下</strong>，往右 2、3、4，往上一行行到 13–16（PAD 16 在右上）。和电话键盘相反。</p>
-
-<div class="concept">
-
-  <p><strong>新概念 ⑧ Bank（组）</strong></p>
-
-  <p>一共 <strong>8 组（A–H）</strong>，每组 16 个垫，最多 <strong>128 个声音</strong>。按 <kbd>PAD BANK</kbd> 换组：<strong>同样的垫，换一批声音</strong>。当前组显示在 MAIN VOLUME 旁边。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c08-bank.png" alt="Bank 示意：A–H 八层，每层 16 个垫；PAD BANK 换一层" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<div class="step">
-
-  <h4 id="section-6">动手 7 · 敲垫、换组</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 听不同的声音，学会换组。</li>
-    <li><strong>要按什么：</strong>
-      <ol>
-        <li>按 <kbd>SAMPLE</kbd>。</li>
-        <li>从 PAD 1 敲到 PAD 16，轻、重各敲一次。</li>
-        <li>按 <kbd>PAD BANK</kbd>，再敲几个垫。</li>
-        <li>直达某组：<strong>按住</strong> <kbd>PAD BANK</kbd> 再按 PAD 1–8（= A–H）。<kbd>SHIFT</kbd> + <kbd>PAD BANK</kbd> = 上一组。</li>
-      </ol>
-    </li>
-    <li><strong>你会看到：</strong> 敲哪个垫就响哪个，屏幕显示它的波形。换组后声音全变。</li>
-    <li><strong>常见错误：</strong> 垫闪却没声 → 在 <kbd>SEQ</kbd> 模式，按 <kbd>SAMPLE</kbd>。轻重一样响 → 开了 <kbd>SHIFT</kbd> + <kbd>PAD 1</kbd>（FULL LEVEL 满力度）。</li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r07-sample.png" alt="按 SAMPLE 再敲垫 → 屏幕显示这个垫的采样" class="rfig" loading="lazy" /></p>
-
-</div>
-
-<div class="recap">
-
-  <ul>
-    <li>PAD 1 左下、PAD 16 右上。</li>
-    <li>8 组 × 16 垫；<kbd>PAD BANK</kbd> 换组，按住它 + PAD 1–8 直达。</li>
-    <li>垫有力度：轻敲轻、重敲重。</li>
-  </ul>
-
-</div>
+<div class="flow" id="flow-kit"></div>
 
 <p><a id="s1-7"></a></p>
 
-<h2 id="17-第一次播放-demo">1.7 第一次播放 demo</h2>
+<div class="start-card">
 
-<p><img src="../../assets/img/beginner/b04-first-play.jpg" alt="第一次出声：转大 MAIN VOLUME → 按 PLAY → 按 STOP" /></p>
+<h3 id="17-第一次播放-demo">播放 demo</h3>
 
-<div class="step">
+<p><img class="lead" src="../../assets/img/beginner/b04-first-play.jpg" alt="第一次出声：转大 MAIN VOLUME → 按 PLAY → 按 STOP" loading="lazy" /></p>
 
-  <h4 id="section-7">动手 8 · 播放示范工程</h4>
+<ol>
+  <li>转大 <kbd>MAIN VOLUME</kbd> → 按 <kbd>PLAY</kbd>：demo 的 beat 循环播放，<strong>哪个声音响，哪个垫就亮一下</strong>。</li>
+  <li>按 <kbd>STOP</kbd> 停；快速连按两下 = 停掉所有声音。</li>
+  <li>边放边敲：<kbd>SAMPLE</kbd> → <kbd>PLAY</kbd> → 跟着节奏敲垫。只是现场弹，<strong>没有录下来</strong>（录音见「录第一段 beat」）。</li>
+</ol>
 
-  <ul>
-    <li><strong>目标：</strong> 听到一段完整的 beat。</li>
-    <li><strong>要按什么：</strong> 转大 <kbd>MAIN VOLUME</kbd> → <kbd>PLAY</kbd> → 听一会儿 → <kbd>STOP</kbd>。</li>
-    <li><strong>你会看到：</strong> beat 循环播放；<strong>哪个声音响，哪个垫就亮一下</strong>。</li>
-    <li><strong>常见错误：</strong> 没声音 → 见 <a href="#s1-14">FAQ</a>。停不下来 → 快速按两下 <kbd>STOP</kbd>。</li>
-  </ul>
-
-</div>
-
-<div class="step">
-
-  <h4 id="section-8">动手 9 · 边放边敲</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 跟着 beat 敲垫，感受“采样器是乐器”。</li>
-    <li><strong>要按什么：</strong> <kbd>SAMPLE</kbd> → <kbd>PLAY</kbd> → 跟着节奏敲垫 → <kbd>STOP</kbd>。</li>
-    <li><strong>你会听到：</strong> 你敲的声音叠在 beat 上（只是现场弹，没录下来）。</li>
-    <li><strong>常见错误：</strong> 以为敲了就录了——录音见 1.10 节。</li>
-  </ul>
-
-</div>
-
-
-<div class="recap">
-
-  <ul>
-    <li><kbd>PLAY</kbd> 播放、<kbd>STOP</kbd> 停止、按两下 STOP 全停。</li>
-    <li>播放时垫随声音亮。</li>
-    <li>敲垫 ≠ 录音。</li>
-  </ul>
+<p class="err">没声音？看章末 FAQ。</p>
 
 </div>
 
 <p><a id="s1-8"></a></p>
 
-<h2 id="18-换一个鼓声">1.8 换一个鼓声</h2>
+<div class="start-card">
 
-<div class="concept">
+<h3 id="18-换一个鼓声">换一个鼓声</h3>
 
-  <p><strong>新概念 ⑨ 选中的垫 &amp; 采样浏览器</strong></p>
+<p><strong>选中的垫</strong> = 最后敲的那个垫，很多操作都针对它。<strong>采样浏览器</strong>（<kbd>SAMPLE SELECT</kbd>）是内置声音仓库，几百个声音按文件夹分好。</p>
 
-  <p><strong>最后敲的垫</strong> = 选中的垫，很多操作都针对它。<strong>采样浏览器</strong>（<kbd>SAMPLE SELECT</kbd>）是内置声音仓库，几百个声音按文件夹分好。</p>
+<p><img class="lead" src="../../assets/img/beginner/b07-swap-sound.jpg" alt="换一个鼓声：敲 PAD 2 → 按 SAMPLE SELECT → 转/按 ENCODER" loading="lazy" /></p>
 
-  <p><img src="../../assets/img/beginner/concepts/c09-browser.png" alt="选中的垫与采样浏览器示意：最后敲的 PAD 2 被选中，在浏览器里选一个军鼓载入" class="cfig" loading="lazy" /></p>
+<ol>
+  <li><kbd>SAMPLE</kbd> 模式下敲 <kbd>PAD 2</kbd>，选中它。</li>
+  <li>按 <kbd>SAMPLE SELECT</kbd>，打开浏览器（画面见第 3 部分「采样浏览器」）。</li>
+  <li><strong>转</strong> <kbd>ENCODER</kbd> 到 <strong>Snares</strong>，<strong>按</strong>下去打开。</li>
+  <li><strong>转</strong> <kbd>ENCODER</kbd> 浏览，每个声音会自动试听；挑中了<strong>按</strong> <kbd>ENCODER</kbd>，载入到 PAD 2。</li>
+  <li>再按 <kbd>SAMPLE SELECT</kbd> 回去，<kbd>PLAY</kbd> 听听变化。</li>
+</ol>
 
-</div>
-
-<p><img src="../../assets/img/beginner/b07-swap-sound.jpg" alt="换一个鼓声：敲 PAD 2 → 按 SAMPLE SELECT → 转/按 ENCODER" /></p>
-
-<div class="step">
-
-  <h4 id="pad-2-">动手 10 · 把 PAD 2 换成另一个军鼓</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 换掉一个垫上的声音。</li>
-    <li><strong>要按什么：</strong>
-      <ol>
-        <li><kbd>SAMPLE</kbd> 模式下敲 <kbd>PAD 2</kbd>（选中它）。</li>
-        <li>按 <kbd>SAMPLE SELECT</kbd>。</li>
-        <li><strong>转</strong> <kbd>ENCODER</kbd> 到 <strong>Snares</strong>，<strong>按</strong>下去打开。</li>
-        <li><strong>转</strong> <kbd>ENCODER</kbd> 浏览，每个声音会自动试听。</li>
-        <li>挑中了就<strong>按</strong> <kbd>ENCODER</kbd>，载入到 PAD 2。</li>
-        <li>再按 <kbd>SAMPLE SELECT</kbd> 回去，<kbd>PLAY</kbd> 听听变化。</li>
-      </ol>
-    </li>
-    <li><strong>你会看到：</strong> 文件列表（见 <a href="#screen-browser">1.4 采样浏览器</a>）；载入后 beat 里的军鼓变了。</li>
-    <li><strong>常见错误：</strong> 听不到试听 → 按 <kbd>B3</kbd>（Preview）打开。进错文件夹 → <kbd>B1</kbd> 返回。换错了 → <kbd>SHIFT</kbd> + <kbd>−</kbd> 撤销。</li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r10-browser.png" alt="敲 PAD 2 再按 SAMPLE SELECT → 屏幕变成采样浏览器" class="rfig" loading="lazy" /></p>
-
-</div>
-
-<div class="recap">
-
-  <ul>
-    <li>先敲垫选中，再按 <kbd>SAMPLE SELECT</kbd>。</li>
-    <li><kbd>ENCODER</kbd>：转 = 浏览，按 = 打开 / 载入；<kbd>B1</kbd> 返回。</li>
-  </ul>
+<p class="err">听不到试听 → 按 <kbd>B3</kbd>（Preview）打开。进错文件夹 → <kbd>B1</kbd> 返回。换错了 → <kbd>SHIFT</kbd> + <kbd>−</kbd> 撤销。</p>
 
 </div>
 
 <p><a id="s1-9"></a></p>
 
-<h2 id="19-认识序列播放与切换">1.9 认识序列：播放与切换</h2>
+<div class="start-card">
 
-<div class="concept">
+<h3 id="19-认识序列播放与切换">认识序列：播放与切换</h3>
 
-  <p><strong>新概念 ⑩ 序列（Sequence）</strong></p>
+<p><strong>序列（Sequence）= 一段录好的节奏</strong>：哪个垫、什么时候、多大力度。通常 1–8 小节，循环播放；一首歌可以有好几段，一个工程最多 128 个。最常见<strong>每小节 4 拍</strong>：数「1、2、3、4」就是一小节。</p>
 
-  <p><strong>序列 = 一段录好的节奏</strong>：哪个垫、什么时候、多大力度。通常 1–8 小节，循环播放。一首歌可以有好几段，一个工程最多 128 个。</p>
+<p><img class="lead" src="../../assets/img/beginner/b08-seq-play.jpg" alt="播放和切换序列：SEQ → PLAY → 播放中敲另一个垫排队" loading="lazy" /></p>
 
-  <p><img src="../../assets/img/beginner/concepts/c10-sequence.png" alt="序列示意：两小节里踩镲、军鼓、底鼓的位置，放到结尾自动回到开头" class="cfig" loading="lazy" /></p>
+<p>在 <kbd>SEQ</kbd> 模式下，<strong>一个垫 = 一个序列</strong>：浅绿 = 有内容 · 暗 = 空的 · 亮绿常亮 = 正在播放 · 闪烁 = 排队等着播。</p>
 
-  <p><strong>新概念 ⑪ 小节（Bar）与拍（Beat）</strong></p>
+<ol>
+  <li><kbd>SEQ</kbd> → PAD 1 选中时按 <kbd>PLAY</kbd>。</li>
+  <li>播放中敲 <kbd>PAD 2</kbd>：它先<strong>闪</strong>，这段放完后切过去、变常亮，屏幕上的序列名也变。</li>
+  <li>再试 PAD 3、PAD 4 → <kbd>STOP</kbd>。</li>
+</ol>
 
-  <p>最常见是<strong>每小节 4 拍</strong>：数“1、2、3、4”就是一小节。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c11-bar-beat.png" alt="小节与拍示意：每小节 4 拍，第 1 拍是重拍" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p>在 <kbd>SEQ</kbd> 模式下，<strong>一个垫 = 一个序列</strong>：</p>
-
-<ul>
-  <li><strong>浅绿</strong> = 有内容；<strong>暗</strong> = 空的；</li>
-  <li><strong>亮绿常亮</strong> = 正在播放；<strong>闪烁</strong> = 排队等着播。</li>
-</ul>
-
-<p><img src="../../assets/img/beginner/b08-seq-play.jpg" alt="播放和切换序列：SEQ → PLAY → 播放中敲另一个垫排队" /></p>
-
-<div class="step">
-
-  <h4 id="section-9">动手 11 · 播放并切换序列</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 听懂“排队切换”。</li>
-    <li><strong>要按什么：</strong> <kbd>SEQ</kbd> → PAD 1 选中时按 <kbd>PLAY</kbd> → 播放中敲 <kbd>PAD 2</kbd> → 等它切过去 → 再试 PAD 3、PAD 4 → <kbd>STOP</kbd>。</li>
-    <li><strong>你会看到：</strong> PAD 2 先<strong>闪</strong>，这段放完后切过去、变常亮；屏幕上的序列名也变（<a href="#screen-seq">1.4 Seq 屏幕</a>）。</li>
-    <li><strong>常见错误：</strong> 以为没反应——它在<strong>等这段放完</strong>。</li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r11-seq.png" alt="按 SEQ → 屏幕变成 Seq 页" class="rfig" loading="lazy" /></p>
-
-</div>
-
-<div class="recap">
-
-  <ul>
-    <li>序列 = 可循环的一段节奏；SEQ 模式下一个垫 = 一个序列。</li>
-    <li>浅绿有内容 · 暗 = 空 · 常亮在播 · 闪烁排队。</li>
-    <li>播放中敲另一个序列 = 放完这段再切。</li>
-  </ul>
+<p class="err">敲了没马上切不是没反应——它在<strong>等这段放完</strong>。</p>
 
 </div>
 
 <p><a id="s1-10"></a></p>
 
-<h2 id="110-录第一段-beat量化swing节拍器预备拍">1.10 录第一段 beat（量化、Swing、节拍器、预备拍）</h2>
+<div class="start-card">
 
-<p>录音前先认识 4 个新概念。</p>
-
-<div class="concept">
-
-  <p><strong>新概念 ⑫ BPM（速度）</strong></p>
-
-  <p>BPM = 每分钟多少拍，越大越快。hip-hop 常在 80–95，house 约 120–128。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c12-bpm.png" alt="BPM 示意：60、90、120 BPM 在 4 秒内的拍点，数字越大拍点越密" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p>改 BPM 的三种方法：</p>
+<h3 id="110-录第一段-beat量化swing节拍器预备拍">录第一段 beat</h3>
 
 <ul>
-  <li><kbd>SEQ</kbd> 页：<strong>按住</strong> <kbd>B1</kbd> + <strong>转</strong> <kbd>ENCODER</kbd>（按 ENCODER 切换整数 / 小数），松开 B1 结束。</li>
-  <li>任何模式：<strong>按住</strong> <kbd>TAP TEMPO</kbd> + <strong>转</strong> <kbd>ENCODER</kbd>。</li>
-  <li>跟着心里的节奏，<strong>均匀地连敲</strong> <kbd>TAP TEMPO</kbd>。</li>
+  <li><strong>BPM（速度）</strong>：每分钟多少拍，越大越快。hip-hop 常在 80–95，house 约 120–128。</li>
+  <li><strong>量化（Quantize）</strong>：手敲不会每下都准。打开录音量化，音会自动「吸」到最近的格子上；<strong>Q 值</strong>定格子粗细，1/16 = 每拍 4 格，最常用。</li>
+  <li><strong>摇摆（Swing）</strong>：把每两个音的第二个往后推一点，节奏就「晃」起来。SEQ 页 <kbd>K3</kbd> = RT Swing，只改播放手感，不移动录好的音。</li>
+  <li><strong>节拍器（METRO）</strong>：「嗒、嗒」的提示音。<kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd> 切 Off / On / Record（只在录音时响）。<strong>预备拍（Count-in）</strong> = 开录前先数 1 小节，<kbd>SHIFT</kbd> + <kbd>PAD 4</kbd> 开关，开着时 1234 图标变红。</li>
 </ul>
 
-<div class="concept">
+<p><img class="lead" src="../../assets/img/beginner/b09-record-beat.jpg" alt="录第一段 beat：SEQ → 空序列 PAD 9 → B1+ENCODER 设 BPM → B3 量化 → K1 小节 → K2 Q 值 → SEQ RECORD → PLAY" loading="lazy" /></p>
 
-  <p><strong>新概念 ⑬ 量化（Quantize）与 Q 值</strong></p>
+<ol>
+  <li><kbd>SEQ</kbd>，敲一个<strong>暗着的垫</strong>选空序列（demo 里可用 <kbd>PAD 9</kbd>）。</li>
+  <li><strong>按住</strong> <kbd>B1</kbd> + <strong>转</strong> <kbd>ENCODER</kbd>，BPM 设到 90 左右，松开 B1。（改 BPM 也可以：按住 <kbd>TAP TEMPO</kbd> + 转 ENCODER，或均匀连敲 TAP TEMPO。）</li>
+  <li><kbd>B3</kbd> 打开<strong>录音量化</strong>（或 <kbd>SHIFT</kbd> + <kbd>PAD 10</kbd>）；<kbd>K2</kbd> 把 Q 设为 <strong>1/16</strong>；<kbd>K1</kbd> 把长度设为 <strong>2</strong> 小节。</li>
+  <li><kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd>，节拍器设为 <strong>Record</strong>；要预备拍就 <kbd>SHIFT</kbd> + <kbd>PAD 4</kbd>。</li>
+  <li>按 <kbd>SEQ RECORD</kbd>：它<strong>闪烁</strong>（待录），垫自动变回「敲了出声」。</li>
+  <li><kbd>PLAY</kbd> 开录：第 1、3 拍敲底鼓，第 2、4 拍敲军鼓。</li>
+  <li>到结尾<strong>自动回到开头叠录</strong>，可以再加踩镲。</li>
+  <li>按 <kbd>SEQ RECORD</kbd> 停录（继续放），或 <kbd>STOP</kbd> 全停。停下后 PAD 9 变浅绿。</li>
+</ol>
 
-  <p>手敲不会每下都准。打开<strong>录音量化</strong>，音会自动“吸”到最近的格子上。<strong>Q 值</strong>定格子粗细：1/16 = 每拍 4 格（最常用）。</p>
-
-  <p><img src="../../assets/img/beginner/b10-quantize.png" alt="量化示意：你实际敲的位置（红）被吸到最近的 1/16 格子（绿）" class="cfig" loading="lazy" /></p>
-
-  <p><strong>新概念 ⑭ 摇摆（Swing）</strong></p>
-
-  <p>全对齐有时太“机械”。<strong>Swing</strong> 把每两个音的第二个往后推一点，节奏就“晃”起来。SEQ 页 <kbd>K3</kbd> = <strong>RT Swing</strong>：只改播放手感，不移动录好的音。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c13b-swing.png" alt="Swing 示意：直的节奏均匀分布；加 Swing 后每两个音的第二个往后推" class="cfig" loading="lazy" /></p>
-
-  <p><strong>新概念 ⑮ 节拍器（METRO）与预备拍（Count-in）</strong></p>
-
-  <p><strong>节拍器</strong> = “嗒、嗒”的提示音。<kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd> 切换：<strong>Off</strong> 不响 · <strong>On</strong> 一直响 · <strong>Record</strong> 只在录音时响。</p>
-
-  <p><strong>预备拍</strong> = 开录前先数 1 小节。<kbd>SHIFT</kbd> + <kbd>PAD 4</kbd> 开关，开着时 <strong>1234 图标变红</strong>。节拍器 Off 时预备拍只在屏幕上倒数、听不见。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c14-metro-countin.png" alt="节拍器与预备拍示意：先数一小节预备拍，再正式录音" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p><img src="../../assets/img/beginner/b11-metro-countin.jpg" alt="节拍器与预备拍：SHIFT + TAP TEMPO，SHIFT + PAD 4" /></p>
-
-<p>照着编号走一遍：</p>
-
-<p><img src="../../assets/img/beginner/b09-record-beat.jpg" alt="录第一段 beat：SEQ → 空序列 PAD 9 → B1+ENCODER 设 BPM → B3 量化 → K1 小节 → K2 Q 值 → SEQ RECORD → PLAY" /></p>
-
-<div class="step">
-
-  <h4 id="section-10">动手 12 · 录 2 小节“动次打次”</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 录下你的第一段序列：底鼓 + 军鼓。</li>
-    <li><strong>要按什么：</strong>
-      <ol>
-        <li><kbd>SEQ</kbd>，敲一个<strong>暗着的垫</strong>选空序列（demo 里可用 <kbd>PAD 9</kbd>）。</li>
-        <li><strong>按住</strong> <kbd>B1</kbd> + <strong>转</strong> <kbd>ENCODER</kbd>，BPM 设到 90 左右，松开 B1。</li>
-        <li><kbd>B3</kbd> 打开<strong>录音量化</strong>（或 <kbd>SHIFT</kbd> + <kbd>PAD 10</kbd>）；<kbd>K2</kbd> 把 Q 设为 <strong>1/16</strong>。</li>
-        <li><kbd>K1</kbd> 把长度设为 <strong>2</strong> 小节。</li>
-        <li><kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd>，节拍器设为 <strong>Record</strong>（或 On）；要预备拍就 <kbd>SHIFT</kbd> + <kbd>PAD 4</kbd>。</li>
-        <li>按 <kbd>SEQ RECORD</kbd>：它<strong>闪烁</strong>（待录），垫自动变回“敲了出声”。</li>
-        <li><kbd>PLAY</kbd> 开录：第 1、3 拍敲底鼓，第 2、4 拍敲军鼓。</li>
-        <li>到结尾<strong>自动回到开头叠录</strong>，可以再加踩镲。</li>
-        <li>按 <kbd>SEQ RECORD</kbd> 停录（继续放），或 <kbd>STOP</kbd> 全停。</li>
-      </ol>
-    </li>
-    <li><strong>你会看到：</strong> <kbd>SAMPLE</kbd> 和 <kbd>SEQ</kbd> 一起闪（垫用来出声，屏幕留在 Seq 页），位置条变红；第二圈听到你敲的音（已对齐）。停下后 PAD 9 变浅绿。</li>
-    <li><strong>常见错误：</strong>
-      <ul>
-        <li>敲乱了 → <kbd>SHIFT</kbd> + <kbd>−</kbd> 撤销这次录的所有音。</li>
-        <li>只删一个垫的音 → 录音时<strong>按住</strong> <kbd>ERASE</kbd> 再按那个垫。</li>
-        <li>没开录却弹得好 → <kbd>SHIFT</kbd> + <kbd>SEQ RECORD</kbd>（RECALL）找回上一圈。</li>
-        <li><kbd>SHIFT</kbd> + <kbd>PAD 6</kbd>（HALF SPEED）<strong>不改 BPM</strong>，只把音符间距拉大一倍。</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r12-seq-record.png" alt="按 SEQ RECORD 再按 PLAY → 屏幕进入录音状态" class="rfig" loading="lazy" /></p>
-
-</div>
-
-
-<div class="recap">
-
-  <ul>
-    <li>BPM：SEQ 页按住 <kbd>B1</kbd> + 转 <kbd>ENCODER</kbd>，或按住 <kbd>TAP TEMPO</kbd> + 转 <kbd>ENCODER</kbd>。</li>
-    <li>量化：<kbd>B3</kbd> 或 <kbd>SHIFT</kbd> + <kbd>PAD 10</kbd>；<kbd>K2</kbd> = Q 值，<kbd>K1</kbd> = 长度，<kbd>K3</kbd> = Swing。</li>
-    <li>节拍器 <kbd>SHIFT</kbd> + <kbd>TAP TEMPO</kbd>；预备拍 <kbd>SHIFT</kbd> + <kbd>PAD 4</kbd>（节拍器开着才听得到）。</li>
-    <li><kbd>SEQ RECORD</kbd>（闪）→ <kbd>PLAY</kbd> → 敲 → <kbd>SEQ RECORD</kbd> 或 <kbd>STOP</kbd>。</li>
-  </ul>
+<p class="err">敲乱了 → <kbd>SHIFT</kbd> + <kbd>−</kbd> 撤销这次录的所有音。只删一个垫的音 → 录音时<strong>按住</strong> <kbd>ERASE</kbd> 再按那个垫。没开录却弹得好 → <kbd>SHIFT</kbd> + <kbd>SEQ RECORD</kbd>（RECALL）找回上一圈。<kbd>SHIFT</kbd> + <kbd>PAD 6</kbd>（HALF SPEED）不改 BPM，只把音符间距拉大一倍。</p>
 
 </div>
 
 <p><a id="s1-11"></a></p>
 
-<h2 id="111-采第一个声音">1.11 采第一个声音</h2>
+<div class="start-card">
 
-<div class="concept">
+<h3 id="111-采第一个声音">采第一个声音</h3>
 
-  <p><strong>新概念 ⑯ 录音来源（Source）</strong></p>
+<p><strong>录音来源（Source）</strong>：「从哪录」——<strong>Mic</strong> 内置麦克风 · <strong>Rear</strong> 后面板 AUDIO IN · <strong>USB</strong> USB-C 设备 · <strong>Resample</strong> 机器自己的声音（把正在放的整段录成一个新采样，或 <kbd>SHIFT</kbd> + <kbd>PAD 11</kbd> 把当前序列录到选中的垫）。新手先用 <strong>Mic</strong>。更细的采样流程先走上面的「跟着做 · 采样」流程。</p>
 
-  <p>“从哪录”：<strong>Mic</strong> 内置麦克风 · <strong>Rear</strong> 后面板 AUDIO IN · <strong>USB</strong> USB-C 设备 · <strong>Resample</strong> 机器自己的声音。新手先用 <strong>Mic</strong>。</p>
+<p><img class="lead" src="../../assets/img/beginner/b12-sample-record.jpg" alt="采第一个声音：SAMPLE RECORD → K1 选 Mic → 敲垫开录，再敲停止" loading="lazy" /></p>
 
-  <p><img src="../../assets/img/beginner/concepts/c15-source.png" alt="录音来源示意：Mic、Rear、USB、Resample 四种来源，K1 选择" class="cfig" loading="lazy" /></p>
+<ol>
+  <li>按 <kbd>SAMPLE RECORD</kbd>（屏幕各部分见第 3 部分「采样录音」）。</li>
+  <li><kbd>K1</kbd> 把来源选成 <strong>Mic</strong>；<kbd>K2</kbd> 保持 <strong>Free</strong>（不限长度）。</li>
+  <li>敲一个你愿意替换的垫——<strong>这一下就开始录</strong>。</li>
+  <li>对着麦克风拍手或说话。</li>
+  <li>再敲<strong>同一个垫</strong>停止（或 <kbd>STOP</kbd>；按 <kbd>SAMPLE RECORD</kbd> 则直接回采样模式）。</li>
+  <li><kbd>SAMPLE</kbd>，敲那个垫听听。</li>
+</ol>
 
-  <p><strong>新概念 ⑰ 重采样（Resample）</strong></p>
+<p class="err">用内置麦克风时喇叭自动静音（防啸叫），想边录边听请插耳机。电平表一直红 = 太大声会失真，离远一点。好像没开录 → <kbd>K3</kbd> 门槛 Threshold 太高，调低。错过了好声音 → <kbd>SHIFT</kbd> + <kbd>SAMPLE RECORD</kbd>（RECALL）找回最近约 25 秒。替换了 demo 的声音 → demo 可以重新载入（见「保存工程」）。</p>
 
-  <p>把机器<strong>正在放的整段声音</strong>录成一个新采样，放到一个垫上，腾出其他垫。来源选 Resample，或 <kbd>SHIFT</kbd> + <kbd>PAD 11</kbd>（把当前序列录到你选的垫）。</p>
+<p><strong>修剪（Trim）</strong>：录音前后常有多余的安静或杂音。<kbd>SAMPLE</kbd> → 敲你的采样垫 → <kbd>K1</kbd> 调起点、<kbd>K2</kbd> 调终点（边调边敲）→ 满意后 <kbd>SHIFT</kbd> + <kbd>PAD 13</kbd>（TRIM SAMPLE）永久剪掉两头。按住 <kbd>SHIFT</kbd> 转 K1 / K2 可放大波形。下排不是 Start / End → 按 <kbd>B1</kbd> 切回 Trim。</p>
 
-  <p><img src="../../assets/img/beginner/concepts/c15b-resample.png" alt="重采样示意：很多垫一起响的序列 → 录成一整段音频 → 放到 1 个垫" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p><img src="../../assets/img/beginner/b12-sample-record.jpg" alt="采第一个声音：SAMPLE RECORD → K1 选 Mic → 敲垫开录，再敲停止" /></p>
-
-<div class="step">
-
-  <h4 id="section-11">动手 13 · 用内置麦克风录一个声音</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 把拍手、说话、敲桌子变成一个能敲的垫。</li>
-    <li><strong>要按什么：</strong>
-      <ol>
-        <li>按 <kbd>SAMPLE RECORD</kbd>（屏幕各部分见 <a href="#screen-record">1.4 采样录音</a>）。</li>
-        <li><kbd>K1</kbd> 把 <strong>Source</strong> 选成 <strong>Mic</strong>；<kbd>K2</kbd> 保持 <strong>Free</strong>（不限长度）。</li>
-        <li>敲一个你愿意替换的垫——<strong>这一下就开始录</strong>。</li>
-        <li>对着麦克风拍手或说话。</li>
-        <li>再敲<strong>同一个垫</strong>停止（或 <kbd>STOP</kbd>；按 <kbd>SAMPLE RECORD</kbd> 则直接回采样模式）。</li>
-        <li><kbd>SAMPLE</kbd>，敲那个垫听听。</li>
-      </ol>
-    </li>
-    <li><strong>你会看到：</strong> 电平表跳动，屏幕出现波形。<strong>用内置麦克风时喇叭自动静音</strong>（防啸叫），想边录边听请插耳机。</li>
-    <li><strong>常见错误：</strong>
-      <ul>
-        <li>电平表一直红 → 太大声会失真，离远一点。</li>
-        <li>好像没开录 → <kbd>K3</kbd> <strong>Threshold</strong> 门槛太高，调低（声音超过门槛时右上波形图标会亮）。</li>
-        <li>错过了好声音 → <kbd>SHIFT</kbd> + <kbd>SAMPLE RECORD</kbd>（RECALL）找回最近约 25 秒（手册正文写 25 秒）。</li>
-        <li>替换了 demo 的声音 → demo 可以重新载入（1.13 节）。</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r13-sample-record.png" alt="按 SAMPLE RECORD → 采样录音页；敲空垫 → Recording" class="rfig" loading="lazy" /></p>
-
-</div>
-
-<div class="concept">
-
-  <p><strong>新概念 ⑱ 修剪（Trim）：起点 Start 与终点 End</strong></p>
-
-  <p>录音前后常有多余的安静或杂音。<strong>起点 / 终点</strong>决定敲垫时播哪一段。先用旋钮试，满意再用 TRIM 永久剪掉。</p>
-
-  <p><img src="../../assets/img/beginner/concepts/c16-trim.png" alt="修剪示意：Start 和 End 之间是保留的部分，SHIFT + PAD 13 永久剪掉两头" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p><img src="../../assets/img/beginner/b12b-trim.jpg" alt="修剪采样：SAMPLE → K1 起点 → K2 终点 → SHIFT + PAD 13 永久剪掉" /></p>
-
-<div class="step">
-
-  <h4 id="section-12">动手 14 · 剪掉首尾多余部分</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 让采样一敲就响，干净利落。</li>
-    <li><strong>要按什么：</strong> <kbd>SAMPLE</kbd> → 敲你的采样垫 → <kbd>K1</kbd> 调起点、<kbd>K2</kbd> 调终点（边调边敲）→ 满意后 <kbd>SHIFT</kbd> + <kbd>PAD 13</kbd>（TRIM SAMPLE）。</li>
-    <li><strong>你会看到：</strong> 起点 / 终点标记移动；TRIM 后两头被删掉。按住 <kbd>SHIFT</kbd> 转 K1/K2 可放大波形。</li>
-    <li><strong>常见错误：</strong> 下排不是 Start/End → <kbd>B1</kbd> 切回 Trim。旋钮不动 → 看箭头。KNOB FX 开着 → 先关掉。</li>
-  </ul>
-
-</div>
-
-<p>单独存这个声音：<kbd>SHIFT</kbd> + <kbd>SAMPLE SELECT</kbd>（SAVE SAMPLE），起名同 1.13 节。</p>
-
-
-<div class="recap">
-
-  <ul>
-    <li><kbd>SAMPLE RECORD</kbd> → <kbd>K1</kbd> 选来源 → 敲垫开录 → 再敲停止。</li>
-    <li><kbd>K1</kbd>/<kbd>K2</kbd> 调起止点，<kbd>SHIFT</kbd> + <kbd>PAD 13</kbd> 永久修剪。</li>
-    <li>错过了？<kbd>SHIFT</kbd> + <kbd>SAMPLE RECORD</kbd> 找回。</li>
-  </ul>
+<p>单独存这个声音：<kbd>SHIFT</kbd> + <kbd>SAMPLE SELECT</kbd>（SAVE SAMPLE），起名同「保存工程」。</p>
 
 </div>
 
 <p><a id="s1-12"></a></p>
 
-<h2 id="112-加第一个效果">1.12 加第一个效果</h2>
+<div class="start-card">
 
-<div class="concept">
+<h3 id="112-加第一个效果">加第一个效果</h3>
 
-  <p><strong>新概念 ⑲ 效果（FX）</strong></p>
+<p><strong>效果（FX）</strong> = 实时改变声音的「滤镜」：回声 Delay、混响 Reverb、滤波 Filter、低保真 LoFi……先学两个引擎：<strong>PAD FX</strong>（按住垫生效）和 <strong>KNOB FX</strong>（用 K1–K3 控制一个效果）。</p>
 
-  <p><strong>效果</strong> = 实时改变声音的“滤镜”：回声 Delay、混响 Reverb、滤波 Filter、低保真 LoFi……共 4 个效果引擎，先学两个：</p>
+<p><img class="lead" src="../../assets/img/beginner/b13-fx.jpg" alt="加第一个效果：PAD FX → PLAY → 按住垫；KNOB FX → 转 K1–K3" loading="lazy" /></p>
 
-  <ul>
-    <li><strong>PAD FX</strong>：每个垫一种效果，<strong>按住生效，越用力越强</strong>，最多同时 4 个。</li>
-    <li><strong>KNOB FX</strong>：用 <strong>K1–K3</strong> 控制一个效果，垫空出来继续打鼓。</li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/concepts/c17-fx.png" alt="效果示意：原来的声音经过效果（如 Delay）后多出回声；PAD FX 按垫，KNOB FX 转旋钮" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p><img src="../../assets/img/beginner/b13-fx.jpg" alt="加第一个效果：PAD FX → PLAY → 按住垫；KNOB FX → 转 K1–K3" /></p>
-
-<div class="step">
-
-  <h4 id="pad-fx">动手 15 · PAD FX：按住垫加效果</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 听效果怎样改变整段 beat。</li>
-    <li><strong>要按什么：</strong> <kbd>PAD FX</kbd> → <kbd>PLAY</kbd> → <strong>按住</strong>不同的垫（PAD 10 = LoFi，PAD 15 = Delay，PAD 16 = Reverb）→ 松开就停。</li>
-    <li><strong>你会听到：</strong> 压得越重越明显。K1–K3 调参数，<kbd>B1</kbd>（Latch）锁住效果（<a href="#screen-fx">1.4 Pad FX</a>）。</li>
-    <li><strong>常见错误：</strong> 这时垫是效果键，敲不出鼓声。按 <kbd>SAMPLE</kbd> 回去。</li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r15-pad-fx.png" alt="按 PAD FX → 屏幕变成 Pad FX 效果格子" class="rfig" loading="lazy" /></p>
-
-</div>
-
-<div class="step">
-
-  <h4 id="knob-fx">动手 16 · KNOB FX：用旋钮加效果</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 开关旋钮效果，并换一个效果。</li>
-    <li><strong>要按什么：</strong> <kbd>KNOB FX</kbd>（键亮 = 开）→ <kbd>SEQ</kbd> → <kbd>PLAY</kbd> → 转 <kbd>K1</kbd>–<kbd>K3</kbd>。换效果：<kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd> → 转 / 按 <kbd>ENCODER</kbd>；敲垫选受影响的垫，<kbd>B2</kbd> = 全部垫，<kbd>B3</kbd> = 旁通（<a href="#screen-fx">1.4 Knob FX</a>）。</li>
-    <li><strong>你会听到：</strong> 效果随旋钮实时变化，垫还能切序列。</li>
-    <li><strong>常见错误：</strong> 忘了关——<strong>KNOB FX 开着时 K1–K3 只管效果</strong>。再按一次关掉。</li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r16-knob-fx.png" alt="按 KNOB FX → 下排变成效果参数；SHIFT + KNOB FX → 效果列表" class="rfig" loading="lazy" /></p>
-
-</div>
-
-<div class="recap">
-
-  <ul>
-    <li>PAD FX：按住垫 = 效果，越用力越强，<kbd>B1</kbd> 锁定。</li>
-    <li>KNOB FX：K1–K3 控制效果；<kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd> 选效果和作用的垫。</li>
-    <li>用完 KNOB FX 记得关。</li>
-  </ul>
+<ul>
+  <li><strong>PAD FX</strong>：<kbd>PAD FX</kbd> → <kbd>PLAY</kbd> → <strong>按住</strong>不同的垫（PAD 10 = LoFi，PAD 15 = Delay，PAD 16 = Reverb），压得越重越明显，松开就停。<kbd>B1</kbd>（Latch）锁住效果。这时垫是效果键、敲不出鼓声，按 <kbd>SAMPLE</kbd> 回去。</li>
+  <li><strong>KNOB FX</strong>：<kbd>KNOB FX</kbd>（键亮 = 开）→ <kbd>SEQ</kbd> → <kbd>PLAY</kbd> → 转 <kbd>K1</kbd>–<kbd>K3</kbd>。换效果：<kbd>SHIFT</kbd> + <kbd>KNOB FX</kbd> → 转 / 按 <kbd>ENCODER</kbd>；敲垫选受影响的垫，<kbd>B2</kbd> = 全部垫，<kbd>B3</kbd> = 旁通。<strong>KNOB FX 开着时 K1–K3 只管效果，用完再按一次关掉。</strong></li>
+</ul>
 
 </div>
 
 <p><a id="s1-13"></a></p>
 
-<h2 id="113-保存工程">1.13 保存工程</h2>
+<div class="start-card">
 
-<div class="concept">
+<h3 id="113-保存工程">保存工程</h3>
 
-  <p><strong>新概念 ⑳ 自动保存 vs 保存工程</strong></p>
+<p><strong>自动保存</strong>只有「当前这一份」。<strong>Save Project</strong> 另存一个有名字的存档，从 Load Project → User 打开，不怕被新建工程清掉。注意：<kbd>SHIFT</kbd> + <kbd>PAD 11</kbd>（RESAMPLE）<strong>不是保存</strong>。</p>
 
-  <p><strong>自动保存</strong>只有“当前这一份”。<strong>Save Project</strong> 另存一个有名字的存档，从 <strong>Load Project → User</strong> 打开，不怕被新建工程清掉。</p>
+<p><img class="lead" src="../../assets/img/beginner/b14-save.jpg" alt="保存工程：SHIFT + PAD 16 → Save Project → 输入名字 → B3 Do It!" loading="lazy" /></p>
 
-  <p>注意：<kbd>SHIFT</kbd> + <kbd>PAD 11</kbd>（RESAMPLE）<strong>不是保存</strong>（见新概念 ⑰）。</p>
+<ol>
+  <li><kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> 打开 Project 菜单。</li>
+  <li>转 <kbd>ENCODER</kbd> 选 <strong>Save Project</strong>，按下确认。</li>
+  <li>起名：<strong>转</strong> <kbd>ENCODER</kbd> 选字符，<strong>按</strong>下确认并跳下一个；<kbd>−</kbd> <kbd>+</kbd> 移动；<kbd>B2</kbd> 删字符；按住 <kbd>SHIFT</kbd> 输大写。</li>
+  <li><kbd>B3</kbd>（<strong>Do It!</strong>）保存；不存了按 <kbd>B1</kbd>（Cancel）。</li>
+</ol>
 
-  <p><img src="../../assets/img/beginner/concepts/c18-save.png" alt="自动保存与保存工程对比示意" class="cfig" loading="lazy" /></p>
-
-</div>
-
-<p><img src="../../assets/img/beginner/b14-save.jpg" alt="保存工程：SHIFT + PAD 16 → Save Project → 输入名字 → B3 Do It!" /></p>
-
-<div class="step">
-
-  <h4 id="section-13">动手 17 · 给第一个工程起名并保存</h4>
-
-  <ul>
-    <li><strong>目标：</strong> 把今天的成果存下来。</li>
-    <li><strong>要按什么：</strong>
-      <ol>
-        <li><kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> 打开 Project 菜单。</li>
-        <li>转 <kbd>ENCODER</kbd> 选 <strong>Save Project</strong>，按下确认。</li>
-        <li>起名：<strong>转</strong> <kbd>ENCODER</kbd> 选字符，<strong>按</strong>下确认并跳下一个；<kbd>−</kbd> <kbd>+</kbd> 移动；<kbd>B2</kbd> 删字符；按住 <kbd>SHIFT</kbd> 输大写。</li>
-        <li><kbd>B3</kbd>（<strong>Do It!</strong>）保存；不存了按 <kbd>B1</kbd>（Cancel）。</li>
-      </ol>
-    </li>
-    <li><strong>你会看到：</strong> 起名页（<a href="#screen-project">1.4 起名页</a>）；保存后在 Load Project → User 里。</li>
-    <li><strong>常见错误：</strong> 选成 <strong>New Project</strong> 会清空当前工程（<kbd>B3</kbd> 确认、<kbd>B1</kbd> 取消）。<strong>新建前先保存！</strong> 回到出厂 demo：Load Project → Demos。</li>
-  </ul>
-
-  <p><img src="../../assets/img/beginner/results/r17-save.png" alt="SHIFT + PAD 16 → Project 菜单 → Save Project → 起名页" class="rfig" loading="lazy" /></p>
+<p class="err">选成 <strong>New Project</strong> 会清空当前工程——<strong>新建前先保存！</strong>保存后在 Load Project → User 里；回到出厂 demo：Load Project → Demos。</p>
 
 </div>
 
-<div class="recap">
-
-  <ul>
-    <li>保存 = <kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> → Save Project → 起名 → <kbd>B3</kbd> Do It!</li>
-    <li>载入 = 同一菜单 → Load Project（Demos / Kits / User）。</li>
-    <li>RESAMPLE ≠ 保存；New Project 会清空当前工程。</li>
-  </ul>
-
-</div>
+<h2 id="s1-end"><span class="region-key">5</span>章末</h2>
 
 <p><a id="s1-14"></a></p>
 
-<h2 id="114-新手常见问题-faq">1.14 新手常见问题 FAQ</h2>
+<h3 id="114-新手常见问题-faq">常见问题 FAQ</h3>
 
 <details>
   <summary>完全没有声音？</summary>
@@ -1364,7 +995,7 @@
 <details>
   <summary>按了 HALF SPEED / DOUBLE SPEED，BPM 怎么没变？</summary>
 
-  <p>它们改的是<strong>音符间距</strong>（1/8 变 1/4 或 1/16），不改 BPM。改速度见 1.10 节。</p>
+  <p>它们改的是<strong>音符间距</strong>（1/8 变 1/4 或 1/16），不改 BPM。改速度见「第一次上手 · 录第一段 beat」。</p>
 </details>
 
 <details>
@@ -1411,11 +1042,9 @@
 
 <p><a id="s1-15"></a></p>
 
-<h2 id="115-本章小结--自查清单">1.15 本章小结 / 自查清单</h2>
+<h3 id="115-本章小结--自查清单">自查清单</h3>
 
-<p><strong>你已经学会 20 个新概念：</strong> 采样 · 采样器 · 工程 · 功能键 B1–B3 · 模式 · 绝对位置旋钮 · 第二功能 · Bank · 选中的垫与采样浏览器 · 序列 · 小节与拍 · BPM · 量化与 Q 值 · Swing · 节拍器与预备拍 · 录音来源 · 重采样 · 修剪 · 效果 · 自动保存与保存工程。</p>
-
-<p><strong>自查清单</strong>（做不到就点链接回去练）：</p>
+<p>全部能做到，你已经能独立做出第一段 beat 了：</p>
 
 <div class="checklist">
 
@@ -1435,11 +1064,7 @@
 
 </div>
 
-<p><strong>全部打勾？你已经能独立做出第一段 beat 了。</strong> 下一章深入鼓组和写 beat 的七步。</p>
-
-<p><strong>本章速查：</strong> 所有按键、编号 1–40、各模式全部参数 → <a href="../chapters/01b-reference.html">第一章附录 · 功能速查</a>。</p>
-
-<h2 id="资料">资料</h2>
+<h3 id="资料">资料</h3>
 
 <ul>
   <li><a href="https://cdn.inmusicbrands.com/akai/sample/MPC%20Sample%20-%20User%20Guide%20-%20v1.3.0%20%28RevA%29.pdf">User Guide v1.3.0 PDF</a>（本章按键组合、屏幕截图均出自此版手册）</li>
@@ -1450,7 +1075,9 @@
   <li><a href="https://www.akaipro.com/downloads-and-support/downloads/?product=MPC+Sample">下载 · 固件</a></li>
 </ul>
 
-<p class="note">图片说明：本章面板图是依据官方手册顶面示意图、用代码绘制的示意插画（不是实物照片）；“小屏幕”一节的屏幕截图来自 Akai Professional《MPC Sample User Guide v1.3.0》，编号为本教程添加。</p>
+<p><strong>本章速查：</strong>所有按键、编号 1–40、各模式全部参数 → <a href="../chapters/01b-reference.html">第一章附录 · 功能速查</a>。</p>
+
+<p class="note">图片说明：本章面板图是依据官方手册顶面示意图、用代码绘制的示意插画（不是实物照片）；「实时机器」一节的屏幕截图来自 Akai Professional《MPC Sample User Guide v1.3.0》。</p>
 
 <nav class="pager" aria-label="翻页">
   <a class="card" href="../index.html"><small>← 封面</small>全站大纲</a>
@@ -1468,6 +1095,8 @@
   <script src="../../assets/js/site.js" defer></script>
   <script src="../../assets/js/updates-v5.js" defer></script>
   <script src="../../assets/js/updates-ch1.js" defer></script>
+  <script src="../assets/js/live-bridge.js" defer></script>
+  <script src="../assets/js/tutorial-flows.js" defer></script>
   <script>
     (function () {
       'use strict';
@@ -1538,20 +1167,42 @@
       sections.forEach(function (section, index) { if (section) byTarget.set(section, links[index]); });
       if ('IntersectionObserver' in window && byTarget.size) {
         var visible = new Set();
+        function pickActive() {
+          var candidates = sections.filter(function (section) { return visible.has(section); });
+          var link = null;
+          if (!candidates.length) {
+            // 观察带里暂时没有标题（点导航落地时目标标题停在带上方、
+            // 或小节很短）：用最后一个已越过带顶的标题兜底，
+            // 免得高亮停在半路经过的旧小节上。
+            var fallback = null;
+            sections.forEach(function (section) {
+              if (section && section.getBoundingClientRect().top <= window.innerHeight * 0.2 + 2) fallback = section;
+            });
+            link = fallback ? byTarget.get(fallback) : null;
+          } else {
+            var chosen = candidates[0];
+            candidates.forEach(function (section) {
+              if (section.getBoundingClientRect().top <= window.innerHeight * 0.4) chosen = section;
+            });
+            link = byTarget.get(chosen);
+          }
+          if (link && link.getAttribute('aria-current') !== 'true') setActive(link);
+        }
         var observer = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) visible.add(entry.target);
             else visible.delete(entry.target);
           });
-          var candidates = sections.filter(function (section) { return visible.has(section); });
-          if (!candidates.length) return;
-          var chosen = candidates[0];
-          candidates.forEach(function (section) {
-            if (section.getBoundingClientRect().top <= window.innerHeight * 0.4) chosen = section;
-          });
-          setActive(byTarget.get(chosen));
+          pickActive();
         }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
         byTarget.forEach(function (_, section) { observer.observe(section); });
+        // 滚动停下时再补算一次：落地后观察者不会再回调，
+        // 靠这次补算把高亮落到正确的小节。
+        var settleTimer = 0;
+        window.addEventListener('scroll', function () {
+          clearTimeout(settleTimer);
+          settleTimer = setTimeout(pickActive, 160);
+        }, { passive: true });
       }
       var initial = links.filter(function (link) { return link.getAttribute('href') === window.location.hash; })[0];
       setActive(initial || links[0]);
