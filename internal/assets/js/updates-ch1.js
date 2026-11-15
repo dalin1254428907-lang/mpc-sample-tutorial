@@ -242,9 +242,10 @@
     var curBank = 0, curMode = 'sample', curSeqPad = 1;
     var pCard = el('div', 'v5-card');
     pCard.innerHTML = '<h3>让这张图动起来：换 Bank、换序列试试</h3>' +
-      '<p class="v5-note"><b>Bank 就是机器上的组</b>：按 <kbd>PAD BANK</kbd> 在 A–H 之间换，每组是同一批垫上的另一套 16 个声音。' +
-      '序列是一段节奏编排——<b>换序列只换节奏，不换声音</b>。</p>' +
-      '<p class="v5-howto"><b>怎么玩：</b>SAMPLE 模式点 Bank 换一整套声音、点垫试听；切到 SEQ 模式再点垫，下面的节奏格换花样，垫的颜色不变。</p>';
+      '<p class="v5-note"><b>Bank 就是机器上的组</b>：按 <kbd>PAD BANK</kbd> 在 A–H 之间换，每组是同一批垫上的另一套 16 个声音。</p>' +
+      '<p class="v5-note"><b>SEQ 是模式键</b>：按 <kbd>SEQ</kbd> 进序列模式，16 个垫不再是声音——一个垫 = 一段编排好的节奏（序列，最多 128 个）；敲垫 = 换序列，垫上的声音不变。' +
+      '真机垫色即状态：浅绿 = 有内容 · 暗 = 空 · 常亮 = 正在播 · 闪 = 排队等接上。录 beat 也在这个模式里，配 <kbd>SEQ RECORD</kbd> 开录。</p>' +
+      '<p class="v5-howto"><b>怎么玩：</b>SAMPLE 模式点 Bank 换一整套声音、点垫试听；切到 SEQ 模式点垫换序列——下面的节奏格换花样，垫的颜色不变。</p>';
     var banksRow = el('div', 'v5-banks');
     var modeRow = el('div', 'v5-banks');
     var bpads = el('div', 'v5-bankpads');
