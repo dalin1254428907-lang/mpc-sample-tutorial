@@ -133,6 +133,38 @@
       .live-panel { top: 331px; }
       .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 544px; }
     }
+    /* 实时机器 · 动态讲解层：讲解跟着机器状态 / 阅读位置切换，讲到的键在键位示意上亮起 */
+    .live-guide { margin-top: 14px; border-top: 2px dashed var(--line); padding-top: 12px; }
+    .live-guide[hidden] { display: none; }
+    .lg-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .lg-title { font-weight: 900; color: var(--cyan); font-size: 16px; }
+    .lg-src { font-size: 12px; color: var(--gray); }
+    .lg-toggle { display: none; margin-left: auto; font: inherit; font-size: 13px; font-weight: 700; color: var(--yellow); background: var(--panel2); border: 1.5px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; }
+    .lg-how { margin: 8px 0 0; font-size: 14.5px; }
+    .lg-map { margin: 10px 0 2px; }
+    .lg-map svg { display: block; width: 100%; height: auto; }
+    .lgk rect, .lgk circle { fill: var(--panel2); stroke: var(--line); stroke-width: 1; }
+    .lgk text { fill: var(--gray); font-size: 8px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    .lgk text.sm { font-size: 6.6px; }
+    .lgk.on rect, .lgk.on circle { fill: var(--yellow); stroke: #fff3a0; }
+    .lgk.on text { fill: var(--black); }
+    .lgk.on { filter: drop-shadow(0 0 4px rgba(255, 229, 0, .85)); }
+    .lg-items { display: grid; gap: 8px; margin-top: 10px; }
+    .lg-item { width: 100%; text-align: left; font: inherit; color: var(--white); background: var(--panel2); border: 2px solid transparent; border-radius: 10px; padding: 8px 11px; cursor: pointer; }
+    .lg-item strong { display: block; font-size: 14.5px; }
+    .lg-item .lg-body-text { display: block; margin-top: 3px; font-size: 13.5px; color: var(--gray); line-height: 1.55; }
+    .lg-item.on { border-color: var(--yellow); }
+    .lg-item.flash { animation: lgflash 1.2s ease; }
+    @keyframes lgflash { 0%, 100% { background: var(--panel2); } 30% { background: rgba(255, 229, 0, .28); } }
+    /* 中小屏：面板是吸顶条，讲解默认收起，点开后在面板内滚动，不遮正文 */
+    @media (max-width: 1279px) {
+      .live-panel { max-height: 64vh; overflow-y: auto; }
+      .lg-toggle { display: inline-block; }
+      .lg-body { display: none; }
+      .live-guide.open .lg-body { display: block; }
+      .lg-map svg { max-width: 300px; margin: 0 auto; }
+      .lg-items { max-height: 220px; overflow-y: auto; }
+    }
     /* 上手教程 · 步进流程 */
     .flow { margin: 22px 0 30px; }
     .flow-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
@@ -180,9 +212,11 @@
     .zone-map2 > img { display: block; width: 100%; height: auto; border-radius: 14px; }
     .zone-map2 .zone-hit { border: 3px solid; }
     .zone-map2 .zt-a { background: rgba(255, 229, 0, .15); border-color: var(--yellow); }
-    .zone-map2 .zt-b { background: rgba(255, 59, 59, .15); border-color: var(--red); }
+    .zone-map2 .zt-b { --zc: #FF3B3B; background-color: rgba(255, 59, 59, .05); }
     .zone-map2 .zt-c { background: rgba(0, 229, 255, .15); border-color: var(--cyan); }
-    .zone-map2 .zt-d { background: rgba(105, 219, 124, .16); border-color: #69DB7C; }
+    .zone-map2 .zt-d { --zc: #69DB7C; background-color: rgba(105, 219, 124, .05); }
+    /* B/D 两区改用四角括号描边：边框只落在四角，不再横穿机器印字（批注 #30/#31） */
+    .zone-map2 .zt-b, .zone-map2 .zt-d { border: 0; background-image: linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)); background-size: 26px 3px, 3px 26px, 26px 3px, 3px 26px, 26px 3px, 3px 26px, 26px 3px, 3px 26px; background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%; background-repeat: no-repeat; }
     .zone-map2 .zt-e { background: rgba(255, 169, 77, .18); border-color: #FFA94D; }
     .zone-legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 640px; margin: 8px auto 0; }
     .zone-chip { padding: 5px 14px; border-radius: 999px; font-weight: 900; font-size: 14.5px; color: var(--black); border: 2px solid var(--black); }
@@ -199,16 +233,17 @@
     .btn-row p { margin: 0; font-size: 15px; }
     .btn-row .sh { color: var(--cyan); font-size: 13.5px; font-weight: 700; }
     @media (max-width: 560px) { .btn-row .bk { flex-basis: 118px; } }
-    .key-basics { margin: 20px 0; padding: 16px 18px 12px; border-radius: 16px; background: var(--yellow); color: var(--black); border: 3px solid var(--black); box-shadow: 7px 7px 0 var(--red); }
+    .key-basics { margin: 20px 0; padding: 16px 18px 12px; border-radius: 16px; background: #F2C94C; color: var(--black); border: 3px solid var(--black); box-shadow: 6px 6px 0 rgba(255, 59, 59, .5); }
     .key-basics h4 { margin: 0 0 8px; font-size: 20px; font-weight: 900; color: var(--black); }
     .key-basics p { color: var(--black); font-size: 15px; margin: 6px 0; }
     .key-basics strong { color: var(--black); }
     .key-basics img { display: block; width: 100%; height: auto; border-radius: 10px; margin: 8px 0; }
-    .key-basics kbd { background: var(--black); color: var(--yellow); border: 1px solid var(--black); box-shadow: 0 2px 0 var(--black); }
-    .key-basics table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; }
-    .key-basics th, .key-basics td { border: 1.5px solid var(--black); padding: 6px 9px; font-size: 14px; color: var(--black); text-align: left; }
-    .key-basics th { background: var(--black); color: var(--yellow); }
-    .key-basics td kbd { font-size: 12.5px; }
+    .key-basics kbd { background: var(--black); color: #F2C94C; border: 1px solid var(--black); box-shadow: 0 2px 0 var(--black); }
+    .key-basics table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; background: transparent; border: none; border-radius: 0; }
+    .key-basics th, .key-basics td { border: 1.5px solid var(--black); padding: 8px 10px; font-size: 15.5px; line-height: 1.55; color: var(--black); text-align: left; }
+    .key-basics th { background: var(--black); color: #F2C94C; }
+    .key-basics td { font-weight: 600; background: rgba(255, 255, 255, .38); }
+    .key-basics td kbd { font-size: 13.5px; }
     .key-basics a { color: var(--black); font-weight: 700; text-decoration: underline; }
     .pos-map { max-width: 540px; margin: 14px auto 6px; }
     .pos-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
@@ -250,19 +285,19 @@
     <aside class="quick-nav" aria-label="第一章分层导航">
     <p class="quick-nav-title">本章导航</p>
     <p class="qn-group">认识机器</p>
-    <a class="qn-sub" href="#zone-map">分区图 · 点颜色跳</a>
+    <a class="qn-sub" href="#zone-map">分区图</a>
     <a class="qn-sub" href="#s1-1">采样 · 采样器 · 工程</a>
     <a class="qn-sub" href="#s1-2">开机 · 充电 · 接口</a>
     <p class="qn-group">区域详细介绍</p>
-    <a class="qn-sub" href="#a看与听音量--屏幕--喇叭">A 看与听</a>
+    <a class="qn-sub" href="#a看与听音量--屏幕--喇叭">A 显示区</a>
     <a class="qn-sub" href="#b切模式--shift--推子">B 切模式 · SHIFT · 推子</a>
     <a class="qn-sub" href="#key-shift">按键基础 · SHIFT</a>
-    <a class="qn-sub" href="#c三个参数旋钮-k1k3">C 三个旋钮 K1–K3</a>
+    <a class="qn-sub" href="#c三个参数旋钮-k1k3">C 屏幕旋钮</a>
     <a class="qn-sub" href="#d工具--浏览--录音--播放">D 工具 · 录音 · 播放</a>
     <a class="qn-sub" href="#e16-个打击垫">E 16 个打击垫</a>
     <a class="qn-sub" href="#key-bank">按键基础 · 垫与 Bank</a>
     <p class="qn-group">实时机器</p>
-    <a class="qn-sub" href="#s1-4">实时画面 · 小屏幕</a>
+    <a class="qn-sub" href="#s1-4">实时画面</a>
     <a class="qn-sub" href="#sample-模式主屏幕按-sample">Sample 主屏幕</a>
     <a class="qn-sub" href="#chop-切片时sample-模式下按-chop">Chop 切片</a>
     <a class="qn-sub" href="#采样浏览器按-sample-select">采样浏览器</a>
@@ -297,42 +332,41 @@
 <div class="zone-entry" id="zone-map">
 
   <div class="zone-map2">
-    <img src="../../assets/img/mpc-sample-panel.jpg" alt="MPC Sample 顶面全图，五个区分五色：A 看与听（黄）、B 切模式（红）、C 三个旋钮（青）、D 工具与播放（绿）、E 打击垫（橙）" />
-    <a class="zone-hit zt-a" style="left:4.9%;top:3.7%;width:90.2%;height:23.1%" href="#a看与听音量--屏幕--喇叭" title="A 看与听：音量 · 屏幕 · 喇叭" aria-label="跳到 A 区解说：看与听"></a>
-    <a class="zone-hit zt-b" style="left:5.1%;top:29.5%;width:20.1%;height:53.3%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
+    <img src="../../assets/img/mpc-sample-panel.jpg" alt="MPC Sample 顶面全图，五个区分五色：A 显示区（黄）、B 切模式（红）、C 屏幕旋钮（青）、D 工具与播放（绿）、E 打击垫（橙）" />
+    <a class="zone-hit zt-a" style="left:4.9%;top:3.7%;width:90.2%;height:23.1%" href="#a看与听音量--屏幕--喇叭" title="A 显示区：屏幕 · 音量 · 喇叭" aria-label="跳到 A 区解说：显示区"></a>
+    <a class="zone-hit zt-b" style="left:3.2%;top:27.6%;width:21.8%;height:56.9%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
     <a class="zone-hit zt-c" style="left:26.7%;top:30.1%;width:46.5%;height:11.1%" href="#c三个参数旋钮-k1k3" title="C 三个参数旋钮 K1–K3" aria-label="跳到 C 区解说：三个参数旋钮 K1–K3"></a>
-    <a class="zone-hit zt-d" style="left:75.2%;top:29.5%;width:19.4%;height:53.3%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
+    <a class="zone-hit zt-d" style="left:74.6%;top:27.6%;width:22.2%;height:56.9%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
     <a class="zone-hit zt-e" style="left:25.3%;top:40.6%;width:49.2%;height:43.2%" href="#e16-个打击垫" title="E 16 个打击垫" aria-label="跳到 E 区解说：16 个打击垫"></a>
   </div>
 
   <div class="zone-legend">
-    <a class="zone-chip" style="background:#FFE500" href="#a看与听音量--屏幕--喇叭">A 看与听</a>
+    <a class="zone-chip" style="background:#FFE500" href="#a看与听音量--屏幕--喇叭">A 显示区</a>
     <a class="zone-chip" style="background:#FF3B3B;color:#fff" href="#b切模式--shift--推子">B 切模式</a>
-    <a class="zone-chip" style="background:#00E5FF" href="#c三个参数旋钮-k1k3">C 三个旋钮</a>
+    <a class="zone-chip" style="background:#00E5FF" href="#c三个参数旋钮-k1k3">C 屏幕旋钮</a>
     <a class="zone-chip" style="background:#69DB7C" href="#d工具--浏览--录音--播放">D 工具 · 播放</a>
     <a class="zone-chip" style="background:#FFA94D" href="#e16-个打击垫">E 打击垫</a>
   </div>
 
-  <p class="zone-hint">点图上的颜色，或点下面的色签，跳到那一区。</p>
 
 </div>
 
-<div class="zstrip"><span class="ztag" style="background:#FFE500">A 看与听</span><p>MAIN VOLUME · B1–B3 · 屏幕 · 电平表 · 喇叭</p></div>
+<div class="zstrip"><span class="ztag" style="background:#FFE500">A 显示区</span><p>MAIN VOLUME · B1–B3 · 屏幕 · 电平表 · 喇叭</p></div>
 <div class="zstrip"><span class="ztag" style="background:#FF3B3B;color:#fff">B 切模式</span><p>SAMPLE · SEQ · PAD FX · KNOB FX · SHIFT · PAD BANK · 推子 · ERASE · NOTE REPEAT</p></div>
-<div class="zstrip"><span class="ztag" style="background:#00E5FF">C 旋钮</span><p>K1 · K2 · K3</p></div>
+<div class="zstrip"><span class="ztag" style="background:#00E5FF">C 屏幕旋钮</span><p>K1 · K2 · K3</p></div>
 <div class="zstrip"><span class="ztag" style="background:#69DB7C">D 工具 · 播放</span><p>CHOP · LOOP · SAMPLE SELECT · ENCODER · −/+ · SAMPLE RECORD · SEQ RECORD · PLAY · STOP · MUTE · 16 LEVELS · TAP TEMPO · 麦克风</p></div>
 <div class="zstrip"><span class="ztag" style="background:#FFA94D">E 打击垫</span><p>PAD 1–16 × 8 组（Bank A–H）</p></div>
 <div class="zstrip"><span class="ztag" style="background:#B4B4BE">F 后面板</span><p>接口在机器背面，见下面「开机 · 充电 · 接口」。</p></div>
 
 <div class="concept">
 
-  <p><strong>新概念 ① 采样</strong>：把一段声音录下来；录下来的那段声音，也叫采样。一声鼓、一句人声、唱片里的两小节，都可以是一个采样。</p>
+  <p><strong>新概念 ① 采样</strong>：从现成的声音里剪下一段，当素材拼进自己的新作品——唱片里的两小节、一句人声、一下鼓点都行。这种取样拼贴是 Hip-hop 的根基：老制作人从爵士、放克唱片里挖片段，循环、切片、变调，拼出全新的节奏。剪下来的那段声音就叫采样；自己对着麦克风录的一段，录下来也是采样。</p>
 
-  <p><strong>新概念 ② 采样器</strong>：能录声音、把声音放到垫上、一敲就响的乐器。敲垫有力度：轻敲声小、重敲声大。电池、喇叭、麦克风都在机器里，不接电脑也能用。</p>
+  <p><strong>新概念 ② 采样器</strong>：把声音装进垫子里的乐器——录进来、放上垫、一敲就响。指尖有轻重：轻敲低语，重敲炸响。自带电池、喇叭和麦克风，抱起来就能玩，不用电脑。</p>
 
 </div>
 
-<p>用 MPC 做 beat，永远是这四步：</p>
+<h3>做 Beat 的流程</h3>
 
 <p><img src="../../assets/img/beginner/b01-workflow.png" alt="MPC 的工作流程：采样 → 放到垫上 → 录成序列 → 串成歌曲" /></p>
 
@@ -387,22 +421,7 @@
 
 <h2 id="13-认识面板的-5-个区"><span class="region-key">2</span>区域详细介绍</h2>
 
-<video class="local-video" controls="" preload="metadata" playsinline="" poster="../../assets/video/ch1-panel-tour-poster.jpg">
-  <source src="../../assets/video/ch1-panel-tour.mp4" type="video/mp4" />
-  你的浏览器不能播放此视频，请 <a href="../../assets/video/ch1-panel-tour.mp4">下载 mp4</a>。
-</video>
-
-<p class="video-note">🎬 <strong>原创短片：</strong>面板 5 区 + 按键后的屏幕（4 分钟，1080p）</p>
-
-<div class="common-keys">
-  <span>确认：按 <kbd>ENCODER</kbd></span>
-  <span>返回：<kbd>B1</kbd>（列表页）</span>
-  <span>回主屏：<kbd>SAMPLE</kbd></span>
-  <span>撤销：<kbd>SHIFT</kbd> + <kbd>−</kbd></span>
-  <span>全停：连按两下 <kbd>STOP</kbd></span>
-</div>
-
-<h3 id="a看与听音量--屏幕--喇叭"><span class="region-key">A</span>看与听：音量 · 屏幕 · 喇叭</h3>
+<h3 id="a看与听音量--屏幕--喇叭"><span class="region-key">A</span>显示区：屏幕 · 音量 · 喇叭</h3>
 
 <figure class="fig-wrap" id="fig-a">
 <svg class="fig" viewBox="140 25 1520 760" role="img" aria-label="A 区 顶部" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>A 区 顶部</title>
@@ -473,12 +492,20 @@
   <div class="btn-row"><span class="bk"><kbd>KNOB FX</kbd></span><p>旋钮效果 开 / 关。<span class="sh">⇧ FX SELECT 选效果</span></p></div>
   <div class="btn-row"><span class="bk"><kbd>PAD BANK</kbd></span><p>切换分组 A–H。<span class="sh">⇧ 上一组</span></p></div>
   <div class="btn-row"><span class="bk"><kbd>SHIFT</kbd></span><p>按住 = 第二功能。见下面黄框「按键基础」。</p></div>
-  <div class="btn-row"><span class="bk">推子 FADER</span><p>上下推的滑块，默认调当前垫音量；旁边 LED 越亮 = 数值越高。</p></div>
+  <div class="btn-row"><span class="bk">推子 <kbd>FADER</kbd></span><p>上下推的滑块，默认调当前垫音量；旁边 LED 越亮 = 数值越高。</p></div>
   <div class="btn-row"><span class="bk"><kbd>ERASE</kbd></span><p>删采样 / 序列 / 音符。<span class="sh">⇧ COPY 复制</span></p></div>
   <div class="btn-row"><span class="bk"><kbd>NOTE REPEAT</kbd></span><p>按住垫自动连打。<span class="sh">⇧ TRIPLET 三连音</span></p></div>
 </div>
 
 <p><a id="s1-5"></a></p>
+
+<div class="common-keys">
+  <span>确认：按 <kbd>ENCODER</kbd></span>
+  <span>返回：<kbd>B1</kbd>（列表页）</span>
+  <span>回主屏：<kbd>SAMPLE</kbd></span>
+  <span>撤销：<kbd>SHIFT</kbd> + <kbd>−</kbd></span>
+  <span>全停：连按两下 <kbd>STOP</kbd></span>
+</div>
 
 <div class="key-basics" id="key-shift">
 
@@ -508,7 +535,7 @@
 
 </div>
 
-<h3 id="c三个参数旋钮-k1k3"><span class="region-key">C</span>三个参数旋钮 K1–K3</h3>
+<h3 id="c三个参数旋钮-k1k3"><span class="region-key">C</span>屏幕旋钮 K1–K3</h3>
 
 <figure class="fig-wrap" id="fig-c">
 <svg class="fig" viewBox="480 590 840 420" role="img" aria-label="C 区 K1–K3" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>C 区 K1–K3</title>
@@ -525,6 +552,8 @@
 </figure>
 
 <p class="gh-only"><img loading="lazy" src="../../assets/img/annotated/fig-c.jpg" alt="C 区：K1、K2、K3 旋钮" /></p>
+
+<p>这三个旋钮主要控制<strong>小屏幕</strong>：屏幕最下面一排有三个参数，K1、K2、K3 从左到右一人管一个。看屏幕下排，就转这三个旋钮。</p>
 
 <div class="btn-rows">
   <div class="btn-row"><span class="bk"><kbd>K1</kbd></span><p>调屏幕<strong>最下面一排</strong>的第 1 个参数。<span class="sh">⇧ 第二组参数</span></p></div>
@@ -602,7 +631,7 @@
 
   <p><strong>编号</strong>：PAD 1 在<strong>左下</strong>，往右 2、3、4，往上一行行到 13–16（PAD 16 在右上）。和电话键盘相反。</p>
 
-  <p><strong>Bank（组）</strong>：一共 <strong>8 组（A–H）</strong>，每组 16 个垫，最多 <strong>128 个声音</strong>。按 <kbd>PAD BANK</kbd> 换组：同样的垫，换一批声音。按住 <kbd>PAD BANK</kbd> 再按 PAD 1–8 可以直达某组；<kbd>SHIFT</kbd> + <kbd>PAD BANK</kbd> = 上一组。当前组显示在 MAIN VOLUME 旁边。</p>
+  <p><strong>Bank（组）</strong>：一共 <strong>8 组（A–H）</strong>，每组 16 个垫，最多 <strong>128 个声音</strong>。按 <kbd>PAD BANK</kbd> 换组：同样的垫，换一批声音。按住 <kbd>PAD BANK</kbd> 再按 PAD 1–8 可以直达 A–H 某组——只有这 8 个垫管选组，PAD 9–16 按了没这个功能；<kbd>SHIFT</kbd> + <kbd>PAD BANK</kbd> = 上一组。当前组显示在 MAIN VOLUME 旁边。</p>
 
   <p>练一遍：按 <kbd>SAMPLE</kbd> → 从 PAD 1 敲到 PAD 16，轻、重各敲一次 → 按 <kbd>PAD BANK</kbd> 换组再敲。垫闪却没声 = 在 SEQ 模式，按 <kbd>SAMPLE</kbd> 回来；轻重一样响 = 开了 FULL LEVEL 满力度（<kbd>SHIFT</kbd> + <kbd>PAD 1</kbd> 关）。</p>
 
@@ -632,6 +661,18 @@
         <div><dt>状态栏</dt><dd id="live-status">—</dd></div>
       </dl>
       <p class="live-step-hint" id="live-step-hint" hidden></p>
+    </div>
+  </div>
+  <div class="live-guide" id="live-guide" hidden>
+    <div class="lg-head">
+      <span class="lg-title" id="lg-title">📖 这一页的讲解</span>
+      <span class="lg-src" id="lg-src"></span>
+      <button type="button" class="lg-toggle" id="lg-toggle" aria-expanded="false">展开讲解 ▾</button>
+    </div>
+    <div class="lg-body">
+      <p class="lg-how" id="lg-how"></p>
+      <div class="lg-map" id="lg-map" aria-hidden="true"></div>
+      <div class="lg-items" id="lg-items"></div>
     </div>
   </div>
 </section>

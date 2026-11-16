@@ -16,9 +16,9 @@
   'use strict';
 
   var ZONES = {
-    A: { box: 'left:4%;top:4%;width:92.5%;height:31%', name: 'A 区 · 看与听（屏幕）' },
+    A: { box: 'left:4%;top:4%;width:92.5%;height:31%', name: 'A 区 · 显示区' },
     B: { box: 'left:6.5%;top:35%;width:20.5%;height:64%', name: 'B 区 · 切模式 · SHIFT · 推子' },
-    C: { box: 'left:28%;top:36%;width:45%;height:15%', name: 'C 区 · 三个旋钮 K1–K3' },
+    C: { box: 'left:28%;top:36%;width:45%;height:15%', name: 'C 区 · 屏幕旋钮 K1–K3' },
     D: { box: 'left:75.5%;top:35%;width:19.5%;height:64%', name: 'D 区 · 工具 · 浏览 · 录音 · 播放' },
     E: { box: 'left:28%;top:50.5%;width:46%;height:48.5%', name: 'E 区 · 16 个打击垫' }
   };
