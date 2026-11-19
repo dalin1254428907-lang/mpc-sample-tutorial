@@ -64,107 +64,59 @@
     }
   </style>
   <style>
-    /* 第一章 · 实时机器固定面板：宽屏固定在右侧栏，中屏吸顶横条，窄屏吸顶紧凑条。
-       小屏幕全程不动，左侧点到哪、正文讲到哪，它都陪着。 */
-    .live-panel { margin: 0 0 20px; padding: 14px 16px; background: var(--panel); border: 2px solid var(--yellow); border-radius: 16px; }
-    .live-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-    .live-title { font-size: 18px; font-weight: 900; color: var(--yellow); }
+    /* 第一章 · 实时机器（2026-11-18 按批注方向改版）：整节统一一块小屏幕。
+       面板回到正文流里，不再固定/吸顶、不再给正文留右侧空栏；
+       小屏幕居中，状态在屏幕下方一行，讲解区在面板内放大显示。 */
+    .live-panel { margin: 0 0 26px; padding: 18px 20px 20px; background: var(--panel); border: 2px solid var(--yellow); border-radius: 16px; }
+    .live-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    .live-title { font-size: 19px; font-weight: 900; color: var(--yellow); }
     .live-conn { font-size: 14px; color: var(--gray); }
     .live-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #8a8f98; margin-right: 6px; vertical-align: baseline; }
     .live-dot.ok { background: #34d399; }
     .live-dot.bad { background: #f87171; }
+    .live-screen { max-width: 400px; margin: 0 auto; }
     .live-screen img, .live-screen canvas { display: block; width: 100%; height: auto; background: #000; border: 2px solid var(--line); border-radius: 8px; image-rendering: pixelated; }
     .live-screen canvas[hidden] { display: none; }
-    .live-note { color: var(--gray); font-size: 14px; margin: 8px 0 0; }
-    .live-state { display: grid; gap: 8px; margin: 12px 0 0; }
-    .live-state > div { background: var(--panel2); border-radius: 10px; padding: 8px 12px; }
-    .live-state dt { font-size: 12px; color: var(--gray); }
-    .live-state dd { margin: 2px 0 0; font-weight: 700; }
-    /* Sample 页讲解卡（回到 §1.4 原位，当普通讲解） */
-    .live-guide-title { font-weight: 900; color: var(--cyan); margin: 18px 0 10px; }
-    .live-terms { display: grid; gap: 12px; }
-    .live-term { border-left: 4px solid var(--yellow); padding: 2px 0 2px 12px; }
-    .live-term strong { color: var(--white); }
-    .live-term p { margin: 3px 0 0; font-size: 14.5px; }
-    /* 宽屏 ≥1280：正文右侧留出固定栏，面板 position:fixed 不随页滚动 */
-    @media (min-width: 1280px) {
-      .ch1-wrap { max-width: 1460px; }
-      .quick-content { margin-right: 354px; }
-      .live-panel { position: fixed; top: 96px; right: calc(18px + max(0px, (100vw - 1460px) / 2)); width: 324px; max-height: calc(100vh - 116px); overflow-y: auto; z-index: 5; margin: 0; }
-    }
-    @media (min-width: 1280px) and (max-width: 1399px) {
-      .live-panel { top: 164px; max-height: calc(100vh - 184px); }
-    }
-    /* 中屏 901–1279：面板吸顶横条（屏幕在左、状态在右），跟着正文一起吸在顶部 */
-    @media (min-width: 901px) and (max-width: 1279px) {
-      .live-panel { position: sticky; top: 152px; z-index: 5; }
-      .live-layout { display: flex; gap: 14px; align-items: flex-start; }
-      .live-screen { flex: 0 0 208px; }
-      .live-side { flex: 1 1 auto; min-width: 0; }
-      .live-state { margin: 0; grid-template-columns: repeat(3, 1fr); }
-      .live-note { display: none; }
-      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 392px; }
-    }
-    /* 窄屏 ≤900：面板吸顶紧凑条，贴在横向导航条下面 */
-    @media (max-width: 900px) {
-      .live-panel { position: sticky; top: 199px; z-index: 5; padding: 10px 12px; margin-bottom: 16px; }
-      .live-head { margin-bottom: 8px; }
-      .live-title { font-size: 15px; }
-      .live-conn { font-size: 12.5px; }
-      .live-layout { display: flex; gap: 10px; align-items: flex-start; }
-      .live-screen { flex: 0 0 148px; }
-      .live-side { flex: 1 1 auto; min-width: 0; }
-      .live-state { margin: 0; gap: 6px; }
-      .live-state > div { padding: 5px 9px; }
-      .live-state > div:last-child { display: none; }
-      .live-state dd { font-size: 14px; }
-      .live-note { display: none; }
-      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 394px; }
-    }
+    .live-note { color: var(--gray); font-size: 14.5px; line-height: 1.65; margin: 10px 0 0; text-align: center; }
+    .live-side { max-width: 680px; margin: 0 auto; }
+    .live-state { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0 0; }
+    .live-state > div { background: var(--panel2); border-radius: 10px; padding: 9px 13px; }
+    .live-state dt { font-size: 12.5px; color: var(--gray); }
+    .live-state dd { margin: 2px 0 0; font-weight: 700; font-size: 15.5px; }
     @media (max-width: 560px) {
-      .live-panel { top: 243px; }
-      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 438px; }
+      .live-panel { padding: 14px 14px 16px; }
+      .live-state { grid-template-columns: 1fr 1fr; }
+      .live-state > div:last-child { grid-column: 1 / -1; }
     }
-    @media (max-width: 370px) {
-      .live-panel { top: 287px; }
-      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 500px; }
-    }
-    @media (max-width: 340px) {
-      .live-panel { top: 331px; }
-      .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 544px; }
-    }
+    /* Sample 页讲解条（正文原位，当普通讲解） */
+    .live-guide-title { font-weight: 900; color: var(--cyan); margin: 18px 0 10px; }
+    .live-terms { display: grid; gap: 14px; }
+    .live-term { border-left: 4px solid var(--yellow); padding: 2px 0 2px 14px; }
+    .live-term strong { color: var(--white); font-size: 16.5px; }
+    .live-term p { margin: 4px 0 0; font-size: 16px; line-height: 1.7; }
     /* 实时机器 · 动态讲解层：讲解跟着机器状态 / 阅读位置切换，讲到的键在键位示意上亮起 */
-    .live-guide { margin-top: 14px; border-top: 2px dashed var(--line); padding-top: 12px; }
+    .live-guide { margin-top: 16px; border-top: 2px dashed var(--line); padding-top: 14px; }
     .live-guide[hidden] { display: none; }
     .lg-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-    .lg-title { font-weight: 900; color: var(--cyan); font-size: 16px; }
-    .lg-src { font-size: 12px; color: var(--gray); }
+    .lg-title { font-weight: 900; color: var(--cyan); font-size: 17.5px; }
+    .lg-src { font-size: 12.5px; color: var(--gray); }
     .lg-toggle { display: none; margin-left: auto; font: inherit; font-size: 13px; font-weight: 700; color: var(--yellow); background: var(--panel2); border: 1.5px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; }
-    .lg-how { margin: 8px 0 0; font-size: 14.5px; }
-    .lg-map { margin: 10px 0 2px; }
-    .lg-map svg { display: block; width: 100%; height: auto; }
+    .lg-how { margin: 9px 0 0; font-size: 16px; line-height: 1.65; }
+    .lg-map { margin: 12px 0 2px; }
+    .lg-map svg { display: block; width: 100%; max-width: 430px; margin: 0 auto; height: auto; }
     .lgk rect, .lgk circle { fill: var(--panel2); stroke: var(--line); stroke-width: 1; }
     .lgk text { fill: var(--gray); font-size: 8px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
     .lgk text.sm { font-size: 6.6px; }
     .lgk.on rect, .lgk.on circle { fill: var(--yellow); stroke: #fff3a0; }
     .lgk.on text { fill: var(--black); }
     .lgk.on { filter: drop-shadow(0 0 4px rgba(255, 229, 0, .85)); }
-    .lg-items { display: grid; gap: 8px; margin-top: 10px; }
-    .lg-item { width: 100%; text-align: left; font: inherit; color: var(--white); background: var(--panel2); border: 2px solid transparent; border-radius: 10px; padding: 8px 11px; cursor: pointer; }
-    .lg-item strong { display: block; font-size: 14.5px; }
-    .lg-item .lg-body-text { display: block; margin-top: 3px; font-size: 13.5px; color: var(--gray); line-height: 1.55; }
+    .lg-items { display: grid; gap: 10px; margin-top: 12px; }
+    .lg-item { width: 100%; text-align: left; font: inherit; color: var(--white); background: var(--panel2); border: 2px solid transparent; border-radius: 10px; padding: 10px 13px; cursor: pointer; }
+    .lg-item strong { display: block; font-size: 16px; }
+    .lg-item .lg-body-text { display: block; margin-top: 4px; font-size: 15px; color: var(--gray); line-height: 1.65; }
     .lg-item.on { border-color: var(--yellow); }
     .lg-item.flash { animation: lgflash 1.2s ease; }
     @keyframes lgflash { 0%, 100% { background: var(--panel2); } 30% { background: rgba(255, 229, 0, .28); } }
-    /* 中小屏：面板是吸顶条，讲解默认收起，点开后在面板内滚动，不遮正文 */
-    @media (max-width: 1279px) {
-      .live-panel { max-height: 64vh; overflow-y: auto; }
-      .lg-toggle { display: inline-block; }
-      .lg-body { display: none; }
-      .live-guide.open .lg-body { display: block; }
-      .lg-map svg { max-width: 300px; margin: 0 auto; }
-      .lg-items { max-height: 220px; overflow-y: auto; }
-    }
     /* 上手教程 · 步进流程 */
     .flow { margin: 22px 0 30px; }
     .flow-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
@@ -258,6 +210,13 @@
     .scr-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 760px; margin: 10px auto; }
     .scr-duo img { width: 100%; height: auto; border-radius: 10px; display: block; }
     @media (max-width: 560px) { .scr-duo { grid-template-columns: 1fr; } }
+    /* 第 3 部分统一版式（2026-11-18）：每页都是一块同宽小屏幕居中，讲解在下、字号放大 */
+    .scr-list { font-size: 16px; line-height: 1.75; }
+    .scr-list li { margin: 6px 0; }
+    img.sfig { max-width: 400px; }
+    img.sfig.wide { max-width: 680px; }
+    .scr-duo { grid-template-columns: 1fr; max-width: 400px; gap: 14px; }
+    .pos-map { max-width: 480px; }
   </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
@@ -652,7 +611,7 @@
     <div class="live-screen">
       <img id="live-fallback" src="../../assets/img/screens/live-sample-static.png" alt="Sample 页屏幕截图：Trim 页签、采样名、双声道波形和下排 Start / End / Loop" width="320" height="240" />
       <canvas id="live-canvas" width="320" height="240" hidden></canvas>
-      <p class="live-note" id="live-note">把你的 MPC Sample 开机、用 USB 线连上这台电脑，这张截图就会变成机器的实时画面：你在机器上切页、换采样，这里都会跟着变。读这一章时它会一直陪在这里。</p>
+      <p class="live-note" id="live-note">把你的 MPC Sample 开机、用 USB 线连上这台电脑，这张截图就会变成机器的实时画面：你在机器上切页、换采样，这里都会跟着变。</p>
     </div>
     <div class="live-side">
       <dl class="live-state">
@@ -734,7 +693,7 @@
 
 <p><img src="../../assets/img/screens/src/sample-chop.png" alt="Chop 页实拍：波形被竖线切成几片，下排是这片的起止点和切法" class="sfig" loading="lazy" /></p>
 
-<ul>
+<ul class="scr-list">
   <li><strong>Trim 变成 Chop</strong> = 正在切片；再按 <kbd>CHOP</kbd> 回到 Trim。</li>
   <li><strong>竖线</strong> = 切点，每两条竖线之间是一片；切好后敲 PAD 5 就是第 5 片。</li>
   <li><strong>下排</strong>：K1 / K2 = 这一片的起点 / 终点，K3 = Chop Type 切法（Threshold 自动 · Regions 4/8/16 等分 · Manual 手动）。</li>
@@ -747,7 +706,7 @@
 
 <p><img src="../../assets/img/screens/src/browser-folders.png" alt="采样浏览器实拍：文件夹列表，高亮行是当前选中的文件夹" class="sfig" loading="lazy" /></p>
 
-<ul>
+<ul class="scr-list">
   <li><strong>上排</strong>：B1 Back 回上一级 · B2 Internal 在内部存储和 microSD 卡之间切换 · B3 Preview 自动试听 开 / 关。</li>
   <li><strong>高亮行</strong> = 当前选中的声音 / 文件夹。转 <kbd>ENCODER</kbd> 移动，按 <kbd>ENCODER</kbd> 打开文件夹或把声音载入到垫上。</li>
   <li><strong>底部一行</strong> = 你在哪个文件夹；右侧滚动条 = 列表还有多长。</li>
@@ -759,7 +718,7 @@
 
 <p><img src="../../assets/img/screens/src/sample-record.png" alt="采样录音页实拍：Tap pad to record，下排 Mic / Free / Thresh" class="sfig" loading="lazy" /></p>
 
-<ul>
+<ul class="scr-list">
   <li><strong>Tap pad to record</strong>：敲一个垫就开录。</li>
   <li><strong>下排</strong>：K1 = 录音来源（先用 Mic）· K2 = 长度（Free 不限，Seq 和当前序列一样长）· K3 = 门槛 Thresh（声音大过它才自动开录）。</li>
   <li><strong>左上喇叭图标打叉</strong> = 喇叭关了（用内置麦克风录音，或插着耳机 / 音箱线时）。右上波形图标在输入声音超过门槛时亮起。</li>
@@ -772,7 +731,7 @@
 
 <p><img src="../../assets/img/screens/src/seq-record.png" alt="Seq 页实拍（录音中）：BPM 90.00、Seq A09、4/4、节拍器 On、1234 预备拍红色、红色位置条、下排 2 Bars / Q 1/16 / RT Swing" class="sfig" loading="lazy" /></p>
 
-<ul>
+<ul class="scr-list">
   <li><strong>90.00</strong> = 速度 BPM。按住 B1 + 转 <kbd>ENCODER</kbd> 修改；B2 = BPM 跟随方式（SEQ 每序列各自 · GBL 全局共用）；B3 = 录音量化 开 / 关。</li>
   <li><strong>Seq A09</strong> = 当前序列名；<strong>4/4</strong> = 拍号（SHIFT + K2 改）。</li>
   <li><strong>节拍器图标 + On</strong> = 节拍器状态（SHIFT + TAP TEMPO 切 Off / On / Record）；<strong>1234</strong> = 预备拍，红 = 开、灰 = 关（SHIFT + PAD 4）。</li>
@@ -786,7 +745,7 @@
 
 <p><img src="../../assets/img/screens/src/pad-fx.png" alt="Pad FX 页实拍：4×4 效果格子，下排是当前效果的三个参数" class="sfig" loading="lazy" /></p>
 
-<ul>
+<ul class="scr-list">
   <li><strong>4×4 格子 = 16 个垫</strong>，位置一一对应。最上一排 = PAD 13–16（Beat Repeat、Rev Stepper、Delay、Reverb），最下一排 = PAD 1–4（Half Speed、Chorus、Flanger、Phaser）。</li>
   <li><strong>Latch</strong>（B1）：把效果锁住，不用一直按着。</li>
   <li><strong>下排</strong> = 当前效果的 3 个参数，K1–K3 调。</li>
@@ -796,7 +755,7 @@
 
 <p><img src="../../assets/img/screens/src/knob-fx-select.png" alt="Knob FX 选效果页实拍：效果列表，下排是选中效果的参数" class="sfig" loading="lazy" /></p>
 
-<ul>
+<ul class="scr-list">
   <li><strong>KNOB FX 开着时</strong>：下排变成效果参数（橙色），K1–K3 专门调效果；左上角是当前效果名。</li>
   <li><strong>选效果</strong>：转 <kbd>ENCODER</kbd> 选，按 <kbd>ENCODER</kbd> 载入。B2 All Pads = 作用到所有垫，B3 Bypass = 旁通，暂时关掉效果。</li>
   <li>在这一页<strong>敲垫</strong>，可以选哪些垫受影响（亮 = 受影响）。</li>
@@ -810,7 +769,7 @@
 
 <p><img src="../../assets/img/screens/src/song.png" alt="Song 页实拍：序列播放顺序列表，每行是序列名、速度、小节数" class="sfig" loading="lazy" /></p>
 
-<ul>
+<ul class="scr-list">
   <li><strong>上排</strong>：B1 Export 导出（成音频或一个新序列）· B2 Remove 删掉高亮那一段 · B3 Insert 把你用垫选中的序列插进来。</li>
   <li><strong>列表</strong> = 歌曲的播放顺序，每行 = 序列名 · 速度 · 小节数；高亮行 = 当前位置，转 <kbd>ENCODER</kbd> 移动。</li>
 </ul>
@@ -824,7 +783,7 @@
   <img src="../../assets/img/screens/src/name-entry.png" alt="起名页实拍：名字输入框，上排 Cancel / Erase / Do It!" loading="lazy" />
 </div>
 
-<ul>
+<ul class="scr-list">
   <li><strong>四个选项</strong>：Load Project 载入 · Save Project 保存 · New Project 新建 · SD Card Access 读卡。转 <kbd>ENCODER</kbd> 选，按下确认。</li>
   <li><strong>起名页</strong>：B1 Cancel 不保存退出 · B2 Erase 删字符（SHIFT + B2 全删）· B3 Do It! 确认。白块 = 正在输入的位置。</li>
   <li>保存工程、保存采样、导出歌曲，都用这个起名页。</li>
@@ -832,7 +791,7 @@
 
 <h3 id="其他页面">其他页面</h3>
 
-<p><img src="../../assets/img/screens/s10-others.png" alt="其他页面速览：Step Edit、Flex Beat、Compressor、Input Config、Fader、Time Correct、MIDI Config、BPM 弹窗" class="sfig" loading="lazy" /></p>
+<p><img src="../../assets/img/screens/s10-others.png" alt="其他页面速览：Step Edit、Flex Beat、Compressor、Input Config、Fader、Time Correct、MIDI Config、BPM 弹窗" class="sfig wide" loading="lazy" /></p>
 
 <p>MPC Sample <strong>没有叫 Settings 的总设置页</strong>，设置分在几个 SHIFT 菜单里：Input Config、Fader、Time Correct、MIDI Config（恢复出厂也在这里）。全部参数见 <a href="../chapters/01b-reference.html#s1-8">附录 R.8</a>。</p>
 
@@ -840,7 +799,7 @@
 
 <h2 id="上手教程跟着做"><span class="region-key">4</span>第一次上手</h2>
 
-<p>先跟着两个流程做完两件大事，再用下面的卡片逐个练。每一步只做一次按键动作；接上机器时，固定的<strong>小屏幕</strong>会核对你在哪一步——状态对上了打 ✓，你再点「下一步」，不会自己往下跳；没连机器照图文走也行，「跳过这步」一直在。SHIFT 的第二功能不单开课：流程里用到的那一步顺手教。</p>
+<p>先跟着两个流程做完两件大事，再用下面的卡片逐个练。每一步只做一次按键动作；接上机器时，第 3 部分的<strong>小屏幕</strong>会核对你在哪一步——状态对上了打 ✓，你再点「下一步」，不会自己往下跳；没连机器照图文走也行，「跳过这步」一直在。SHIFT 的第二功能不单开课：流程里用到的那一步顺手教。</p>
 
 <div class="flow" id="flow-sampling"></div>
 
