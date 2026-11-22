@@ -173,7 +173,7 @@
   </style>
   <style>
     /* 第一章底座版（四部分重排）：分区图色块跳转、按键行、按键基础醒目块、屏幕位置对照、上手卡片 */
-    .zone-map2 { position: relative; max-width: 520px; margin: 10px auto 4px; }
+    .zone-map2 { position: relative; max-width: 880px; margin: 10px auto 4px; }
     .zone-map2 > img { display: block; width: 100%; height: auto; border-radius: 14px; }
     .zone-map2 .zone-hit { border: 3px solid; }
     .zone-map2 .zt-a { background: rgba(255, 229, 0, .15); border-color: var(--yellow); }
@@ -182,7 +182,7 @@
     .zone-map2 .zt-d { --zc: #69DB7C; background-color: rgba(105, 219, 124, .05); border-color: var(--zc); }
     /* B/D 两区用整圈闭合描边：盒子已外扩到区域外缘，描边只走外缘、不压机器印字（批注 #64/#65） */
     .zone-map2 .zt-e { background: rgba(255, 169, 77, .18); border-color: #FFA94D; }
-    .zone-legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 640px; margin: 8px auto 0; }
+    .zone-legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 880px; margin: 8px auto 0; }
     .zone-chip { padding: 5px 14px; border-radius: 999px; font-weight: 900; font-size: 14.5px; color: var(--black); border: 2px solid var(--black); }
     .zone-chip:hover { text-decoration: none; filter: brightness(1.12); }
     .zstrip { display: flex; gap: 10px; align-items: baseline; margin: 7px 0; }
@@ -239,6 +239,23 @@
     .s1-fold > summary:hover h3 { color: var(--yellow); }
     /* 折叠区里的工程图放宽到容器全宽，图里的字看得清（批注 #9） */
     .s1-fold .concept img.cfig { max-width: 100%; }
+    /* 机器舞台：整章共用一台机器立在顶部，标题随左侧导航切换 */
+    .stage-title { margin: 20px 0 0; text-align: center; color: var(--yellow); font-size: clamp(21px, 3.2vw, 28px); font-weight: 900; letter-spacing: .06em; }
+    /* 五大部分折叠：与 .s1-fold 同款，默认收起、右端箭头提示可展开 */
+    .part-fold { margin: 18px 0; border-top: 2px solid var(--line); }
+    .part-fold > summary { list-style: none; display: flex; align-items: center; gap: 10px; padding: 14px 0 10px; color: var(--white); cursor: pointer; }
+    .part-fold > summary::-webkit-details-marker { display: none; }
+    .part-fold > summary::after { content: "▸"; margin-left: auto; color: var(--yellow); font-size: 26px; line-height: 1; transition: transform .15s ease; flex: 0 0 auto; }
+    .part-fold[open] > summary::after { transform: rotate(90deg); }
+    .part-fold > summary h2 { margin: 0; }
+    .part-fold > summary:hover h2 { color: var(--yellow); }
+    /* 舞台区域持续高亮：导航讲到哪一区，哪一区点亮 */
+    .zone-map2 .zone-hit.stage-on { outline: 3px solid #fff; outline-offset: -3px; box-shadow: inset 0 0 26px rgba(255, 255, 255, .28); z-index: 2; }
+    .zone-map2 .zt-a.stage-on { background: rgba(255, 229, 0, .40); }
+    .zone-map2 .zt-b.stage-on { background-color: rgba(255, 59, 59, .32); }
+    .zone-map2 .zt-c.stage-on { background: rgba(0, 229, 255, .40); }
+    .zone-map2 .zt-d.stage-on { background-color: rgba(105, 219, 124, .32); }
+    .zone-map2 .zt-e.stage-on { background: rgba(255, 169, 77, .45); }
   </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
@@ -306,9 +323,7 @@
 
   <div class="quick-content">
 
-<p><a id="s1-0"></a><a id="s1-1"></a></p>
-
-<h2 id="11-认识这台机器"><span class="region-key">1</span>认识机器</h2>
+<p class="stage-title" id="stage-title">1 认识机器</p>
 
 <div class="zone-entry" id="zone-map">
 
@@ -331,6 +346,11 @@
 
 
 </div>
+
+<details class="part-fold" data-part="1">
+<summary><h2 id="11-认识这台机器"><span class="region-key">1</span>认识机器</h2></summary>
+
+<p><a id="s1-0"></a><a id="s1-1"></a></p>
 
 <div class="zstrip"><span class="ztag" style="background:#FFE500">A 显示区</span><p>MAIN VOLUME · B1–B3 · 屏幕 · 电平表 · 喇叭</p></div>
 <div class="zstrip"><span class="ztag" style="background:#FF3B3B;color:#fff">B 切模式</span><p>SAMPLE · SEQ · PAD FX · KNOB FX · SHIFT · PAD BANK · 推子 · ERASE · NOTE REPEAT</p></div>
@@ -406,7 +426,10 @@
 
 <p><a id="s1-3"></a></p>
 
-<h2 id="13-认识面板的-5-个区"><span class="region-key">2</span>区域详细介绍</h2>
+</details>
+
+<details class="part-fold" data-part="2">
+<summary><h2 id="13-认识面板的-5-个区"><span class="region-key">2</span>区域详细介绍</h2></summary>
 
 <h3 id="a显示区音量--屏幕--喇叭"><span class="region-key">A</span>显示区：屏幕 · 音量 · 喇叭</h3>
 
@@ -626,9 +649,12 @@
 
 <p><strong>找键游戏（1 分钟）</strong>：不看图，用手指依次点出（不用按）：<kbd>MAIN VOLUME</kbd> → <kbd>SAMPLE</kbd> → <kbd>K2</kbd> → <kbd>PLAY</kbd> → PAD 1 → <kbd>ENCODER</kbd> → <kbd>SHIFT</kbd>。播放 / 录音在右下，模式在左上，很有规律。</p>
 
-<p><a id="s1-4"></a></p>
+</details>
 
-<h2 id="14-认识小屏幕每个页面显示什么"><span class="region-key">3</span>实时机器：看懂小屏幕</h2>
+<details class="part-fold" data-part="3">
+<summary><h2 id="14-认识小屏幕每个页面显示什么"><span class="region-key">3</span>实时机器：看懂小屏幕</h2></summary>
+
+<p><a id="s1-4"></a></p>
 
 <section class="live-panel" id="live-box" aria-label="实时机器">
   <div class="live-head">
@@ -825,9 +851,12 @@
 
 <p>MPC Sample <strong>没有叫 Settings 的总设置页</strong>，设置分在几个 SHIFT 菜单里：Input Config、Fader、Time Correct、MIDI Config（恢复出厂也在这里）。全部参数见 <a href="../chapters/01b-reference.html#s1-8">附录 R.8</a>。</p>
 
-<p><a id="s1-flows"></a></p>
+</details>
 
-<h2 id="上手教程跟着做"><span class="region-key">4</span>第一次上手</h2>
+<details class="part-fold" data-part="4">
+<summary><h2 id="上手教程跟着做"><span class="region-key">4</span>第一次上手</h2></summary>
+
+<p><a id="s1-flows"></a></p>
 
 <p>先跟着两个流程做完两件大事，再用下面的卡片逐个练。每一步只做一次按键动作；接上机器时，第 3 部分的<strong>小屏幕</strong>会核对你在哪一步——状态对上了打 ✓，你再点「下一步」，不会自己往下跳；没连机器照图文走也行，「跳过这步」一直在。SHIFT 的第二功能不单开课：流程里用到的那一步顺手教。</p>
 
@@ -992,7 +1021,10 @@
 
 </div>
 
-<h2 id="s1-end"><span class="region-key">5</span>章末</h2>
+</details>
+
+<details class="part-fold" data-part="5">
+<summary><h2 id="s1-end"><span class="region-key">5</span>章末</h2></summary>
 
 <p><a id="s1-14"></a></p>
 
@@ -1109,6 +1141,8 @@
 
 <p class="note">图片说明：本章面板图是依据官方手册顶面示意图、用代码绘制的示意插画（不是实物照片）；「实时机器」一节的屏幕截图来自 Akai Professional《MPC Sample User Guide v1.3.0》。</p>
 
+</details>
+
 <nav class="pager" aria-label="翻页">
   <a class="card" href="../index.html"><small>← 封面</small>全站大纲</a>
   <a class="card next" href="../chapters/04-controls-reference.html"><small>下一章 →</small>第一章 功能介绍 · 界面介绍：每个界面的每个旋钮与按键</a>
@@ -1127,6 +1161,7 @@
   <script src="../assets/js/updates-ch1.js" defer></script>
   <script src="../assets/js/live-bridge.js" defer></script>
   <script src="../assets/js/tutorial-flows.js" defer></script>
+  <script src="../../assets/js/ch1-stage.js" defer></script>
   <script>
     (function () {
       'use strict';
