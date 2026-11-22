@@ -117,6 +117,19 @@
     .lg-item.on { border-color: var(--yellow); }
     .lg-item.flash { animation: lgflash 1.2s ease; }
     @keyframes lgflash { 0%, 100% { background: var(--panel2); } 30% { background: rgba(255, 229, 0, .28); } }
+    /* 实时机器 · 实体机身：屏幕、状态和键位图装进一台机器里 */
+    .live-machine { margin-top: 2px; padding: 20px 18px 22px; border: 2px solid #000; border-radius: 24px; background: linear-gradient(180deg, #232329 0%, #17171c 55%, #101014 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), inset 0 -14px 28px rgba(0, 0, 0, .5), 0 16px 34px rgba(0, 0, 0, .5); }
+    .live-machine .live-guide { border-top-color: rgba(255, 255, 255, .14); }
+    /* 屏幕内宽保持 400px 不变，外面只加一圈机身边框（bezel） */
+    .live-machine .live-screen { max-width: 424px; padding: 12px; background: #050506; border: 2px solid #000; border-radius: 16px; box-shadow: inset 0 0 0 2px #26262e, inset 0 0 22px rgba(0, 0, 0, .9); }
+    .live-machine .live-screen img, .live-machine .live-screen canvas { border: 0; border-radius: 6px; }
+    /* 键位图按真机观感重排：普通键是小按键、旋钮是圆的、垫区是带格线的整块 */
+    .lgk rect { fill: #26262e; stroke: #0a0a0c; stroke-width: 1.4; }
+    .lgk circle { fill: #2e2e37; stroke: #0a0a0c; stroke-width: 1.4; }
+    .lgk { filter: drop-shadow(0 2px 1.5px rgba(0, 0, 0, .55)); }
+    .lgk rect, .lgk circle { transform-box: fill-box; }
+    .lgk:active rect, .lgk:active circle { transform: translateY(1.2px); }
+    #lgk-PADS path { stroke: #454552; stroke-width: 1.6; }
     /* 上手教程 · 步进流程 */
     .flow { margin: 22px 0 30px; }
     .flow-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
@@ -217,6 +230,14 @@
     img.sfig.wide { max-width: 680px; }
     .scr-duo { grid-template-columns: 1fr; max-width: 400px; gap: 14px; }
     .pos-map { max-width: 480px; }
+    /* 「认识机器」小节折叠：默认收起，标题行右端箭头提示可展开 */
+    .s1-fold { margin: 14px 0; }
+    .s1-fold > summary { list-style: none; display: flex; align-items: center; gap: 10px; padding: 8px 0; color: var(--white); }
+    .s1-fold > summary::-webkit-details-marker { display: none; }
+    .s1-fold > summary::after { content: "▸"; margin-left: auto; color: var(--yellow); font-size: 20px; line-height: 1; transition: transform .15s ease; }
+    .s1-fold[open] > summary::after { transform: rotate(90deg); }
+    .s1-fold > summary h3 { margin: 0; font-size: clamp(20px, 3vw, 26px); }
+    .s1-fold > summary:hover h3 { color: var(--yellow); }
   </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
@@ -325,7 +346,8 @@
 
 </div>
 
-<h3>做 Beat 的流程</h3>
+<details class="s1-fold">
+  <summary><h3>做 Beat 的流程</h3></summary>
 
 <p><img src="../../assets/img/beginner/b01-workflow.png" alt="MPC 的工作流程：采样 → 放到垫上 → 录成序列 → 串成歌曲" /></p>
 
@@ -339,9 +361,12 @@
 
 <p class="note">按键写法：<kbd>SHIFT</kbd> + <kbd>PAD 16</kbd> = 先按住 SHIFT 再按 PAD 16；转 <kbd>ENCODER</kbd> = 转大旋钮，按 <kbd>ENCODER</kbd> = 把它按下去。</p>
 
+</details>
+
 <p><a id="s1-2"></a></p>
 
-<h3 id="12-开箱充电开关机接耳机">开机 · 充电 · 后面板接口</h3>
+<details class="s1-fold">
+  <summary><h3 id="12-开箱充电开关机接耳机">开机 · 充电 · 后面板接口</h3></summary>
 
 <figure class="fig-wrap" id="fig-f">
 <svg class="fig" viewBox="-30 -170 980 560" role="img" aria-label="F 区 后面板" xmlns="http://www.w3.org/2000/svg" font-family="&#x27;Noto Sans SC&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Microsoft YaHei&#x27;,system-ui,sans-serif" style="display:block;width:100%;height:auto;background:#16161B;border-radius:14px"><title>F 区 后面板</title>
@@ -375,6 +400,8 @@
   <li><strong>PHONES</strong>：3.5 mm 耳机孔。插耳机后内置喇叭自动关闭，音量仍用顶面 <kbd>MAIN VOLUME</kbd>。</li>
   <li>microSD 卡槽在机身<strong>左侧面</strong>。</li>
 </ul>
+
+</details>
 
 <p><a id="s1-3"></a></p>
 
@@ -607,6 +634,7 @@
     <span class="live-title">🖥 实时机器：接上你的 MPC Sample</span>
     <span class="live-conn"><span class="live-dot bad" id="live-dot"></span><span id="live-conn-text">未连接 · 现在显示的是静态截图</span></span>
   </div>
+  <div class="live-machine">
   <div class="live-layout">
     <div class="live-screen">
       <img id="live-fallback" src="../../assets/img/screens/live-sample-static.png" alt="Sample 页屏幕截图：Trim 页签、采样名、双声道波形和下排 Start / End / Loop" width="320" height="240" />
@@ -633,6 +661,7 @@
       <div class="lg-map" id="lg-map" aria-hidden="true"></div>
       <div class="lg-items" id="lg-items"></div>
     </div>
+  </div>
   </div>
 </section>
 
