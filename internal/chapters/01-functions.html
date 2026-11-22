@@ -177,11 +177,10 @@
     .zone-map2 > img { display: block; width: 100%; height: auto; border-radius: 14px; }
     .zone-map2 .zone-hit { border: 3px solid; }
     .zone-map2 .zt-a { background: rgba(255, 229, 0, .15); border-color: var(--yellow); }
-    .zone-map2 .zt-b { --zc: #FF3B3B; background-color: rgba(255, 59, 59, .05); }
+    .zone-map2 .zt-b { --zc: #FF3B3B; background-color: rgba(255, 59, 59, .05); border-color: var(--zc); }
     .zone-map2 .zt-c { background: rgba(0, 229, 255, .15); border-color: var(--cyan); }
-    .zone-map2 .zt-d { --zc: #69DB7C; background-color: rgba(105, 219, 124, .05); }
-    /* B/D 两区改用四角括号描边：边框只落在四角，不再横穿机器印字（批注 #30/#31） */
-    .zone-map2 .zt-b, .zone-map2 .zt-d { border: 0; background-image: linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)), linear-gradient(var(--zc), var(--zc)); background-size: 26px 3px, 3px 26px, 26px 3px, 3px 26px, 26px 3px, 3px 26px, 26px 3px, 3px 26px; background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%; background-repeat: no-repeat; }
+    .zone-map2 .zt-d { --zc: #69DB7C; background-color: rgba(105, 219, 124, .05); border-color: var(--zc); }
+    /* B/D 两区用整圈闭合描边：盒子已外扩到区域外缘，描边只走外缘、不压机器印字（批注 #64/#65） */
     .zone-map2 .zt-e { background: rgba(255, 169, 77, .18); border-color: #FFA94D; }
     .zone-legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 640px; margin: 8px auto 0; }
     .zone-chip { padding: 5px 14px; border-radius: 999px; font-weight: 900; font-size: 14.5px; color: var(--black); border: 2px solid var(--black); }
@@ -198,17 +197,17 @@
     .btn-row p { margin: 0; font-size: 15px; }
     .btn-row .sh { color: var(--cyan); font-size: 13.5px; font-weight: 700; }
     @media (max-width: 560px) { .btn-row .bk { flex-basis: 118px; } }
-    .key-basics { margin: 20px 0; padding: 16px 18px 12px; border-radius: 16px; background: #F2C94C; color: var(--black); border: 3px solid var(--black); box-shadow: 6px 6px 0 rgba(255, 59, 59, .5); }
+    .key-basics { margin: 20px 0; padding: 16px 18px 12px; border-radius: 16px; background: #E7CF8B; color: var(--black); border: 3px solid var(--black); box-shadow: 6px 6px 0 rgba(255, 59, 59, .5); }
     .key-basics h4 { margin: 0 0 8px; font-size: 20px; font-weight: 900; color: var(--black); }
     .key-basics p { color: var(--black); font-size: 15px; margin: 6px 0; }
     .key-basics strong { color: var(--black); }
     .key-basics img { display: block; width: 100%; height: auto; border-radius: 10px; margin: 8px 0; }
-    .key-basics kbd { background: var(--black); color: #F2C94C; border: 1px solid var(--black); box-shadow: 0 2px 0 var(--black); }
+    .key-basics kbd { background: var(--black); color: #E7CF8B; border: 1px solid var(--black); box-shadow: 0 2px 0 var(--black); }
     .key-basics table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; background: transparent; border: none; border-radius: 0; }
-    .key-basics th, .key-basics td { border: 1.5px solid var(--black); padding: 8px 10px; font-size: 15.5px; line-height: 1.55; color: var(--black); text-align: left; }
-    .key-basics th { background: var(--black); color: #F2C94C; }
-    .key-basics td { font-weight: 600; background: rgba(255, 255, 255, .38); }
-    .key-basics td kbd { font-size: 13.5px; }
+    .key-basics th, .key-basics td { border: 1.5px solid var(--black); padding: 8px 10px; font-size: 16.5px; line-height: 1.55; color: var(--black); text-align: left; }
+    .key-basics th { background: var(--black); color: #E7CF8B; }
+    .key-basics td { font-weight: 700; background: rgba(255, 255, 255, .55); }
+    .key-basics td kbd { font-size: 14.5px; }
     .key-basics a { color: var(--black); font-weight: 700; text-decoration: underline; }
     .pos-map { max-width: 540px; margin: 14px auto 6px; }
     .pos-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
@@ -238,6 +237,8 @@
     .s1-fold[open] > summary::after { transform: rotate(90deg); }
     .s1-fold > summary h3 { margin: 0; font-size: clamp(20px, 3vw, 26px); }
     .s1-fold > summary:hover h3 { color: var(--yellow); }
+    /* 折叠区里的工程图放宽到容器全宽，图里的字看得清（批注 #9） */
+    .s1-fold .concept img.cfig { max-width: 100%; }
   </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
@@ -258,6 +259,8 @@
 
 
 <h1 id="第一章-新手入门">第一章 功能介绍</h1>
+
+<p class="tapes"><span class="tape tape-yellow">简单开始 · 轻松结束</span></p>
 
 <div class="quick-layout">
     <aside class="quick-nav" aria-label="第一章分层导航">
@@ -312,9 +315,9 @@
   <div class="zone-map2">
     <img src="../../assets/img/mpc-sample-panel.jpg" alt="MPC Sample 顶面全图，五个区分五色：A 显示区（黄）、B 切模式（红）、C 屏幕旋钮（青）、D 工具与播放（绿）、E 打击垫（橙）" />
     <a class="zone-hit zt-a" style="left:4.9%;top:3.7%;width:90.2%;height:23.1%" href="#a显示区音量--屏幕--喇叭" title="A 显示区：屏幕 · 音量 · 喇叭" aria-label="跳到 A 区解说：显示区"></a>
-    <a class="zone-hit zt-b" style="left:3.2%;top:27.6%;width:21.8%;height:56.9%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
+    <a class="zone-hit zt-b" style="left:2.8%;top:26.4%;width:22.6%;height:59.3%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
     <a class="zone-hit zt-c" style="left:26.7%;top:30.1%;width:46.5%;height:11.1%" href="#c屏幕旋钮-k1k3" title="C 屏幕旋钮 K1–K3" aria-label="跳到 C 区解说：屏幕旋钮 K1–K3"></a>
-    <a class="zone-hit zt-d" style="left:74.6%;top:27.6%;width:22.2%;height:56.9%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
+    <a class="zone-hit zt-d" style="left:74.3%;top:26.4%;width:22.5%;height:59.3%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
     <a class="zone-hit zt-e" style="left:25.3%;top:40.6%;width:49.2%;height:43.2%" href="#e16-个打击垫" title="E 16 个打击垫" aria-label="跳到 E 区解说：16 个打击垫"></a>
   </div>
 
@@ -476,7 +479,7 @@
   <div class="btn-row"><span class="bk"><kbd>KNOB FX</kbd></span><p>旋钮效果 开 / 关。<span class="sh">⇧ FX SELECT 选效果</span></p></div>
   <div class="btn-row"><span class="bk"><kbd>PAD BANK</kbd></span><p>切换分组 A–H。<span class="sh">⇧ 上一组</span></p></div>
   <div class="btn-row"><span class="bk"><kbd>SHIFT</kbd></span><p>按住 = 第二功能。见下面黄框「按键基础」。</p></div>
-  <div class="btn-row"><span class="bk">推子 <kbd>FADER</kbd></span><p>上下推的滑块，默认调当前垫音量；旁边 LED 越亮 = 数值越高。</p></div>
+  <div class="btn-row"><span class="bk"><kbd>FADER</kbd></span><p>推子：上下推的滑块，默认调当前垫音量；旁边 LED 越亮 = 数值越高。</p></div>
   <div class="btn-row"><span class="bk"><kbd>ERASE</kbd></span><p>删采样 / 序列 / 音符。<span class="sh">⇧ COPY 复制</span></p></div>
   <div class="btn-row"><span class="bk"><kbd>NOTE REPEAT</kbd></span><p>按住垫自动连打。<span class="sh">⇧ TRIPLET 三连音</span></p></div>
 </div>
