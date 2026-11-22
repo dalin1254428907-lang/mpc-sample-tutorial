@@ -6,7 +6,11 @@
      并点亮舞台上对应的区域；
    - 手动展开某个折叠时，标题和高亮也跟着该部分走；
    - 带 #锚点打开本页时，同样展开对应折叠。
-   机器始终是同一张图；只有第 3 部分折叠里是实时机器。
+   机器始终立在舞台上：讲到第 3 部分时舞台换成实时机器（同步屏），
+   其它部分回到同一张插画图；讲屏幕时舞台自动放大屏幕区域。
+   点导航后视口停在舞台：宽屏时说明在右栏内部滚到对应小节，
+   窄屏时把舞台滚回视野内，文字在下方自己翻。
+   宽屏（≥1200px）三栏：右栏一次只显示当前部分的说明。
    ============================================================ */
 (function () {
   'use strict';
@@ -15,6 +19,13 @@
   if (!titleEl) return;
   var folds = Array.prototype.slice.call(document.querySelectorAll('.part-fold'));
   if (!folds.length) return;
+
+  var zoneEntry = document.getElementById('zone-map');
+  var liveBox = document.getElementById('live-box');
+  var stageMap = document.querySelector('.zone-map2');
+  var sideCol = document.getElementById('side-col');
+  var wideMq = window.matchMedia('(min-width: 1200px)');
+  var currentFold = folds[0];
 
   // 部分标题：取 summary 里 h2 的「编号 + 名称」
   function partTitle(fold) {
@@ -81,6 +92,42 @@
     return fold ? partZone[fold.getAttribute('data-part')] : undefined;
   }
 
+  // 舞台形态：第 3 部分显示实时机器，其它部分显示插画；
+  // 插画态下讲 A 区（屏幕）放大屏幕、讲 C 区（屏幕旋钮）放大屏幕+旋钮。
+  function setStage(part, zone) {
+    var live = part === '3';
+    if (zoneEntry) zoneEntry.hidden = live;
+    if (liveBox) liveBox.hidden = !live;
+    if (stageMap) {
+      stageMap.classList.toggle('zoom-screen', !live && zone === 'a');
+      stageMap.classList.toggle('zoom-knobs', !live && zone === 'c');
+    }
+  }
+
+  // 宽屏右栏一次只显示当前部分
+  function markCurrent(fold) {
+    currentFold = fold;
+    folds.forEach(function (f) {
+      f.classList.toggle('is-current', f === fold);
+    });
+  }
+
+  // 点导航之后视口的落点：宽屏把右栏内部滚到目标小节；
+  // 窄屏把舞台滚回视野内（文字在下方，用户自己往下翻）。
+  function afterNav(target) {
+    if (wideMq.matches && sideCol) {
+      if (target && sideCol.contains(target)) {
+        var y = target.getBoundingClientRect().top -
+          sideCol.getBoundingClientRect().top + sideCol.scrollTop - 10;
+        sideCol.scrollTo({ top: Math.max(0, y) });
+      } else {
+        sideCol.scrollTo({ top: 0 });
+      }
+    } else if (titleEl.scrollIntoView) {
+      titleEl.scrollIntoView({ block: 'start' });
+    }
+  }
+
   // 程序化打开折叠时，toggle 事件随后会异步触发；用这个标记让 toggle 处理
   // 跳过同一次打开，避免把刚点亮的子区域高亮又冲掉。
   var guard = null;
@@ -91,6 +138,8 @@
       // 舞台自身（#zone-map 等不在折叠里的目标）：回到第 1 部分
       setTitle(folds[0]);
       setHighlight(null);
+      markCurrent(folds[0]);
+      setStage('1', null);
       return;
     }
     if (!fold.open) {
@@ -100,17 +149,25 @@
     setTitle(fold);
     var zone = id ? zoneFor(id, target) : partZone[fold.getAttribute('data-part')];
     if (zone !== undefined) setHighlight(zone);
+    markCurrent(fold);
+    setStage(fold.getAttribute('data-part'), zone === undefined ? null : zone);
   }
 
-  // 左侧导航、舞台分区与色签、正文中的本页锚点链接，统一走这里
+  // 左侧导航、舞台分区与色签、说明栏中的本页锚点链接，统一走这里
   var links = document.querySelectorAll(
-    '.quick-nav a[href^="#"], .zone-hit[href^="#"], .zone-chip[href^="#"], .quick-content a[href^="#"]'
+    '.quick-nav a[href^="#"], .zone-hit[href^="#"], .zone-chip[href^="#"], .quick-content a[href^="#"], .side-col a[href^="#"]'
   );
   Array.prototype.forEach.call(links, function (link) {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', function (e) {
       var id = link.getAttribute('href').slice(1);
       var target = findById(id);
       if (target) activate(target, id);
+      // 导航类链接不让浏览器把视口甩到正文锚点：舞台才是落点
+      if (link.closest('.quick-nav') || link.classList.contains('zone-hit') ||
+          link.classList.contains('zone-chip')) {
+        e.preventDefault();
+        afterNav(target);
+      }
     });
   });
 
@@ -121,16 +178,45 @@
       if (guard && guard.fold === fold && Date.now() - guard.t < 1000) return;
       setTitle(fold);
       setHighlight(partZone[fold.getAttribute('data-part')]);
+      markCurrent(fold);
+      setStage(fold.getAttribute('data-part'), partZone[fold.getAttribute('data-part')]);
     });
   });
 
-  // 带锚点打开本页：展开对应折叠并滚到位
+  // 宽屏下当前部分的标题行只是栏标题，点它不收起
+  folds.forEach(function (fold) {
+    var sum = fold.querySelector(':scope > summary');
+    if (sum) {
+      sum.addEventListener('click', function (e) {
+        if (wideMq.matches) e.preventDefault();
+      });
+    }
+  });
+
+  // 初始状态：第 1 部分；宽屏时右栏直接展开它
+  markCurrent(folds[0]);
+  setStage('1', null);
+  if (wideMq.matches && !folds[0].open) {
+    guard = { fold: folds[0], t: Date.now() };
+    folds[0].open = true;
+  }
+  if (wideMq.addEventListener) {
+    wideMq.addEventListener('change', function () {
+      if (wideMq.matches && currentFold && !currentFold.open) {
+        guard = { fold: currentFold, t: Date.now() };
+        currentFold.open = true;
+      }
+      if (currentFold) markCurrent(currentFold);
+    });
+  }
+
+  // 带锚点打开本页：展开对应折叠，视口停在舞台
   if (window.location.hash.length > 1) {
     var hid = window.location.hash.slice(1);
     var t = findById(hid);
     if (t && foldOf(t)) {
       activate(t, hid);
-      setTimeout(function () { t.scrollIntoView({ block: 'start' }); }, 80);
+      setTimeout(function () { afterNav(t); }, 80);
     }
   }
 })();

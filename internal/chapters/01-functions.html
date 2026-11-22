@@ -268,6 +268,50 @@
     .zone-map2 .zt-d.stage-on { background-color: rgba(105, 219, 124, .32); }
     .zone-map2 .zt-e.stage-on { background: rgba(255, 169, 77, .45); }
   </style>
+  <style>
+    /* 第一章 · 舞台统一 / 屏幕放大 / 流程箭头 / 三栏 */
+    .zm-pan { position: relative; }
+    .zm-pan > img { display: block; width: 100%; height: auto; border-radius: 14px; }
+    .zm-shade { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .zone-map2 { overflow: hidden; box-shadow: 0 26px 50px rgba(0,0,0,.55), 0 5px 16px rgba(0,0,0,.5); }
+    .zone-map2 .zm-pan { transition: transform .45s ease; }
+    .zone-map2.zoom-screen .zm-pan { transform: scale(3); transform-origin: 50% 9%; }
+    .zone-map2.zoom-knobs .zm-pan { transform: scale(2.2); transform-origin: 50% 13%; }
+    .zone-map2.zoom-screen .zone-hit, .zone-map2.zoom-knobs .zone-hit { pointer-events: none; }
+    #live-box { max-width: 880px; width: 100%; margin: 10px auto 26px; }
+    #live-box[hidden], #zone-map[hidden] { display: none !important; }
+    .stage-title { scroll-margin-top: 96px; }
+    .side-col { min-width: 0; }
+    .side-col h2, .side-col h3, .side-col figure[id], .side-col [id^="s1-"] { scroll-margin-top: 96px; }
+    .flow-keybox { position: absolute; border: 3px solid #fff; border-radius: 12px; box-shadow: 0 0 0 3px rgba(255,229,0,.9), 0 0 24px rgba(255,229,0,.55); pointer-events: none; z-index: 5; }
+    .flow-arrow { position: absolute; transform: translate(-50%, -118%); color: var(--yellow); font-size: 36px; line-height: 1; text-shadow: 0 2px 8px rgba(0,0,0,.85); pointer-events: none; z-index: 6; animation: flowbob .85s ease-in-out infinite alternate; }
+    @keyframes flowbob { from { margin-top: 0; } to { margin-top: 9px; } }
+    @media (min-width: 901px) and (max-width: 1399px) {
+      .stage-title { scroll-margin-top: 164px; }
+      .side-col h2, .side-col h3, .side-col figure[id], .side-col [id^="s1-"] { scroll-margin-top: 164px; }
+    }
+    @media (min-width: 901px) and (max-width: 1199px) { .side-col { grid-column: 2; } }
+    @media (max-width: 900px) {
+      .stage-title { scroll-margin-top: 224px; }
+      .side-col h2, .side-col h3, .side-col figure[id], .side-col [id^="s1-"] { scroll-margin-top: 224px; }
+    }
+    @media (max-width: 560px) {
+      .stage-title { scroll-margin-top: 268px; }
+      .side-col h2, .side-col h3 { scroll-margin-top: 268px; }
+    }
+    @media (min-width: 1200px) {
+      .ch1-wrap { max-width: 1560px; display: flex; flex-direction: column; height: calc(100dvh - 64px); padding-bottom: 12px; }
+      .quick-layout { flex: 1 1 auto; min-height: 0; grid-template-columns: 200px minmax(0,1fr) 360px; align-items: stretch; }
+      .quick-nav { position: static; top: auto; max-height: none; height: 100%; }
+      .quick-content { min-height: 0; overflow-y: auto; }
+      .side-col { min-height: 0; height: 100%; overflow-y: auto; padding: 0 6px 24px 2px; }
+      .side-col .part-fold { display: none; border-top: 0; margin-top: 0; padding-top: 0; }
+      .side-col .part-fold.is-current { display: block; }
+      .side-col .part-fold > summary { cursor: default; }
+      .side-col .part-fold > summary::after { content: ""; }
+      .zone-map2 { width: min(880px, calc((100dvh - 480px) / 1.16074)); margin-left: auto; margin-right: auto; }
+    }
+  </style>
   <link rel="stylesheet" href="../../assets/css/review-mode.css">
 </head>
 <body class="quick-reference-page">
@@ -374,12 +418,15 @@
 <div class="zone-entry" id="zone-map">
 
   <div class="zone-map2">
+    <div class="zm-pan" id="zm-pan">
     <img src="../../assets/img/mpc-sample-panel.jpg" alt="MPC Sample 顶面全图，五个区分五色：A 显示区（黄）、B 切模式（红）、C 屏幕旋钮（青）、D 工具与播放（绿）、E 打击垫（橙）" />
     <a class="zone-hit zt-a" style="left:4.9%;top:3.7%;width:90.2%;height:23.1%" href="#a显示区音量--屏幕--喇叭" title="A 显示区：屏幕 · 音量 · 喇叭" aria-label="跳到 A 区解说：显示区"></a>
     <a class="zone-hit zt-b" style="left:2.8%;top:26.4%;width:22.6%;height:59.3%" href="#b切模式--shift--推子" title="B 切模式 · SHIFT · 推子" aria-label="跳到 B 区解说：切模式 · SHIFT · 推子"></a>
     <a class="zone-hit zt-c" style="left:26.7%;top:30.1%;width:46.5%;height:11.1%" href="#c屏幕旋钮-k1k3" title="C 屏幕旋钮 K1–K3" aria-label="跳到 C 区解说：屏幕旋钮 K1–K3"></a>
     <a class="zone-hit zt-d" style="left:74.3%;top:26.4%;width:22.5%;height:59.3%" href="#d工具--浏览--录音--播放" title="D 工具 · 浏览 · 录音 · 播放" aria-label="跳到 D 区解说：工具 · 浏览 · 录音 · 播放"></a>
     <a class="zone-hit zt-e" style="left:25.3%;top:40.6%;width:49.2%;height:43.2%" href="#e16-个打击垫" title="E 16 个打击垫" aria-label="跳到 E 区解说：16 个打击垫"></a>
+    <img class="zm-shade" src="../../assets/img/mpc-sample-panel-shading.svg" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="zone-legend">
@@ -393,6 +440,45 @@
 
 </div>
 
+<section class="live-panel" id="live-box" hidden aria-label="实时机器">
+  <div class="live-head">
+    <span class="live-title">🖥 实时机器：接上你的 MPC Sample</span>
+    <span class="live-conn"><span class="live-dot bad" id="live-dot"></span><span id="live-conn-text">未连接 · 现在显示的是静态截图</span></span>
+  </div>
+  <div class="live-machine">
+  <div class="live-layout">
+    <div class="live-screen">
+      <img id="live-fallback" src="../../assets/img/screens/live-sample-static.png" alt="Sample 页屏幕截图：Trim 页签、采样名、双声道波形和下排 Start / End / Loop" width="320" height="240" />
+      <canvas id="live-canvas" width="320" height="240" hidden></canvas>
+      <p class="live-note" id="live-note">把你的 MPC Sample 开机、用 USB 线连上这台电脑，这张截图就会变成机器的实时画面：你在机器上切页、换采样，这里都会跟着变。</p>
+    </div>
+    <div class="live-side">
+      <dl class="live-state">
+        <div><dt>当前页面</dt><dd id="live-page">—</dd></div>
+        <div><dt>选中采样</dt><dd id="live-sel">—</dd></div>
+        <div><dt>状态栏</dt><dd id="live-status">—</dd></div>
+      </dl>
+      <p class="live-step-hint" id="live-step-hint" hidden></p>
+    </div>
+  </div>
+  <div class="live-guide" id="live-guide" hidden>
+    <div class="lg-head">
+      <span class="lg-title" id="lg-title">📖 这一页的讲解</span>
+      <span class="lg-src" id="lg-src"></span>
+      <button type="button" class="lg-toggle" id="lg-toggle" aria-expanded="false">展开讲解 ▾</button>
+    </div>
+    <div class="lg-body">
+      <p class="lg-how" id="lg-how"></p>
+      <div class="lg-map" id="lg-map" aria-hidden="true"></div>
+      <div class="lg-items" id="lg-items"></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+  </div>
+
+  <div class="side-col" id="side-col">
 <details class="part-fold" data-part="1">
 <summary><h2 id="11-认识这台机器"><span class="region-key">1</span>认识机器</h2></summary>
 
@@ -701,42 +787,6 @@
 <summary><h2 id="14-认识小屏幕每个页面显示什么"><span class="region-key">3</span>实时机器：看懂小屏幕</h2></summary>
 
 <p><a id="s1-4"></a></p>
-
-<section class="live-panel" id="live-box" aria-label="实时机器">
-  <div class="live-head">
-    <span class="live-title">🖥 实时机器：接上你的 MPC Sample</span>
-    <span class="live-conn"><span class="live-dot bad" id="live-dot"></span><span id="live-conn-text">未连接 · 现在显示的是静态截图</span></span>
-  </div>
-  <div class="live-machine">
-  <div class="live-layout">
-    <div class="live-screen">
-      <img id="live-fallback" src="../../assets/img/screens/live-sample-static.png" alt="Sample 页屏幕截图：Trim 页签、采样名、双声道波形和下排 Start / End / Loop" width="320" height="240" />
-      <canvas id="live-canvas" width="320" height="240" hidden></canvas>
-      <p class="live-note" id="live-note">把你的 MPC Sample 开机、用 USB 线连上这台电脑，这张截图就会变成机器的实时画面：你在机器上切页、换采样，这里都会跟着变。</p>
-    </div>
-    <div class="live-side">
-      <dl class="live-state">
-        <div><dt>当前页面</dt><dd id="live-page">—</dd></div>
-        <div><dt>选中采样</dt><dd id="live-sel">—</dd></div>
-        <div><dt>状态栏</dt><dd id="live-status">—</dd></div>
-      </dl>
-      <p class="live-step-hint" id="live-step-hint" hidden></p>
-    </div>
-  </div>
-  <div class="live-guide" id="live-guide" hidden>
-    <div class="lg-head">
-      <span class="lg-title" id="lg-title">📖 这一页的讲解</span>
-      <span class="lg-src" id="lg-src"></span>
-      <button type="button" class="lg-toggle" id="lg-toggle" aria-expanded="false">展开讲解 ▾</button>
-    </div>
-    <div class="lg-body">
-      <p class="lg-how" id="lg-how"></p>
-      <div class="lg-map" id="lg-map" aria-hidden="true"></div>
-      <div class="lg-items" id="lg-items"></div>
-    </div>
-  </div>
-  </div>
-</section>
 
 <p>屏幕只有 2.4 英寸，看法只有一条：<strong>最上面一排归 B1–B2–B3，最下面一排归 K1–K2–K3</strong>，位置一一对应。右下角小箭头 ⇧ = 按住 <kbd>SHIFT</kbd> 还有第二组参数。下面逐页看，先看主屏幕。</p>
 
@@ -1188,16 +1238,14 @@
 <p class="note">图片说明：本章面板图是依据官方手册顶面示意图、用代码绘制的示意插画（不是实物照片）；「实时机器」一节的屏幕截图来自 Akai Professional《MPC Sample User Guide v1.3.0》。</p>
 
 </details>
+  </div>
+</div>
 
 <nav class="pager" aria-label="翻页">
   <a class="card" href="../index.html"><small>← 封面</small>全站大纲</a>
   <a class="card next" href="../chapters/04-controls-reference.html"><small>下一章 →</small>第一章 功能介绍 · 界面介绍：每个界面的每个旋钮与按键</a>
 </nav>
-
-  </div>
-</div>
-
-  </main>
+</main>
 
   <footer class="site-footer">
     <p>MPC Sample 图文教程 · Akai Professional MPC Sample（AC50）· 内容依据官方 User Guide v1.3.0 核对 · 后面板/侧面照片为 Akai 官方产品图（akaipro.com）</p>
@@ -1208,13 +1256,13 @@
   <script src="../assets/js/live-bridge.js" defer></script>
   <script src="../assets/js/tutorial-flows.js" defer></script>
   <script src="../../assets/js/ch1-stage.js" defer></script>
+  <script src="../../assets/js/ch1-flow-stage.js" defer></script>
   <script>
     (function () {
       'use strict';
       var nav = document.querySelector('.quick-nav');
       if (!nav) return;
       var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
-      var zoneHits = Array.prototype.slice.call(document.querySelectorAll('.zone-hit[href^="#"]'));
       function targetOf(link) {
         var hash = link.getAttribute('href');
         var el = null;
@@ -1227,34 +1275,8 @@
         }
         return el;
       }
-      // 本页很多图片懒加载，跳转途中加载完成会把目标越推越远：
-      // 点击后短时间盯住目标位置，漂移就瞬时校正；用户手动滚动则立即停手。
-      var jumpSeq = 0;
-      function followJump(link) {
-        var target = targetOf(link);
-        if (!target) return;
-        var mySeq = ++jumpSeq;
-        var stopped = false;
-        function stop() { stopped = true; }
-        ['wheel', 'touchstart', 'keydown'].forEach(function (ev) {
-          window.addEventListener(ev, stop, { once: true, passive: true });
-        });
-        var lastY = -1, stable = 0, tries = 0;
-        var iv = setInterval(function () {
-          if (stopped || mySeq !== jumpSeq || ++tries > 14) { clearInterval(iv); return; }
-          var margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-          var want = Math.max(0, target.getBoundingClientRect().top + window.scrollY - margin);
-          if (Math.abs(window.scrollY - want) > 6) {
-            window.scrollTo({ top: want, behavior: 'instant' });
-            stable = 0;
-          } else if (window.scrollY === lastY) {
-            if (++stable >= 2) clearInterval(iv);
-          } else {
-            stable = 0;
-          }
-          lastY = window.scrollY;
-        }, 300);
-      }
+      // 点导航后的视口落点由 ch1-stage.js 统一处理（停在舞台），
+      // 这里只管导航高亮跟随，不再把视口拉去正文目标。
       var sections = links.map(targetOf);
       function setActive(activeLink) {
         links.forEach(function (link) {
@@ -1269,10 +1291,7 @@
         }
       }
       links.forEach(function (link) {
-        link.addEventListener('click', function () { setActive(link); followJump(link); });
-      });
-      zoneHits.forEach(function (link) {
-        link.addEventListener('click', function () { followJump(link); });
+        link.addEventListener('click', function () { setActive(link); });
       });
       var byTarget = new Map();
       sections.forEach(function (section, index) { if (section) byTarget.set(section, links[index]); });
