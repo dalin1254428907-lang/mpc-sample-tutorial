@@ -134,3 +134,70 @@
     }
   }
 })();
+
+/* ============================================================
+   第一章 · 左侧导航折叠
+   导航默认只露出五大部分的标题行：一行 = 部分名链接（点了跳到
+   该部分，走上面的舞台联动）+ 右端小箭头按钮（只管展开/收起
+   该部分的子项，不跳转）。同时只展开一组，导航始终短短一截。
+   带 #锚点进来时展开锚点所在组，否则展开第一组。
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var parts = Array.prototype.slice.call(document.querySelectorAll('.quick-nav .qn-part'));
+  if (!parts.length) return;
+
+  function setOpen(part, open) {
+    part.classList.toggle('open', open);
+    var btn = part.querySelector('.qn-arrow');
+    if (btn) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var title = part.querySelector('.qn-title');
+      var name = title ? title.textContent.trim() : '';
+      btn.setAttribute('aria-label', (open ? '收起' : '展开') + '「' + name + '」子项');
+    }
+  }
+
+  function openOnly(part) {
+    parts.forEach(function (p) { setOpen(p, p === part); });
+  }
+
+  parts.forEach(function (part) {
+    var btn = part.querySelector('.qn-arrow');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        if (part.classList.contains('open')) setOpen(part, false);
+        else openOnly(part);
+      });
+    }
+    // 点部分名或任一子项：该组成为当前展开组
+    Array.prototype.forEach.call(part.querySelectorAll('a[href^="#"]'), function (a) {
+      a.addEventListener('click', function () { openOnly(part); });
+    });
+  });
+
+  // 初始展开组：锚点目标所在部分优先，否则第一组
+  var initial = parts[0];
+  if (window.location.hash.length > 1) {
+    var hid = window.location.hash.slice(1);
+    var target = document.getElementById(hid);
+    if (!target) {
+      try { target = document.getElementById(decodeURIComponent(hid)); } catch (e) { /* 保持 null */ }
+    }
+    if (target) {
+      var fold = target.closest ? target.closest('.part-fold') : null;
+      if (fold) {
+        var dp = fold.getAttribute('data-part');
+        parts.forEach(function (p) {
+          if (p.getAttribute('data-qn') === dp) initial = p;
+        });
+      } else {
+        parts.forEach(function (p) {
+          if (p.querySelector('a[href="#' + hid + '"]')) initial = p;
+        });
+      }
+    }
+  }
+  openOnly(initial);
+})();

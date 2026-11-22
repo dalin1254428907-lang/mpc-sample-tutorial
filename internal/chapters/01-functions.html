@@ -19,8 +19,16 @@
     .quick-nav a:hover { background: var(--panel2); color: var(--yellow); text-decoration: none; }
     .quick-nav a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
     .quick-nav a[aria-current="true"] { background: var(--yellow); border-left-color: var(--red); color: var(--black); }
-    .quick-nav .qn-group { margin: 16px 0 4px; padding: 0 10px; color: var(--yellow); font-size: 13px; font-weight: 900; letter-spacing: .1em; }
-    .quick-nav .qn-group:first-of-type { margin-top: 4px; }
+    .quick-nav .qn-part { margin-top: 14px; }
+    .quick-nav .qn-part:first-of-type { margin-top: 2px; }
+    .qn-head { display: flex; align-items: center; gap: 2px; }
+    .quick-nav a.qn-title { flex: 1 1 auto; margin: 0; padding: 6px 10px; color: var(--yellow); font-size: 14px; font-weight: 900; letter-spacing: .06em; }
+    .qn-arrow { flex: 0 0 auto; width: 30px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--yellow); font: inherit; font-size: 13px; line-height: 1; cursor: pointer; transition: transform .15s ease; }
+    .qn-arrow:hover { background: var(--panel2); }
+    .qn-arrow:focus-visible { outline: 2px solid var(--yellow); outline-offset: 1px; }
+    .qn-part.open .qn-arrow { transform: rotate(90deg); }
+    .qn-subs { display: none; }
+    .qn-part.open .qn-subs { display: block; }
     .quick-nav a.qn-sub { margin-left: 10px; padding-top: 6px; padding-bottom: 6px; font-size: 14px; font-weight: 400; color: var(--gray); }
     .quick-nav a.qn-sub:hover { color: var(--yellow); }
     .quick-nav a.qn-sub[aria-current="true"] { color: var(--black); font-weight: 700; }
@@ -45,8 +53,11 @@
       .quick-nav::-webkit-scrollbar { display: none; }
       .quick-nav-title { flex: 0 0 auto; margin: 0 2px; }
       .quick-nav a { flex: 0 0 auto; margin: 0; white-space: nowrap; }
-      .quick-nav .qn-group { flex: 0 0 auto; margin: 0; padding: 0 2px 0 12px; border-left: 2px solid var(--line); }
-      .quick-nav .qn-group:first-of-type { border-left: 0; padding-left: 2px; }
+      .quick-nav .qn-part { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; margin: 0; padding-left: 12px; border-left: 2px solid var(--line); }
+      .quick-nav .qn-part:first-of-type { border-left: 0; padding-left: 2px; }
+      .qn-head { gap: 0; }
+      .quick-nav a.qn-title { padding: 6px 4px; }
+      .qn-part.open .qn-subs { display: flex; align-items: center; gap: 8px; }
       .quick-nav a.qn-sub { margin-left: 0; }
       .quick-content h2, .quick-content h3, .quick-content figure[id], .quick-content [id^="s1-"] { scroll-margin-top: 224px; }
     }
@@ -282,43 +293,78 @@
 <div class="quick-layout">
     <aside class="quick-nav" aria-label="第一章分层导航">
     <p class="quick-nav-title">本章导航</p>
-    <p class="qn-group">认识机器</p>
-    <a class="qn-sub" href="#zone-map">分区图</a>
-    <a class="qn-sub" href="#s1-1">采样 · 采样器 · 工程</a>
-    <a class="qn-sub" href="#s1-2">开机 · 充电 · 接口</a>
-    <p class="qn-group">区域详细介绍</p>
-    <a class="qn-sub" href="#a显示区音量--屏幕--喇叭">A 显示区</a>
-    <a class="qn-sub" href="#b切模式--shift--推子">B 切模式 · SHIFT · 推子</a>
-    <a class="qn-sub" href="#key-shift">按键基础 · SHIFT</a>
-    <a class="qn-sub" href="#c屏幕旋钮-k1k3">C 屏幕旋钮</a>
-    <a class="qn-sub" href="#d工具--浏览--录音--播放">D 工具 · 录音 · 播放</a>
-    <a class="qn-sub" href="#e16-个打击垫">E 16 个打击垫</a>
-    <a class="qn-sub" href="#key-bank">按键基础 · 垫与 Bank</a>
-    <p class="qn-group">实时机器</p>
-    <a class="qn-sub" href="#s1-4">实时画面</a>
-    <a class="qn-sub" href="#sample-模式主屏幕按-sample">Sample 主屏幕</a>
-    <a class="qn-sub" href="#chop-切片时sample-模式下按-chop">Chop 切片</a>
-    <a class="qn-sub" href="#采样浏览器按-sample-select">采样浏览器</a>
-    <a class="qn-sub" href="#采样录音按-sample-record">采样录音</a>
-    <a class="qn-sub" href="#seq-序列模式按-seq">Seq 序列模式</a>
-    <a class="qn-sub" href="#pad-fx按-pad-fx">Pad FX</a>
-    <a class="qn-sub" href="#knob-fx按-knob-fx选效果按-shift--knob-fx">Knob FX</a>
-    <a class="qn-sub" href="#song-歌曲页shift--pad-12">Song 歌曲页</a>
-    <a class="qn-sub" href="#project-菜单与起名页shift--pad-16">Project 菜单</a>
-    <a class="qn-sub" href="#其他页面">其他页面</a>
-    <p class="qn-group">第一次上手</p>
-    <a class="qn-sub" href="#s1-flows">跟着做 · 采样 / 换鼓组</a>
-    <a class="qn-sub" href="#s1-7">播放 demo</a>
-    <a class="qn-sub" href="#s1-8">换一个鼓声</a>
-    <a class="qn-sub" href="#s1-9">认识序列</a>
-    <a class="qn-sub" href="#s1-10">录第一段 beat</a>
-    <a class="qn-sub" href="#s1-11">采第一个声音</a>
-    <a class="qn-sub" href="#s1-12">加第一个效果</a>
-    <a class="qn-sub" href="#s1-13">保存工程</a>
-    <p class="qn-group">章末</p>
-    <a class="qn-sub" href="#s1-14">常见问题 FAQ</a>
-    <a class="qn-sub" href="#s1-15">自查清单</a>
-    <a class="qn-sub" href="#资料">资料</a>
+    <div class="qn-part" data-qn="1">
+      <div class="qn-head">
+        <a class="qn-title" href="#11-认识这台机器">认识机器</a>
+        <button class="qn-arrow" type="button" aria-expanded="false" aria-controls="qn-subs-1" aria-label="展开「认识机器」子项">▸</button>
+      </div>
+      <div class="qn-subs" id="qn-subs-1">
+        <a class="qn-sub" href="#zone-map">分区图</a>
+        <a class="qn-sub" href="#s1-1">采样 · 采样器 · 工程</a>
+        <a class="qn-sub" href="#s1-2">开机 · 充电 · 接口</a>
+      </div>
+    </div>
+    <div class="qn-part" data-qn="2">
+      <div class="qn-head">
+        <a class="qn-title" href="#13-认识面板的-5-个区">区域详细介绍</a>
+        <button class="qn-arrow" type="button" aria-expanded="false" aria-controls="qn-subs-2" aria-label="展开「区域详细介绍」子项">▸</button>
+      </div>
+      <div class="qn-subs" id="qn-subs-2">
+        <a class="qn-sub" href="#a显示区音量--屏幕--喇叭">A 显示区</a>
+        <a class="qn-sub" href="#b切模式--shift--推子">B 切模式 · SHIFT · 推子</a>
+        <a class="qn-sub" href="#key-shift">按键基础 · SHIFT</a>
+        <a class="qn-sub" href="#c屏幕旋钮-k1k3">C 屏幕旋钮</a>
+        <a class="qn-sub" href="#d工具--浏览--录音--播放">D 工具 · 录音 · 播放</a>
+        <a class="qn-sub" href="#e16-个打击垫">E 16 个打击垫</a>
+        <a class="qn-sub" href="#key-bank">按键基础 · 垫与 Bank</a>
+      </div>
+    </div>
+    <div class="qn-part" data-qn="3">
+      <div class="qn-head">
+        <a class="qn-title" href="#14-认识小屏幕每个页面显示什么">实时机器</a>
+        <button class="qn-arrow" type="button" aria-expanded="false" aria-controls="qn-subs-3" aria-label="展开「实时机器」子项">▸</button>
+      </div>
+      <div class="qn-subs" id="qn-subs-3">
+        <a class="qn-sub" href="#s1-4">实时画面</a>
+        <a class="qn-sub" href="#sample-模式主屏幕按-sample">Sample 主屏幕</a>
+        <a class="qn-sub" href="#chop-切片时sample-模式下按-chop">Chop 切片</a>
+        <a class="qn-sub" href="#采样浏览器按-sample-select">采样浏览器</a>
+        <a class="qn-sub" href="#采样录音按-sample-record">采样录音</a>
+        <a class="qn-sub" href="#seq-序列模式按-seq">Seq 序列模式</a>
+        <a class="qn-sub" href="#pad-fx按-pad-fx">Pad FX</a>
+        <a class="qn-sub" href="#knob-fx按-knob-fx选效果按-shift--knob-fx">Knob FX</a>
+        <a class="qn-sub" href="#song-歌曲页shift--pad-12">Song 歌曲页</a>
+        <a class="qn-sub" href="#project-菜单与起名页shift--pad-16">Project 菜单</a>
+        <a class="qn-sub" href="#其他页面">其他页面</a>
+      </div>
+    </div>
+    <div class="qn-part" data-qn="4">
+      <div class="qn-head">
+        <a class="qn-title" href="#上手教程跟着做">第一次上手</a>
+        <button class="qn-arrow" type="button" aria-expanded="false" aria-controls="qn-subs-4" aria-label="展开「第一次上手」子项">▸</button>
+      </div>
+      <div class="qn-subs" id="qn-subs-4">
+        <a class="qn-sub" href="#s1-flows">跟着做 · 采样 / 换鼓组</a>
+        <a class="qn-sub" href="#s1-7">播放 demo</a>
+        <a class="qn-sub" href="#s1-8">换一个鼓声</a>
+        <a class="qn-sub" href="#s1-9">认识序列</a>
+        <a class="qn-sub" href="#s1-10">录第一段 beat</a>
+        <a class="qn-sub" href="#s1-11">采第一个声音</a>
+        <a class="qn-sub" href="#s1-12">加第一个效果</a>
+        <a class="qn-sub" href="#s1-13">保存工程</a>
+      </div>
+    </div>
+    <div class="qn-part" data-qn="5">
+      <div class="qn-head">
+        <a class="qn-title" href="#s1-end">章末</a>
+        <button class="qn-arrow" type="button" aria-expanded="false" aria-controls="qn-subs-5" aria-label="展开「章末」子项">▸</button>
+      </div>
+      <div class="qn-subs" id="qn-subs-5">
+        <a class="qn-sub" href="#s1-14">常见问题 FAQ</a>
+        <a class="qn-sub" href="#s1-15">自查清单</a>
+        <a class="qn-sub" href="#资料">资料</a>
+      </div>
+    </div>
   </aside>
 
   <div class="quick-content">
